@@ -1,5 +1,5 @@
 // Mina Fang
-// completed 04-30
+// updated 05-02
 
 public class Food extends Item
 {
@@ -7,10 +7,11 @@ public class Food extends Item
 	private int increase;
 	
 	
+	public Food () {} // default constructor
 	
 	public Food (String name, int increase)
 	{
-		this.name = name;
+		this.setName (name);
 		this.increase = increase;
 		
 	} // Food constructor
