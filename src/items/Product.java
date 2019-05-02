@@ -10,7 +10,7 @@ public class Product extends Item
 	static final int HEALTH = 4;
 	static final int MAXHEALTH = 5;
 	static final int RANGE = 6;
-	static final int MEELEE = 7;
+	static final int MELEE = 7;
 	
 	private int upgradeType;
 	private int increase;
