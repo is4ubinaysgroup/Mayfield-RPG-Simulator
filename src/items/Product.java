@@ -28,7 +28,7 @@ public class Product extends Item
 	// ------- set and get methods -------
 	
 	public void setUpgradeType (int upgradeType) { this.upgradeType = upgradeType; } // setUpgradeType method
-	public int getUpgradeType () { return upgradeType; } //
+	public int getUpgradeType () { return upgradeType; } // getUpgradeType method
 
 	
 	public void setIncrease (int increase) { this.increase = increase; } // setIncrease method
