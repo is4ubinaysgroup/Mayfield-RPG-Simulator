@@ -1,16 +1,16 @@
 // Mina Fang
-// completed 05-02
+// updated 05-07
 
 public class Product extends Item
 {
 
 	static final int ARMOR = 1;
-	static final int CAPACITY = 2;
+	static final int CAPACITY = 2; // has a limit
 	static final int CRITICALCHANCE = 3;
 	static final int HEALTH = 4;
 	static final int MAXHEALTH = 5;
-	static final int RANGE = 6;
-	static final int MELEE = 7;
+	static final int DAMAGE = 6;
+	
 	
 	private int upgradeType;
 	private int increase;
