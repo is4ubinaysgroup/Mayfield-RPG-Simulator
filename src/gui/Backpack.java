@@ -150,7 +150,10 @@ public class Backpack
 	{
 		lbl_error.setText(null);
 		String weaponName = (String) comboB_weapons.getSelectedItem();
+		
 		//WIP
+		Weapon weapon = Weapon.getWeapon (weaponName);
+		Player.switchWeapon (weapon);
 		
 		update();
 	} // btn_EquipEngine method
