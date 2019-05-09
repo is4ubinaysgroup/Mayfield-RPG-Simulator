@@ -16,6 +16,7 @@ public class Main
 		Help.initGUI();
 		Navigation.initGUI();
 		Map.initGUI();
+		Backpack.initGUI();
 		Shop.initGUI();
 		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
