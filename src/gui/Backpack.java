@@ -1,4 +1,5 @@
 // initially completed 05-08 by Matthew
+// edited 05-09 by Mina
 
 /*
 @contributor Carson Fujita
@@ -13,63 +14,202 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class Backpack extends JPanel {
-
-	/**
-	 * Create the panel.
-	 */
-	public Backpack() {
-		setLayout(null);
+public class Backpack
+{
+	static protected JPanel backpackPane;
+	static protected JLabel lbl_coins;
+	static protected JLabel lbl_defense;
+	static protected JLabel lbl_health;
+	static protected JLabel lbl_maxHealth;
+	static protected JLabel lbl_damage;
+	static protected JLabel lbl_rangedDamage;
+	static protected JLabel lbl_criticalChance;
+	static protected JLabel lbl_error;
+	static protected JComboBox comboB_weapons;
+	static protected JComboBox comboB_products;
+	static protected JButton btn_Equip;
+	static protected JButton btn_Use;
+	static protected JButton btn_Back;
+	
+	
+	public static void initGUI()
+	{
+	
+		// ------- mainMenuPane -------
+		backpackPane = new JPanel ();
+		backpackPane.setLayout(null);
 		
-		JLabel Coin = new JLabel("Coin:");
-		Coin.setBounds(25, 50, 100, 15);
-		add(Coin);
+		// ------- lbl_coins -------
+		lbl_coins = new JLabel ("Coins: ");
+		lbl_coins.setBounds(155, 131, 181, 20);
+		backpackPane.add(lbl_coins);
 		
-		JLabel Backpack = new JLabel("Backpack");
-		Backpack.setHorizontalAlignment(SwingConstants.CENTER);
-		Backpack.setBounds(300, 10, 200, 50);
-		add(Backpack);
+		// ------- lbl_defense -------
+		lbl_defense = new JLabel ("Defense: ");
+		lbl_defense.setBounds(423, 131, 212, 20);
+		backpackPane.add(lbl_defense);
 		
-		JLabel Defense = new JLabel("Defense:");
-		Defense.setBounds(25, 70, 100, 15);
-		add(Defense);
+		// ------- lbl_health -------
+		lbl_health = new JLabel ("Health: ");
+		lbl_health.setBounds(155, 183, 162, 20);
+		backpackPane.add(lbl_health);
 		
-		JLabel HealthCurrent = new JLabel("Health Current:");
-		HealthCurrent.setBounds(25, 90, 100, 15);
-		add(HealthCurrent);
+		// ------- lbl_maxHealth -------
+		lbl_maxHealth = new JLabel ("Max Health: ");
+		lbl_maxHealth.setBounds(423, 183, 181, 20);
+		backpackPane.add(lbl_maxHealth);
 		
-		JLabel HealthMax = new JLabel("Health Max:");
-		HealthMax.setBounds(25, 110, 100, 15);
-		add(HealthMax);
+		// ------- lbl_damage -------
+		lbl_damage = new JLabel ("Damage: ");
+		lbl_damage.setBounds(155, 238, 162, 20);
+		backpackPane.add(lbl_damage);
 		
-		JLabel Movement = new JLabel("Movement:");
-		Movement.setBounds(25, 130, 100, 15);
-		add(Movement);
+		// ------- lbl_criticalChance -------
+		lbl_criticalChance = new JLabel ("Critical Chance: ");
+		lbl_criticalChance.setBounds(423, 238, 224, 20);
+		backpackPane.add(lbl_criticalChance);
 		
-		JLabel WeaponAttack = new JLabel("Weapon Attack:");
-		WeaponAttack.setBounds(25, 150, 100, 15);
-		add(WeaponAttack);
+		// ------- lbl_rangedDamage -------
+		lbl_rangedDamage = new JLabel("Ranged Damage: ");
+		lbl_rangedDamage.setBounds(155, 289, 181, 20);
+		backpackPane.add(lbl_rangedDamage);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(130, 420, 237, 69);
-		add(comboBox);
+		// ------- lbl_error -------
+		lbl_error = new JLabel ("");
+		lbl_error.setBounds(267, 485, 294, 20);
+		backpackPane.add(lbl_error);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(130, 500, 237, 69);
-		add(comboBox_1);
+		// ------- comboB_weapons ------- 
+		comboB_weapons = new JComboBox();
+		comboB_weapons.setBounds(155, 337, 352, 26);
+		backpackPane.add(comboB_weapons);
 		
-		JButton btnNewButton = new JButton("Equip");
-		btnNewButton.setBounds(377, 419, 124, 71);
-		add(btnNewButton);
+		// ------- comboB_products ------- 
+		comboB_products = new JComboBox();
+		comboB_products.setBounds(155, 406, 352, 26);
+		backpackPane.add(comboB_products);
 		
-		JButton btnNewButton_1 = new JButton("Use");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		
+		// ------- btn_Equip ------- 
+		btn_Equip = new JButton("Equip");
+		btn_Equip.setBounds(522, 336, 115, 29);
+		backpackPane.add(btn_Equip);
+		
+		btn_Equip.addActionListener (new ActionListener ()   
+		{
+			public void actionPerformed (ActionEvent e)
+			{
+				btn_EquipEngine();
 			}
 		});
-		btnNewButton_1.setBounds(377, 499, 124, 70);
-		add(btnNewButton_1);
+		
+		
+		// ------- btn_Use ------- 
+		btn_Use = new JButton("Use");
+		btn_Use.setBounds(522, 405, 115, 29);
+		backpackPane.add(btn_Use);
+		
+		btn_Use.addActionListener (new ActionListener ()   
+		{
+			public void actionPerformed (ActionEvent e)
+			{
+				btn_UseEngine();
+			}
+		});
+				
+		
+		// ------- btn_Back ------- 
+		btn_Back = new JButton("Back");
+		btn_Back.setBounds(328, 572, 115, 29);
+		backpackPane.add(btn_Back);
+		
+		btn_Back.addActionListener (new ActionListener ()   
+		{
+			public void actionPerformed (ActionEvent e)
+			{
+				lbl_error.setText(null);
+				GUIExtension1.switchPane (Navigation.getPane());
+			}
+		});
+		
+	} // initGUI method
+	
+	
+	public static JPanel getPane() { return backpackPane; } // getPane method
+	
+	
+	
+	public static void btn_EquipEngine()
+	{
+		lbl_error.setText(null);
+		String weaponName = (String) comboB_weapons.getSelectedItem();
+		//WIP
+		
+		update();
+	} // btn_EquipEngine method
+	
+	
+	
+	public static void btn_UseEngine()
+	{
+		lbl_error.setText(null);
+		String productName = (String) comboB_products.getSelectedItem();
+		//WIP
+		
+		update();
+	} // btn_UseEngine method
+	
+	
+	
+	
+	public static void update()
+	{
+		// need to know where player object is instantiated
+		
+		lbl_defense.setText("Defense: " + Main.player.getDefense());
+		lbl_health.setText("Health: " + Main.player.getHealth());
+		lbl_maxHealth.setText("Max Health : " + Main.player.getMaxHealth());
+		
+		
+		int equippedWeapon = Main.player.getEquippedWeapon();
+		int damage;
+		int rangedDamage;
+		double criticalChance;
+		
+		
+		if (equippedWeapon == 0)
+		{
+			damage = ((3*Weapon.hatDUC) + 5);
+			rangedDamage = 0;
+			criticalChance = (double) (10*Weapon.hatCCUC + 5);
+		} // if 0 -hat
+		
+		else if (equippedWeapon == 1)
+		{
+			damage = ((3*Weapon.pencilDUC) + 1)
+			rangedDamage = 0;;
+			criticalChance = (double) (10*Weapon.pencilCCUC + 5);
+		} // if 1 - pencil
+		
+		else if (equippedWeapon == 2)
+		{
+			damage = ((3*Weapon.rulerDUC) + 5);
+			rangedDamage = ((3*Weapon.rulerDUC)+1);
+			criticalChance = (double) (10*Weapon.rulerCCUC + 5);
+		}// else if 2 - ruler
+		
+		else
+		{
+			damage = ((3*Weapon.rubberBandDUC) + 5);
+			rangedDamage = 0;
+			criticalChance = (double) (10*Weapon.rubberBandCUC + 5);
+		} // else 3 - rubber band
+		
+				
+		lbl_damage.setText("Damage: " + Integer.toString(damage));
+		lbl_rangedDamage.setText("Ranged Damage: " + Integer.toString(rangedDamage));
+		lbl_criticalChance.setText("Critical Chance: " + Double.toString(criticalChance));
 
-	}
+	} // update method
 	
 } // Backpack class
