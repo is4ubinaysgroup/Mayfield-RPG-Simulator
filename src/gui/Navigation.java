@@ -1,5 +1,7 @@
 // initially completed 05-08 by Matthew
 // edited 05-09 by Mina
+/* will be finalized when Database.save method is complete; possibly change to pop-up
+in a blank room/"overworld" where the user clicks on their character sprite */
 
 
 import java.awt.*;
@@ -42,7 +44,7 @@ public class Navigation
 			}
 		});
 		
-
+		
 		
 		// ------- btn_Backpack -------
 		btn_Backpack = new JButton("Backpack");
@@ -85,7 +87,7 @@ public class Navigation
 		btn_Return.setBackground(new Color(0, 0, 204));
 		btn_Return.setForeground(Color.WHITE);
 		btn_Return.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btn_Return.setBounds(600, 750, 200, 50);
+		btn_Return.setBounds(250, 650, 300, 100);
 		NavigationPane.add(btn_Return);
 		
 		btn_Return.addActionListener (new ActionListener ()   
@@ -99,6 +101,8 @@ public class Navigation
 	} // initGUI method
 	
 	
+	
 	public static JPanel getPane() {return NavigationPane; } //getPane method
+	
 	
 } // Navigation class
