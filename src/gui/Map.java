@@ -1,5 +1,5 @@
 // Mina
-// updated 5-9-2019
+// updated 05-09
 // PM3: Carson: Evaluated 5/9/2019, 10/10. AWESOME!! :D
 
 import java.awt.*;
@@ -18,107 +18,164 @@ public class Map
 	static protected JButton btn_Level6;
 	static protected JButton btn_Level7;
 	static protected JButton btn_Shop;
+	static protected JButton btn_Back;
+
+	
 
 	public static void initGUI ()
 	{
 		// ------- map panel --------
 		mapPane = new JPanel ();
+		mapPane.setBackground(new Color(0, 0, 0));
 		mapPane.setLayout(null);
+
+
 
 		// ------- btn_Level1 -------
 		btn_Level1 = new JButton("kitchen");
 		btn_Level1.setBounds(62, 239, 130, 130);
+		btn_Level1.setForeground(Color.WHITE);
+		btn_Level1.setBackground(new Color(0, 0, 204));
+		btn_Level1.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
+
+
 		btn_Level1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
+			public void actionPerformed(ActionEvent e) {
+				
 				btn_Level1Engine();
 			}
 		});
+
 		mapPane.add(btn_Level1);
+
+
 		
 		// ------- btn_Level2 -------
 		btn_Level2 = new JButton("Level 2");
 		btn_Level2.setBounds(234, 239, 130, 130);
+
 		btn_Level2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
+			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
 
 		mapPane.add(btn_Level2);
+
+
 		
 		// ------- btn_Level3 -------
 		btn_Level3 = new JButton("Level 3");
 		btn_Level3.setBounds(408, 239, 130, 130);
+
 		btn_Level3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
+			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
 
 		mapPane.add(btn_Level3);
 
+		
+		
 		// ------- btn_Level4 -------
 
 		btn_Level4 = new JButton("Level 4");
-		btn_Level4.setBounds(234, 417, 130, 130);
+		btn_Level4.setBounds(580, 239, 130, 130);
+
 		btn_Level4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
+			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
+
 		mapPane.add(btn_Level4);
 
+		
+
 		// ------- btn_Level5 -------
+
 		btn_Level5 = new JButton("Level 5");
 		btn_Level5.setBounds(62, 417, 130, 130);
+
 		btn_Level5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
+			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
+
 		mapPane.add(btn_Level5);
+
+
 		
 		// ------- btn_Level6 -------
 		btn_Level6 = new JButton("Level 6");
-		btn_Level6.setBounds(580, 239, 130, 130);
+		btn_Level6.setBounds(234, 417, 130, 130);
+
 		btn_Level6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)
-			{
+			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
+
 		mapPane.add(btn_Level6);
+
+		
 
 		// ------- btn_Level7 -------
 		btn_Level7 = new JButton("Level 7");
 		btn_Level7.setBounds(408, 417, 130, 130);
+
 		btn_Level7.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
+			public void actionPerformed(ActionEvent e) {
 
 			}
 		});
+
 		mapPane.add(btn_Level7);
+
+
 		
 		// ------- btn_Shop -------
 		btn_Shop = new JButton("Shop");
 		btn_Shop.setBounds(580, 417, 130, 130);
+		btn_Shop.setForeground(Color.WHITE);
+		btn_Shop.setBackground(new Color(0, 0, 204));
+		btn_Shop.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
+
 		btn_Shop.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				btn_ShopEngine();
+			public void actionPerformed(ActionEvent e) {
+
+				GUIExtension1.switchPane(Shop.getPane());
 			}
 		});
+
 		mapPane.add(btn_Shop);
 
 
+
+		// ------- btn_Back -------
+		btn_Back = new JButton("back");
+		btn_Back.setBounds(580, 100, 130, 50);
+		btn_Back.setForeground(Color.WHITE);
+		btn_Back.setBackground(new Color(0, 0, 204));
+		btn_Back.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
+
+		btn_Back.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				GUIExtension1.switchPane(MainMenu.getPane());
+			}
+		});
+
+		mapPane.add(btn_Back);
+
 	} // initGUI method
+
+	
 	public static JPanel getPane () {return mapPane;} // getPane method
+	
+	
 	
 	public static void btn_Level1Engine ()
 	{
@@ -126,14 +183,12 @@ public class Map
 		// switch to the battle panel
 		
 	} // btn_Level1Engine method
-	
-	public static void btn_ShopEngine ()
-	{
-		//GUIExtension1.switchPane(Shop.getPane());
 		
-	} // btn_ShopEngine method
+	
+	
 	public static void updateMap (int level)
 	{
+		
 		if (level == 0)
 		{
 			btn_Level1.setEnabled(false);
@@ -144,7 +199,7 @@ public class Map
 			btn_Level6.setEnabled(false);
 			btn_Level7.setEnabled(false);	
 		}
-	
+		
 		else if (level == 1)
 		{
 			btn_Level1.setEnabled(true);
@@ -219,5 +274,8 @@ public class Map
 		{
 			System.out.println("level error");
 		}
+		
 	} // updateMap method
+	
+	
 } // Map class
