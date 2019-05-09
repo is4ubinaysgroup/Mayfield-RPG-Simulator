@@ -161,7 +161,8 @@ public class Backpack
 	{
 		lbl_error.setText(null);
 		String productName = (String) comboB_products.getSelectedItem();
-		//WIP
+		Product product = Product.getProduct(productName);
+		Product.use(product);
 		
 		update();
 	} // btn_UseEngine method
