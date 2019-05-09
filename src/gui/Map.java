@@ -156,7 +156,7 @@ public class Map
 
 		// ------- btn_Back -------
 		btn_Back = new JButton("back");
-		btn_Back.setBounds(580, 100, 130, 50);
+		btn_Back.setBounds(325, 620, 130, 50);
 		btn_Back.setForeground(Color.WHITE);
 		btn_Back.setBackground(new Color(0, 0, 204));
 		btn_Back.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
