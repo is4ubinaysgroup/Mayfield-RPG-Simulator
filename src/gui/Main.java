@@ -1,4 +1,3 @@
-// everyone
 // last updated 05-09-19
 
 import java.awt.*;
