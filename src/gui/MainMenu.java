@@ -1,6 +1,7 @@
 // --------- Binay Rana -------------
 // --------- 26/04/2019 -------------
 // PM3, Carson: Evaluation: 10/10 AWESOME!!
+// updated 05-09 by Mina
 
 import java.awt.*;
 import java.awt.event.*;
@@ -44,9 +45,9 @@ public class MainMenu
 		{
 			public void actionPerformed (ActionEvent e)
 			{
-				//Database.writeStarter();
+				//Database.updateFile(); // writes starter file
 				//Database.read();
-				//GUIExtension1.switchPane (Navigation.getPane());
+				GUIExtension1.switchPane (Navigation.getPane());
 			}
 		});
 
@@ -63,7 +64,7 @@ public class MainMenu
 			public void actionPerformed (ActionEvent e)
 			{
 				//Database.read();
-				//GUIExtension1.switchPane (Navigation.getPane());
+				GUIExtension1.switchPane (Navigation.getPane());
 			}
 		});
 
