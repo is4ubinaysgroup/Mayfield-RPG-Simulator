@@ -13,9 +13,7 @@ public class ImagePanel extends JPanel{
 
     private BufferedImage image;
     
-    public ImagePanel()  
-    {            
-    }
+    public ImagePanel()  {}
     
     public ImagePanel(String fileName) throws IOException 
     {            
