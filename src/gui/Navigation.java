@@ -60,6 +60,7 @@ public class Navigation
 		});
 		
 		
+		
 		// ------- btn_Save -------
 		btn_Save = new JButton("Save");
 		btn_Save.setBackground(new Color(0, 0, 204));
@@ -75,6 +76,7 @@ public class Navigation
 				//Database.save();
 			}
 		});
+		
 		
 		
 		// ------- btn_Return -------
@@ -94,7 +96,6 @@ public class Navigation
 		});
 		
 	} // initGUI method
-	
 	
 	
 	public static JPanel getPane() {return NavigationPane; } //getPane method
