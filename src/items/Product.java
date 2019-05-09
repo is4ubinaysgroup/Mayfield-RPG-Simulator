@@ -1,15 +1,22 @@
-// Mina Fang
+// @Author: Mina Fang
+// @Contributor: Carson Fujita
 // updated 05-07
+
+/*
+Edited, Carson Fujita, May 9th 2019
+Added the public modifaction to the final stats. no biggie
+evaluatation as PM 3: 10/10
+*/
 
 public class Product extends Item
 {
 
-	static final int ARMOR = 1;
-	static final int CAPACITY = 2; // has a limit
-	static final int CRITICALCHANCE = 3;
-	static final int HEALTH = 4;
-	static final int MAXHEALTH = 5;
-	static final int DAMAGE = 6;
+	public static final int ARMOR = 1;
+	public static final int CAPACITY = 2; // has a limit
+	public static final int CRITICALCHANCE = 3;
+	public static final int HEALTH = 4;
+	public static final int MAXHEALTH = 5;
+	public static final int DAMAGE = 6;
 	
 	
 	private int upgradeType;
