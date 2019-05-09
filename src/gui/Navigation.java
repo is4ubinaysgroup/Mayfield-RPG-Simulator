@@ -3,7 +3,6 @@
 /* will be finalized when Database.save method is complete; possibly change to pop-up
 in a blank room/"overworld" where the user clicks on their character sprite */
 
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
