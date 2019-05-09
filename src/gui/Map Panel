@@ -1,5 +1,5 @@
 // Mina
-// completed 4-26-2019
+// updated 5-9-2019
 // PM3: Carson: Evaluated 5/9/2019, 10/10. AWESOME!! :D
 import java.awt.*;
 import java.awt.event.*;
@@ -133,7 +133,18 @@ public class Map
 	} // btn_ShopEngine method
 	public static void updateMap (int level)
 	{
-		if (level == 1)
+		if (level == 0)
+		{
+			btn_Level1.setEnabled(false);
+			btn_Level2.setEnabled(false);
+			btn_Level3.setEnabled(false);
+			btn_Level4.setEnabled(false);
+			btn_Level5.setEnabled(false);
+			btn_Level6.setEnabled(false);
+			btn_Level7.setEnabled(false);	
+		}
+	
+		else if (level == 1)
 		{
 			btn_Level1.setEnabled(true);
 			btn_Level2.setEnabled(false);
