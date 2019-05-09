@@ -1,5 +1,12 @@
 // initially completed 05-08 by Matthew
-// edited 05-09 by Mina
+
+/* 
+   edited 05-09 by Mina
+   - still needs save configuration done for loading the player object (also
+     not sure where the player object will be instantiated) and more on how
+     product and weapons will work and will be stored
+*/
+
 
 /*
 @contributor Carson Fujita
