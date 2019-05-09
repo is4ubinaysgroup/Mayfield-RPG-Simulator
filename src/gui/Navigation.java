@@ -6,55 +6,97 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Navigation{
+public class Navigation
+{
 
-	static protected JPanel NavigationPanel;
-	 
+	static protected JPanel NavigationPane;
+	static protected JButton btn_Map;
+	static protected JButton btn_Backpack;
+	static protected JButton btn_Save;
+	static protected JButton btn_Return;
+	
 
-	public static void initGUI() {
-		NavigationPanel = new JPanel();
-		NavigationPanel.setBackground(Color.BLACK);
-		NavigationPanel.setLayout(null);
+	public static void initGUI()
+	{
 		
-		JButton Save = new JButton("Save");
-		Save.setBackground(new Color(0, 0, 204));
-		Save.setForeground(Color.WHITE);
-		Save.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
-		Save.setBounds(250, 350, 300, 100);
-		NavigationPanel.add(Save);
+		// ------- navigationPane -------
+		NavigationPane = new JPanel();
+		NavigationPane.setBackground(Color.BLACK);
+		NavigationPane.setLayout(null);
 		
-		JButton Backpack = new JButton("Backpack");
-		Backpack.setForeground(Color.WHITE);
-		Backpack.setBackground(new Color(0, 0, 204));
-		Backpack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
-		Backpack.setBounds(250, 500, 300, 100);
-		NavigationPanel.add(Backpack);
 		
-		JButton Map = new JButton("Map");
-		Map.setForeground(Color.WHITE);
-		Map.setBackground(new Color(0, 0, 204));
-		Map.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
-		Map.setBounds(250, 200, 300, 100);
-		NavigationPanel.add(Map);
+		// ------- btn_Map -------
+		btn_Map = new JButton("Map");
+		btn_Map.setForeground(Color.WHITE);
+		btn_Map.setBackground(new Color(0, 0, 204));
+		btn_Map.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
+		btn_Map.setBounds(250, 200, 300, 100);
+		NavigationPane.add(btn_Map);
 		
-		JButton btnNewButton = new JButton("Return");
-		btnNewButton.setBackground(new Color(0, 0, 204));
-		btnNewButton.setForeground(Color.WHITE);
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButton.setBounds(600, 750, 200, 50);
-		NavigationPanel.add(btnNewButton);
+		btn_Map.addActionListener (new ActionListener ()   
+		{
+			public void actionPerformed (ActionEvent e)
+			{
+				GUIExtension1.switchPane(Map.getPane());
+			}
+		});
 		
-		JLabel lblNewLabel = new JLabel("Navigation");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBackground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 50));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(230, 10, 350, 100);
-		NavigationPanel.add(lblNewLabel);
-
+		
+		
+		// ------- btn_Backpack -------
+		btn_Backpack = new JButton("Backpack");
+		btn_Backpack.setForeground(Color.WHITE);
+		btn_Backpack.setBackground(new Color(0, 0, 204));
+		btn_Backpack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
+		btn_Backpack.setBounds(250, 500, 300, 100);
+		NavigationPane.add(btn_Backpack);
+		
+		btn_Backpack.addActionListener (new ActionListener ()   
+		{
+			public void actionPerformed (ActionEvent e)
+			{
+				GUIExtension1.switchPane(Backpack.getPane());
+			}
+		});
+		
+		
+		// ------- btn_Save -------
+		btn_Save = new JButton("Save");
+		btn_Save.setBackground(new Color(0, 0, 204));
+		btn_Save.setForeground(Color.WHITE);
+		btn_Save.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
+		btn_Save.setBounds(250, 350, 300, 100);
+		NavigationPane.add(btn_Save);
+		
+		btn_Save.addActionListener (new ActionListener ()   
+		{
+			public void actionPerformed (ActionEvent e)
+			{
+				//Database.save();
+			}
+		});
+		
+		
+		// ------- btn_Return -------
+		btn_Return = new JButton("Return");
+		btn_Return.setBackground(new Color(0, 0, 204));
+		btn_Return.setForeground(Color.WHITE);
+		btn_Return.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btn_Return.setBounds(600, 750, 200, 50);
+		NavigationPane.add(btn_Return);
+		
+		btn_Return.addActionListener (new ActionListener ()   
+		{
+			public void actionPerformed (ActionEvent e)
+			{
+				GUIExtension1.switchPane(MainMenu.getPane());
+			}
+		});
+		
 	} // initGUI method
 	
-	public static JPanel getPane() {return NavigationPanel; } //getPane method
 	
-
+	
+	public static JPanel getPane() {return NavigationPane; } //getPane method
+	
 } // Navigation class
