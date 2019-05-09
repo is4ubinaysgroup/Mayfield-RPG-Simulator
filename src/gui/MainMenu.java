@@ -1,10 +1,11 @@
+// --------- Binay Rana -------------
+// --------- 26/04/2019 -------------
+// PM3, Carson: Evaluation: 10/10 AWESOME!!
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-// --------- Binay Rana -------------
-// --------- 26/04/2019 -------------
-// PM3, Carson: Evaluation: 10/10 AWESOME!!
 public class MainMenu
 {
 	static protected JPanel mainMenuPane;
