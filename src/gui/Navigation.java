@@ -25,6 +25,7 @@ public class Navigation
 		NavigationPane.setLayout(null);
 		
 		
+		
 		// ------- btn_Map -------
 		btn_Map = new JButton("Map");
 		btn_Map.setForeground(Color.WHITE);
@@ -41,7 +42,7 @@ public class Navigation
 			}
 		});
 		
-		
+
 		
 		// ------- btn_Backpack -------
 		btn_Backpack = new JButton("Backpack");
