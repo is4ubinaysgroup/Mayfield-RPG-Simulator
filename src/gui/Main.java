@@ -15,7 +15,9 @@ public class Main
 		
 		MainMenu.initGUI();
 		Help.initGUI();
+		Navigation.initGUI();
 		Map.initGUI();
+		Shop.initGUI();
 		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
 	
