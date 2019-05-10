@@ -8,6 +8,8 @@ Added the public modifaction to the final stats. no biggie
 evaluatation as PM 3: 10/10
 */
 
+// Mina Fang updated 05-10
+
 
 public class Product extends Item
 {
@@ -24,11 +26,12 @@ public class Product extends Item
 	private int increase;
 	private int cost;
 	private String description;
+	private String imagePath;
 	
 	
 	public Product () {} // default constructor
 	
-	public Product (String name, int upgradeType, int increase, int cost, String description)
+	public Product (String name, int upgradeType, int increase, int cost, String description, String imagePath)
 	{
 		
 		this.setName(name);
@@ -36,6 +39,7 @@ public class Product extends Item
 		this.increase = increase;
 		this.cost = cost;
 		this.description = description;
+		this.imagePath = imagePath;
 		
 	} // Product constructor
 	
@@ -54,7 +58,12 @@ public class Product extends Item
 	public void setDescription (String description) { this.description = description; } // setDescription method
 	public String getDescription () { return description; } // getDescription method
 	
+	public void setImagePath (String imagePath) { this.imagePath = imagePath; } // setImagePath method
+	public String getImagePath () { return imagePath; } // getImagePath method
 	
+	
+	
+	// method could be put in Database
 	
 	public Product getProduct (String name)
 	{
@@ -67,16 +76,10 @@ public class Product extends Item
 		else if (name.equals("Coffee")) {return Database.getCoffee();}
 		else if (name.equals("Cappuccino")) {return Database.getCappuccino();}
 		else if (name.equals("Expresso")) {return Database.getExpresso();}
-		else if (name.equals("Orange Juice")) {return Database.getOrangeJuice();}
-		
-		else
-		{
-			System.out.println("product name error");
-			return Database.getOrangeJuice(); // temporary placement
-		}
+		else {return Database.getOrangeJuice();} // "Orange Juice"
 		
 	} // getProduct method
 	
 	
-
+	
 } // Product class
