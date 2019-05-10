@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -5,16 +6,16 @@ import javax.swing.*;
 @Author Binay
 @Contributors: Binay, Mina, Carson
 Help panels displays advice and tips for the user.
-
 Version: 2
+Updated 05/10/2019 By Mina and Matthew
 */
 
-public class HelpPanel extends JPanel
+public class Help
 {
 	static protected JButton btn_Back;
 	static protected JLabel lbl_Title;
 	static protected JLabel lbl_Content;
-
+	static protected JPanel helpPane;
 
 	public static void initGUI()
 	{
@@ -27,12 +28,12 @@ public class HelpPanel extends JPanel
 		lbl_Title = new JLabel("help instructions");
 		lbl_Title.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		lbl_Title.setBounds(240, 51, 784, 64);
-		helpPane.add(lblHelpTitle);
+		helpPane.add(lbl_Title);
 		
 		// -------- lbl contents ---------------
 		lbl_Content = new JLabel ("BLANK");
 		lbl_Content.setBounds (85, 167, 56, 16);
-		helpPane.add(lblHelpContents);
+		helpPane.add(lbl_Content);
 
 		
 		// ------- btn_Back -------
