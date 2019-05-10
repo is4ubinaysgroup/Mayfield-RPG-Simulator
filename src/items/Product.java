@@ -63,7 +63,7 @@ public class Product extends Item
 	
 	
 	
-	// method could be put in Database
+	// methods could be put in Database
 	
 	public static Product getProduct (String name)
 	{
@@ -79,6 +79,122 @@ public class Product extends Item
 		else {return Database.getOrangeJuice();} // "Orange Juice"
 		
 	} // getProduct method
+	
+	
+	
+	public static boolean use (Product product)
+	{
+		
+		boolean used = false;
+		
+		int upgradeType = product.getUpgradeType();
+		int increase = product.getIncrease();
+		
+		
+		if (upgradeType == 1)
+		{
+	
+			// need name of Player object and class where it is instantiated
+
+			int defense = Main.player.getDefense () + increase;
+			Main.player.setDefense (defense));
+			
+			used = true;
+			
+		} // if armour upgrade
+		
+		
+		else if (upgradeType == 2)
+		{
+			
+			// need name of Player object and class where it is instantiated
+			
+			// check if productCapacity is upgradable (compare to array size)
+			
+			if (Main.player.productCapacityIsUpgradable() == true)
+			{	
+				int productCapacity = Main.player.getProductCapacity () + increase;
+			
+				Main.player.setProductCapacity (productCapacity);
+			
+				used = true;
+			}
+
+			
+		} // if capacity upgrade
+		
+		
+		
+		else if (upgradeType == 3)
+		{
+			int equippedWepaon = Main.player.getEquippedWeapon();
+			
+			if (equippedWeapon == 0){Weapon.hatCCUC++;} // if 0 -hat
+			else if (equippedWeapon == 1){Weapon.pencilCCUC++;} // if 1 - pencil
+			else if (equippedWeapon == 2){Weapon.rulerCCUC++;}// else if 2 - ruler
+			else{Weapon.rubberBandCCUC++} // else 3 - rubber band
+
+			used = true;
+			
+		} // if critical chance upgrade
+		
+		
+		else if (upgradeType == 4)
+		{
+			
+			int health = Main.player.getHealth() + increase;
+			
+			
+			if (health > Main.player.getmaxHealth())
+			{
+				health = Main.player.getmaxHealth();
+			} // if over max
+			
+			Main.player.setHealth (health);		
+			
+			used = true;
+			
+		} // if health upgrade
+		
+		
+		else if (upgradeType == 5)
+		{
+			
+			int maxHealth = Main.player.getMaxHealth() + increase;
+			Main.player.setMaxHealth (maxHealth);
+			
+			used = true;
+			
+		} // if maxHealth upgrade
+		
+		
+		else 
+		{
+			
+			int equippedWepaon = Main.player.getEquippedWeapon();
+			
+			if (equippedWeapon == 0) {Weapon.hatDUC++;} // if 0 -hat
+			else if (equippedWeapon == 1){Weapon.pencilDUC++;} // if 1 - pencil
+			else if (equippedWeapon == 2){Weapon.rulerDUC++;}// else if 2 - ruler
+			else {Weapon.rubberBandDUC++;} // else 3 - rubber band
+			
+			used = true;
+			
+		} // if 6 - damage upgrade
+		
+
+		
+		// delete the product from storage
+		
+		if (used == true)
+		{
+			Main.player.deleteProduct (product);
+		} 
+		
+		return used;
+
+		
+	} // use method
 	
 	
 	
