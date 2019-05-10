@@ -1,7 +1,12 @@
 // --------- Binay Rana -------------
 // --------- 26/04/2019 -------------
 // PM3, Carson: Evaluation: 10/10 AWESOME!!
-// updated 05-09 by Mina
+
+/* 
+updated 05-09 by Mina
+still needs Database save file configuration methods; tutorial will start at the click of new game or
+continue if the player's level is 0 instead of switching to navigation
+*/
 
 import java.awt.*;
 import java.awt.event.*;
