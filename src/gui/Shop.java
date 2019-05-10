@@ -12,14 +12,14 @@ public class Shop
 	static String selectedItemName;
 	
 	final static String TAB1NAME = "Upgrades";
-    final static String TAB2NAME = "Health Restore";
-    final static String TAB3NAME = "Stat Boost";
-    final static String TAB4NAME = "Weapons";
+    	final static String TAB2NAME = "Health Restore";
+    	final static String TAB3NAME = "Stat Boost";
+    	final static String TAB4NAME = "Weapons";
     
-    static final String TAB1LIST [] = {"Capacity Upgrade", "Soda", "Orange Juice"};
-    static final String TAB2LIST [] = {"Timbits", "McChicken", "Foot Long Sub!"};
-    static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappucino", "Expresso"};
-    static final String TAB4LIST [] = {"Ruler", "Rubber Band"};
+   	static final String TAB1LIST [] = {"Capacity Upgrade", "Soda", "Orange Juice"};
+   	static final String TAB2LIST [] = {"Timbits", "McChicken", "Foot Long Sub!"};
+    	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappucino", "Expresso"};
+    	static final String TAB4LIST [] = {"Ruler", "Rubber Band"};
     
 	static protected JTabbedPane shopTabbedPane;
 	
@@ -459,7 +459,6 @@ public class Shop
 	
 	public static void updateProductInfo(int tab)
 	{
-		
 		// Product product =  Product.getProduct (selectedItemName);
 		// update product info JLabels on appropriate tab
 		
