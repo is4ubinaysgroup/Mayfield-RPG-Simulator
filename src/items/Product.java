@@ -8,6 +8,7 @@ Added the public modifaction to the final stats. no biggie
 evaluatation as PM 3: 10/10
 */
 
+
 public class Product extends Item
 {
 
@@ -21,15 +22,20 @@ public class Product extends Item
 	
 	private int upgradeType;
 	private int increase;
+	private int cost;
+	private String description;
+	
 	
 	public Product () {} // default constructor
 	
-	public Product (String name, int upgradeType, int increase)
+	public Product (String name, int upgradeType, int increase, int cost, String description)
 	{
 		
 		this.setName(name);
 		this.upgradeType = upgradeType;
 		this.increase = increase;
+		this.cost = cost;
+		this.description = description;
 		
 	} // Product constructor
 	
@@ -41,6 +47,12 @@ public class Product extends Item
 	
 	public void setIncrease (int increase) { this.increase = increase; } // setIncrease method
 	public int getIncrease () { return increase; } // getIncrease method
+	
+	public void setCost (int cost) { this.cost = cost; } // setCost method
+	public int getCost () { return cost; } // getCost method
+	
+	public void setDescription (String description) { this.description = description; } // setDescription method
+	public String getDescription () { return description; } // getDescription method
 	
 	
 	
@@ -66,5 +78,5 @@ public class Product extends Item
 	} // getProduct method
 	
 	
-	
+
 } // Product class
