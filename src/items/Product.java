@@ -65,7 +65,7 @@ public class Product extends Item
 	
 	// method could be put in Database
 	
-	public Product getProduct (String name)
+	public static Product getProduct (String name)
 	{
 		if (name.equals("Timbits")) {return Database.getTimbits();}
 		else if (name.equals("McChicken")) {return Database.getMcChicken();}
