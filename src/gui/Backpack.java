@@ -31,6 +31,7 @@ public class Backpack
 	static protected JLabel lbl_damage;
 	static protected JLabel lbl_rangedDamage;
 	static protected JLabel lbl_criticalChance;
+	static protected JLabel lbl_movement;
 	static protected JLabel lbl_error;
 	static protected JComboBox comboB_weapons;
 	static protected JComboBox comboB_products;
@@ -80,6 +81,11 @@ public class Backpack
 		lbl_rangedDamage = new JLabel("Ranged Damage: ");
 		lbl_rangedDamage.setBounds(155, 289, 181, 20);
 		backpackPane.add(lbl_rangedDamage);
+		
+		// ------- lbl_movement -------
+		lbl_movement = new JLabel("Movement: 3");
+		lbl_movement.setBounds(423, 289, 124, 20);
+		backpackPane.add(lbl_movement);
 		
 		// ------- lbl_error -------
 		lbl_error = new JLabel ("");
@@ -177,6 +183,7 @@ public class Backpack
 	{
 		// need to know where player object is instantiated
 		
+		lbl_coins.setText("Coins: " + Main.player.getCoins());
 		lbl_defense.setText("Defense: " + Main.player.getDefense());
 		lbl_health.setText("Health: " + Main.player.getHealth());
 		lbl_maxHealth.setText("Max Health : " + Main.player.getMaxHealth());
