@@ -1,5 +1,6 @@
 // Mina Fang
 // initially completed 04-28-2019
+// updated 05-10
 
 import java.awt.*;
 import java.awt.event.*;
@@ -45,6 +46,28 @@ public class GUIExtension1
 	
 	} // switchPane method
 	
+	
+	
+	public static void switchToShop (JTabbedPane tabbedPanel)
+	{
+		frame.remove(cards);
+		frame.add (tabbedPanel);
+		frame.revalidate();
+		frame.repaint();
+	
+	} // switchToShop method
+	
+	
+	
+	public static void leaveShop (JPanel panel)
+	{
+		cards.add(panel);
+		frame.remove (Shop.getTabbedPane());
+		frame.add (cards);			
+		frame.revalidate();
+		frame.repaint();
+	
+	} // leaveShop method
 	
 	
 } // GUIExtension1
