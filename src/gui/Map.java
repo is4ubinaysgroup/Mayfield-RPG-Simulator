@@ -146,7 +146,7 @@ public class Map
 		btn_Shop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				GUIExtension1.switchPane(Shop.getPane());
+				GUIExtension1.switchToShop(Shop.getTabbedPane());
 			}
 		});
 
