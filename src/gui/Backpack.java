@@ -189,13 +189,13 @@ public class Backpack
 	{
 		// need to know where player object is instantiated
 		
-		lbl_coins.setText("Coins: " + Main.player.getCoins());
-		lbl_defense.setText("Defense: " + Main.player.getDefense());
-		lbl_health.setText("Health: " + Main.player.getHealth());
-		lbl_maxHealth.setText("Max Health : " + Main.player.getMaxHealth());
+		lbl_coins.setText("Coins: " + MainExcecutable.player.getCoins());
+		lbl_defense.setText("Defense: " + MainExcecutable.player.getDefense());
+		lbl_health.setText("Health: " + MainExcecutable.player.getHealth());
+		lbl_maxHealth.setText("Max Health : " + MainExcecutable.player.getMaxHealth());
 		
 		
-		int equippedWeapon = Main.player.getEquippedWeapon();
+		int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
 		int damage;
 		int rangedDamage;
 		double criticalChance;

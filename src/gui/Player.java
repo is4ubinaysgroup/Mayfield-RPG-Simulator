@@ -38,4 +38,9 @@ public class Player extends Human {
 		
 	}
 
+	public String getCoins() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
