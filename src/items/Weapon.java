@@ -50,14 +50,15 @@ public class Weapon extends Item{
 	//WTF IS X FOR???
 	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
 	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
-	private double[] critical_Chance = new double[2];
+	private double critical_Chance;
 	private int weaponType;
+	private int type;
 			
-	public Weapon(int[] damage; int[] range; double critical_Chance, int type) 
+	public Weapon(int[] damage, int[] range, double critical_Chance, int type) 
 	{
-		this.damage = damage;
-		this.range = range;
-		this.critical_Chance = critical_Chance;
+		this.setDamage(damage);
+		this.setRange(range);
+		this.setCriticalChance(critical_Chance);
 		this.type = type;
 	}
 	
@@ -151,5 +152,85 @@ public class Weapon extends Item{
 			}
 		}
 		
+	}
+
+
+
+
+	/**
+	 * @return the critical_Chance
+	 */
+	public double getCriticalChance() {
+		return critical_Chance;
+	}
+
+
+
+
+	/**
+	 * @param critical_Chance the critical_Chance to set
+	 */
+	public void setCriticalChance(double critical_Chance) {
+		this.critical_Chance = critical_Chance;
+	}
+
+
+
+
+	/**
+	 * @return the weaponType
+	 */
+	public int getWeaponType() {
+		return weaponType;
+	}
+
+
+
+
+	/**
+	 * @param weaponType the weaponType to set
+	 */
+	public void setWeaponType(int weaponType) {
+		this.weaponType = weaponType;
+	}
+
+
+
+
+	/**
+	 * @return the range
+	 */
+	public int[] getRange() {
+		return range;
+	}
+
+
+
+
+	/**
+	 * @param range the range to set
+	 */
+	public void setRange(int[] range) {
+		this.range = range;
+	}
+
+
+
+
+	/**
+	 * @return the damage
+	 */
+	public int[] getDamage() {
+		return damage;
+	}
+
+
+
+
+	/**
+	 * @param damage the damage to set
+	 */
+	public void setDamage(int[] damage) {
+		this.damage = damage;
 	}
 }

@@ -2,6 +2,7 @@ package src;
 import java.io.File;
 
 import src.items.Product;
+import src.items.Weapon;
 /*
 Editing and contributing @Carson Fujita
 Date: 
@@ -16,7 +17,10 @@ public class Database {
 	public Database() {
 		// TODO Auto-generated constructor stub
 		//final Exception ReadIncompleteError = new Exception();
-		
+		private static final Weapon hat = new Weapon();
+		private static final Weapon pencil = new Weapon();
+		private static final Weapon ruler  = new Weapon();
+		private static final Weapon rubberband = new Weapon();
 		
 		public static double criticalChance[];{//sets the array and the values in the array for critical chances 
 			criticalChance[0]=.20;
