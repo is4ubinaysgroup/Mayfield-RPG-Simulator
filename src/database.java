@@ -7,7 +7,7 @@ May 11th, 2019
 moved criticalChange[] from weaponMethods to database and added public static
 moved String names[] from weaponMethods to database and added public static
 moved stats[] from weaponMethods to databaseand added public static
-
+super confused
  */
 public class Database {
 

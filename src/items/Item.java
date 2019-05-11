@@ -9,16 +9,16 @@ package items;
  *item Class is abstract
  *only contains the String name.
  */
+/*
+ Editing and contributing @Carson Fujita
+Date: 
+May 11th, 2019
+rearraged stuff.
+ */
 public abstract class Item {
-
-	/**
-	 * 
-	 */
 	private String name;
 	
-	public Item() {
-		// TODO Auto-generated constructor stub
-	}
+	public Item() {}
 
 	//Getters and Setters
 	public String getName() 

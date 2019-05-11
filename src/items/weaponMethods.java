@@ -43,7 +43,7 @@ moved our project to red.
 package items;// 
 
 public class Weapon {
-	public int MELEETYPE, RANGEDTYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
+	public int MELEETYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
 	//WTF IS X FOR???
 	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
 	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
