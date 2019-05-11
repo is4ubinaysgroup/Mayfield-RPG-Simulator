@@ -16,7 +16,7 @@ public class Database {
 
 		// TODO Auto-generated constructor stub
 		//final Exception ReadIncompleteError = new Exception();
-		private static final Weapon hat = new Weapon(new int[]{4,8}, 3, Weapon.) {};
+		private static final Weapon hat = new Weapon(stats[0][3], stats[0][6], Weapon.RANGEDTYPE);
 		private static final Weapon pencil = new Weapon(null, null, 0, 0);
 		private static final Weapon ruler  = new Weapon(null, null, 0, 0);
 		private static final Weapon rubberband = new Weapon(null, null, 0, 0);
@@ -36,11 +36,11 @@ public class Database {
 		}
 		
 		public static int stats[][]=new int[3][6];{//this array stores all the information for the weapon's beside critical chance and weapon names
-		//  [m type]      [r type]      [all type]    [damage]      [dUpgrades]   [cUpgrade]   [range]
-			stats[0][0]=0;stats[0][1]=0;stats[0][2]=1;stats[0][3]=4;stats[0][4]=0;stats[0][5]=0;stats[0][6]=3;//sets the "hat" weapon damage
-			stats[1][0]=1;stats[1][1]=0;stats[1][2]=0;stats[1][3]=1;stats[1][4]=0;stats[0][5]=0;stats[1][6]=1;//sets the "pencil" weapon damage
-			stats[2][0]=1;stats[2][1]=0;stats[2][2]=0;stats[2][3]=2;stats[2][4]=0;stats[0][5]=0;stats[2][6]=1;//sets the "ruler" weapon damage
-			stats[3][0]=0;stats[3][1]=1;stats[3][2]=0;stats[3][3]=2;stats[3][4]=0;stats[0][5]=0;stats[3][6]=3;//sets the "rubberBand" weapon damage
+		//  [damage]  [range]
+			stats[0][0]=4; stats[0][2]=3;//sets the "hat" weapon damage
+			stats[1][0]=1; stats[1][2]=1;//sets the "pencil" weapon damage
+			stats[2][0]=2; stats[2][2]=1;//sets the "ruler" weapon damage
+			stats[3][0]=2; stats[3][2]=3;//sets the "rubberBand" weapon damage
 			}
 		
 		public static void save(File file) throws Exception

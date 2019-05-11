@@ -46,17 +46,26 @@ created a whole ton of getters and setters
 
 package src.items;// 
 
-public class Weapon extends Item{
+public class Weapon extends Item
+{
 	public static int MELEETYPE = 0;
 	public static int RANGEDTYPE = 1;
 	public static int ALLTYPE = 2;
-	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
+	private int damage; // damage[0] is player damage, damage[1] is boss damage;
 	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
 	private double critical_Chance;
 	private int weaponType;
 	private int type;
 			
-	public Weapon(int[] damage, int[] range, double critical_Chance, int type) 
+	public Weapon(int damage, int[] range, double critical_Chance, int type) 
+	{
+		this.setDamage(damage);
+		this.setRange(range);
+		this.setCriticalChance(critical_Chance);
+		this.setType(type);
+	}
+	
+	public Weapon(int damage, int[] range, double critical_Chance, int type) 
 	{
 		this.setDamage(damage);
 		this.setRange(range);
@@ -69,8 +78,8 @@ public class Weapon extends Item{
 	
 	public int getPlayerDamage (String weaponName)//this method finds which weapon is currently used or selected, and outputs the damage
 	{
-		for(x=0; x<3;x++) {
-			if (weaponName.equals(names[x])){//checks which row the weapon is in
+		for(x=0; x < 3;x++) {
+			if (getName() .equals(getName() )){//checks which row the weapon is in
 				weaponDamage=(stats[x][4])+(3*(stats[x][5]));//this is the damage calculation: weapon damage + 3 per upgrade???
 			}
 		}
@@ -80,7 +89,7 @@ public class Weapon extends Item{
 	{ 
 		for(x=0; x<3;x++) {//checks which row the weapon is in
 			weaponRange = 0;
-			if (weaponName.equals(names[x])){
+			if (getName() .equals(names[x])){
 				if (stats[x][1]>0){//checks if the weapon is a melee only
 					weaponRange = (stats[x][6]);//sets weaponRange to the weapon's range stored in the array
 				}
@@ -98,7 +107,7 @@ public class Weapon extends Item{
 	public int getRangedRanged (String weaponName){
 		for(x=0; x<3;x++) {
 			weaponRange = 0;
-			if (weaponName.equals(names[x])){//checks if the weapon is a ranged only
+			if (getName().equals(names[x])){//checks if the weapon is a ranged only
 				if (stats[x][2]>0){
 					weaponRange = (stats[x][6]);//sets weaponRange to the weapon's range stored in the array	
 				}
@@ -114,7 +123,7 @@ public class Weapon extends Item{
 	}	
 	public int getDamageUpgradeCount (String weaponName) {
 		for(x=0; x<3;x++) {
-			if (weaponName.equals(names[x])){//checks which row the weapon is in
+			if (getName().equals(names[x])){//checks which row the weapon is in
 				upgradeCount=stats[x][4];//when the names match, set the upgrade count to the corresponding upgrade count
 			}
 		}
@@ -122,7 +131,7 @@ public class Weapon extends Item{
 		}
 	public int getCriticalUpgradeCount (String weaponName) {
 		for(x=0; x<3;x++) {
-			if (weaponName.equals(names[x])){//checks which row the weapon is in
+			if (getName().equals(names[x])){//checks which row the weapon is in
 				upgradeCount=stats[x][5];//when the names match, set the upgrade count to the corresponding upgrade count
 			}
 		}
@@ -131,7 +140,7 @@ public class Weapon extends Item{
 	public double getCriticalChance (String weaponName)//this method gets the critical chance of the selected weapon
 	{ 
 		for(x=0; x<3;x++) {
-			if (weaponName.equals(names[x])){//checks which row the weapon is in
+			if (getName().equals(names[x])){//checks which row the weapon is in
 				weaponCriticalChance=criticalChance[x]*stats[x][5];//returns the critical chance of the which is multiplied by each upgrade
 			}
 		}
@@ -140,7 +149,7 @@ public class Weapon extends Item{
 	public void upgradeDamage (String weaponName)//this method finds which weapon is currently used or selected, and outputs the damage
 	{ 
 		for(x=0; x<3;x++) {
-			if (weaponName.equals(names[x])){//checks which row the weapon is in
+			if (getName().equals(names[x])){//checks which row the weapon is in
 				stats[x][4]=stats[x][4]+1;//this is the damage calculation: weapon damage + 3 per upgrade
 			}
 		}
@@ -149,7 +158,7 @@ public class Weapon extends Item{
 	public void upgradeCritical (String weaponName)//this method finds which weapon is currently used or selected, and outputs the damage
 	{ 
 		for(x=0; x<3;x++) {
-			if (weaponName.equals(names[x])){//checks which row the weapon is in
+			if (getName().equals(names[x])){//checks which row the weapon is in
 				stats[x][5]=stats[x][5]+1;//this is the damage calculation: weapon damage + 3 per upgrade
 			}
 		}
@@ -222,7 +231,7 @@ public class Weapon extends Item{
 	/**
 	 * @return the damage
 	 */
-	public int[] getDamage() {
+	public int getDamage() {
 		return damage;
 	}
 
@@ -230,10 +239,10 @@ public class Weapon extends Item{
 
 
 	/**
-	 * @param damage the damage to set
+	 * @param damage2 the damage to set
 	 */
-	public void setDamage(int[] damage) {
-		this.damage = damage;
+	public void setDamage(int damage2) {
+		this.damage = damage2;
 	}
 
 
