@@ -37,12 +37,12 @@ change Class name.
 Created Constructors.
 added damage[], range[], critical_Chance, and type.
 moved criticalChange[] to database
-moved our project to red.
+extended to Item
  */
 
 package items;// 
 
-public class Weapon {
+public class Weapon extends Item{
 	public int MELEETYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
 	//WTF IS X FOR???
 	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
@@ -62,7 +62,7 @@ public class Weapon {
 	
 	
 	public int getPlayerDamage (String weaponName)//this method finds which weapon is currently used or selected, and outputs the damage
-	{ 
+	{
 		for(x=0; x<3;x++) {
 			if (weaponName.equals(names[x])){//checks which row the weapon is in
 				weaponDamage=(stats[x][4])+(3*(stats[x][5]));//this is the damage calculation: weapon damage + 3 per upgrade???
