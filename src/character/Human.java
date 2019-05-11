@@ -5,6 +5,8 @@ package src.character;
 human class sets the requirements and data for the rest of the classes
 */
 
+import src.items.Weapon;
+
 public class Human
 {
   //ints
@@ -12,7 +14,7 @@ public class Human
   private int defense;
   private int maxHealth;
   private int movement;
-  private int equippedWeapon;
+  private Weapon equippedWeapon;
   
 
   //Gets and Sets
@@ -55,5 +57,19 @@ public class Human
   {
     this.movement = movement;
   }
+
+/**
+ * @return the equippedWeapon
+ */
+public Weapon getEquippedWeapon() {
+	return equippedWeapon;
+}
+
+/**
+ * @param equippedWeapon the equippedWeapon to set
+ */
+public void setEquippedWeapon(Weapon equippedWeapon) {
+	this.equippedWeapon = equippedWeapon;
+}
 }
 

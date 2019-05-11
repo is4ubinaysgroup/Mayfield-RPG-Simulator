@@ -46,18 +46,41 @@ created a whole ton of getters and setters
 
 package src.items;// 
 
+import src.Database;
+
 public class Weapon extends Item
 {
 	public static int MELEETYPE = 0;
 	public static int RANGEDTYPE = 1;
 	public static int ALLTYPE = 2;
 	private int damage; // damage[0] is player damage, damage[1] is boss damage;
-	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
+	private int range; // damage[0] is Melee range, damage[1] is ranged range;
 	private double critical_Chance;
 	private int weaponType;
 	private int type;
+	
+	public void upgradeCritical() 
+	{
+		double WeaponCriticalChance = getCriticalChance();
+		if(WeaponCriticalChance == Database.criticalChance[0]) 
+		{
+			setCriticalChance(Database.criticalChance[1]);
+		}
+		else if(WeaponCriticalChance == Database.criticalChance[1]) 
+		{
+			setCriticalChance(Database.criticalChance[2]);
+		}
+		else if(WeaponCriticalChance== Database.criticalChance[2]) 
+		{
+			setCriticalChance(Database.criticalChance[3]);
+		}
+		else if(WeaponCriticalChance== Database.criticalChance[3]) 
+		{
+			//no
+		}
+	}
 			
-	public Weapon(int damage, int[] range, double critical_Chance, int type) 
+	public Weapon(int damage, int range,double critical_Chance, int type) 
 	{
 		this.setDamage(damage);
 		this.setRange(range);
@@ -65,62 +88,26 @@ public class Weapon extends Item
 		this.setType(type);
 	}
 	
-	public Weapon(int damage, int[] range, double critical_Chance, int type) 
+
+	public void upgradeDamage()
 	{
-		this.setDamage(damage);
-		this.setRange(range);
-		this.setCriticalChance(critical_Chance);
-		this.setType(type);
+		setDamage(getDamage()*3);
 	}
 	
 	
-	
-	
-	public int getPlayerDamage (String weaponName)//this method finds which weapon is currently used or selected, and outputs the damage
+	public int getPlayerDamage ()
 	{
-		for(x=0; x < 3;x++) {
-			if (getName() .equals(getName() )){//checks which row the weapon is in
-				weaponDamage=(stats[x][4])+(3*(stats[x][5]));//this is the damage calculation: weapon damage + 3 per upgrade???
-			}
-		}
-		return weaponDamage;//returns the damage
+		return this.damage;//returns the damage
 	}	
-	public int getMeleeRange (String weaponName) {//this method gets the weapon's melee range
+	
+	public int getMeleeRange () {
 	{ 
-		for(x=0; x<3;x++) {//checks which row the weapon is in
-			weaponRange = 0;
-			if (getName() .equals(names[x])){
-				if (stats[x][1]>0){//checks if the weapon is a melee only
-					weaponRange = (stats[x][6]);//sets weaponRange to the weapon's range stored in the array
-				}
-				else if (stats[x][3]>0){//checks if the weapon is both a ranged and melee weapon
-					weaponRange = (stats[x][6]);//sets weaponRange to the weapon's range stored in the array	
-				}
-				else {
-					weaponRange = 0;//if the weapon could not be used in melee, sets the range to 0
-				}
-			}
-		}
-		return weaponRange;//outputs the weapon's range
+		return range;//outputs the weapon's range
 	}
+	
 	}
-	public int getRangedRanged (String weaponName){
-		for(x=0; x<3;x++) {
-			weaponRange = 0;
-			if (getName().equals(names[x])){//checks if the weapon is a ranged only
-				if (stats[x][2]>0){
-					weaponRange = (stats[x][6]);//sets weaponRange to the weapon's range stored in the array	
-				}
-				else if (stats[x][3]>0){//checks if the weapon is both a ranged and melee weapon
-					weaponRange = (stats[x][6]);//sets weaponRange to the weapon's range stored in the array		
-				}
-				else {
-					weaponRange = 0;//if the weapon could not be used at range, sets the range to 0
-				}
-			}
-		}
-		return weaponRange;//outputs the weapon's range
-	}	
+
+	/*
 	public int getDamageUpgradeCount (String weaponName) {
 		for(x=0; x<3;x++) {
 			if (getName().equals(names[x])){//checks which row the weapon is in
@@ -164,7 +151,7 @@ public class Weapon extends Item
 		}
 		
 	}
-
+	 */
 
 
 
@@ -211,7 +198,7 @@ public class Weapon extends Item
 	/**
 	 * @return the range
 	 */
-	public int[] getRange() {
+	public int getRange() {
 		return range;
 	}
 
@@ -221,7 +208,7 @@ public class Weapon extends Item
 	/**
 	 * @param range the range to set
 	 */
-	public void setRange(int[] range) {
+	public void setRange(int range) {
 		this.range = range;
 	}
 
