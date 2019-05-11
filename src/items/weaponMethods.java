@@ -1,5 +1,6 @@
 //weapon methods made by zac 5/2/19
 
+
 //the names are stored in the "names" array and is in the following order:
 //
 //These names will be used to check which row the particular weapon's stats are in
@@ -24,35 +25,47 @@
 //               |     type of weapon it is     |
 
 //______________________________________________________________________________________________________
-package weaponMethods;
+/*
+Editing and contributing @Carson Fujita
+Date: 
+May 11th, 2019
+notes: This is missing so much from the uml. 
+Changes:
+added public to  "MELEETYPE, RANGEDTYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x"
+change package to items.
+change Class name.
+Created Constructors.
+added damage[], range[], critical_Chance, and type.
+moved criticalChange[] to database
+moved our project to red.
+ */
 
-public class weaponMethods {
-	int MELEETYPE, RANGEDTYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
-	double weaponCriticalChance;//this a used to output from the method
-	double criticalChance[];{//sets the array and the values in the array for critical chances 
-		criticalChance[0]=.20;
-		criticalChance[1]=.05;
-		criticalChance[2]=.15;
-		criticalChance[3]=.10;
+package items;// 
+
+public class Weapon {
+	public int MELEETYPE, RANGEDTYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
+	//WTF IS X FOR???
+	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
+	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
+	private double critical_Chance = new int[2];
+	private int weaponType;
+			
+	public weapon(int[] damage; int[] range; double critical_Chance, int type) 
+	{
+		this.damage = damage;
+		this.range = range;
+		this.critical_Chance = critical_Chance;
+		this.type = type;
 	}
-	String names[]=new String[4];{ //this array stores all the names of the weapons and is used to find which row the weapon's stats in 
-		names[0]="hat";
-		names[1]="pencil";
-		names[2]="ruler";
-		names[3]="rubberBand";
-	}
-	int stats[][]=new int[3][6];{//this array stores all the information for the weapon's beside critical chance and weapon names
-//  [m type]      [r type]      [all type]    [damage]      [dUpgrades]   [cUpgrade]   [range]
-	stats[0][0]=0;stats[0][1]=0;stats[0][2]=1;stats[0][3]=4;stats[0][4]=0;stats[0][5]=0;stats[0][6]=3;//sets the "hat" weapon damage
-	stats[1][0]=1;stats[1][1]=0;stats[1][2]=0;stats[1][3]=1;stats[1][4]=0;stats[0][5]=0;stats[1][6]=1;//sets the "pencil" weapon damage
-	stats[2][0]=1;stats[2][1]=0;stats[2][2]=0;stats[2][3]=2;stats[2][4]=0;stats[0][5]=0;stats[2][6]=1;//sets the "ruler" weapon damage
-	stats[3][0]=0;stats[3][1]=1;stats[3][2]=0;stats[3][3]=2;stats[3][4]=0;stats[0][5]=0;stats[3][6]=3;//sets the "rubberBand" weapon damage
-	}
+	
+	
+	
+	
 	public int getPlayerDamage (String weaponName)//this method finds which weapon is currently used or selected, and outputs the damage
 	{ 
 		for(x=0; x<3;x++) {
 			if (weaponName.equals(names[x])){//checks which row the weapon is in
-				weaponDamage=(stats[x][4])+(3*(stats[x][5]));//this is the damage calculation: weapon damage + 3 per upgrade
+				weaponDamage=(stats[x][4])+(3*(stats[x][5]));//this is the damage calculation: weapon damage + 3 per upgrade???
 			}
 		}
 		return weaponDamage;//returns the damage
