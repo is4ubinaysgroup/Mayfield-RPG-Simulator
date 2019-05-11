@@ -14,10 +14,9 @@ super confused
  */
 public class Database {
 
-	public Database() {
 		// TODO Auto-generated constructor stub
 		//final Exception ReadIncompleteError = new Exception();
-		private static final Weapon hat = new Weapon(new int[]{4,8}, 3, Weapon) {};
+		private static final Weapon hat = new Weapon(new int[]{4,8}, 3, Weapon.) {};
 		private static final Weapon pencil = new Weapon(null, null, 0, 0);
 		private static final Weapon ruler  = new Weapon(null, null, 0, 0);
 		private static final Weapon rubberband = new Weapon(null, null, 0, 0);

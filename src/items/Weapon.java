@@ -60,7 +60,7 @@ public class Weapon extends Item{
 		this.setDamage(damage);
 		this.setRange(range);
 		this.setCriticalChance(critical_Chance);
-		this.type = type;
+		this.setType(type);
 	}
 	
 	
@@ -233,5 +233,25 @@ public class Weapon extends Item{
 	 */
 	public void setDamage(int[] damage) {
 		this.damage = damage;
+	}
+
+
+
+
+	/**
+	 * @return the type
+	 */
+	public int getType() {
+		return type;
+	}
+
+
+
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(int type) {
+		this.type = type;
 	}
 }
