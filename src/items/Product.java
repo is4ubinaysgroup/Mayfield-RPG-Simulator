@@ -92,7 +92,7 @@ public class Product extends Item
 		int increase = product.getIncrease();
 		
 		
-		if (upgradeType == 1)
+		if (upgradeType == ARMOR)
 		{
 	
 			// need name of Player object and class where it is instantiated
@@ -105,7 +105,7 @@ public class Product extends Item
 		} // if armour upgrade
 		
 		
-		else if (upgradeType == 2)
+		else if (upgradeType == CAPACITY)
 		{
 			
 			// need name of Player object and class where it is instantiated
@@ -126,7 +126,7 @@ public class Product extends Item
 		
 		
 		
-		else if (upgradeType == 3)
+		else if (upgradeType == CRITICALCHANCE)
 		{
 			int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
 			
@@ -140,7 +140,7 @@ public class Product extends Item
 		} // if critical chance upgrade
 		
 		
-		else if (upgradeType == 4)
+		else if (upgradeType == HEALTH)
 		{
 			
 			int health = MainExcecutable.player.getHealth() + increase;
@@ -158,7 +158,7 @@ public class Product extends Item
 		} // if health upgrade
 		
 		
-		else if (upgradeType == 5)
+		else if (upgradeType == MAXHEALTH)
 		{
 			
 			int maxHealth = MainExcecutable.player.getMaxHealth() + increase;
@@ -169,7 +169,7 @@ public class Product extends Item
 		} // if maxHealth upgrade
 		
 		
-		else 
+		else //DAMAGE
 		{
 			
 			int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
