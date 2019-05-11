@@ -1,4 +1,4 @@
-package character;
+package src.character;
 /*
 @Author: Carson Fujita
 @Contributor:

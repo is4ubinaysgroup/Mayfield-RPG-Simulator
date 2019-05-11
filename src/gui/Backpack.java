@@ -20,6 +20,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import items.Weapon;
+
 
 public class Backpack
 {

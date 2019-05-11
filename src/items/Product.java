@@ -10,6 +10,7 @@ evaluatation as PM 3: 10/10
 
 // Mina Fang updated 05-10
 
+package src.items;
 
 public class Product extends Item
 {

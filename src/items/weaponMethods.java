@@ -40,7 +40,7 @@ moved criticalChange[] to database
 extended to Item
  */
 
-package items;// 
+package src.items;// 
 
 public class Weapon extends Item{
 	public int MELEETYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
