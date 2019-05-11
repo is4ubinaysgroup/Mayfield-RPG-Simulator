@@ -40,14 +40,15 @@ moved criticalChange[] to database
 extended to Item
 fixed bugs;
 Changed to package src.items.
-
+fixed RANGEDTYPE, MELEETYPE, and ALLTYPE to contain numbers.
  */
 
 package src.items;// 
 
 public class Weapon extends Item{
-	public static int MELEETYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
-	//WTF IS X FOR???
+	public static int MELEETYPE = 0;
+	public static int RANGEDTYPE = 1;
+	public static int ALLTYPE = 2;
 	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
 	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
 	private double critical_Chance;
