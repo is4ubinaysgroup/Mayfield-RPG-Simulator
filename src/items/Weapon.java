@@ -46,7 +46,7 @@ Changed to package src.items.
 package src.items;// 
 
 public class Weapon extends Item{
-	public int MELEETYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
+	public static int MELEETYPE, ALLTYPE, upgradeCount, weaponRange, weaponDamage, x;//sets variables to hold bits of information from the methods
 	//WTF IS X FOR???
 	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
 	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
