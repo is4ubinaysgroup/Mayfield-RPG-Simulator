@@ -41,6 +41,7 @@ extended to Item
 fixed bugs;
 Changed to package src.items.
 fixed RANGEDTYPE, MELEETYPE, and ALLTYPE to contain numbers.
+created a whole ton of getters and setters
  */
 
 package src.items;// 
