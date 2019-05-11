@@ -1,5 +1,7 @@
 package src;
 import java.io.File;
+
+import src.items.Product;
 /*
 Editing and contributing @Carson Fujita
 Date: 
@@ -51,6 +53,56 @@ public class Database {
 		public static void updateFile(File file)throws  Exception
 		{
 			
+		}
+
+		public static Product getTimbits() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getMcChicken() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getFootLongSub() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getSoda() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getTylenol() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getCapacityUpgrade() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getCoffee() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getCappuccino() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getExpresso() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public static Product getOrangeJuice() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 

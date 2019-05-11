@@ -12,6 +12,9 @@ evaluatation as PM 3: 10/10
 
 package src.items;
 
+import src.Database;
+import src.gui.MainExcecutable;
+
 public class Product extends Item
 {
 
@@ -97,8 +100,8 @@ public class Product extends Item
 	
 			// need name of Player object and class where it is instantiated
 
-			int defense = Main.player.getDefense () + increase;
-			Main.player.setDefense (defense));
+			int defense = MainExcecutable.player.getDefense () + increase;
+			MainExcecutable.player.setDefense (defense));
 			
 			used = true;
 			
@@ -112,11 +115,11 @@ public class Product extends Item
 			
 			// check if productCapacity is upgradable (compare to array size)
 			
-			if (Main.player.productCapacityIsUpgradable() == true)
+			if (MainExcecutable.player.productCapacityIsUpgradable() == true)
 			{	
-				int productCapacity = Main.player.getProductCapacity () + increase;
+				int productCapacity = MainExcecutable.player.getProductCapacity () + increase;
 			
-				Main.player.setProductCapacity (productCapacity);
+				MainExcecutable.player.setProductCapacity (productCapacity);
 			
 				used = true;
 			}
@@ -128,7 +131,7 @@ public class Product extends Item
 		
 		else if (upgradeType == 3)
 		{
-			int equippedWepaon = Main.player.getEquippedWeapon();
+			int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
 			
 			if (equippedWeapon == 0){Weapon.hatCCUC++;} // if 0 -hat
 			else if (equippedWeapon == 1){Weapon.pencilCCUC++;} // if 1 - pencil
@@ -143,15 +146,15 @@ public class Product extends Item
 		else if (upgradeType == 4)
 		{
 			
-			int health = Main.player.getHealth() + increase;
+			int health = MainExcecutable.player.getHealth() + increase;
 			
 			
-			if (health > Main.player.getmaxHealth())
+			if (health > MainExcecutable.player.getHealth())
 			{
-				health = Main.player.getmaxHealth();
+				health = MainExcecutable.player.getHealth();
 			} // if over max
 			
-			Main.player.setHealth (health);		
+			MainExcecutable.player.setHealth (health);		
 			
 			used = true;
 			
@@ -161,8 +164,8 @@ public class Product extends Item
 		else if (upgradeType == 5)
 		{
 			
-			int maxHealth = Main.player.getMaxHealth() + increase;
-			Main.player.setMaxHealth (maxHealth);
+			int maxHealth = MainExcecutable.player.getMaxHealth() + increase;
+			MainExcecutable.player.setMaxHealth (maxHealth);
 			
 			used = true;
 			
@@ -172,7 +175,7 @@ public class Product extends Item
 		else 
 		{
 			
-			int equippedWepaon = Main.player.getEquippedWeapon();
+			int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
 			
 			if (equippedWeapon == 0) {Weapon.hatDUC++;} // if 0 -hat
 			else if (equippedWeapon == 1){Weapon.pencilDUC++;} // if 1 - pencil
@@ -189,7 +192,7 @@ public class Product extends Item
 		
 		if (used == true)
 		{
-			Main.player.deleteProduct (product);
+			MainExcecutable.player.deleteProduct (product);
 		} 
 		
 		return used;

@@ -1,13 +1,16 @@
+package src.gui;
 // last updated 05-09-19
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
+//executable 
 
-
-public class Main
+public class MainExcecutable
 {
+	public static Player player;
+
 	public static void main(String[] args)
 	{
 		GUIExtension1.initFrameAndParentPanel ();
