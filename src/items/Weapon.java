@@ -38,6 +38,9 @@ Created Constructors.
 added damage[], range[], critical_Chance, and type.
 moved criticalChange[] to database
 extended to Item
+fixed bugs;
+Changed to package src.items.
+
  */
 
 package src.items;// 
@@ -47,10 +50,10 @@ public class Weapon extends Item{
 	//WTF IS X FOR???
 	private int[] damage = new int[2]; // damage[0] is player damage, damage[1] is boss damage;
 	private int[] range  = new int[2]; // damage[0] is Melee range, damage[1] is ranged range;
-	private double critical_Chance = new int[2];
+	private double[] critical_Chance = new double[2];
 	private int weaponType;
 			
-	public weapon(int[] damage; int[] range; double critical_Chance, int type) 
+	public Weapon(int[] damage; int[] range; double critical_Chance, int type) 
 	{
 		this.damage = damage;
 		this.range = range;
