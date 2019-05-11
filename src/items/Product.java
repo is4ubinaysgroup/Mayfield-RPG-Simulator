@@ -14,6 +14,7 @@ Editing and contributing @Carson Fujita
 Date: 
 May 11th, 2019
 move getProduct to database.
+added a constructor
  */
 package src.items;
 
@@ -52,6 +53,14 @@ public class Product extends Item
 		
 	} // Product constructor
 	
+	public Product (String name, int upgradeType, int increase, int cost, String description)
+	{
+		this.setName(name);
+		this.upgradeType = upgradeType;
+		this.increase = increase;
+		this.cost = cost;
+		this.description = description;
+	}
 	
 	// ------- set and get methods -------
 	
