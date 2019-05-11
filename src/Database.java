@@ -15,7 +15,7 @@ public class Database {
 
 	public Database() {
 		// TODO Auto-generated constructor stub
-		final Exception ReadIncompleteError = new Exception();
+		//final Exception ReadIncompleteError = new Exception();
 		
 		
 		public static double criticalChance[];{//sets the array and the values in the array for critical chances 

@@ -1,3 +1,5 @@
+package src.gui;
+
 // Mina Fang
 // initially completed 04-28-2019
 // updated 05-10

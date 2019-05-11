@@ -1,3 +1,5 @@
+package src.gui;
+
 // initially uploaded 05-08 by Matthew
 // updated 05-09 by Mina
 

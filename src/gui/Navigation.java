@@ -1,3 +1,5 @@
+package src.gui;
+
 // initially completed 05-08 by Matthew
 // edited 05-09 by Mina
 /* will be finalized when Database.save method is complete; possibly change to pop-up

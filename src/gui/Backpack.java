@@ -1,3 +1,5 @@
+package src.gui;
+
 // initially completed 05-08 by Matthew
 
 /* 
@@ -21,6 +23,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import src.*;
+import src.items.Product;
+import src.items.Weapon;
 
 
 public class Backpack
