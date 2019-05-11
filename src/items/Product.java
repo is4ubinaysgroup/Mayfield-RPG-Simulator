@@ -9,7 +9,12 @@ evaluatation as PM 3: 10/10
 */
 
 // Mina Fang updated 05-10
-
+/*
+Editing and contributing @Carson Fujita
+Date: 
+May 11th, 2019
+move getProduct to database.
+ */
 package src.items;
 
 import src.Database;
@@ -66,23 +71,6 @@ public class Product extends Item
 	public String getImagePath () { return imagePath; } // getImagePath method
 	
 	
-	
-	// methods could be put in Database
-	
-	public static Product getProduct (String name)
-	{
-		if (name.equals("Timbits")) {return Database.getTimbits();}
-		else if (name.equals("McChicken")) {return Database.getMcChicken();}
-		else if (name.equals("Foot Long Sub!")) {return Database.getFootLongSub();}
-		else if (name.equals("Soda")) {return Database.getSoda();}
-		else if (name.equals("Tylenol")) {return Database.getTylenol();}
-		else if (name.equals("Capacity Upgrade")) {return Database.getCapacityUpgrade();}
-		else if (name.equals("Coffee")) {return Database.getCoffee();}
-		else if (name.equals("Cappuccino")) {return Database.getCappuccino();}
-		else if (name.equals("Expresso")) {return Database.getExpresso();}
-		else {return Database.getOrangeJuice();} // "Orange Juice"
-		
-	} // getProduct method
 	
 	
 	

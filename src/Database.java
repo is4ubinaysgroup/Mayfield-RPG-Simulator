@@ -59,6 +59,20 @@ public class Database {
 			
 		}
 
+		public static Product getProduct (String name)
+		{
+			if (name.equals("Timbits")) {return Database.getTimbits();}
+			else if (name.equals("McChicken")) {return Database.getMcChicken();}
+			else if (name.equals("Foot Long Sub!")) {return Database.getFootLongSub();}
+			else if (name.equals("Soda")) {return Database.getSoda();}
+			else if (name.equals("Tylenol")) {return Database.getTylenol();}
+			else if (name.equals("Capacity Upgrade")) {return Database.getCapacityUpgrade();}
+			else if (name.equals("Coffee")) {return Database.getCoffee();}
+			else if (name.equals("Cappuccino")) {return Database.getCappuccino();}
+			else if (name.equals("Expresso")) {return Database.getExpresso();}
+			else {return Database.getOrangeJuice();} // "Orange Juice"
+		}
+		
 		public static Product getTimbits() {
 			// TODO Auto-generated method stub
 			return null;
