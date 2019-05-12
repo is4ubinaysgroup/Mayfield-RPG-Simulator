@@ -1,5 +1,8 @@
 package src;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.Reader;
 
 import src.items.Product;
 import src.items.Weapon;
@@ -12,14 +15,34 @@ moved String names[] from weaponMethods to database and added public static
 moved stats[] from weaponMethods to databaseand added public static
 super confused
  */
+/*
+Coding @Carson Fujita
+Date: 
+May 12th, 2019
+Tasks: Create weapons, and Products.
+design saving for upgrades.
+Completed:
+Created Weapons.
+created the save1,save2,save3 files and the file[] files
+ */
 public class Database {
-
-		// TODO Auto-generated constructor stub
-		//final Exception ReadIncompleteError = new Exception();
-		private static final Weapon hat = new Weapon(stats[0][3], stats[0][6], Weapon.RANGEDTYPE);
-		private static final Weapon pencil = new Weapon(null, null, 0, 0);
-		private static final Weapon ruler  = new Weapon(null, null, 0, 0);
-		private static final Weapon rubberband = new Weapon(null, null, 0, 0);
+	
+		private static File[] files = new File[2];
+		{
+			files[0] = new File("saves\\Save1.txt");
+			files[1] = new File("saves\\Save2.txt");
+			files[2] = new File("saves\\Save3.txt");
+		}
+		private static BufferedReader reader;
+		
+		//Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
+		public static int stats[][]=new int[3][2];{//this array stores all the information for the weapon's beside critical chance and weapon names
+			//  [damage]  [range]
+			stats[0][0]=4; stats[0][1]=3;//sets the "hat" weapon damage
+			stats[1][0]=1; stats[1][1]=1;//sets the "pencil" weapon damage
+			stats[2][0]=2; stats[2][1]=1;//sets the "ruler" weapon damage
+			stats[3][0]=2; stats[3][1]=3;//sets the "rubberBand" weapon damage
+		}
 		
 		public static double criticalChance[];{//sets the array and the values in the array for critical chances 
 			criticalChance[0]=.20;
@@ -35,13 +58,16 @@ public class Database {
 			names[3]="rubberBand";
 		}
 		
-		public static int stats[][]=new int[3][6];{//this array stores all the information for the weapon's beside critical chance and weapon names
-		//  [damage]  [range]
-			stats[0][0]=4; stats[0][2]=3;//sets the "hat" weapon damage
-			stats[1][0]=1; stats[1][2]=1;//sets the "pencil" weapon damage
-			stats[2][0]=2; stats[2][2]=1;//sets the "ruler" weapon damage
-			stats[3][0]=2; stats[3][2]=3;//sets the "rubberBand" weapon damage
-			}
+		// TODO Auto-generated constructor stub
+		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
+		private static Weapon hat = new Weapon(stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE );
+		private static Weapon pencil = new Weapon(stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE );
+		private static Weapon ruler  = new Weapon(stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE );
+		private static Weapon rubberband = new Weapon(stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE);
+		
+		
+		
+		
 		
 		public static void save(File file) throws Exception
 		{
@@ -50,7 +76,7 @@ public class Database {
 		
 		public static void read(File file) throws Exception
 		{
-
+			reader = new BufferedReader(new FileReader(files[0]));
 		}
 		
 		public static void updateFile(File file)throws  Exception
@@ -121,5 +147,35 @@ public class Database {
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+		/**
+		 * @return the hat
+		 */
+		public static Weapon getHat() 
+		{
+			return hat;
+		}
+
+		/**
+		 * @return the pencil
+		 */
+		public static Weapon getPencil() {
+			return pencil;
+		}
+
+		/**
+		 * @return the ruler
+		 */
+		public static Weapon getRuler() {
+			return ruler;
+		}
+
+		/**
+		 * @return the rubberband
+		 */
+		public static Weapon getRubberband() {
+			return rubberband;
+		}
+
 	}
 

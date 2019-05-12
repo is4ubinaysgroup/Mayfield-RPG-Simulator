@@ -5,3 +5,6 @@ The bare minimum of the game features one turn-based battle where the user fight
 UML- Completed
 IPO- I dunno
 JavaSe1.8
+
+#Main Class
+mainExecutable.java

@@ -87,7 +87,6 @@ public class Weapon extends Item
 		this.setCriticalChance(critical_Chance);
 		this.setType(type);
 	}
-	
 
 	public void upgradeDamage()
 	{
