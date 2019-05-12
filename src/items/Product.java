@@ -21,7 +21,7 @@ added a constructor
 Coding @Carson Fujita
 Date: 
 May 12th, 2019
-added Defense upgrade type.
+added Defense upgrade type. 
 Completed:
 */
 package src.items;

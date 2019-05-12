@@ -23,7 +23,7 @@ Completed:
 Created Weapons.
 created the save1,save2,save3 files and the file[] files
 created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, tylenol,capacityupgrade, coffee,cappuccino, expresso, and orange juice.
- */
+ */ 
 public class Database {
 	
 		private static File[] files = new File[2];
