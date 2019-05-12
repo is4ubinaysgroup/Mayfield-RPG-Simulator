@@ -64,7 +64,7 @@ public Weapon getEquippedWeapon() {
 /**
  * @param equippedWeapon the equippedWeapon to set
  */
-public void EquipWeapon(Weapon equippedWeapon) {
+public void equipWeapon(Weapon equippedWeapon) {
 	this.equippedWeapon = equippedWeapon;
 }
 }

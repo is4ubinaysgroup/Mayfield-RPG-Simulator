@@ -170,7 +170,7 @@ public class Backpack
 		
 		//WIP
 		Weapon weapon = Database.getWeapon (weaponName);
-		Player.switchWeapon (weapon);
+		MainExcecutable.getPlayer().equipWeapon (weapon);
 		
 		update();
 	} // btn_EquipEngine method
