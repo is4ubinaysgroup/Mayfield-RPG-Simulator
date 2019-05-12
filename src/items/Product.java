@@ -26,6 +26,7 @@ Completed:
 fixed upgradeType CRITICALCHANCE...
 added functionality for defense upgrades
 added fixing to upgrades and weapons.
+fixed up since item has Description image path and cost now.
 */
 package src.items;
 
@@ -42,13 +43,9 @@ public class Product extends Item
 	public static final int MAXHEALTH = 5;
 	public static final int DAMAGE = 6;
 	public static final int DEFENSE = 7; // added by carson
-	
-	
 	private int upgradeType;
 	private int increase;
-	private int cost;
-	private String description;
-	private String imagePath;
+
 	
 	
 	public Product () {} // default constructor
@@ -56,12 +53,12 @@ public class Product extends Item
 	public Product (String name, int upgradeType, int increase, int cost, String description, String imagePath)
 	{
 		
-		this.setName(name);
+		this.name = name;
 		this.upgradeType = upgradeType;
 		this.increase = increase;
-		this.cost = cost;
-		this.description = description;
-		this.imagePath = imagePath;
+		this.setCost(cost);
+		this.setDescription(description);
+		this.setImagePath(imagePath);
 		
 	} // Product constructor
 	
@@ -70,8 +67,8 @@ public class Product extends Item
 		this.setName(name);
 		this.upgradeType = upgradeType;
 		this.increase = increase;
-		this.cost = cost;
-		this.description = description;
+		this.setCost(cost);
+		this.setDescription(description);
 	}
 	
 	// ------- set and get methods -------

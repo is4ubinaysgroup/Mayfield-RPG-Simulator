@@ -15,10 +15,21 @@ Date:
 May 11th, 2019
 rearraged stuff.
  */
+/*
+Editing and contributing @Carson Fujita
+Date: 
+May 12th, 2019
+
+added Description, ImagePath, Cost and their getters and setters. (from mina's work)
+*/
 public abstract class Item {
-	private String name;
+	protected String name;
+	protected int cost;
+	protected String description;
+	protected String imagePath;
 	
 	public Item() {}
+	public Item(String name) { this.name = name; }
 
 	//Getters and Setters
 	public String getName() 
@@ -30,5 +41,15 @@ public abstract class Item {
 	{
 		this.name = name;
 	}
+
+	
+	public void setCost (int cost) { this.cost = cost; } // setCost method
+	public int getCost () { return cost; } // getCost method
+	
+	public void setDescription (String description) { this.description = description; } // setDescription method
+	public String getDescription () { return description; } // getDescription method
+	
+	public void setImagePath (String imagePath) { this.imagePath = imagePath; } // setImagePath method
+	public String getImagePath () { return imagePath; } // getImagePath method
 
 }
