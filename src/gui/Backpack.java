@@ -24,6 +24,10 @@ removed rawtypes from JComboBox
 bugs fixed
 */
 
+
+// 05-12 fixed execute spelling - Mina
+
+
 import java.awt.event.*;
 import javax.swing.*;
 import src.*;
@@ -159,10 +163,11 @@ public class Backpack
 	} // initGUI method
 	
 	
+	
 	public static JPanel getPane() { return backpackPane; } // getPane method
 	
 	
-	
+
 	public static void btn_EquipEngine()
 	{
 		lbl_error.setText(null);
@@ -170,7 +175,7 @@ public class Backpack
 		
 		//WIP
 		Weapon weapon = Database.getWeapon (weaponName);
-		MainExcecutable.getPlayer().equipWeapon (weapon);
+		MainExecutable.getPlayer().equipWeapon (weapon); // switches the weapon; previously equipped gets put back into storage
 		
 		update();
 	} // btn_EquipEngine method
@@ -189,22 +194,15 @@ public class Backpack
 	
 	
 	
-	
 	public static void update()
-	{
-		// need to know where player object is instantiated
+	{		
+		lbl_coins.setText("Coins: " + MainExecutable.getPlayer().getCoins());
+		lbl_defense.setText("Defense: " + MainExecutable.getPlayer().getDefense());
+		lbl_health.setText("Health: " + MainExecutable.getPlayer().getHealth());
+		lbl_maxHealth.setText("Max Health : " + MainExecutable.getPlayer().getMaxHealth());
 		
-		lbl_coins.setText("Coins: " + MainExcecutable.getPlayer().getCoins());
-		lbl_defense.setText("Defense: " + MainExcecutable.getPlayer().getDefense());
-		lbl_health.setText("Health: " + MainExcecutable.getPlayer().getHealth());
-		lbl_maxHealth.setText("Max Health : " + MainExcecutable.getPlayer().getMaxHealth());
-		
-		
-		Weapon equippedWeapon = MainExcecutable.getPlayer().getEquippedWeapon();
-		
-		
-		
-				
+		Weapon equippedWeapon = MainExecutable.getPlayer().getEquippedWeapon();
+			
 		lbl_damage.setText("Damage: " + Integer.toString(equippedWeapon.getDamage()));
 		lbl_rangedDamage.setText("Ranged Damage: " + Integer.toString(equippedWeapon.getRangedDamage() ));
 		lbl_criticalChance.setText("Critical Chance: " + Double.toString(equippedWeapon.getCriticalChance()));
