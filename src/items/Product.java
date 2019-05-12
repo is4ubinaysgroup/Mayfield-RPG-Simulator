@@ -28,6 +28,9 @@ added functionality for defense upgrades
 added fixing to upgrades and weapons.
 fixed up since item has Description image path and cost now.
 */
+
+// 05-12 edited this.setName(name); in first constructor - Mina
+
 package src.items;
 
 import src.Database;
@@ -53,7 +56,7 @@ public class Product extends Item
 	public Product (String name, int upgradeType, int increase, int cost, String description, String imagePath)
 	{
 		
-		this.name = name;
+		this.setName(name);
 		this.upgradeType = upgradeType;
 		this.increase = increase;
 		this.setCost(cost);
