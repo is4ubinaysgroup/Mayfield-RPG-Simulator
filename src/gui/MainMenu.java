@@ -28,13 +28,13 @@ public class MainMenu
 
 		// ------- mainMenuPane -------
 		mainMenuPane = new JPanel ();
-		mainMenuPane.setBackground(new Color(0, 0, 0));
+		mainMenuPane.setBackground(new Color(52, 52, 104));
 		mainMenuPane.setLayout(null);
 
 		
 		// ------- lbl_Title -------
 		lbl_Title = new JLabel("MayField RPG Simulator");
-		lbl_Title.setForeground(Color.WHITE);
+		lbl_Title.setForeground(new Color(247, 221, 0));
 		lbl_Title.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Title.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		lbl_Title.setBounds(0, 167, 784, 64);
@@ -43,8 +43,9 @@ public class MainMenu
         
 		// ------- btn_NewGame -------
 		btn_NewGame = new JButton("New Game");
-		btn_NewGame.setForeground(Color.WHITE);
-		btn_NewGame.setBackground(new Color(0, 0, 204));
+		btn_NewGame.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
+		btn_NewGame.setForeground(new Color(247, 221, 0));
+		btn_NewGame.setBackground(new Color(14, 1, 141));
 		btn_NewGame.setBounds(319, 254, 145, 55);
 		mainMenuPane.add(btn_NewGame);
 		
@@ -61,8 +62,9 @@ public class MainMenu
 		
 		// ------- btn_Continue -------
 		btn_Continue = new JButton ("Continue");
-		btn_Continue.setForeground(Color.WHITE);
-		btn_Continue.setBackground(new Color(0, 0, 204));
+		btn_Continue.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
+		btn_Continue.setForeground(new Color(247, 221, 0));
+		btn_Continue.setBackground(new Color(14, 1, 141));
 		btn_Continue.setBounds(319, 320, 145, 55);
 		mainMenuPane.add(btn_Continue);
 		
@@ -78,8 +80,9 @@ public class MainMenu
 	
 		// -------- btn_Quit -----------
 		btn_Quit = new JButton ("Quit");
-		btn_Quit.setBackground(new Color(0, 0, 204));
-		btn_Quit.setForeground(Color.WHITE);
+		btn_Quit.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
+		btn_Quit.setBackground(new Color(14, 1, 141));
+		btn_Quit.setForeground(new Color(247, 221, 0));
 		btn_Quit.setBounds(319, 452, 145, 55);
 		mainMenuPane.add(btn_Quit);
         
@@ -93,8 +96,9 @@ public class MainMenu
 
 		// -------- btn_Help -----------
 		btn_Help = new JButton ("Help");
-		btn_Help.setBackground(new Color(0, 0, 204));
-		btn_Help.setForeground(Color.WHITE);
+		btn_Help.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
+		btn_Help.setBackground(new Color(14, 1, 141));
+		btn_Help.setForeground(new Color(247, 221, 0));
 		btn_Help.setBounds(319, 386, 145, 55);
 		mainMenuPane.add(btn_Help);
 		

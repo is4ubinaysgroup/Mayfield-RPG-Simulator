@@ -5,8 +5,10 @@ package src.gui;
 // updated 05-10
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import src.Database;
@@ -25,7 +27,12 @@ public class GUIExtension1
 		
 		frame.setSize (800, 800); // sets size 
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		frame.setIconImage((Database.getLogo()));
+		try {
+			frame.setIconImage( ImageIO.read(new File("src/resources/MayfieldSecondarySchool.png")));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		cards = new JPanel(new CardLayout());
 		
 	} // initFrameAndParentPanel method

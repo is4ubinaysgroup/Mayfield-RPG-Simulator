@@ -1,5 +1,6 @@
 package src;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -31,6 +32,7 @@ created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, 
  */ 
 public class Database {
 	
+		
 		private static File[] files = new File[2];
 		{
 			files[0] = new File("saves\\Save1.txt");
@@ -209,17 +211,6 @@ public class Database {
 		public static Weapon getWeapon(String weaponName) {
 			// TODO Auto-generated method stub
 			return null;
-		}
-
-		public static Image getLogo() {
-			 Image img = null;
-			try {
-				img = ImageIO.read(new File("src/resources/MayfieldSecondarySchool.png"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return img;
 		}
 
 
