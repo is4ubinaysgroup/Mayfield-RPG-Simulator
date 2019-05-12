@@ -30,6 +30,12 @@ Created Weapons.
 created the save1,save2,save3 files and the file[] files
 created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, tylenol,capacityupgrade, coffee,cappuccino, expresso, and orange juice.
  */ 
+
+
+
+// 05-12 spelling of espresso - Mina
+
+
 public class Database {
 	
 		
@@ -76,7 +82,7 @@ public class Database {
 		private static Product capacityUpgrade = new Product("Capacity Upgrade", Product.CAPACITY, 5, 50,"bored of making crappy discriptions");
 		private static Product coffee = new Product("Coffee", Product.MAXHEALTH, 20,32, "Probs should talk about getting offical discriptions");
 		private static Product cappuccino = new Product("Cappuccino",Product.MAXHEALTH,40, 75,"WE got no discription so");
-		private static Product expresso = new Product("Expresso",Product.MAXHEALTH,60,100,"WE got no discription for this either so");
+		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"WE got no discription for this either so");
 		private static Product orangeJuice = null;//Couldn't find the thingy
 
 		public static void save(File file) throws Exception
@@ -108,7 +114,7 @@ public class Database {
 			else if (name.equals("Capacity Upgrade")) {return Database.getCapacityUpgrade();}
 			else if (name.equals("Coffee")) {return Database.getCoffee();}
 			else if (name.equals("Cappuccino")) {return Database.getCappuccino();}
-			else if (name.equals("Expresso")) {return Database.getExpresso();}
+			else if (name.equals("Espresso")) {return Database.getEspresso();}
 			else {return Database.getOrangeJuice();} // "Orange Juice"
 		}
 		
@@ -144,8 +150,8 @@ public class Database {
 			return cappuccino;
 		}
 
-		public static Product getExpresso() {
-			return expresso;
+		public static Product getEspresso() {
+			return espresso;
 		}
 
 		public static Product getOrangeJuice() {
