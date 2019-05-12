@@ -20,14 +20,12 @@ Missing UML methods and objects.
 bug fixing @Carson Fujita
 Date: 
 May 12th, 2019
-
+removed rawtypes from JComboBox
 bugs fixed
 */
 
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import src.*;
 import src.character.Player;
 import src.items.Product;
@@ -46,8 +44,8 @@ public class Backpack
 	static protected JLabel lbl_criticalChance;
 	static protected JLabel lbl_movement;
 	static protected JLabel lbl_error;
-	static protected JComboBox comboB_weapons;
-	static protected JComboBox comboB_products;
+	static protected JComboBox<String> comboB_weapons;
+	static protected JComboBox<String> comboB_products;
 	static protected JButton btn_Equip;
 	static protected JButton btn_Use;
 	static protected JButton btn_Back;
@@ -106,12 +104,12 @@ public class Backpack
 		backpackPane.add(lbl_error);
 		
 		// ------- comboB_weapons ------- 
-		comboB_weapons = new JComboBox();
+		comboB_weapons = new JComboBox<String>();
 		comboB_weapons.setBounds(155, 337, 352, 26);
 		backpackPane.add(comboB_weapons);
 		
 		// ------- comboB_products ------- 
-		comboB_products = new JComboBox();
+		comboB_products = new JComboBox<String>();
 		comboB_products.setBounds(155, 406, 352, 26);
 		backpackPane.add(comboB_products);
 		
