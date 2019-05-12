@@ -64,6 +64,7 @@ public class Weapon extends Item
 	private double critical_Chance;
 	private int weaponType;
 	private int type;
+	private int rangedDamage;
 	
 	public void upgradeCriticalChance() 
 	{
@@ -255,5 +256,13 @@ public class Weapon extends Item
 	 */
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public int setRangedDamage() {
+		return this.rangedDamage;
+	}
+	
+	public int getRangedDamage() {
+		return this.rangedDamage;
 	}
 }

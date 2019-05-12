@@ -16,7 +16,13 @@ Update on May 9th 2019
 Missing UML methods and objects.
 ???
 */
+/*
+bug fixing @Carson Fujita
+Date: 
+May 12th, 2019
 
+bugs fixed
+*/
 
 import java.awt.*;
 import java.awt.event.*;
@@ -165,7 +171,7 @@ public class Backpack
 		String weaponName = (String) comboB_weapons.getSelectedItem();
 		
 		//WIP
-		Weapon weapon = Weapon.getWeapon (weaponName);
+		Weapon weapon = Database.getWeapon (weaponName);
 		Player.switchWeapon (weapon);
 		
 		update();
@@ -177,7 +183,7 @@ public class Backpack
 	{
 		lbl_error.setText(null);
 		String productName = (String) comboB_products.getSelectedItem();
-		Product product = Product.getProduct(productName);
+		Product product = Database.getProduct(productName);//fixed by carson
 		Product.use(product);
 		
 		update();
@@ -190,50 +196,20 @@ public class Backpack
 	{
 		// need to know where player object is instantiated
 		
-		lbl_coins.setText("Coins: " + MainExcecutable.player.getCoins());
-		lbl_defense.setText("Defense: " + MainExcecutable.player.getDefense());
-		lbl_health.setText("Health: " + MainExcecutable.player.getHealth());
-		lbl_maxHealth.setText("Max Health : " + MainExcecutable.player.getMaxHealth());
+		lbl_coins.setText("Coins: " + MainExcecutable.getPlayer().getCoins());
+		lbl_defense.setText("Defense: " + MainExcecutable.getPlayer().getDefense());
+		lbl_health.setText("Health: " + MainExcecutable.getPlayer().getHealth());
+		lbl_maxHealth.setText("Max Health : " + MainExcecutable.getPlayer().getMaxHealth());
 		
 		
-		int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
-		int damage;
-		int rangedDamage;
-		double criticalChance;
+		Weapon equippedWeapon = MainExcecutable.getPlayer().getEquippedWeapon();
 		
 		
-		if (equippedWeapon == 0)
-		{
-			damage = ((3*Weapon.hatDUC) + 5);
-			rangedDamage = 0;
-			criticalChance = (double) (10*Weapon.hatCCUC + 5);
-		} // if 0 -hat
-		
-		else if (equippedWeapon == 1)
-		{
-			damage = ((3*Weapon.pencilDUC) + 1)
-			rangedDamage = 0;;
-			criticalChance = (double) (10*Weapon.pencilCCUC + 5);
-		} // if 1 - pencil
-		
-		else if (equippedWeapon == 2)
-		{
-			damage = ((3*Weapon.rulerDUC) + 5);
-			rangedDamage = ((3*Weapon.rulerDUC)+1);
-			criticalChance = (double) (10*Weapon.rulerCCUC + 5);
-		}// else if 2 - ruler
-		
-		else
-		{
-			damage = ((3*Weapon.rubberBandDUC) + 5);
-			rangedDamage = 0;
-			criticalChance = (double) (10*Weapon.rubberBandCUC + 5);
-		} // else 3 - rubber band
 		
 				
-		lbl_damage.setText("Damage: " + Integer.toString(damage));
-		lbl_rangedDamage.setText("Ranged Damage: " + Integer.toString(rangedDamage));
-		lbl_criticalChance.setText("Critical Chance: " + Double.toString(criticalChance));
+		lbl_damage.setText("Damage: " + Integer.toString(equippedWeapon.getDamage()));
+		lbl_rangedDamage.setText("Ranged Damage: " + Integer.toString(equippedWeapon.getRangedDamage() ));
+		lbl_criticalChance.setText("Critical Chance: " + Double.toString(equippedWeapon.getCriticalChance()));
 
 	} // update method
 	

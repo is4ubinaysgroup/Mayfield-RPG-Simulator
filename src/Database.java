@@ -201,6 +201,11 @@ public class Database {
 			Database.rubberband = rubberband;
 		}
 
+		public static Weapon getWeapon(String weaponName) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 
 
 	}
