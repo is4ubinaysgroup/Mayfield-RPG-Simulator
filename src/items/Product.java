@@ -16,6 +16,14 @@ May 11th, 2019
 move getProduct to database.
 added a constructor
  */
+
+/*
+Coding @Carson Fujita
+Date: 
+May 12th, 2019
+added Defense upgrade type.
+Completed:
+*/
 package src.items;
 
 import src.Database;
@@ -30,6 +38,7 @@ public class Product extends Item
 	public static final int HEALTH = 4;
 	public static final int MAXHEALTH = 5;
 	public static final int DAMAGE = 6;
+	public static final int DEFENSE = 7; // added by carson
 	
 	
 	private int upgradeType;

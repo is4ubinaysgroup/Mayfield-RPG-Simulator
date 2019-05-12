@@ -2,8 +2,6 @@ package src;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.Reader;
-
 import src.items.Product;
 import src.items.Weapon;
 /*
@@ -24,6 +22,7 @@ design saving for upgrades.
 Completed:
 Created Weapons.
 created the save1,save2,save3 files and the file[] files
+created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, tylenol,capacityupgrade, coffee,cappuccino, expresso, and orange juice.
  */
 public class Database {
 	
@@ -32,9 +31,7 @@ public class Database {
 			files[0] = new File("saves\\Save1.txt");
 			files[1] = new File("saves\\Save2.txt");
 			files[2] = new File("saves\\Save3.txt");
-		}
-		private static BufferedReader reader;
-		
+		}		
 		//Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
 		public static int stats[][]=new int[3][2];{//this array stores all the information for the weapon's beside critical chance and weapon names
 			//  [damage]  [range]
@@ -64,11 +61,17 @@ public class Database {
 		private static Weapon pencil = new Weapon(stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE );
 		private static Weapon ruler  = new Weapon(stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE );
 		private static Weapon rubberband = new Weapon(stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE);
-		
-		
-		
-		
-		
+		private static Product timbits = new Product("Timbits", Product.HEALTH, 10, 10,"Timbits are good, eh. Have som' maple syrup with it, yeah.");
+		private static Product mcChicken = new Product("McChicken", Product.HEALTH, 15, 20, "Cheap and American. YEEEEHAAA!!!");
+		private static Product footLongSub = new Product("Foot Long Sub!", Product.HEALTH, 30, 50, "yum yum!");
+		private static Product soda = new Product("Soda", Product.CRITICALCHANCE, 1, 20,"OwO gwimme dawt swoda pwease UwU");
+		private static Product tylenol = new Product("Tylenol", Product.DEFENSE, 5, 15,"Yee");
+		private static Product capacityUpgrade = new Product("Capacity Upgrade", Product.CAPACITY, 5, 50,"bored of making crappy discriptions");
+		private static Product coffee = new Product("Coffee", Product.MAXHEALTH, 20,32, "Probs should talk about getting offical discriptions");
+		private static Product cappuccino = new Product("Cappuccino",Product.MAXHEALTH,40, 75,"WE got no discription so");
+		private static Product expresso = new Product("Expresso",Product.MAXHEALTH,60,100,"WE got no discription for this either so");
+		private static Product orangeJuice = null;//Couldn't find the thingy
+
 		public static void save(File file) throws Exception
 		{
 			
@@ -76,7 +79,11 @@ public class Database {
 		
 		public static void read(File file) throws Exception
 		{
-			reader = new BufferedReader(new FileReader(files[0]));
+			BufferedReader reader = new BufferedReader(new FileReader(files[0]));
+			for(int i = 0; i < files[0].length(); i++) //reads the document.
+			{
+				//TODO
+			}
 		}
 		
 		public static void updateFile(File file)throws  Exception
@@ -84,7 +91,7 @@ public class Database {
 			
 		}
 
-		public static Product getProduct (String name)
+		public static Product getProduct (String name) //mina created this.
 		{
 			if (name.equals("Timbits")) {return Database.getTimbits();}
 			else if (name.equals("McChicken")) {return Database.getMcChicken();}
@@ -99,61 +106,57 @@ public class Database {
 		}
 		
 		public static Product getTimbits() {
-			// TODO Auto-generated method stub
-			return null;
+			return timbits;
 		}
 
 		public static Product getMcChicken() {
-			// TODO Auto-generated method stub
-			return null;
+			return mcChicken;
 		}
 
 		public static Product getFootLongSub() {
-			// TODO Auto-generated method stub
-			return null;
+			return footLongSub;
 		}
 
 		public static Product getSoda() {
-			// TODO Auto-generated method stub
-			return null;
+			return soda;
 		}
 
 		public static Product getTylenol() {
-			// TODO Auto-generated method stub
-			return null;
+			return tylenol;
 		}
 
 		public static Product getCapacityUpgrade() {
-			// TODO Auto-generated method stub
-			return null;
+			return capacityUpgrade;
 		}
 
 		public static Product getCoffee() {
-			// TODO Auto-generated method stub
-			return null;
+			return coffee;
 		}
 
 		public static Product getCappuccino() {
-			// TODO Auto-generated method stub
-			return null;
+			return cappuccino;
 		}
 
 		public static Product getExpresso() {
-			// TODO Auto-generated method stub
-			return null;
+			return expresso;
 		}
 
 		public static Product getOrangeJuice() {
-			// TODO Auto-generated method stub
-			return null;
+			return orangeJuice;
 		}
 
 		/**
 		 * @return the hat
 		 */
-		public static Weapon getHat() 
-		{
+		public static Weapon getHat() {
 			return hat;
+		}
+
+		/**
+		 * @param hat the hat to set
+		 */
+		public static void setHat(Weapon hat) {
+			Database.hat = hat;
 		}
 
 		/**
@@ -164,10 +167,24 @@ public class Database {
 		}
 
 		/**
+		 * @param pencil the pencil to set
+		 */
+		public static void setPencil(Weapon pencil) {
+			Database.pencil = pencil;
+		}
+
+		/**
 		 * @return the ruler
 		 */
 		public static Weapon getRuler() {
 			return ruler;
+		}
+
+		/**
+		 * @param ruler the ruler to set
+		 */
+		public static void setRuler(Weapon ruler) {
+			Database.ruler = ruler;
 		}
 
 		/**
@@ -176,6 +193,15 @@ public class Database {
 		public static Weapon getRubberband() {
 			return rubberband;
 		}
+
+		/**
+		 * @param rubberband the rubberband to set
+		 */
+		public static void setRubberband(Weapon rubberband) {
+			Database.rubberband = rubberband;
+		}
+
+
 
 	}
 
