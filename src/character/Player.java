@@ -1,6 +1,5 @@
-package src.gui;
+package src.character;
 
-import src.character.Human;
 import src.items.Product;
 /*
  * Author: Carson.
@@ -9,6 +8,7 @@ import src.items.Product;
  */
 public class Player extends Human {
 
+	
 	public Player() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,11 +28,6 @@ public class Player extends Human {
 		return 0;
 	}
 
-	public int getEquippedWeapon() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	public void deleteProduct(Product product) {
 		// TODO Auto-generated method stub
 		
@@ -41,6 +36,11 @@ public class Player extends Human {
 	public String getCoins() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void increaseDefense() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

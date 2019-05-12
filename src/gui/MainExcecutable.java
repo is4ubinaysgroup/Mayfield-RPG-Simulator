@@ -4,12 +4,15 @@ package src.gui;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import src.character.Player;
+
 import java.io.*;
 //executable 
 
 public class MainExcecutable
 {
-	public static Player player;
+	private static Player player;
 
 	public static void main(String[] args)
 	{
@@ -25,4 +28,18 @@ public class MainExcecutable
 		GUIExtension1.showFirstPane(MainMenu.getPane());
 	
 	} // Main method
+
+	/**
+	 * @return the player
+	 */
+	public static Player getPlayer() {
+		return player;
+	}
+
+	/**
+	 * @param player the player to set
+	 */
+	public static void setPlayer(Player player) {
+		MainExcecutable.player = player;
+	}
 } // Main class

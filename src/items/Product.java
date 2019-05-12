@@ -23,6 +23,9 @@ Date:
 May 12th, 2019
 added Defense upgrade type. 
 Completed:
+fixed upgradeType CRITICALCHANCE...
+added functionality for defense upgrades
+added fixing to upgrades and weapons.
 */
 package src.items;
 
@@ -106,8 +109,8 @@ public class Product extends Item
 	
 			// need name of Player object and class where it is instantiated
 
-			int defense = MainExcecutable.player.getDefense () + increase;
-			MainExcecutable.player.setDefense (defense));
+			int defense = MainExcecutable.getPlayer().getDefense () + increase;
+			MainExcecutable.getPlayer().setDefense (defense);
 			
 			used = true;
 			
@@ -121,11 +124,11 @@ public class Product extends Item
 			
 			// check if productCapacity is upgradable (compare to array size)
 			
-			if (MainExcecutable.player.productCapacityIsUpgradable() == true)
+			if (MainExcecutable.getPlayer().productCapacityIsUpgradable() == true)
 			{	
-				int productCapacity = MainExcecutable.player.getProductCapacity () + increase;
+				int productCapacity = MainExcecutable.getPlayer().getProductCapacity () + increase;
 			
-				MainExcecutable.player.setProductCapacity (productCapacity);
+				MainExcecutable.getPlayer().setProductCapacity (productCapacity);
 			
 				used = true;
 			}
@@ -135,14 +138,14 @@ public class Product extends Item
 		
 		
 		
-		else if (upgradeType == CRITICALCHANCE)
+		else if (upgradeType == CRITICALCHANCE)//fixed
 		{
-			int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
+			Weapon equippedWeapon = MainExcecutable.getPlayer().getEquippedWeapon();
 			
-			if (equippedWeapon == 0){Weapon.hatCCUC++;} // if 0 -hat
-			else if (equippedWeapon == 1){Weapon.pencilCCUC++;} // if 1 - pencil
-			else if (equippedWeapon == 2){Weapon.rulerCCUC++;}// else if 2 - ruler
-			else{Weapon.rubberBandCCUC++} // else 3 - rubber band
+			if (equippedWeapon.getName().equals( Database.getHat().getName() ) ){Database.getHat().upgradeCriticalChance();} // if 0 -hat
+			else if (equippedWeapon.getName().equals( Database.getPencil().getName() ) ){Database.getPencil().upgradeCriticalChance();} // if 1 - pencil
+			else if (equippedWeapon.getName().equals( Database.getRuler().getName() ) ){Database.getRuler().upgradeCriticalChance();}// else if 2 - ruler
+			else{Database.getRubberband().upgradeCriticalChance();} // else 3 - rubber band
 
 			used = true;
 			
@@ -152,15 +155,15 @@ public class Product extends Item
 		else if (upgradeType == HEALTH)
 		{
 			
-			int health = MainExcecutable.player.getHealth() + increase;
+			int health = MainExcecutable.getPlayer().getHealth() + increase;
 			
 			
-			if (health > MainExcecutable.player.getHealth())
+			if (health > MainExcecutable.getPlayer().getHealth())
 			{
-				health = MainExcecutable.player.getHealth();
+				health = MainExcecutable.getPlayer().getHealth();
 			} // if over max
 			
-			MainExcecutable.player.setHealth (health);		
+			MainExcecutable.getPlayer().setHealth (health);		
 			
 			used = true;
 			
@@ -170,23 +173,26 @@ public class Product extends Item
 		else if (upgradeType == MAXHEALTH)
 		{
 			
-			int maxHealth = MainExcecutable.player.getMaxHealth() + increase;
-			MainExcecutable.player.setMaxHealth (maxHealth);
+			int maxHealth = MainExcecutable.getPlayer().getMaxHealth() + increase;
+			MainExcecutable.getPlayer().setMaxHealth (maxHealth);
 			
 			used = true;
 			
 		} // if maxHealth upgrade
 		
-		
+		else if (upgradeType == DEFENSE) //if Defense upgrade
+		{
+			MainExcecutable.getPlayer().increaseDefense();
+		}
 		else //DAMAGE
 		{
 			
-			int equippedWeapon = MainExcecutable.player.getEquippedWeapon();
+			Weapon equippedWeapon = MainExcecutable.getPlayer().getEquippedWeapon();
 			
-			if (equippedWeapon == 0) {Weapon.hatDUC++;} // if 0 -hat
-			else if (equippedWeapon == 1){Weapon.pencilDUC++;} // if 1 - pencil
-			else if (equippedWeapon == 2){Weapon.rulerDUC++;}// else if 2 - ruler
-			else {Weapon.rubberBandDUC++;} // else 3 - rubber band
+			if ( equippedWeapon.getName().equals( Database.getHat().getName() ) ){Database.getHat().upgradeDamage();} // if 0 -hat
+			else if ( equippedWeapon.getName().equals( Database.getPencil().getName() )){Database.getPencil().upgradeDamage();} // if 1 - pencil
+			else if ( equippedWeapon.getName().equals( Database.getRuler().getName() )){Database.getRuler().upgradeDamage();}// else if 2 - ruler
+			else{Database.getRubberband().upgradeDamage();} // else 3 - rubber band
 			
 			used = true;
 			
@@ -198,7 +204,7 @@ public class Product extends Item
 		
 		if (used == true)
 		{
-			MainExcecutable.player.deleteProduct (product);
+			MainExcecutable.getPlayer().deleteProduct (product);
 		} 
 		
 		return used;

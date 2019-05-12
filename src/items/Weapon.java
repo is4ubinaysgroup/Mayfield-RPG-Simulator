@@ -43,7 +43,13 @@ Changed to package src.items.
 fixed RANGEDTYPE, MELEETYPE, and ALLTYPE to contain numbers.
 created a whole ton of getters and setters
  */
+/*
+Coding @Carson Fujita
+Date: 
+May 12th, 2019
 
+renamed upgradeCritical() to upgradeCriticalChance();
+*/
 package src.items;// 
 
 import src.Database;
@@ -59,7 +65,7 @@ public class Weapon extends Item
 	private int weaponType;
 	private int type;
 	
-	public void upgradeCritical() 
+	public void upgradeCriticalChance() 
 	{
 		double WeaponCriticalChance = getCriticalChance();
 		if(WeaponCriticalChance == Database.criticalChance[0]) 
