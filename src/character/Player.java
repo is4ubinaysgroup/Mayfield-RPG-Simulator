@@ -34,9 +34,9 @@ public class Player extends Human {
 		
 	}
 
-	public String getCoins() {
+	public int getCoins() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	public void increaseDefense() {

@@ -507,10 +507,10 @@ public class Shop
 	
 	public static void updateCoinsLabels()
 	{
-		lbl_coins1.setText ("Coins: " + Integer.toString(Main.player.getCoins());
-		lbl_coins2.setText ("Coins: " + Integer.toString(Main.player.getCoins());
-		lbl_coins3.setText ("Coins: " + Integer.toString(Main.player.getCoins());
-		lbl_coins4.setText ("Coins: " + Integer.toString(Main.player.getCoins());
+		lbl_coins1.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() );
+		lbl_coins2.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() );
+		lbl_coins3.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() );
+		lbl_coins4.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() ;
 		
 		// not sure if this part is needed; test later
 		shopTabbedPane.removeAll();
