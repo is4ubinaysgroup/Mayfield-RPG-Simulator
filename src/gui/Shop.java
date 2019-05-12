@@ -2,7 +2,11 @@ package src.gui;
 
 // initially uploaded 05-08 by Matthew
 // updated 05-09 by Mina
-
+/*
+Bug fixing @Carson Fujita
+Date: 
+May 12th, 2019
+ */ 
 
 import java.awt.*;
 import java.awt.event.*;
@@ -507,10 +511,10 @@ public class Shop
 	
 	public static void updateCoinsLabels()
 	{
-		lbl_coins1.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() );
-		lbl_coins2.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() );
-		lbl_coins3.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() );
-		lbl_coins4.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() ;
+		lbl_coins1.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() ));
+		lbl_coins2.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() ));
+		lbl_coins3.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() ));
+		lbl_coins4.setText ("Coins: " + Integer.toString( MainExcecutable.getPlayer().getCoins() ));
 		
 		// not sure if this part is needed; test later
 		shopTabbedPane.removeAll();
