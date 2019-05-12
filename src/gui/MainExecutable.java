@@ -1,9 +1,11 @@
+// execute was spelled wrong - Mina
+
 package src.gui;
 // last updated 05-09-19
 
 import src.character.Player;
 
-public class MainExcecutable
+public class MainExecutable
 {
 	private static Player player;
 
@@ -33,6 +35,6 @@ public class MainExcecutable
 	 * @param player the player to set
 	 */
 	public static void setPlayer(Player player) {
-		MainExcecutable.player = player;
+		MainExecutable.player = player;
 	}
-} // Main class
+} // MainExecutable class
