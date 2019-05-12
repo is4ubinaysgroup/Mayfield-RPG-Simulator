@@ -1,14 +1,7 @@
 package src.gui;
 // last updated 05-09-19
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
 import src.character.Player;
-
-import java.io.*;
-//executable 
 
 public class MainExcecutable
 {
