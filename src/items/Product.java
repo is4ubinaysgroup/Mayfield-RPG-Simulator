@@ -79,16 +79,6 @@ public class Product extends Item
 	public void setIncrease (int increase) { this.increase = increase; } // setIncrease method
 	public int getIncrease () { return increase; } // getIncrease method
 	
-	public void setCost (int cost) { this.cost = cost; } // setCost method
-	public int getCost () { return cost; } // getCost method
-	
-	public void setDescription (String description) { this.description = description; } // setDescription method
-	public String getDescription () { return description; } // getDescription method
-	
-	public void setImagePath (String imagePath) { this.imagePath = imagePath; } // setImagePath method
-	public String getImagePath () { return imagePath; } // getImagePath method
-	
-	
 	
 	
 	
