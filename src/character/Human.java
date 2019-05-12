@@ -10,11 +10,11 @@ import src.items.Weapon;
 public class Human
 {
   //ints
-  private int health;
-  private int defense;
-  private int maxHealth;
-  private int movement;
-  private Weapon equippedWeapon;
+  protected int health;
+  protected int defense;
+  protected int maxHealth;
+  public static int MOVEMENT = 3;
+  protected Weapon equippedWeapon;
   
 
   //Gets and Sets
@@ -48,15 +48,11 @@ public class Human
     this.maxHealth = maxHealth;
   }
   
-  public int getMovement()
+  public void increaseDefense() 
   {
-    return this.movement;
+	  this.defense += 5;
   }
-  
-  public void setMovement(int movement)
-  {
-    this.movement = movement;
-  }
+ 
 
 /**
  * @return the equippedWeapon
@@ -68,7 +64,7 @@ public Weapon getEquippedWeapon() {
 /**
  * @param equippedWeapon the equippedWeapon to set
  */
-public void setEquippedWeapon(Weapon equippedWeapon) {
+public void EquipWeapon(Weapon equippedWeapon) {
 	this.equippedWeapon = equippedWeapon;
 }
 }

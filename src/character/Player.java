@@ -14,9 +14,14 @@ public class Player extends Human {
 		// TODO Auto-generated constructor stub
 	}
 
-	public boolean productCapacityIsUpgradable() {
+	public boolean isCapacityUpgradable() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public void upgradeCapacity() 
+	{
+		
 	}
 
 	public void setProductCapacity(int productCapacity) {
@@ -39,15 +44,6 @@ public class Player extends Human {
 		return 0;
 	}
 
-	public void increaseDefense() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public static void switchWeapon(Weapon weapon) {
-		// TODO Auto-generated method stub
-		
-	}
 
 
 }

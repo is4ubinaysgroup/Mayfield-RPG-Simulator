@@ -111,7 +111,7 @@ public class Product extends Item
 			
 			// check if productCapacity is upgradable (compare to array size)
 			
-			if (MainExcecutable.getPlayer().productCapacityIsUpgradable() == true)
+			if (MainExcecutable.getPlayer().isCapacityUpgradable() == true)
 			{	
 				int productCapacity = MainExcecutable.getPlayer().getProductCapacity () + increase;
 			

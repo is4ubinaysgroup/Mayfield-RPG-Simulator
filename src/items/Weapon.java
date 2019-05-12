@@ -62,7 +62,6 @@ public class Weapon extends Item
 	private int damage; // damage[0] is player damage, damage[1] is boss damage;
 	private int range; // damage[0] is Melee range, damage[1] is ranged range;
 	private double critical_Chance;
-	private int weaponType;
 	private int type;
 	private int rangedDamage;
 	
@@ -176,26 +175,6 @@ public class Weapon extends Item
 	 */
 	public void setCriticalChance(double critical_Chance) {
 		this.critical_Chance = critical_Chance;
-	}
-
-
-
-
-	/**
-	 * @return the weaponType
-	 */
-	public int getWeaponType() {
-		return weaponType;
-	}
-
-
-
-
-	/**
-	 * @param weaponType the weaponType to set
-	 */
-	public void setWeaponType(int weaponType) {
-		this.weaponType = weaponType;
 	}
 
 
