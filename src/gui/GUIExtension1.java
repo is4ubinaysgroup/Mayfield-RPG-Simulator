@@ -5,7 +5,11 @@ package src.gui;
 // updated 05-10
 
 import java.awt.*;
+import java.io.IOException;
+
 import javax.swing.*;
+
+import src.Database;
 
 
 public class GUIExtension1
@@ -18,9 +22,10 @@ public class GUIExtension1
 	public static void initFrameAndParentPanel ()
 	{
 		frame = new JFrame ("Mayfield RPG Simulator");
+		
 		frame.setSize (800, 800); // sets size 
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-
+		frame.setIconImage((Database.getLogo()));
 		cards = new JPanel(new CardLayout());
 		
 	} // initFrameAndParentPanel method

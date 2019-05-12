@@ -1,7 +1,12 @@
 package src;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import src.items.Product;
 import src.items.Weapon;
 /*
@@ -204,6 +209,17 @@ public class Database {
 		public static Weapon getWeapon(String weaponName) {
 			// TODO Auto-generated method stub
 			return null;
+		}
+
+		public static Image getLogo() {
+			 Image img = null;
+			try {
+				img = ImageIO.read(new File("src/resources/MayfieldSecondarySchool.png"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return img;
 		}
 
 
