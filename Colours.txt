@@ -1,0 +1,26 @@
+Some Colours
+
+MayfieldBlue
+{
+Hex: #0E018D
+RGB: (14, 1, 141)
+}
+
+MayfieldYellow
+{
+Hex:  #F7DD00
+RGB: (247, 221, 0)
+}
+
+AlternativeMayfieldBlue
+{
+Hex:  #343468
+RGB: (52, 52, 104)
+} 
+
+
+AlternativeMayfieldYellow 
+{
+Hex: F6EB16
+RGB: (246, 235 ,22)
+}
