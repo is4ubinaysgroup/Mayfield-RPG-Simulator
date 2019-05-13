@@ -34,7 +34,8 @@ previously equipped weapon would need to be put into storage when switching weap
 
 /*
 05-13 Mina
-added comments to button engine for what happens in-battle
+added comments to button engines for what would happen in-battle
+added static method that will remove items in products comobox
 */
 
 
@@ -231,5 +232,12 @@ public class Backpack
 		lbl_criticalChance.setText("Critical Chance: " + Double.toString(equippedWeapon.getCriticalChance()));
 
 	} // update method
+	
+	
+	
+	public static void removeProduct (String productName)
+	{
+		comboB_products.removeItem (productName);
+	} // removeProduct method
 	
 } // Backpack class
