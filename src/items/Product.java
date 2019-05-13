@@ -29,12 +29,12 @@ added fixing to upgrades and weapons.
 fixed up since item has Description image path and cost now.
 */
 
-// 05-12 edited this.setName(name); in first constructor - Mina
+// 05-12 edited this.setName(name); in first constructor and fixed execute spelling - Mina
 
 package src.items;
 
 import src.Database;
-import src.gui.MainExcecutable;
+import src.gui.MainExecutable;
 
 public class Product extends Item
 {
@@ -49,7 +49,7 @@ public class Product extends Item
 	private int upgradeType;
 	private int increase;
 
-	
+
 	
 	public Product () {} // default constructor
 	
@@ -72,6 +72,7 @@ public class Product extends Item
 		this.increase = increase;
 		this.setCost(cost);
 		this.setDescription(description);
+		// doesn't have imagePath
 	}
 	
 	// ------- set and get methods -------
@@ -94,13 +95,13 @@ public class Product extends Item
 		int increase = product.getIncrease();
 		
 		
-		if (upgradeType == ARMOR)
+		if (upgradeType == ARMOR) // defense upgrade already does this
 		{
 	
 			// need name of Player object and class where it is instantiated
 
-			int defense = MainExcecutable.getPlayer().getDefense () + increase;
-			MainExcecutable.getPlayer().setDefense (defense);
+			int defense = MainExecutable.getPlayer().getDefense () + increase;
+			MainExecutable.getPlayer().setDefense (defense);
 			
 			used = true;
 			
@@ -110,15 +111,11 @@ public class Product extends Item
 		else if (upgradeType == CAPACITY)
 		{
 			
-			// need name of Player object and class where it is instantiated
-			
-			// check if productCapacity is upgradable (compare to array size)
-			
-			if (MainExcecutable.getPlayer().isCapacityUpgradable() == true)
+			if (MainExecutable.getPlayer().isCapacityUpgradable() == true)
 			{	
-				int productCapacity = MainExcecutable.getPlayer().getProductCapacity () + increase;
+				int productCapacity = MainExecutable.getPlayer().getProductCapacity () + increase;
 			
-				MainExcecutable.getPlayer().setProductCapacity (productCapacity);
+				MainExecutable.getPlayer().setProductCapacity (productCapacity);
 			
 				used = true;
 			}
@@ -130,7 +127,7 @@ public class Product extends Item
 		
 		else if (upgradeType == CRITICALCHANCE)//fixed
 		{
-			Weapon equippedWeapon = MainExcecutable.getPlayer().getEquippedWeapon();
+			Weapon equippedWeapon = MainExecutable.getPlayer().getEquippedWeapon();
 			
 			if (equippedWeapon.getName().equals( Database.getHat().getName() ) ){Database.getHat().upgradeCriticalChance();} // if 0 -hat
 			else if (equippedWeapon.getName().equals( Database.getPencil().getName() ) ){Database.getPencil().upgradeCriticalChance();} // if 1 - pencil
@@ -145,15 +142,15 @@ public class Product extends Item
 		else if (upgradeType == HEALTH)
 		{
 			
-			int health = MainExcecutable.getPlayer().getHealth() + increase;
+			int health = MainExecutable.getPlayer().getHealth() + increase;
 			
 			
-			if (health > MainExcecutable.getPlayer().getHealth())
+			if (health > MainExecutable.getPlayer().getHealth())
 			{
-				health = MainExcecutable.getPlayer().getHealth();
+				health = MainExecutable.getPlayer().getHealth();
 			} // if over max
 			
-			MainExcecutable.getPlayer().setHealth (health);		
+			MainExecutable.getPlayer().setHealth (health);		
 			
 			used = true;
 			
@@ -163,8 +160,8 @@ public class Product extends Item
 		else if (upgradeType == MAXHEALTH)
 		{
 			
-			int maxHealth = MainExcecutable.getPlayer().getMaxHealth() + increase;
-			MainExcecutable.getPlayer().setMaxHealth (maxHealth);
+			int maxHealth = MainExecutable.getPlayer().getMaxHealth() + increase;
+			MainExecutable.getPlayer().setMaxHealth (maxHealth);
 			
 			used = true;
 			
@@ -172,17 +169,18 @@ public class Product extends Item
 		
 		else if (upgradeType == DEFENSE) //if Defense upgrade
 		{
-			MainExcecutable.getPlayer().increaseDefense();
+			MainExecutable.getPlayer().increaseDefense();
 		}
+		
 		else //DAMAGE
 		{
 			
-			Weapon equippedWeapon = MainExcecutable.getPlayer().getEquippedWeapon();
+			Weapon equippedWeapon = MainExecutable.getPlayer().getEquippedWeapon();
 			
-			if ( equippedWeapon.getName().equals( Database.getHat().getName() ) ){Database.getHat().upgradeDamage();} // if 0 -hat
-			else if ( equippedWeapon.getName().equals( Database.getPencil().getName() )){Database.getPencil().upgradeDamage();} // if 1 - pencil
-			else if ( equippedWeapon.getName().equals( Database.getRuler().getName() )){Database.getRuler().upgradeDamage();}// else if 2 - ruler
-			else{Database.getRubberband().upgradeDamage();} // else 3 - rubber band
+			if ( equippedWeapon.getName().equals( Database.getHat().getName() ) ){Database.getHat().upgradeDamage();} // if hat
+			else if ( equippedWeapon.getName().equals( Database.getPencil().getName() )){Database.getPencil().upgradeDamage();} // else if pencil
+			else if ( equippedWeapon.getName().equals( Database.getRuler().getName() )){Database.getRuler().upgradeDamage();}// else if ruler
+			else{Database.getRubberband().upgradeDamage();} // else rubber band
 			
 			used = true;
 			
@@ -194,7 +192,7 @@ public class Product extends Item
 		
 		if (used == true)
 		{
-			MainExcecutable.getPlayer().deleteProduct (product);
+			MainExecutable.getPlayer().deleteProduct (product);
 		} 
 		
 		return used;
