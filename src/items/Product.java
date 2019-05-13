@@ -45,7 +45,6 @@ public class Product extends Item
 	public static final int HEALTH = 4;
 	public static final int MAXHEALTH = 5;
 	public static final int DAMAGE = 6;
-	public static final int DEFENSE = 7; // added by carson
 	private int upgradeType;
 	private int increase;
 
@@ -166,11 +165,6 @@ public class Product extends Item
 			used = true;
 			
 		} // if maxHealth upgrade
-		
-		else if (upgradeType == DEFENSE) //if Defense upgrade
-		{
-			MainExecutable.getPlayer().increaseDefense();
-		}
 		
 		else //DAMAGE
 		{
