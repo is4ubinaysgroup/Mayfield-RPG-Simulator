@@ -31,6 +31,8 @@ fixed up since item has Description image path and cost now.
 
 // 05-12 edited this.setName(name); in first constructor and fixed execute spelling - Mina
 
+// 05-13 removed ARMOR since it was the same as DAMAGE - Mina
+
 package src.items;
 
 import src.Database;
@@ -39,7 +41,7 @@ import src.gui.MainExecutable;
 public class Product extends Item
 {
 
-	public static final int ARMOR = 1;
+	//public static final int ARMOR = 1;
 	public static final int CAPACITY = 2; // has a limit
 	public static final int CRITICALCHANCE = 3;
 	public static final int HEALTH = 4;
@@ -94,7 +96,7 @@ public class Product extends Item
 		int increase = product.getIncrease();
 		
 		
-		if (upgradeType == ARMOR) // defense upgrade already does this
+		/*if (upgradeType == ARMOR) // defense upgrade already does this
 		{
 	
 			// need name of Player object and class where it is instantiated
@@ -104,10 +106,10 @@ public class Product extends Item
 			
 			used = true;
 			
-		} // if armour upgrade
+		} // if armour upgrade*/
 		
 		
-		else if (upgradeType == CAPACITY)
+		if (upgradeType == CAPACITY)
 		{
 			
 			if (MainExecutable.getPlayer().isCapacityUpgradable() == true)
