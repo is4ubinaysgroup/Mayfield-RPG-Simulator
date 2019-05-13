@@ -32,6 +32,11 @@ fixed execute spelling
 previously equipped weapon would need to be put into storage when switching weapons
 */
 
+/*
+05-13 Mina
+added comments to button engine for what happens in-battle
+*/
+
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -161,6 +166,9 @@ public class Backpack
 			public void actionPerformed (ActionEvent e)
 			{
 				lbl_error.setText(null);
+				
+				// if in battle switches to the battle pane; the player may choose to attack if they haven't used their turn
+				
 				GUIExtension1.switchPane (Navigation.getPane());
 			}
 		});
@@ -182,6 +190,8 @@ public class Backpack
 		//MainExecutable.getPlayer().addWeapon (MainExecutable.getEquippedWeapon());
 		MainExecutable.getPlayer().equipWeapon (weapon);
 		
+		// if eqip completed... change turn if boss battle is happening and go to battle panel
+		
 		update();
 	} // btn_EquipEngine method
 	
@@ -193,6 +203,8 @@ public class Backpack
 		String productName = (String) comboB_products.getSelectedItem();
 		Product product = Database.getProduct(productName);//fixed by carson
 		Product.use(product);
+		
+		// if use completed... change turn if boss battle is happening and go to battle panel
 		
 		update();
 	} // btn_UseEngine method
