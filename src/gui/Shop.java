@@ -7,7 +7,7 @@ Bug fixing @Carson Fujita
 Date: 
 May 12th, 2019
  */ 
-// 05-12 fixed execute spelling and edited+uncommented some lines - Mina
+// 05-12 fixed execute spelling, removed duplicatecoins labels on each tab, edited+uncommented some lines - Mina
 
 import java.awt.*;
 import java.awt.event.*;
@@ -193,10 +193,6 @@ public class Shop
 		lbl_coins2.setBounds(636, 75, 127, 20);
 		tabPane2.add(lbl_coins2);
 		
-		lbl_coins2 = new JLabel("Coins: ");
-		lbl_coins2.setBounds(636, 75, 127, 20);
-		tabPane2.add(lbl_coins2);
-		
 		
 		// ------- lbl_icon2 -------
 		lbl_icon2 = new JLabel("JLabel icon");
@@ -278,10 +274,6 @@ public class Shop
 		lbl_description3 = new JLabel("Description: ");
 		lbl_description3.setBounds(145, 463, 600, 20);
 		tabPane3.add(lbl_description3);
-		
-		lbl_coins3 = new JLabel("Coins: ");
-		lbl_coins3.setBounds(636, 75, 127, 20);
-		tabPane3.add(lbl_coins3);
 		
 		lbl_coins3 = new JLabel("Coins: ");
 		lbl_coins3.setBounds(636, 75, 127, 20);
@@ -369,11 +361,7 @@ public class Shop
 		lbl_description4 = new JLabel("Description: ");
 		lbl_description4.setBounds(145, 463, 600, 20);
 		tabPane4.add(lbl_description4);
-		
-		lbl_coins4 = new JLabel("Coins: ");
-		lbl_coins4.setBounds(636, 75, 127, 20);
-		tabPane4.add(lbl_coins4);
-		
+	
 		lbl_coins4 = new JLabel("Coins: ");
 		lbl_coins4.setBounds(636, 75, 127, 20);
 		tabPane4.add(lbl_coins4);
