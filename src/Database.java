@@ -33,7 +33,7 @@ created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, 
 
 
 
-// 05-12 fixed spelling of espresso and edited getWeapon method - Mina
+// 05-12 fixed spelling of espresso, edited getWeapon method, and edited product descriptions - Mina
 
 
 public class Database {
@@ -45,6 +45,7 @@ public class Database {
 			files[1] = new File("saves\\Save2.txt");
 			files[2] = new File("saves\\Save3.txt");
 		}		
+		
 		//Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
 		public static int stats[][]=new int[3][2];{//this array stores all the information for the weapon's beside critical chance and weapon names
 			//  [damage]  [range]
@@ -69,11 +70,15 @@ public class Database {
 		}
 		
 		// TODO Auto-generated constructor stub
+	
 		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
+		
+		// what about fields inherited from Item?
 		private static Weapon hat = new Weapon(stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE );
 		private static Weapon pencil = new Weapon(stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE );
 		private static Weapon ruler  = new Weapon(stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE );
 		private static Weapon rubberband = new Weapon(stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE);
+	
 		private static Product timbits = new Product("Timbits", Product.HEALTH, 10, 10,"Timbits are good, eh. Have som' maple syrup with it, yeah.");
 		private static Product mcChicken = new Product("McChicken", Product.HEALTH, 15, 20, "Cheap and American. YEEEEHAAA!!!");
 		private static Product footLongSub = new Product("Foot Long Sub!", Product.HEALTH, 30, 50, "yum yum!");
@@ -85,6 +90,8 @@ public class Database {
 		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"WE got no discription for this either so");
 		private static Product orangeJuice = null;//Couldn't find the thingy
 
+	
+	
 		public static void save(File file) throws Exception
 		{
 			
@@ -104,6 +111,8 @@ public class Database {
 			
 		}
 
+	
+	
 		public static Product getProduct (String name) //mina created this.
 		{
 			if (name.equals("Timbits")) {return Database.getTimbits();}
@@ -116,8 +125,10 @@ public class Database {
 			else if (name.equals("Cappuccino")) {return Database.getCappuccino();}
 			else if (name.equals("Espresso")) {return Database.getEspresso();}
 			else {return Database.getOrangeJuice();} // "Orange Juice"
-		}
+		} // getProduct method
 		
+	
+	
 		public static Product getTimbits() {
 			return timbits;
 		}
@@ -227,5 +238,5 @@ public class Database {
 
 
 
-	} // Weapon class
+	} // Database class
 
