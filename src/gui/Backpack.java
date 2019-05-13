@@ -35,7 +35,7 @@ previously equipped weapon would need to be put into storage when switching weap
 /*
 05-13 Mina
 added comments to button engines for what would happen in-battle
-added static methods that will remove and add strings to combobox (weapons are never deleted)
+added static methods that will remove and add strings to combobox
 edited equip button engine to use the switchWeapon method of Player
 */
 
@@ -244,6 +244,11 @@ public class Backpack
 	{
 		comboB_products.addItem (productName);
 	} // addProduct method
+	
+	public static void removeWeapon (String weaponName)
+	{
+		comboB_weapons.removeItem (weaponName);
+	} // removeProduct method
 	
 	public static void addWeapon (String weaponName)
 	{
