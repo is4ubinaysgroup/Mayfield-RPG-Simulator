@@ -30,7 +30,6 @@ bugs fixed
 05-12 Mina
 fixed execute spelling
 previously equipped weapon would need to be put into storage when switching weapons
-would need to double-check getDamage, getRangedDamage, and getCriticalChance Weapon object methods
 */
 
 
