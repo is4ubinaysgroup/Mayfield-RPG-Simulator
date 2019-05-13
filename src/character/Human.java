@@ -10,6 +10,11 @@ human class sets the requirements and data for the rest of the classes
 added imagePath field
 */
 
+/*
+Carson Fujita
+fixed imagepath
+*/
+
 import src.items.Weapon;
 
 public class Human
@@ -36,7 +41,7 @@ public class Human
 	public void setEquippedWeapon (Weapon equippedWeapon) {this.equippedWeapon = equippedWeapon;}
 	public Weapon getEquippedWeapon () {return equippedWeapon;}
 	
-	public void setImagePath (String imagePath) {this.ImagePath = imagePath;}
+	public void setImagePath (String imagePath) {this.imagePath = imagePath;}
 	public String getImagePath () {return imagePath;}
 
 } // Human class
