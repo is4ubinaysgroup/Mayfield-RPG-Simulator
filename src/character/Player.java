@@ -102,8 +102,25 @@ public class Player extends Human {
 	
 	public void deleteProduct(Product product)
 	{
+		for (int i = 0; i< numProducts; i++)
+		{
+			if (product.getName().equals(products[i].getName()))
+			{
+				products [i] = null; // not sure if this is needed but just in case
+	
+				products [i] = product [numProducts-1];
+				
+				product [numProducts-1] = null;
+				
+				//Backpack.removeProduct (product.getName());
+				
+				numProducts--;
+				
+			} // if match found
 		
+		} // for 0...numProducts-1
 	} // deleteProduct method: linear search and set null of pointer and switch of item in highest index to vacated pointer; previously highest index becomes null and numItems decrements
 
 
+	
 } // Player class
