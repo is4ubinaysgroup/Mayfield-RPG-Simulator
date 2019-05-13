@@ -7,7 +7,7 @@ Bug fixing @Carson Fujita
 Date: 
 May 12th, 2019
  */ 
-// 05-02 fixed execute spelling - Mina
+// 05-02 fixed execute spelling and edited+uncommented some lines - Mina
 
 import java.awt.*;
 import java.awt.event.*;
@@ -466,7 +466,7 @@ public class Shop
 	
 	public static void updateProductInfo(int tab)
 	{
-		// Product product =  Product.getProduct (selectedItemName);
+		Product product =  Database.getProduct (selectedItemName);
 		// update product info JLabels on appropriate tab
 		
 	} // productComboBoxEngine method
@@ -475,7 +475,7 @@ public class Shop
 	
 	public static void updateWeaponInfo()
 	{
-		// Weapon weapon = Weapon.getWeapon (selectedItemName); //getWeapon method could be put in Database
+		Weapon weapon = Database.getWeapon (selectedItemName);
 		// update weapon info JLabels on 4th tab
 		
 	} // updateWeaponInfo method
