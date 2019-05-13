@@ -7,12 +7,30 @@ import src.items.Weapon;
  * 
  * 
  */
+
+/*
+05-13 Mina
+updated
+
+*/
+
 public class Player extends Human {
 
 	
-	public Player() {
-		// TODO Auto-generated constructor stub
-	}
+	public Player() {} // default constuctor
+	
+	public Player(int health, int defense, int maxHealth, Weapon equippedWeapon, String imagePath)
+	{
+		this.setHealth (health);
+		this.setDefense (defense);
+		this.setMaxHealth (maxHealth):
+		this.setEquippedWeapon (equippedWeapon);
+		this.setImagePath (imagePath);
+		
+	} // Player constuctor
+	
+	
+	
 
 	public boolean isCapacityUpgradable() {
 		// TODO Auto-generated method stub
