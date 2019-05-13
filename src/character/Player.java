@@ -19,7 +19,7 @@ public class Player extends Human {
 	private int coins;
 	private int level;
 
-	
+
 	public Player() {} // default constuctor
 	
 	public Player(int health, int defense, int maxHealth, Weapon equippedWeapon, String imagePath, int coins, int level)
@@ -36,9 +36,11 @@ public class Player extends Human {
 	
 	
 	// gets and sets
+	public void setHealth (int health) {this.health = health;}
+	public int getHealth () {return health;}
 	
-	
-	public void setHealth (int health) {this.health  = health;}
+	public void setDefense (int defense) {this.defense = defense;}
+	public int getDefence () {return defense;}
 	
 
 	public boolean isCapacityUpgradable() {
@@ -72,5 +74,4 @@ public class Player extends Human {
 	}
 
 
-
-}
+} // Player class
