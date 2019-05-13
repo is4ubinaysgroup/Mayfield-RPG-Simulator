@@ -35,6 +35,7 @@ fixed up since item has Description image path and cost now.
 removed extra constructor missing imagePath
 removed ARMOR since it was the same as DAMAGE
 edited static use method to call the method in Player for upgrading productCapacity
+fixed - health upgrade can't boost over maxHealth
 */
 
 package src.items;
@@ -125,9 +126,9 @@ public class Product extends Item
 			int health = MainExecutable.getPlayer().getHealth() + increase;
 			
 			
-			if (health > MainExecutable.getPlayer().getHealth())
+			if (health > MainExecutable.getPlayer().getMaxHealth())
 			{
-				health = MainExecutable.getPlayer().getHealth();
+				health = MainExecutable.getPlayer().getMaxHealth();
 			} // if over max
 			
 			MainExecutable.getPlayer().setHealth (health);		
