@@ -1,3 +1,5 @@
+package src.gui;
+
 // 05-08 Matthew initially uploaded to Code repository
 // 05-09 Mina updated
 
@@ -13,8 +15,6 @@ fixed execute spelling, removed duplicate coins labels on some tabs, edited list
 buying engines still need to be completed; will be done when item storage management is finalized
 can't update weapon info labels yet without weapon constructor containing item inherited fields
 */
-
-package src.gui;
 
 import java.awt.*;
 import java.awt.event.*;
