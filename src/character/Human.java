@@ -10,64 +10,29 @@ import src.items.Weapon;
 
 public class Human
 {
-  //ints
-  protected int health;
-  protected int defense;
-  protected int maxHealth;
-  public static int MOVEMENT = 3;
-  protected Weapon equippedWeapon;
-  protected String imagePath;
 
+	public static int MOVEMENT = 3;
 
-  //Gets and Sets
-  public int getHealth()
-  {
-    return this.health;
-  }
-  
-  public void setHealth(int health)
-  {
-    this.health = health;
-  }
-  
-  public int getDefense()
-  {
-    return this.defense;
-  }
-  
-  public void setDefense(int defense)
-  {
-    this.defense = defense;
-  }
-  
-  public int getMaxHealth()
-  {
-    return this.maxHealth;
-  }
-  
-  public void setMaxHealth(int maxHealth)
-  {
-    this.maxHealth = maxHealth;
-  }
-  
-  public void increaseDefense() 
-  {
-	  this.defense += 5;
-  }
- 
+	protected int health;
+	protected int defense;
+	protected int maxHealth;
+	protected Weapon equippedWeapon;
+	protected String imagePath;
 
-/**
- * @return the equippedWeapon
- */
-public Weapon getEquippedWeapon() {
-	return equippedWeapon;
-}
+	// ------- gets and sets -------
+	public void setHealth (int health) {this.health = health;}
+	public int getHealth () {return health;}
+	
+	public void setDefense (int defense) {this.defense = defense;}
+	public int getDefense () {return defense;}
+	
+	public void setMaxHealth (int maxHealth) {this.maxHealth = maxHealth;}
+	public int getMaxHealth () {return maxHealth;}
+	
+	public void setEquippedWeapon (Weapon equippedWeapon) {this.equippedWeapon = equippedWeapon;}
+	public Weapon getEquippedWeapon () {return equippedWeapon;}
+	
+	public void setImagePath (String imagePath) {this.ImagePath = imagePath;}
+	public String getImagePath () {return imagePath;}
 
-/**
- * @param equippedWeapon the equippedWeapon to set
- */
-public void equipWeapon(Weapon equippedWeapon) {
-	this.equippedWeapon = equippedWeapon;
-}
-
-
+} // Human class
