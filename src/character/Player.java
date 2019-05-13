@@ -14,10 +14,13 @@ updated
 */
 
 public class Player extends Human {
-		
+
 	public final static int PRODUCT_ARRAY_SPACE = 100;
 	public final static int WEAPON_ARRAY_SPACE = 9;
 	
+	
+	// ------------------------------------------------ object fields ------------------------------------------------
+
 	private int level;
 	private int coins;
 	
@@ -29,6 +32,9 @@ public class Player extends Human {
 	private Weapon weapons [];
 	private Product products [];
 
+	
+
+	// ------------------------------------------------ constructor ------------------------------------------------
 
 	public Player() {} // default constructor
 	
