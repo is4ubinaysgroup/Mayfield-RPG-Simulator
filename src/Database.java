@@ -73,22 +73,24 @@ public class Database {
 	
 		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
 		
+		// static Weapons
 		// what about fields inherited from Item?
 		private static Weapon hat = new Weapon(stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE );
 		private static Weapon pencil = new Weapon(stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE );
 		private static Weapon ruler  = new Weapon(stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE );
 		private static Weapon rubberband = new Weapon(stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE);
 	
-		private static Product timbits = new Product("Timbits", Product.HEALTH, 10, 10,"+10 Health");
-		private static Product mcChicken = new Product("McChicken", Product.HEALTH, 15, 20, "+15 Health");
-		private static Product footLongSub = new Product("Foot Long Sub!", Product.HEALTH, 30, 50, "+30 Health");
-		private static Product soda = new Product("Soda", Product.CRITICALCHANCE, 1, 20,"upgrades critical chance");
-		private static Product tylenol = new Product("Tylenol", Product.DEFENSE, 5, 15,"+5 defense");
-		private static Product capacityUpgrade = new Product("Capacity Upgrade", Product.CAPACITY, 5, 50,"+5 product storage");
-		private static Product coffee = new Product("Coffee", Product.MAXHEALTH, 20,32, "+20 Max Health");
-		private static Product cappuccino = new Product("Cappuccino",Product.MAXHEALTH,40, 75,"+40 Max Health");
-		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"+60 Max Health");
-		private static Product orangeJuice = new Product("Orange Juice". Product.DAMAGE, 1, 30, "damage upgrade"); // not sure what increase would be for this
+		// static Products
+		private static Product timbits = new Product("Timbits", Product.HEALTH, 10, 10,"+10 Health", "/resources/timbits.png");
+		private static Product mcChicken = new Product("McChicken", Product.HEALTH, 15, 20, "+15 Health", "/resources/mcchicken.png");
+		private static Product footLongSub = new Product("Foot Long Sub!", Product.HEALTH, 30, 50, "+30 Health", "/resources/footlongsub.png");
+		private static Product soda = new Product("Soda", Product.CRITICALCHANCE, 1, 20,"upgrades critical chance", "/resources/soda.png");
+		private static Product tylenol = new Product("Tylenol", Product.DEFENSE, 5, 15,"+5 defense", "/resources/tylenol.png");
+		private static Product capacityUpgrade = new Product("Capacity Upgrade", Product.CAPACITY, 5, 50,"+5 product storage", "/resources/capacityupgrade.png");
+		private static Product coffee = new Product("Coffee", Product.MAXHEALTH, 20,32, "+20 Max Health", "/resources/coffee.png");
+		private static Product cappuccino = new Product("Cappuccino",Product.MAXHEALTH,40, 75,"+40 Max Health", "/resources/cappuccino.png");
+		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"+60 Max Health", "/resources/espresso.png");
+		private static Product orangeJuice = new Product("Orange Juice". Product.DAMAGE, 1, 30, "damage upgrade", "/resources/orangejuice.png"); // not sure what increase would be for this
 
 	
 	
@@ -239,4 +241,3 @@ public class Database {
 
 
 	} // Database class
-
