@@ -1,6 +1,6 @@
 package src.gui;
 
-// initially completed 05-08 by Matthew
+// initially uploaded 05-08 by Matthew to Code repository
 
 /* 
    edited 05-09 by Mina
@@ -16,6 +16,7 @@ Update on May 9th 2019
 Missing UML methods and objects.
 ???
 */
+
 /*
 bug fixing @Carson Fujita
 Date: 
@@ -25,7 +26,12 @@ bugs fixed
 */
 
 
-// 05-12 fixed execute spelling and previously equipped weapon would need to be put into storage when switching weapons - Mina
+/*
+05-12 Mina
+fixed execute spelling
+previously equipped weapon would need to be put into storage when switching weapons
+would need to double-check getDamage, getRangedDamage, and getCriticalChance Weapon object methods
+*/
 
 
 import java.awt.event.*;
