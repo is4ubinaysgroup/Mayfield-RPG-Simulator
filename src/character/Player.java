@@ -15,17 +15,22 @@ updated
 */
 
 public class Player extends Human {
+	
+	private int coins;
+	private int level;
 
 	
 	public Player() {} // default constuctor
 	
-	public Player(int health, int defense, int maxHealth, Weapon equippedWeapon, String imagePath)
+	public Player(int health, int defense, int maxHealth, Weapon equippedWeapon, String imagePath, int coins, int level)
 	{
 		this.setHealth (health);
 		this.setDefense (defense);
 		this.setMaxHealth (maxHealth):
 		this.setEquippedWeapon (equippedWeapon);
 		this.setImagePath (imagePath);
+		this.setCoins (coins);
+		this.setLevel (level);
 		
 	} // Player constuctor
 	
