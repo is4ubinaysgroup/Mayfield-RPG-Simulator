@@ -15,7 +15,7 @@ updated
 */
 
 public class Player extends Human {
-	
+		
 	private int coins;
 	private int level;
 
