@@ -35,6 +35,10 @@ public class Player extends Human {
 	} // Player constuctor
 	
 	
+	// gets and sets
+	
+	
+	public void setHealth (int health) {this.health  = health;}
 	
 
 	public boolean isCapacityUpgradable() {
