@@ -35,7 +35,8 @@ public class Player extends Human {
 	} // Player constuctor
 	
 	
-	// gets and sets
+	// ------------------------------------------------ gets and sets ------------------------------------------------
+	
 	public void setCoins (int coins) {this.coins = coins;)
 	public int getCoins () {return coins;}
 					  
@@ -43,6 +44,7 @@ public class Player extends Human {
 	public int getLevel () {return level;}
 
 	
+	// ------------------------------------------------ product and weapon storage management ------------------------------------------------
 
 	public boolean isCapacityUpgradable() {
 		// TODO Auto-generated method stub
@@ -69,10 +71,6 @@ public class Player extends Human {
 		
 	}
 
-	public int getCoins() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 } // Player class
