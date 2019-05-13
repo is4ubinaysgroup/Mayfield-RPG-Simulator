@@ -34,6 +34,7 @@ fixed up since item has Description image path and cost now.
 /*05-13 Mina
 removed extra constructor missing imagePath
 removed ARMOR since it was the same as DAMAGE
+edited static use method to call the method in Player for upgrading productCapacity
 */
 
 package src.items;
@@ -43,13 +44,11 @@ import src.gui.MainExecutable;
 
 public class Product extends Item
 {
-
-	//public static final int ARMOR = 1;
-	public static final int CAPACITY = 2; // has a limit
-	public static final int CRITICALCHANCE = 3;
-	public static final int HEALTH = 4;
-	public static final int MAXHEALTH = 5;
-	public static final int DAMAGE = 6;
+	public static final int CAPACITY = 1; // has a limit
+	public static final int CRITICALCHANCE = 2;
+	public static final int HEALTH = 3;
+	public static final int MAXHEALTH = 4;
+	public static final int DAMAGE = 5;
 	private int upgradeType;
 	private int increase;
 
@@ -80,6 +79,7 @@ public class Product extends Item
 	public int getIncrease () { return increase; } // getIncrease method
 	
 	
+	
 	// this static method could be put anywhere
 	
 	public static boolean use (Product product)
@@ -91,37 +91,21 @@ public class Product extends Item
 		int increase = product.getIncrease();
 		
 		
-		/*if (upgradeType == ARMOR) // defense upgrade already does this
-		{
-	
-			// need name of Player object and class where it is instantiated
-
-			int defense = MainExecutable.getPlayer().getDefense () + increase;
-			MainExecutable.getPlayer().setDefense (defense);
-			
-			used = true;
-			
-		} // if armour upgrade*/
-		
-		
 		if (upgradeType == CAPACITY)
 		{
 			
 			if (MainExecutable.getPlayer().isCapacityUpgradable() == true)
 			{	
-				int productCapacity = MainExecutable.getPlayer().getProductCapacity () + increase;
 			
-				MainExecutable.getPlayer().setProductCapacity (productCapacity);
-			
+				MainExecutable.getPlayer().upgradeCapacity();
 				used = true;
 			}
 
-			
 		} // if capacity upgrade
 		
 		
 		
-		else if (upgradeType == CRITICALCHANCE)//fixed
+		else if (upgradeType == CRITICALCHANCE) //fixed
 		{
 			Weapon equippedWeapon = MainExecutable.getPlayer().getEquippedWeapon();
 			
@@ -175,7 +159,7 @@ public class Product extends Item
 			
 			used = true;
 			
-		} // if 6 - damage upgrade
+		} // if - damage upgrade
 		
 
 		
