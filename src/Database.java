@@ -31,14 +31,21 @@ created the save1,save2,save3 files and the file[] files
 created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, tylenol,capacityupgrade, coffee,cappuccino, expresso, and orange juice.
  */ 
 
+/*
+05-12 Mina
+fixed spelling of espresso, filled in getWeapon method, edited descriptions and added imagePaths for products
+changed spacing / code grouping
+*/
 
-
-// 05-12 fixed spelling of espresso, edited getWeapon method, and edited product descriptions - Mina
 
 
 public class Database {
-	
 		
+		// ------------------------------------------- save file configuration stuff ------------------------------------------- 
+		
+		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
+
+	
 		private static File[] files = new File[2];
 		{
 			files[0] = new File("saves\\Save1.txt");
@@ -46,7 +53,34 @@ public class Database {
 			files[2] = new File("saves\\Save3.txt");
 		}		
 		
-		//Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
+
+		public static void save(File file) throws Exception
+		{
+			
+		} // save method
+		
+	
+		public static void read(File file) throws Exception
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(files[0]));
+			for(int i = 0; i < files[0].length(); i++) //reads the document.
+			{
+				//TODO
+			}
+		} // read method
+		
+	
+		public static void updateFile(File file)throws  Exception
+		{
+			
+		} // updateFile method
+	
+	
+	
+		// ------------------------------------------- weapon stuff -------------------------------------------
+	
+		// Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
+	
 		public static int stats[][]=new int[3][2];{//this array stores all the information for the weapon's beside critical chance and weapon names
 			//  [damage]  [range]
 			stats[0][0]=4; stats[0][1]=3;//sets the "hat" weapon damage
@@ -69,19 +103,44 @@ public class Database {
 			names[3]="rubberBand";
 		}
 		
-		// TODO Auto-generated constructor stub
-		// ^why is this comment here? - Mina
 	
-		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
 		
-		// static Weapons
-		// what about fields inherited from Item? possibly update Weapon constructor - Mina
+		// what about fields inherited from Item? possibly update Weapon constructor or make two constructors? - Mina
+	
 		private static Weapon hat = new Weapon(stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE );
 		private static Weapon pencil = new Weapon(stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE );
 		private static Weapon ruler  = new Weapon(stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE );
 		private static Weapon rubberband = new Weapon(stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE);
 	
-		// static Products
+	
+		// gets and sets
+		public static Weapon getHat() {return hat;}
+		public static void setHat(Weapon hat) {Database.hat = hat;}
+
+		public static Weapon getPencil() {return pencil;}
+		public static void setPencil(Weapon pencil) {Database.pencil = pencil;}
+
+		public static Weapon getRuler() {return ruler;}
+		public static void setRuler(Weapon ruler) {Database.ruler = ruler;}
+	
+		public static Weapon getRubberband() {return rubberband;}
+		public static void setRubberband(Weapon rubberband) {Database.rubberband = rubberband;}
+
+	
+	
+		public static Weapon getWeapon(String name)
+		{
+			if (name.equals("Pencil") {return Database.getPencil();}
+			else if (name.equals("Hat") {return Database.getHat();}
+			else if (name.equals("Ruler") {return Database.getRuler();}
+			else {return Database.getRubberband();} // "Rubber Band"
+	
+		} //getWeapon method
+	
+	
+	
+		// ------------------------------------------- product stuff -------------------------------------------
+	
 		private static Product timbits = new Product("Timbits", Product.HEALTH, 10, 10,"+10 Health", "/resources/timbits.png");
 		private static Product mcChicken = new Product("McChicken", Product.HEALTH, 15, 20, "+15 Health", "/resources/mcchicken.png");
 		private static Product footLongSub = new Product("Foot Long Sub!", Product.HEALTH, 30, 50, "+30 Health", "/resources/footlongsub.png");
@@ -93,6 +152,7 @@ public class Database {
 		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"+60 Max Health", "/resources/espresso.png");
 		private static Product orangeJuice = new Product("Orange Juice". Product.DAMAGE, 1, 30, "damage upgrade", "/resources/orangejuice.png"); // not sure what increase would be for this
 
+		// gets
 		public static Product getTimbits() {return timbits;}
 		public static Product getMcChicken() {return mcChicken;}
 		public static Product getFootLongSub() {return footLongSub;}
@@ -106,102 +166,6 @@ public class Database {
 
 
 
-	
-	
-		public static void save(File file) throws Exception
-		{
-			
-		}
-		
-		public static void read(File file) throws Exception
-		{
-			BufferedReader reader = new BufferedReader(new FileReader(files[0]));
-			for(int i = 0; i < files[0].length(); i++) //reads the document.
-			{
-				//TODO
-			}
-		}
-		
-		public static void updateFile(File file)throws  Exception
-		{
-			
-		}
-		
-	
-	
-
-
-
-
-		/**
-		 * @return the hat
-		 */
-		public static Weapon getHat() {
-			return hat;
-		}
-
-		/**
-		 * @param hat the hat to set
-		 */
-		public static void setHat(Weapon hat) {
-			Database.hat = hat;
-		}
-
-		/**
-		 * @return the pencil
-		 */
-		public static Weapon getPencil() {
-			return pencil;
-		}
-
-		/**
-		 * @param pencil the pencil to set
-		 */
-		public static void setPencil(Weapon pencil) {
-			Database.pencil = pencil;
-		}
-
-		/**
-		 * @return the ruler
-		 */
-		public static Weapon getRuler() {
-			return ruler;
-		}
-
-		/**
-		 * @param ruler the ruler to set
-		 */
-		public static void setRuler(Weapon ruler) {
-			Database.ruler = ruler;
-		}
-
-		/**
-		 * @return the rubberband
-		 */
-		public static Weapon getRubberband() {
-			return rubberband;
-		}
-
-		/**
-		 * @param rubberband the rubberband to set
-		 */
-		public static void setRubberband(Weapon rubberband) {
-			Database.rubberband = rubberband;
-		}
-
-	
-	
-		public static Weapon getWeapon(String name)
-		{
-			if (name.equals("Pencil") {return Database.getPencil();}
-			else if (name.equals("Hat") {return Database.getHat();}
-			else if (name.equals("Ruler") {return Database.getRuler();}
-			else {return Database.getRubberband();} // "Rubber Band"
-	
-		} //getWeapon method
-
-
-	
 		public static Product getProduct (String name) //mina created this.
 		{
 			if (name.equals("Timbits")) {return Database.getTimbits();}
