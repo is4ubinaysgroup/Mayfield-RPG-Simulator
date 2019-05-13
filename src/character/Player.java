@@ -36,21 +36,6 @@ public class Player extends Human {
 	
 	
 	// gets and sets
-	public void setHealth (int health) {this.health = health;}
-	public int getHealth () {return health;}
-	
-	public void setDefense (int defense) {this.defense = defense;}
-	public int getDefense () {return defense;}
-	
-	public void setMaxHealth (int maxHealth) {this.maxHealth = maxHealth;}
-	public int getMaxHealth () {return maxHealth;}
-	
-	public void setEquippedWeapon (Weapon equippedWeapon) {this.equippedWeapon = equippedWeapon;}
-	public Weapon getEquippedWeapon () {return equippedWeapon;}
-	
-	public void setImagePath (String imagePath) {this.ImagePath = imagePath;}
-	public String getImagePath () {return imagePath;}
-	
 	public void setCoins (int coins) {this.coins = coins;)
 	public int getCoins () {return coins;}
 					  
