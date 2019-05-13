@@ -84,14 +84,26 @@ public class Player extends Human {
 	public boolean isCapacityUpgradable() {return numProducts < PRODUCT_ARRAY_SPACE;} // isCapacityUpgradable method
 	
 	public void upgradeCapacity() {productCapacity = productCapacity+5;} // upgradeCapacity method
-
-
+	
+	
+	
+	public boolean alreadyOwnsWeapon (Weapon weapon)
+	{
+		for (int i = 0; i< numWeapons; i++)
+		{
+			if (weapon.getName().equals(weapons[i].getName())) {return true;}
+			
+		} // for 0...numWeapons-1
+		
+		return false;
+		
+	} // alreadyOwnsWeapon method
+	
 	
 	public void deleteProduct(Product product)
 	{
 		
-	} // delete Product method
-
+	} // deleteProduct method: linear search and set null of pointer and switch of item in highest index to vacated pointer; previously highest index becomes null and numItems decrements
 
 
 } // Player class
