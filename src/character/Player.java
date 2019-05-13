@@ -40,9 +40,16 @@ public class Player extends Human {
 	public int getHealth () {return health;}
 	
 	public void setDefense (int defense) {this.defense = defense;}
-	public int getDefence () {return defense;}
+	public int getDefense () {return defense;}
 	
+	public void setMaxHealth (int maxHealth) {this.maxHealth = maxHealth;}
+	public int getMaxHealth () {return maxHealth;}
+	
+	public void setEquippedWeapon (Weapon equippedWeapon) {this.equippedWeapon = equippedWeapon;}
+	public Weapon getEquippedWeapon () {return equippedWeapon;}
 
+	
+	
 	public boolean isCapacityUpgradable() {
 		// TODO Auto-generated method stub
 		return false;
