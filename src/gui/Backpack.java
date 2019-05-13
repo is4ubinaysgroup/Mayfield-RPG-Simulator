@@ -36,6 +36,7 @@ previously equipped weapon would need to be put into storage when switching weap
 05-13 Mina
 added comments to button engines for what would happen in-battle
 added static methods that will remove and add strings to combobox (weapons are never deleted)
+edited equip button engine to use the switchWeapon method of Player
 */
 
 
@@ -188,10 +189,9 @@ public class Backpack
 		String weaponName = (String) comboB_weapons.getSelectedItem();
 		Weapon weapon = Database.getWeapon (weaponName);
 		
-		//MainExecutable.getPlayer().addWeapon (MainExecutable.getEquippedWeapon());
-		MainExecutable.getPlayer().equipWeapon (weapon);
+		MainExecutable.getPlayer().switchWeapon (weapon);
 		
-		// if eqip completed... change turn if boss battle is happening and go to battle panel
+		// equip completed... change turn if boss battle is happening and go to battle panel
 		
 		update();
 	} // btn_EquipEngine method
@@ -210,7 +210,7 @@ public class Backpack
 		else {
 			
 			// use completed... change turn if boss battle is happening and go to battle panel
-			// something like if boolean Match.game == true?
+			
 			update();
 		} // else
 		
