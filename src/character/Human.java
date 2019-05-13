@@ -5,6 +5,8 @@ package src.character;
 human class sets the requirements and data for the rest of the classes
 */
 
+import java.awt.Image;
+
 import src.items.Weapon;
 
 public class Human
@@ -15,7 +17,7 @@ public class Human
   protected int maxHealth;
   public static int MOVEMENT = 3;
   protected Weapon equippedWeapon;
-  
+  protected  Image image;
 
   //Gets and Sets
   public int getHealth()
@@ -66,6 +68,14 @@ public Weapon getEquippedWeapon() {
  */
 public void equipWeapon(Weapon equippedWeapon) {
 	this.equippedWeapon = equippedWeapon;
+}
+
+public Image getImage() {
+	return image;
+}
+
+public void setImage(Image image) {
+	this.image = image;
 }
 }
 
