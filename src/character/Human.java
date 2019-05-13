@@ -5,6 +5,10 @@ package src.character;
 human class sets the requirements and data for the rest of the classes
 */
 
+/*
+05-13 Mina
+added imagePath field
+*/
 
 import src.items.Weapon;
 
