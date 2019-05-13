@@ -47,9 +47,18 @@ public class Player extends Human {
 	
 	public void setEquippedWeapon (Weapon equippedWeapon) {this.equippedWeapon = equippedWeapon;}
 	public Weapon getEquippedWeapon () {return equippedWeapon;}
+	
+	public void setImagePath (String imagePath) {this.ImagePath = imagePath;}
+	public String getImagePath () {return imagePath;}
+	
+	public void setCoins (int coins) {this.coins = coins;)
+	public int getCoins () {return coins;}
+					  
+	public void setLevel (int level) {this.level = level};
+	public int getLevel {return level;}
 
 	
-	
+
 	public boolean isCapacityUpgradable() {
 		// TODO Auto-generated method stub
 		return false;
