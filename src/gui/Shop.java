@@ -1,19 +1,25 @@
-package src.gui;
+// 05-08 Matthew initially uploaded to Code repository
+// 05-09 Mina updated
 
-// initially uploaded 05-08 by Matthew
-// updated 05-09 by Mina
 /*
 Bug fixing @Carson Fujita
 Date: 
 May 12th, 2019
  */ 
-// 05-12 fixed execute spelling, removed duplicatecoins labels on each tab, edited+uncommented some lines - Mina
-// buying engines still need to be completed; will be done when item storage management is finalized
-// not sure how to update weapon info lable yet without understanding weapon class
+
+/*
+05-12 Mina
+fixed execute spelling, removed duplicate coins labels on some tabs, edited listener engines
+buying engines still need to be completed; will be done when item storage management is finalized
+can't update weapon info labels yet without weapon constructor containing item inherited fields
+*/
+
+package src.gui;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
 
 public class Shop
 {
