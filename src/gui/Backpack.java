@@ -202,11 +202,17 @@ public class Backpack
 		lbl_error.setText(null);
 		String productName = (String) comboB_products.getSelectedItem();
 		Product product = Database.getProduct(productName);//fixed by carson
-		Product.use(product);
 		
-		// if use completed... change turn if boss battle is happening and go to battle panel
+		Boolean used = Product.use(product);
 		
-		update();
+		if (used == false) {lbl_error.setText("using product error");}
+		else {
+			
+			// use completed... change turn if boss battle is happening and go to battle panel
+			// something like if boolean Match.game == true?
+			update();
+		} // else
+		
 	} // btn_UseEngine method
 	
 	
