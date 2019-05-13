@@ -33,7 +33,7 @@ created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, 
 
 
 
-// 05-12 spelling of espresso - Mina
+// 05-12 fixed spelling of espresso and edited getWeapon method - Mina
 
 
 public class Database {
@@ -214,12 +214,18 @@ public class Database {
 			Database.rubberband = rubberband;
 		}
 
-		public static Weapon getWeapon(String weaponName) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+	
+	
+		public static Weapon getWeapon(String name)
+		{
+			if (name.equals("Pencil") {return Database.getPencil();}
+			else if (name.equals("Hat") {return Database.getHat();}
+			else if (name.equals("Ruler") {return Database.getRuler();}
+			else {return Database.getRubberband();} // "Rubber Band"
+	
+		} //getWeapon method
 
 
 
-	}
+	} // Weapon class
 
