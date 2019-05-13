@@ -31,7 +31,10 @@ fixed up since item has Description image path and cost now.
 
 // 05-12 edited this.setName(name); in first constructor and fixed execute spelling - Mina
 
-// 05-13 removed ARMOR since it was the same as DAMAGE - Mina
+/*05-13 Mina
+removed extra constructor missing imagePath
+removed ARMOR since it was the same as DAMAGE
+*/
 
 package src.items;
 
@@ -65,16 +68,8 @@ public class Product extends Item
 		this.setImagePath(imagePath);
 		
 	} // Product constructor
-	
-	public Product (String name, int upgradeType, int increase, int cost, String description)
-	{
-		this.setName(name);
-		this.upgradeType = upgradeType;
-		this.increase = increase;
-		this.setCost(cost);
-		this.setDescription(description);
-		// doesn't have imagePath
-	}
+
+
 	
 	// ------- set and get methods -------
 	
@@ -85,7 +80,7 @@ public class Product extends Item
 	public int getIncrease () { return increase; } // getIncrease method
 	
 	
-	
+	// this static method could be put anywhere
 	
 	public static boolean use (Product product)
 	{
