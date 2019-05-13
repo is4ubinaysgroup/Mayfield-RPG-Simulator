@@ -93,6 +93,19 @@ public class Database {
 		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"+60 Max Health", "/resources/espresso.png");
 		private static Product orangeJuice = new Product("Orange Juice". Product.DAMAGE, 1, 30, "damage upgrade", "/resources/orangejuice.png"); // not sure what increase would be for this
 
+		public static Product getTimbits() {return timbits;}
+		public static Product getMcChicken() {return mcChicken;}
+		public static Product getFootLongSub() {return footLongSub;}
+		public static Product getSoda() {return soda;}
+		public static Product getTylenol() {return tylenol;}
+		public static Product getCapacityUpgrade() {return capacityUpgrade;}
+		public static Product getCoffee() {return coffee;}
+		public static Product getCappuccino() {return cappuccino;}
+		public static Product getEspresso() {return espresso;}
+		public static Product getOrangeJuice() {return orangeJuice;}
+
+
+
 	
 	
 		public static void save(File file) throws Exception
@@ -113,64 +126,12 @@ public class Database {
 		{
 			
 		}
-
-	
-	
-		public static Product getProduct (String name) //mina created this.
-		{
-			if (name.equals("Timbits")) {return Database.getTimbits();}
-			else if (name.equals("McChicken")) {return Database.getMcChicken();}
-			else if (name.equals("Foot Long Sub!")) {return Database.getFootLongSub();}
-			else if (name.equals("Soda")) {return Database.getSoda();}
-			else if (name.equals("Tylenol")) {return Database.getTylenol();}
-			else if (name.equals("Capacity Upgrade")) {return Database.getCapacityUpgrade();}
-			else if (name.equals("Coffee")) {return Database.getCoffee();}
-			else if (name.equals("Cappuccino")) {return Database.getCappuccino();}
-			else if (name.equals("Espresso")) {return Database.getEspresso();}
-			else {return Database.getOrangeJuice();} // "Orange Juice"
-		} // getProduct method
 		
 	
 	
-		public static Product getTimbits() {
-			return timbits;
-		}
 
-		public static Product getMcChicken() {
-			return mcChicken;
-		}
 
-		public static Product getFootLongSub() {
-			return footLongSub;
-		}
 
-		public static Product getSoda() {
-			return soda;
-		}
-
-		public static Product getTylenol() {
-			return tylenol;
-		}
-
-		public static Product getCapacityUpgrade() {
-			return capacityUpgrade;
-		}
-
-		public static Product getCoffee() {
-			return coffee;
-		}
-
-		public static Product getCappuccino() {
-			return cappuccino;
-		}
-
-		public static Product getEspresso() {
-			return espresso;
-		}
-
-		public static Product getOrangeJuice() {
-			return orangeJuice;
-		}
 
 		/**
 		 * @return the hat
@@ -240,5 +201,21 @@ public class Database {
 		} //getWeapon method
 
 
-
+	
+		public static Product getProduct (String name) //mina created this.
+		{
+			if (name.equals("Timbits")) {return Database.getTimbits();}
+			else if (name.equals("McChicken")) {return Database.getMcChicken();}
+			else if (name.equals("Foot Long Sub!")) {return Database.getFootLongSub();}
+			else if (name.equals("Soda")) {return Database.getSoda();}
+			else if (name.equals("Tylenol")) {return Database.getTylenol();}
+			else if (name.equals("Capacity Upgrade")) {return Database.getCapacityUpgrade();}
+			else if (name.equals("Coffee")) {return Database.getCoffee();}
+			else if (name.equals("Cappuccino")) {return Database.getCappuccino();}
+			else if (name.equals("Espresso")) {return Database.getEspresso();}
+			else {return Database.getOrangeJuice();} // "Orange Juice"
+		} // getProduct method
+				 
+				 
+				 
 	} // Database class
