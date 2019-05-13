@@ -15,7 +15,7 @@ updated
 */
 
 public class Player extends Human {
-	
+		
 	private int coins;
 	private int level;
 
@@ -29,18 +29,18 @@ public class Player extends Human {
 		this.setMaxHealth (maxHealth):
 		this.setEquippedWeapon (equippedWeapon);
 		this.setImagePath (imagePath);
-		this.setCoins (coins);
-		this.setLevel (level);
+		this.coins = coins;
+		this.level = level;
 		
 	} // Player constuctor
 	
 	
 	// ------------------------------------------------ gets and sets ------------------------------------------------
 	
-	public void setCoins (int coins) {this.coins = coins;)
+	public void setCoins (int coins) {this.coins = coins;}
 	public int getCoins () {return coins;}
 					  
-	public void setLevel (int level) {this.level = level};
+	public void setLevel (int level) {this.level = level;}
 	public int getLevel () {return level;}
 
 	

@@ -10,6 +10,11 @@ human class sets the requirements and data for the rest of the classes
 added imagePath field
 */
 
+/*
+Carson Fujita
+fixed imagepath
+*/
+
 import src.items.Weapon;
 
 public class Human
