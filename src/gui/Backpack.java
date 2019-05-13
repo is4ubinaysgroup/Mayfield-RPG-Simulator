@@ -25,7 +25,7 @@ bugs fixed
 */
 
 
-// 05-12 fixed execute spelling - Mina
+// 05-12 fixed execute spelling and previously equipped weapon would need to be put into storage when switching weapons - Mina
 
 
 import java.awt.event.*;
@@ -172,10 +172,10 @@ public class Backpack
 	{
 		lbl_error.setText(null);
 		String weaponName = (String) comboB_weapons.getSelectedItem();
-		
-		//WIP
 		Weapon weapon = Database.getWeapon (weaponName);
-		MainExecutable.getPlayer().equipWeapon (weapon); // switches the weapon; previously equipped gets put back into storage
+		
+		//MainExecutable.getPlayer().addWeapon (MainExecutable.getEquippedWeapon());
+		MainExecutable.getPlayer().equipWeapon (weapon);
 		
 		update();
 	} // btn_EquipEngine method
