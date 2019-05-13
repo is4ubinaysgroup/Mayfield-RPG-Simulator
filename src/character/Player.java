@@ -32,11 +32,11 @@ public class Player extends Human {
 	private Weapon weapons [];
 	private Product products [];
 
-	
 
 	// ------------------------------------------------ constructor ------------------------------------------------
 
 	public Player() {} // default constructor
+	
 	
 	public Player(int health, int defense, int maxHealth, Weapon equippedWeapon, String imagePath,
 					int coins, int level, int numProducts, int numWeapons, int productCapacity)
@@ -88,7 +88,7 @@ public class Player extends Human {
 	
 	// ------------------------------------------------ product and weapon storage management ------------------------------------------------
 
-	public boolean isCapacityUpgradable() {return numProducts < PRODUCT_ARRAY_SPACE;} // isCapacityUpgradable method
+	public boolean isCapacityUpgradable() {return productCapacity < PRODUCT_ARRAY_SPACE;} // isCapacityUpgradable method
 	
 	
 	public void upgradeCapacity() {productCapacity = productCapacity+5;} // upgradeCapacity method
