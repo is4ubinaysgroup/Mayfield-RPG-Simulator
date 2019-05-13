@@ -34,6 +34,7 @@ created hat, pencil, ruler, rubbber band, timbits, mcchicken,footlongsub, soda, 
 /*
 05-12 Mina
 fixed spelling of espresso, filled in getWeapon method, edited descriptions and added imagePaths for products
+need to ask about what increase field is for damage upgrade (orange juice)
 changed spacing / code grouping
 */
 
