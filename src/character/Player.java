@@ -11,7 +11,6 @@ import src.items.Weapon;
 /*
 05-13 Mina
 updated
-
 */
 
 public class Player extends Human {
@@ -110,9 +109,9 @@ public class Player extends Human {
 	
 				products [i] = product [numProducts-1];
 				
-				product [numProducts-1] = null;
+				products [numProducts-1] = null;
 				
-				//Backpack.removeProduct (product.getName());
+				Backpack.removeProduct (product.getName());
 				
 				numProducts--;
 				
