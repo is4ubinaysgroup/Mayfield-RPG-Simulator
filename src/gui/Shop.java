@@ -486,9 +486,10 @@ public class Shop
 	{
 		boolean completed = false;
 		
-		// Product product =  Product.getProduct (selectedItemName);
+		Product product =  Database.getProduct (selectedItemName);
+		
 		// check enough coins and storage, purchase using coins, update coins labels in shop and backpack
-		// Player.addProduct(product);
+		// MainExecutable.getPlayer().addProduct(product);
 		// completed = true;
 		
 		return completed;
@@ -500,9 +501,10 @@ public class Shop
 	{
 		boolean completed = false;
 		
-		// Weapon weapon = Weapon.getWeapon (selectedItemName); //getWeapon method could be put in Database
+		Weapon weapon = Database.getWeapon (selectedItemName);
+		
 		// check enough coins and if the user doesn't already have the weapon, purchase using coins, update coins labels in shop and backpack
-		// Player.addWeapon(weapon);
+		// MainExecutable.getPlayer().addWeapon(weapon);
 		// completed = true;
 		
 		return completed;
