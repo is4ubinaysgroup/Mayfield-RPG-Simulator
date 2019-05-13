@@ -23,7 +23,7 @@ public class Player extends Human {
 	
 	private int numProducts;
 	private int productCapacity; // upgradable up to 100
-	private int numWeapons; // not completely necessary but saves a linear check for the first array space pointing to null
+	private int numWeapons; // not completely necessary but saves a linear check for the first array space pointing to null when pushing
 	
 	
 	private Weapon weapons [];
@@ -54,6 +54,7 @@ public class Player extends Human {
 	} // Player constuctor
 	
 	
+	
 	// ------------------------------------------------ gets and sets ------------------------------------------------
 	
 	public void setCoins (int coins) {this.coins = coins;}
@@ -77,26 +78,28 @@ public class Player extends Human {
 	public void setProductsArray (Product[] products) {this.products[] = products;}
 	public Product[] getProductsArray () {return products;}
 
+
 	
 	// ------------------------------------------------ product and weapon storage management ------------------------------------------------
 
 	public boolean isCapacityUpgradable() {return numProducts < PRODUCT_ARRAY_SPACE;} // isCapacityUpgradable method
 	
+	
 	public void upgradeCapacity() {productCapacity = productCapacity+5;} // upgradeCapacity method
 	
 	
+	public boolean isProductCapacityFull () {return numProducts == productCapacity;} // isProductCapacityFull method
+
 	
-	public boolean alreadyOwnsWeapon (Weapon weapon)
+	
+	public void addProduct (Product product)
 	{
-		for (int i = 0; i< numWeapons; i++)
-		{
-			if (weapon.getName().equals(weapons[i].getName())) {return true;}
-			
-		} // for 0...numWeapons-1
+		products [numProducts] = product;
+		Backpack.addProduct (product.getName());
+		numProducts++;
 		
-		return false;
-		
-	} // alreadyOwnsWeapon method
+	} // addProduct method (push)
+	
 	
 	
 	public void deleteProduct(Product product)
@@ -115,11 +118,71 @@ public class Player extends Human {
 				
 				numProducts--;
 				
+				return; // exit the method
+				
 			} // if match found
-		
 		} // for 0...numProducts-1
-	} // deleteProduct method: linear search and set null of pointer and switch of item in highest index to vacated pointer; previously highest index becomes null and numItems decrements
+	} // deleteProduct method: linear search and set null of pointer and point it to item in highest index; previously highest index becomes null and numProducts decrements
+	
 
+	
+	public boolean alreadyOwnsWeapon (Weapon weapon)
+	{
+		for (int i = 0; i< numWeapons; i++)
+		{
+			if (weapon.getName().equals(weapons[i].getName())) {return true;}
+			
+		} // for 0...numWeapons-1
+		
+		return false;
+		
+	} // alreadyOwnsWeapon method
+	
+	
+	
+	public void addWeapon (Weapon weapon)
+	{
+		weapons [numWeapons] = weapon;
+		Backpack.addWeapon (weapon.getName());
+		numWeapons++;
+		
+	} // addWeapon method (push)
+	
+	
 
+	public void switchWeapon (Weapon weapon)
+	{
+		
+		deleteWeapon (weapon);
+		addWeapon (this.getEquippedWeapon());
+		equipWeapon (weapon);
+		
+	} // switchWeapon method
+	
+	
+	
+	public void deleteWeapon(Weapon weapon)
+	{
+		for (int i = 0; i< numWeapons; i++)
+		{
+			if (weapon.getName().equals(weapons[i].getName()))
+			{
+				weapons [i] = null; // not sure if this is needed but just in case
+	
+				weapons [i] = weapons [numWeapons-1];
+				
+				weapons [numWeapons-1] = null;
+				
+				Backpack.removeWeapon (weapon.getName());
+				
+				numWeapons--;
+				
+				return; // exit the method
+				
+			} // if match found
+		} // for 0...numWeapons-1
+	} // deleteWeapon method
+	
+	
 	
 } // Player class
