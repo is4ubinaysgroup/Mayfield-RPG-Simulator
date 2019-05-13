@@ -7,7 +7,7 @@ Bug fixing @Carson Fujita
 Date: 
 May 12th, 2019
  */ 
-// 05-02 fixed execute spelling and edited+uncommented some lines - Mina
+// 05-12 fixed execute spelling and edited+uncommented some lines - Mina
 
 import java.awt.*;
 import java.awt.event.*;
