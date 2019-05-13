@@ -70,11 +70,12 @@ public class Database {
 		}
 		
 		// TODO Auto-generated constructor stub
+		// ^why is this comment here? - Mina
 	
 		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
 		
 		// static Weapons
-		// what about fields inherited from Item?
+		// what about fields inherited from Item? possibly update Weapon constructor - Mina
 		private static Weapon hat = new Weapon(stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE );
 		private static Weapon pencil = new Weapon(stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE );
 		private static Weapon ruler  = new Weapon(stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE );
