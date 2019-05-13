@@ -8,6 +8,7 @@ Date:
 May 12th, 2019
  */ 
 // 05-12 fixed execute spelling, removed duplicatecoins labels on each tab, edited+uncommented some lines - Mina
+// buying engines still need to be completed; will be done when item storage management is finalized
 
 import java.awt.*;
 import java.awt.event.*;
@@ -455,7 +456,33 @@ public class Shop
 	public static void updateProductInfo(int tab)
 	{
 		Product product =  Database.getProduct (selectedItemName);
-		// update product info JLabels on appropriate tab
+		
+		if (tab == 1)
+		{
+			lbl_icon1.setIcon(new ImageIcon(frame.class.getResource(product.getImagePath())));
+			lbl_name1.setText("Name: " + product.getName());
+			lbl_cost1.setText("Cost: " + Integer.toString (product.getCost()));
+			lbl_description1.setText ("Description: " + product.getDescription());
+
+		} // if tab 1
+
+		else if (tab == 2)
+		{
+			lbl_icon2.setIcon(new ImageIcon(frame.class.getResource(product.getImagePath())));
+			lbl_name2.setText("Name: " + product.getName());
+			lbl_cost2.setText("Cost: " + Integer.toString (product.getCost()));
+			lbl_description2.setText ("Description: " + product.getDescription());
+
+		} // else if tab 2
+
+		else
+		{
+			lbl_icon3.setIcon(new ImageIcon(frame.class.getResource(product.getImagePath())));
+			lbl_name3.setText("Name: " + product.getName());
+			lbl_cost3.setText("Cost: " + Integer.toString (product.getCost()));
+			lbl_description3.setText ("Description: " + product.getDescription());
+
+		} // else tab 3
 		
 	} // productComboBoxEngine method
 	
@@ -464,7 +491,11 @@ public class Shop
 	public static void updateWeaponInfo()
 	{
 		Weapon weapon = Database.getWeapon (selectedItemName);
-		// update weapon info JLabels on 4th tab
+		
+		lbl_icon4.setIcon(new ImageIcon(frame.class.getResource(weapon.getImagePath())));
+		lbl_name4.setText("Name: " + weapon.getName());
+		lbl_cost4.setText("Cost: " + Integer.toString (weapon.getCost()));
+		lbl_description4.setText ("Description: " + weapon.getDescription());
 		
 	} // updateWeaponInfo method
 	
