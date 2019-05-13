@@ -9,6 +9,7 @@ May 12th, 2019
  */ 
 // 05-12 fixed execute spelling, removed duplicatecoins labels on each tab, edited+uncommented some lines - Mina
 // buying engines still need to be completed; will be done when item storage management is finalized
+// not sure how to update weapon info lable yet without understanding weapon class
 
 import java.awt.*;
 import java.awt.event.*;
@@ -492,10 +493,10 @@ public class Shop
 	{
 		Weapon weapon = Database.getWeapon (selectedItemName);
 		
-		lbl_icon4.setIcon(new ImageIcon(frame.class.getResource(weapon.getImagePath())));
-		lbl_name4.setText("Name: " + weapon.getName());
-		lbl_cost4.setText("Cost: " + Integer.toString (weapon.getCost()));
-		lbl_description4.setText ("Description: " + weapon.getDescription());
+		//lbl_icon4.setIcon(new ImageIcon(frame.class.getResource(weapon.getImagePath())));
+		//lbl_name4.setText("Name: " + weapon.getName());
+		//lbl_cost4.setText("Cost: " + Integer.toString (weapon.getCost()));
+		//lbl_description4.setText ("Description: " + weapon.getDescription());
 		
 	} // updateWeaponInfo method
 	
