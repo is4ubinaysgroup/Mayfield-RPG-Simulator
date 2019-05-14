@@ -106,9 +106,7 @@ public class Database {
 		}
 		
 	
-		
-		// what about fields inherited from Item? possibly update Weapon constructor or make two constructors? - Mina
-	
+			
 		private static Weapon hat = new Weapon("Hat", stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE, 0 );
 		private static Weapon pencil = new Weapon("Pencil", stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE, 0 );
 
