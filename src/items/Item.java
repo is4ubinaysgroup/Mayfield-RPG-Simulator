@@ -22,26 +22,21 @@ May 12th, 2019
 
 added Description, ImagePath, Cost and their getters and setters. (from mina's work)
 */
+
+// 05-14 Mina changed spacing and removed extra constructor
+
 public abstract class Item {
+	
 	protected String name;
 	protected int cost;
 	protected String description;
 	protected String imagePath;
 	
-	public Item() {}
-	public Item(String name) { this.name = name; }
+	public Item() {} // default constructor (abstract classes still have a constructor)
 
-	//Getters and Setters
-	public String getName() 
-	{
-		return name;
-	}
-
-	public void setName(String name) 
-	{
-		this.name = name;
-	}
-
+	// getters and setters
+	public String getName() {return name;}
+	public void setName(String name) {this.name = name;}
 	
 	public void setCost (int cost) { this.cost = cost; } // setCost method
 	public int getCost () { return cost; } // getCost method
@@ -52,4 +47,4 @@ public abstract class Item {
 	public void setImagePath (String imagePath) { this.imagePath = imagePath; } // setImagePath method
 	public String getImagePath () { return imagePath; } // getImagePath method
 
-}
+} // Item class
