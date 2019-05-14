@@ -5,11 +5,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 import src.items.Product;
 import src.items.Weapon;
+
+
 /*
 Editing and contributing @Carson Fujita
 Date: 
@@ -38,7 +39,6 @@ need to ask about what increase field is for damage upgrade (orange juice)
 changed spacing / code grouping
 */
 
-// 05-13 Mina added missing ")"
 
 
 public class Database {
@@ -109,10 +109,11 @@ public class Database {
 		
 		// what about fields inherited from Item? possibly update Weapon constructor or make two constructors? - Mina
 	
-		private static Weapon hat = new Weapon(stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE );
-		private static Weapon pencil = new Weapon(stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE );
-		private static Weapon ruler  = new Weapon(stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE );
-		private static Weapon rubberband = new Weapon(stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE);
+		private static Weapon hat = new Weapon("Hat", stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE, 0 );
+		private static Weapon pencil = new Weapon("Pencil", stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE, 0 );
+
+		private static Weapon ruler  = new Weapon("Ruler", 10, "description", "resources/ruler.png", stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE, 1 );
+		private static Weapon rubberband = new Weapon("Rubber Band", 5, "description", "resources/rubberband.png", stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
 	
 	
 		// gets and sets
