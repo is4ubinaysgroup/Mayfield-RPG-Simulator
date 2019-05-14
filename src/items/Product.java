@@ -45,7 +45,7 @@ fixed - health upgrade can't boost over maxHealth
 */
 
 
-// 05-14 added back final ARMOR
+// 05-14 Mina added back final ARMOR
 
 package src.items;
 
