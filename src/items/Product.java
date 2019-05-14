@@ -54,7 +54,7 @@ import src.gui.MainExecutable;
 
 public class Product extends Item
 {
-	public static final int AMROR = 1;
+	public static final int ARMOR = 1;
 	public static final int CAPACITY = 2; // has a limit
 	public static final int CRITICALCHANCE = 3;
 	public static final int HEALTH = 4;
