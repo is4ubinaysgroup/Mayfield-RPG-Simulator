@@ -1,7 +1,7 @@
 package character;
 
-//import src.items.Product;
-//import src.items.Weapon;
+import src.items.Product;
+import src.items.Weapon;
 /*
  * Author: Carson.
  * 
@@ -63,8 +63,8 @@ public class Player extends Human {
 		this.productCapacity = productCapacity;
 		this.numWeapons = numWeapons;
 				
-		this.weapons [] = new Weapon [WEAPON_ARRAY_SPACE];
-		this.products [] = new Product [PRODUCT_ARRAY_SPACE];
+		this.weapons = new Weapon [WEAPON_ARRAY_SPACE];
+		this.products = new Product [PRODUCT_ARRAY_SPACE];
 		
 	} // Player constuctor
 	
