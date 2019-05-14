@@ -1,5 +1,6 @@
-package character;
+package src.character;
 
+import src.gui.Backpack;
 import src.items.Product;
 import src.items.Weapon;
 /*
@@ -87,10 +88,10 @@ public class Player extends Human {
 	public void setProductCapacity(int productCapacity) {this.productCapacity = productCapacity;}
 	public int getProductCapacity() {return productCapacity;}
 
-	public void setWeaponsArray (Weapon[] weapons) {this.weapons[] = weapons;}
+	public void setWeaponsArray (Weapon[] weapons) {this.weapons = weapons;}
 	public Weapon[] getWeaponsArray () {return weapons;}
 	
-	public void setProductsArray (Product[] products) {this.products[] = products;}
+	public void setProductsArray (Product[] products) {this.products = products;}
 	public Product[] getProductsArray () {return products;}
 
 
@@ -125,7 +126,7 @@ public class Player extends Human {
 			{
 				products [i] = null; // not sure if this is needed but just in case
 	
-				products [i] = product [numProducts-1];
+				products [i] = products [numProducts-1];
 				
 				products [numProducts-1] = null;
 				
@@ -170,7 +171,7 @@ public class Player extends Human {
 		
 		deleteWeapon (weapon);
 		addWeapon (this.getEquippedWeapon());
-		equipWeapon (weapon);
+		setEquippedWeapon (weapon);
 		
 	} // switchWeapon method
 	
