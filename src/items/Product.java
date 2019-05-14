@@ -43,6 +43,10 @@ fixed - health upgrade can't boost over maxHealth
  * setted armor to edit max defense instead of defense
  * 
 */
+
+
+// 05-14 added back final ARMOR
+
 package src.items;
 
 import src.Database;
@@ -102,6 +106,7 @@ public class Product extends Item
 			int defense = MainExecutable.getPlayer().getMaxDefense() + increase;
 			MainExecutable.getPlayer().setMaxDefense (defense);
 		}
+		
 		
 		if (upgradeType == CAPACITY)
 		{
