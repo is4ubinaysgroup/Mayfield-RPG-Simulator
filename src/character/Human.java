@@ -23,6 +23,9 @@ fixed imagepath
  added attack();
  added hasLowHealth();
 */
+
+// 05-14 Mina added some spacing
+
 import src.items.Weapon;
 
 public class Human
@@ -86,21 +89,26 @@ public class Human
 	
 	public void setImagePath (String imagePath) {this.imagePath = imagePath;}
 	public String getImagePath () {return this.imagePath;}
+	
 	public int[] getPosition() {
 		return position;
 	}
 	public void setPosition(int[] position) {
 		this.position = position;
 	}
+	
 	public int getY() {
 		return this.position[1];
 	}
+	
 	public void setY(int y) {
 		this.position[1] = y;
 	}
+	
 	public int getX() {
 		return this.position[0];
 	}
+	
 	public void setX(int x) {
 		this.position[0] = x;
 	}
