@@ -20,6 +20,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import src.Database;
+import src.items.Product;
+import src.items.Weapon;
+
 
 public class Shop
 {
