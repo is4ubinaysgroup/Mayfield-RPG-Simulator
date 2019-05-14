@@ -50,11 +50,12 @@ import src.gui.MainExecutable;
 
 public class Product extends Item
 {
-	public static final int CAPACITY = 1; // has a limit
-	public static final int CRITICALCHANCE = 2;
-	public static final int HEALTH = 3;
-	public static final int MAXHEALTH = 4;
-	public static final int DAMAGE = 5;
+	public static final int AMROR = 1;
+	public static final int CAPACITY = 2; // has a limit
+	public static final int CRITICALCHANCE = 3;
+	public static final int HEALTH = 4;
+	public static final int MAXHEALTH = 5;
+	public static final int DAMAGE = 6;
 	private int upgradeType;
 	private int increase;
 
@@ -95,6 +96,7 @@ public class Product extends Item
 		
 		int upgradeType = product.getUpgradeType();
 		int increase = product.getIncrease();
+		
 		if( upgradeType == ARMOR)
 		{
 			int defense = MainExecutable.getPlayer().getMaxDefense() + increase;
