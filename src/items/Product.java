@@ -38,6 +38,11 @@ edited static use method to call the method in Player for upgrading productCapac
 fixed - health upgrade can't boost over maxHealth
 */
 
+/*
+ *  May 14th 2019 Carson
+ * setted armor to edit max defense instead of defense
+ * 
+*/
 package src.items;
 
 import src.Database;
@@ -90,7 +95,11 @@ public class Product extends Item
 		
 		int upgradeType = product.getUpgradeType();
 		int increase = product.getIncrease();
-		
+		if( upgradeType == ARMOR)
+		{
+			int defense = MainExecutable.getPlayer().getMaxDefense() + increase;
+			MainExecutable.getPlayer().setMaxDefense (defense);
+		}
 		
 		if (upgradeType == CAPACITY)
 		{
