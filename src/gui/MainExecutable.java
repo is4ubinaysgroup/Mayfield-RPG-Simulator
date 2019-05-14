@@ -24,6 +24,12 @@ public class MainExecutable
 		// not sure if this is right
 		player = new Player (20, 0, 0, 20, Database.getPencil(), "/resources/playerSprite.png", new int [] position = int [2], 10, 1, 0, 0 ,10);
 		
+		/* constructor (int health, int defense, int maxDefense, int maxHealth, Weapon equippedWeapon,
+			String imagePath, int [] position, int coins, int level, int numProducts, int numWeapons, int productCapacity) */
+		
+		
+		
+		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
 	
 	} // Main method
