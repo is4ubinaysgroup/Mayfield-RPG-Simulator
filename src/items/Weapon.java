@@ -50,7 +50,13 @@ May 12th, 2019
 
 renamed upgradeCritical() to upgradeCriticalChance();
 */
-package src.items;// 
+
+
+
+// 05-14 Mina updated constructors
+
+
+package src.items;
 
 import src.Database;
 
@@ -59,11 +65,43 @@ public class Weapon extends Item
 	public static int MELEETYPE = 0;
 	public static int RANGEDTYPE = 1;
 	public static int ALLTYPE = 2;
+	
 	private int damage; // damage[0] is player damage, damage[1] is boss damage;
 	private int range; // damage[0] is Melee range, damage[1] is ranged range;
 	private double critical_Chance;
 	private int type;
 	private int rangedDamage;
+	
+	
+	
+	public Weapon(String name, int damage, int range, double critical_Chance, int type, int rangedDamage) 
+	{
+		this.setName(name);
+		this.setDamage(damage);
+		this.setRange(range);
+		this.setCriticalChance(critical_Chance);
+		this.setType(type);
+		this.setRangedDamage(rangedDamage);
+		
+	} // Weapon constructor
+	
+	
+	public Weapon(String name, int cost, String description, String imagePath, int damage, int range, double critical_Chance, int type, int rangedDamage) 
+	{
+		this.setName(name);
+		this.setCost(cost);
+		this.setDescription(description);
+		this.setImagePath(imagePath);
+		this.setDamage(damage);
+		this.setRange(range);
+		this.setCriticalChance(critical_Chance);
+		this.setType(type);
+		this.setRangedDamage(rangedDamage);
+		
+	} // Weapon constructor
+
+	
+	
 	
 	public void upgradeCriticalChance() 
 	{
@@ -86,13 +124,6 @@ public class Weapon extends Item
 		}
 	}
 			
-	public Weapon(int damage, int range,double critical_Chance, int type) 
-	{
-		this.setDamage(damage);
-		this.setRange(range);
-		this.setCriticalChance(critical_Chance);
-		this.setType(type);
-	}
 
 	public void upgradeDamage()
 	{
@@ -237,8 +268,8 @@ public class Weapon extends Item
 		this.type = type;
 	}
 
-	public int setRangedDamage() {
-		return this.rangedDamage;
+	public void setRangedDamage(int rangedDamage) {
+		this.rangedDamage = rangedDamage;
 	}
 	
 	public int getRangedDamage() {
