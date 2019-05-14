@@ -53,6 +53,8 @@ public class Player extends Human {
 		this.setImagePath (imagePath);
 		
 		this.setPosition(position);
+		this.setY(0);
+		this.setX(0);
 		
 		this.coins = coins;
 		this.level = level;
