@@ -69,11 +69,26 @@ UML
 	
 	public void runTurn(Room room) //TODO
 	{
+		int r = MainExecutable.getPlayer().getEquippedWeapon().getRange();
+		int x =MainExecutable.getPlayer().getX();
+		int y = MainExecutable.getPlayer().getY();
+		
+		Point node1 = new Point(x+r, y+r);
+		Point node2 = new Point(x+r, y-r);
+		Point node3 = new Point(x-r, y-r);
+		Point node4 = new Point(x-r,y+r);
+		
+	
+		
 		if(MainExecutable.getPlayer().hasLowHealth()) //if Player has low health
 		{
 			
 		}
-		//if()// is cornered
+		else if( ( r > Human.MOVEMENT ) && (this.getX() >= node4.x && this.getX() <= node2.x &&
+				this.getY() >= node4.y && this.getY() <= node2.y) && () ) // if cornered
+		{
+			
+		}
 			
 	}
 
