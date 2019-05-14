@@ -38,6 +38,7 @@ need to ask about what increase field is for damage upgrade (orange juice)
 changed spacing / code grouping
 */
 
+// 05-13 Mina added missing ")"
 
 
 public class Database {
@@ -131,9 +132,9 @@ public class Database {
 	
 		public static Weapon getWeapon(String name)
 		{
-			if (name.equals("Pencil") {return Database.getPencil();}
-			else if (name.equals("Hat") {return Database.getHat();}
-			else if (name.equals("Ruler") {return Database.getRuler();}
+			if (name.equals("Pencil")) {return Database.getPencil();}
+			else if (name.equals("Hat")) {return Database.getHat();}
+			else if (name.equals("Ruler")) {return Database.getRuler();}
 			else {return Database.getRubberband();} // "Rubber Band"
 	
 		} //getWeapon method
