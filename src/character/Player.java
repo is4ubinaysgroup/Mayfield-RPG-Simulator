@@ -41,12 +41,13 @@ public class Player extends Human {
 
 	public Player() {} // default constructor
 	
-	public Player(int health, int defense, int maxHealth, Weapon equippedWeapon, String imagePath,
+	public Player(int health, int defense, int maxDefense, int maxHealth, Weapon equippedWeapon, String imagePath,
 					int [] position, 
 					int coins, int level, int numProducts, int numWeapons, int productCapacity)
 	{
 		this.setHealth (health);
 		this.setDefense (defense);
+		this.setMaxDefense(maxDefense);
 		this.setMaxHealth (maxHealth);
 		this.setEquippedWeapon (equippedWeapon);
 		this.setImagePath (imagePath);
