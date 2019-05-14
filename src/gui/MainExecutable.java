@@ -20,6 +20,10 @@ public class MainExecutable
 		Backpack.initGUI();
 		Shop.initGUI();
 		
+		// level is set to 1; 0 would be for when the tutorial is implemented
+		// not sure if this is right
+		player = new Player (20, 0, 0, 20, Database.getPencil(), "/resources/playerSprite.png", new int [] position = int [2], 10, 1, 0, 0 ,10);
+		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
 	
 	} // Main method
