@@ -1,7 +1,7 @@
-package src.character;
+package character;
 
-import src.items.Product;
-import src.items.Weapon;
+//import src.items.Product;
+//import src.items.Weapon;
 /*
  * Author: Carson.
  * 
@@ -11,7 +11,11 @@ import src.items.Weapon;
 /*
 05-13 Mina
 updated
+
 */
+
+// 05-14 added position array to constructor
+
 
 public class Player extends Human {
 
@@ -37,8 +41,8 @@ public class Player extends Human {
 
 	public Player() {} // default constructor
 	
-	
 	public Player(int health, int defense, int maxHealth, Weapon equippedWeapon, String imagePath,
+					int [] position, 
 					int coins, int level, int numProducts, int numWeapons, int productCapacity)
 	{
 		this.setHealth (health);
@@ -46,6 +50,8 @@ public class Player extends Human {
 		this.setMaxHealth (maxHealth);
 		this.setEquippedWeapon (equippedWeapon);
 		this.setImagePath (imagePath);
+		
+		this.setPosition(position);
 		
 		this.coins = coins;
 		this.level = level;
