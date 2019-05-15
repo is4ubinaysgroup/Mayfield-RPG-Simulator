@@ -16,6 +16,12 @@ buying engines still need to be completed; will be done when item storage manage
 can't update weapon info labels yet without weapon constructor containing item inherited fields
 */
 
+/*
+may 15th
+carson
+changed combobox from rawtype to String
+*/
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -50,7 +56,7 @@ public class Shop
 	static protected JLabel lbl_name1;
 	static protected JLabel lbl_cost1;
 	static protected JLabel lbl_description1;
-	static protected JComboBox comboB_tab1;
+	static protected JComboBox<String> comboB_tab1;
 	static protected JButton btn_buy1;
 	static protected JButton btn_leave1;
 	
@@ -62,7 +68,7 @@ public class Shop
 	static protected JLabel lbl_name2;
 	static protected JLabel lbl_cost2;
 	static protected JLabel lbl_description2;
-	static protected JComboBox comboB_tab2;
+	static protected JComboBox<String> comboB_tab2;
 	static protected JButton btn_buy2;
 	static protected JButton btn_leave2;
 	
@@ -74,7 +80,7 @@ public class Shop
 	static protected JLabel lbl_name3;
 	static protected JLabel lbl_cost3;
 	static protected JLabel lbl_description3;
-	static protected JComboBox comboB_tab3;
+	static protected JComboBox<String> comboB_tab3;
 	static protected JButton btn_buy3;
 	static protected JButton btn_leave3;
 	
@@ -86,7 +92,7 @@ public class Shop
 	static protected JLabel lbl_name4;
 	static protected JLabel lbl_cost4;
 	static protected JLabel lbl_description4;
-	static protected JComboBox comboB_tab4;
+	static protected JComboBox<String> comboB_tab4;
 	static protected JButton btn_buy4;
 	static protected JButton btn_leave4;
 	
