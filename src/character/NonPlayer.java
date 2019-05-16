@@ -76,7 +76,7 @@ UML
 		this.isBoss = isBoss;
 	}
 	
-	public void runTurn(Room room) //TODO
+		public void runTurn(Room room) //TODO
 	{
 		Player player = MainExecutable.getPlayer();
 		int r = player.getEquippedWeapon().getRange();
@@ -85,11 +85,11 @@ UML
 
 		if(player.hasLowHealth()) //if Player has low health
 		{
-
+			attack(MainExecutable.getPlayer());
 		}
 		else if( ( r < Human.MOVEMENT)  && inRangeOf(player) && nearCorner() ) // if cornered
 		{
-
+			moveTo(Player);
 		}
 		else if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.MELEETYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))
 		{// 3. If the player is in melee attack range:
@@ -101,12 +101,22 @@ UML
 			else if( ( r < Human.MOVEMENT)  &&  inRangeOf(player)  && nearCorner())//2. If the boss is cornered:
 			{
 				//The boss will move to the other side of the player, however, if the boss cannot it will move as far as it can to the other side of the player.
-
+				moveTo(Player);
 			}
 		}
 		//Continues to the next true statement
 		if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.RANGEDTYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))//If the player is in non-melee attack range:
 		{
+			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
+			if(random == 1) 
+			{
+				attack(player);
+			}
+			else
+			{
+				moveThenAttack(player);
+			}
+			
 			/*
 				 Based on a random number from 1-2 the boss will:
 				If 1, attack the player.
@@ -116,6 +126,7 @@ UML
 		}
 		else	if(!(player.inRangeOf(this))) 
 		{
+			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
 			/*
 			 * 5. player is not in range:
 			 * 	Based on a random number from 1-2 the boss will:
@@ -124,8 +135,9 @@ UML
 				End of turn.
 			 */
 		}
-		else		if(inRangeOf(player)) 
+		else	 if(inRangeOf(player)) 
 		{
+			moveOutOfRange(player);
 			/*
 				 6. The Boss is in player range
 				The boss will move out of player range and recover 1% of its health.
@@ -134,7 +146,7 @@ UML
 		}
 		else {}
 
-	}		
+	}				
 
 
 	private boolean nearCorner() {
