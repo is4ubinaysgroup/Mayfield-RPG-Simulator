@@ -5,7 +5,7 @@ package src.character;
 
 import src.Room;
 import src.gui.MainExecutable;
-
+import src.items.Weapon;
 /**
  * @author Carson Fujita
  * May 13th 2019.
