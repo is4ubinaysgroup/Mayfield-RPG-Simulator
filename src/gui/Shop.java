@@ -22,6 +22,12 @@ carson
 changed combobox from rawtype to String
 */
 
+/*
+Bug fixing @Carson Fujita
+Date: 
+May 16th, 2019
+ */ 
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -476,7 +482,7 @@ public class Shop
 		
 		if (tab == 1)
 		{
-			lbl_icon1.setIcon(new ImageIcon(frame.class.getResource(product.getImagePath())));
+			lbl_icon1.setIcon(new ImageIcon(Frame.class.getResource(product.getImagePath())));
 			lbl_name1.setText("Name: " + product.getName());
 			lbl_cost1.setText("Cost: " + Integer.toString (product.getCost()));
 			lbl_description1.setText ("Description: " + product.getDescription());
@@ -485,7 +491,7 @@ public class Shop
 
 		else if (tab == 2)
 		{
-			lbl_icon2.setIcon(new ImageIcon(frame.class.getResource(product.getImagePath())));
+			lbl_icon2.setIcon(new ImageIcon(Frame.class.getResource(product.getImagePath())));
 			lbl_name2.setText("Name: " + product.getName());
 			lbl_cost2.setText("Cost: " + Integer.toString (product.getCost()));
 			lbl_description2.setText ("Description: " + product.getDescription());
@@ -494,7 +500,7 @@ public class Shop
 
 		else
 		{
-			lbl_icon3.setIcon(new ImageIcon(frame.class.getResource(product.getImagePath())));
+			lbl_icon3.setIcon(new ImageIcon(Frame.class.getResource(product.getImagePath())));
 			lbl_name3.setText("Name: " + product.getName());
 			lbl_cost3.setText("Cost: " + Integer.toString (product.getCost()));
 			lbl_description3.setText ("Description: " + product.getDescription());
