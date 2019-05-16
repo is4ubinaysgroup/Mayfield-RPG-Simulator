@@ -26,6 +26,10 @@ fixed imagepath
 
 // 05-14 Mina added some spacing
 
+/*
+date: May 16th 2016
+Carson: added and coded inRangeOf(Human human)
+*/
 import src.items.Weapon;
 
 public class Human
@@ -111,6 +115,19 @@ public class Human
 	
 	public void setX(int x) {
 		this.position[0] = x;
+	}
+	
+	public boolean inRangeOf(Human human) {//if it is in the range of this humans weapons it returns true
+		Point node1 = new Point(human.getX()- human.getEquippedWeapon().getRange(), human.getY()- human.getEquippedWeapon().getRange()); // top right node
+		Point node2 = new Point(human.getX()+ human.getEquippedWeapon().getRange(), human.getY()- human.getEquippedWeapon().getRange()); // top left node
+		Point node3 = new Point(human.getX()- human.getEquippedWeapon().getRange(), human.getY()+ human.getEquippedWeapon().getRange());// bottom right node
+		Point node4 = new Point(human.getX()+ human.getEquippedWeapon().getRange(),human.getY()+ human.getEquippedWeapon().getRange());// bottom left node
+		if( ( getX() >= node1.getX() && getX() <= node4.getX() ) && (getY() <= node3.getY() && getY() >= node2.getY() )  ) 
+		{
+			return true;
+		}
+		return false;
+			
 	}
 
 
