@@ -1,4 +1,6 @@
 package src.character;
+import java.awt.Point;
+
 /*
 @Author: Carson Fujita
 @Contributor:
@@ -28,7 +30,7 @@ fixed imagepath
 
 /*
 date: May 16th 2016
-Carson: added and coded inRangeOf(Human human)
+Carson: added and coded inRangeOf(Human human) and bug fix
 */
 import src.items.Weapon;
 
