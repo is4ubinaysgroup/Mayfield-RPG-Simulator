@@ -25,9 +25,10 @@ public class MainExecutable
 		
 		// null pointer error currently exists with private static hat weapon in database
 		
+		// single save file is loaded on new game or continue button click on main menu
+		
 		// level starts at 1 for now; 0 would be for when the tutorial is implemented		
-		// position starts at 0, 0
-		Database.loadSingle();
+		// position starts at 0, 0	
 		
 		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
