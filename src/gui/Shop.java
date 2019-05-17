@@ -533,11 +533,23 @@ public class Shop
 		
 		Product product =  Database.getProduct (selectedItemName);
 		
-		// check enough coins and storage, purchase using coins, update coins labels in shop and backpack
-		// MainExecutable.getPlayer().addProduct(product);
-		// completed = true;
-		
+		if (MainExecutable.getPlayer().hasEnoughCoins(product.getCost()) && MainExecutable.getPlayer().isProductCapacityFull() == false)
+		{			
+	
+			int coins = MainExecutable.getPlayer().getCoins() - product.getCost();
+			MainExecutable.getPlayer().setCoins(coins);
+			
+			MainExecutable.getPlayer().addProduct(product);
+			
+			completed = true;
+			
+			updateCoinsLabels();
+			Backpack.update();
+			
+		} // if enough coins and capacity is not full
+			
 		return completed;
+		
 	} // buy ProductEngine method
 	
 	
