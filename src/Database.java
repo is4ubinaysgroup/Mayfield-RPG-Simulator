@@ -79,6 +79,92 @@ public class Database {
 	
 	
 	
+		public static void loadSingle ()
+		{
+			try
+			{
+				BufferedReader input = new BufferedReader (new FileReader (files[0]));
+				
+				String line = input.readLine (); // read a line of data
+				int health = Integer.parseInt(line);
+				
+				line = input.readLine ();       //read next line
+				int defense = Integer.parseInt(line);
+
+				line = input.readLine ();       //read next line
+				int maxDefense = Integer.parseInt(line);
+				
+				line = input.readLine ();       //read next line
+				int maxHealth = Integer.parseInt(line);
+				
+				line = input.readLine ();       //read next line
+				Weapon equippedWeapon = Database.getWeapon(line);
+				
+				line = input.readLine ();       //read next line
+				String imagePath = line;
+
+
+				// position always starts at 0,0
+				
+				line = input.readLine ();       //read next line
+				int coins = Integer.parseInt(line);
+				
+				line = input.readLine ();       //read next line
+				int level = Integer.parseInt(line);
+				
+				line = input.readLine ();       //read next line
+				int numProducts = Integer.parseInt(line);
+				
+				line = input.readLine ();       //read next line
+				int numWeapons = Integer.parseInt(line);
+				
+				line = input.readLine ();       //read next line
+				int productCapacity = Integer.parseInt(line);
+				
+				
+				/* Player constructor (int health, int defense, int maxDefense, int maxHealth, Weapon equippedWeapon, String imagePath, int [] position, int coins, int level, int numProducts, int numWeapons, int productCapacity) */
+
+				// position always starts at 0,0 (see constructor)
+				int [] tempPosition = new int [2];
+				
+				MainExecutable.setPlayer(new Player (health, defense, maxDefense, maxHealth, equippedWeapon, imagePath, tempPosition, coins, level, numProducts, numWeapons,productCapacity));
+				
+				
+				
+				// ----------------------- read next line for products -----------------------
+				
+				line = input.readLine ();       //read next line for products
+				String [] parts1 = line.split("-"); // split the line into parts for the fields
+
+				for (int i=0; i< numProducts; i++)
+				{
+					MainExecutable.getPlayer().addProduct(Database.getProduct(parts1[i]));
+				} // for 0...numProducts-1
+				
+				
+				// ----------------------- read next line for weapons -----------------------
+				
+				line = input.readLine ();       
+				String [] parts2 = line.split("-"); // split the line into parts for the fields
+				
+				for (int i=0; i< numWeapons; i++)
+				{
+					MainExecutable.getPlayer().addWeapon(Database.getWeapon(parts2[i]));
+				} // for 0...numProducts-1
+				
+				
+			} // try
+			
+			catch (Exception e)
+			{
+				System.out.println ("exception in loadSingle()" + "\n");
+				
+			} // catch
+			
+		} // loadSingle method
+	
+	
+	
 		// ------------------------------------------- weapon stuff -------------------------------------------
 	
 		// Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
