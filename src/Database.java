@@ -173,6 +173,44 @@ public class Database {
 	
 	
 	
+			
+		public static void writeStarterSingle()
+		{
+			
+			try
+			{
+				
+				PrintWriter output = new PrintWriter (new FileWriter ("files[0]"));
+				
+				output.println("20");
+				output.println("0");
+				output.println("0");
+				output.println("20");
+				output.println("Pencil");
+				output.println("resources/playerSprite.png");
+				output.println("10");
+				output.println("1");
+				output.println("0");
+				output.println("0");
+				output.println("10");
+				output.println("0");
+				output.println("0");
+							
+				output.close (); // Close file.
+
+			} // try
+			catch (Exception e) 
+			{
+				System.out.println ("exception in writeStarterSingle");
+			} // catch
+			
+			
+		} // writeStarterSingle method
+		
+	
+	
+	
+	
 		// ------------------------------------------- weapon stuff -------------------------------------------
 	
 		// Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
