@@ -39,6 +39,7 @@ need to ask about what increase field is for damage upgrade (orange juice)
 changed spacing / code grouping
 */
 
+// 05-17 updated by Mina
 
 
 public class Database {
