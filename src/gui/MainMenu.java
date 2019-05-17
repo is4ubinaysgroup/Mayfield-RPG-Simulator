@@ -10,6 +10,8 @@ still needs Database save file configuration methods; tutorial will start at the
 continue if the player's level is 0 instead of switching to navigation
 */
 
+// 05-17 updated by Mina
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
