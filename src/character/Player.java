@@ -17,6 +17,11 @@ updated
 
 // 05-14 added position array to constructor
 
+/*
+05-17 Mina
+added hasEnoughCoins method
+*/
+
 
 public class Player extends Human {
 
@@ -105,6 +110,10 @@ public class Player extends Human {
 	
 	
 	public boolean isProductCapacityFull () {return numProducts == productCapacity;} // isProductCapacityFull method
+
+	
+
+	public boolean hasEnoughCoins (int cost) {return coins >= cost;}
 
 	
 	
