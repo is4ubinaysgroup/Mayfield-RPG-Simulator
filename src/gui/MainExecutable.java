@@ -23,16 +23,11 @@ public class MainExecutable
 		Shop.initGUI();
 		
 		
-		// temporary before save works
-		// level is set to 1; 0 would be for when the tutorial is implemented		
+		// null pointer error currently exists with private static hat weapon in database
 		
-		int [] temp = new int [2];
-		
-		player = new Player (20, 0, 0, 20, Database.getPencil(), "/resources/playerSprite.png", temp, 10, 1, 0, 0 ,10);
-		
-		/* constructor (int health, int defense, int maxDefense, int maxHealth, Weapon equippedWeapon,
-			String imagePath, int [] position, int coins, int level, int numProducts, int numWeapons, int productCapacity) */
-		
+		// level starts at 1 for now; 0 would be for when the tutorial is implemented		
+		// position starts at 0, 0
+		Database.loadSingle();
 		
 		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
