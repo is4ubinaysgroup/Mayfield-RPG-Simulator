@@ -560,11 +560,23 @@ public class Shop
 		
 		Weapon weapon = Database.getWeapon (selectedItemName);
 		
-		// check enough coins and if the user doesn't already have the weapon, purchase using coins, update coins labels in shop and backpack
-		// MainExecutable.getPlayer().addWeapon(weapon);
-		// completed = true;
+		if (MainExecutable.getPlayer().hasEnoughCoins(weapon.getCost()) && MainExecutable.getPlayer().alreadyOwnsWeapon(weapon) == false)
+		{			
+	
+			int coins = MainExecutable.getPlayer().getCoins() - weapon.getCost();
+			MainExecutable.getPlayer().setCoins(coins);
+			
+			MainExecutable.getPlayer().addWeapon(weapon);
+			
+			completed = true;
+			
+			updateCoinsLabels();
+			Backpack.update();
+			
+		} // if enough coins and capacity is not full
 		
 		return completed;
+		
 	} // buy WeaponEngine method
 	
 	
