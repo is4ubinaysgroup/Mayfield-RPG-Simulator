@@ -137,10 +137,14 @@ public class Database {
 				line = input.readLine ();       //read next line for products
 				String [] parts1 = line.split("-"); // split the line into parts for the fields
 
-				for (int i=0; i< numProducts; i++)
+				if (!parts1 [0].equals("0"))
 				{
-					MainExecutable.getPlayer().addProduct(Database.getProduct(parts1[i]));
-				} // for 0...numProducts-1
+					for (int i=0; i< numProducts; i++)
+					{
+						MainExecutable.getPlayer().addProduct(Database.getProduct(parts1[i]));
+					} // for 0...numProducts-1
+				} // if not empty
+				
 				
 				
 				// ----------------------- read next line for weapons -----------------------
@@ -148,10 +152,13 @@ public class Database {
 				line = input.readLine ();       
 				String [] parts2 = line.split("-"); // split the line into parts for the fields
 				
-				for (int i=0; i< numWeapons; i++)
+				if (!parts2 [0].equals("0"))
 				{
-					MainExecutable.getPlayer().addWeapon(Database.getWeapon(parts2[i]));
-				} // for 0...numProducts-1
+					for (int i=0; i< numWeapons; i++)
+					{
+						MainExecutable.getPlayer().addWeapon(Database.getWeapon(parts2[i]));
+					} // for 0...numProducts-1
+				} // if not empty
 				
 				
 			} // try
