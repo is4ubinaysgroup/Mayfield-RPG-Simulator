@@ -57,8 +57,11 @@ public class MainMenu
 				//Database.read();
 				
 				Database.loadSingle();
+				
 				Map.updateMap(MainExecutable.getPlayer().getLevel());
 				Backpack.update();
+				Shop.updateCoinsLabels();
+				
 				GUIExtension1.switchPane (Navigation.getPane());
 			}
 		});
@@ -77,8 +80,11 @@ public class MainMenu
 			public void actionPerformed (ActionEvent e)
 			{
 				Database.loadSingle();
+				
 				Map.updateMap(MainExecutable.getPlayer().getLevel());
 				Backpack.update();
+				Shop.updateCoinsLabels();
+				
 				GUIExtension1.switchPane (Navigation.getPane());
 			}
 		});
