@@ -55,6 +55,10 @@ public class MainMenu
 			{
 				//Database.updateFile(); // writes starter file
 				//Database.read();
+				
+				Database.loadSingle();
+				Map.updateMap(MainExecutable.getPlayer().getLevel());
+				Backpack.update();
 				GUIExtension1.switchPane (Navigation.getPane());
 			}
 		});
@@ -72,7 +76,9 @@ public class MainMenu
 		{
 			public void actionPerformed (ActionEvent e)
 			{
-				//Database.read();
+				Database.loadSingle();
+				Map.updateMap(MainExecutable.getPlayer().getLevel());
+				Backpack.update();
 				GUIExtension1.switchPane (Navigation.getPane());
 			}
 		});
