@@ -518,10 +518,10 @@ public class Shop
 	{
 		Weapon weapon = Database.getWeapon (selectedItemName);
 		
-		//lbl_icon4.setIcon(new ImageIcon(frame.class.getResource(weapon.getImagePath())));
-		//lbl_name4.setText("Name: " + weapon.getName());
-		//lbl_cost4.setText("Cost: " + Integer.toString (weapon.getCost()));
-		//lbl_description4.setText ("Description: " + weapon.getDescription());
+		lbl_icon4.setIcon(new ImageIcon(Frame.class.getResource(weapon.getImagePath())));
+		lbl_name4.setText("Name: " + weapon.getName());
+		lbl_cost4.setText("Cost: " + Integer.toString (weapon.getCost()));
+		lbl_description4.setText ("Description: " + weapon.getDescription());
 		
 	} // updateWeaponInfo method
 	
