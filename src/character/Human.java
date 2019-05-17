@@ -32,6 +32,11 @@ fixed imagepath
 date: May 16th 2016
 Carson: added and coded inRangeOf(Human human) and bug fix
 */
+
+/*
+date: May 17th 2016
+Carson: added and coded moveTo(Point), moveTo(Human), and recoverShield()
+*/
 import src.items.Weapon;
 
 public class Human
@@ -46,7 +51,90 @@ public class Human
 	protected Weapon equippedWeapon;
 	protected String imagePath;
 	private int[] position = new int[2];
+	/*
+	 //We will move as close as we can to the position
+	 //to do this I need to get Movement
+	 
+	 */
+	public void moveTo(Point point) 
+	{
+		//How much do we need to move to get there
+		int changeInX = point.x - getX();
+		int changeInY = point.y - getY();
+		if(Math.abs(changeInX) <= MOVEMENT) //can move here with no issues
+		{
+			setX(point.x);
+			setY(point.y);
+		}
+		else
+		{// we want to move as close as we can
+
+			if(changeInX  < 0) // x is negative
+			{
+				changeInX= MOVEMENT*-1;
+			}
+			else if(changeInX > 0) // x is positive
+			{
+				changeInX-=MOVEMENT;
+			}
+
+			if(changeInY  < 0) // x is negative
+			{
+				changeInY= MOVEMENT*-1;
+			}
+			else if(changeInY > 0) // x is positive
+			{
+				changeInY-=MOVEMENT;
+			}
+
+			setX(changeInX);
+			setY(changeInY);
+		}
+	}
 	
+	//Movement related Functions
+	public void moveTo(Human human) // moves to a human
+	{
+		//we can't move on a human but only near.
+		int changeInX = human.getX() - getX();
+		int changeInY =human.getY() - getY();
+		
+		Point output = new Point(0,0);
+		if(changeInX != 0) 
+		{
+			output.x = human.getX() + (  changeInX /  ( Math.abs( changeInX ) ) );
+		}
+		else //x =0
+		{
+			output.x = human.getX() + 1;
+		}
+		
+		if(changeInY != 0)
+		{
+			output.y = human.getY() + (  changeInY /  ( Math.abs( changeInY ) ) );
+		}
+		else //y =0
+		{
+			output.y = human.getY() + 1;
+		}
+		
+		moveTo(new Point(human.getX(), human.getY()));
+	}
+	
+	public void moveAway(Human human) //moves away from a human
+	{
+		//TODO
+	}
+	
+	public void moveOut(Human human) //moves out of a human's weapons range
+	{
+		//TODO
+	}
+	
+	public void moveIn(Human human) //moves so that human is in it's weapon range
+	{
+		//TODO
+	}
 	
 	public void attack(Human human) 
 	{
@@ -76,7 +164,11 @@ public class Human
 			return false;
 		}
 	}
-
+	
+	public void recoverShield() //sets to Max Defense
+	{
+		setDefense(getMaxDefense());
+	}
 	// ------- gets and sets -------
 	public void setHealth (int health) {this.health = health;}
 	public int getHealth () {return this.health;}
