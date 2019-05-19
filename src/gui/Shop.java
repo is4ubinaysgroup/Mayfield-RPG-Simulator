@@ -30,7 +30,7 @@ May 16th, 2019
 
 // 05-17 updated by Mina
 /*
- * may 19th comboboxes are set to sStrings and not raw type. 
+ * may 19th comboboxes are set to sStrings and not raw type. fixes to get images.
  */
 import java.awt.*;
 import java.awt.event.*;
