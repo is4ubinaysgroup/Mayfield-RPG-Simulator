@@ -136,6 +136,11 @@ public class Human
 		//TODO
 	}
 	
+	public void moveIn(Human human, boolean useMostOptimalMove, int attackType)//optimal 
+	{
+		
+	}
+	
 	public void attack(Human human) 
 	{
 		//Cuts damage from armor then if there is more damage it cuts to health. 
@@ -151,6 +156,11 @@ public class Human
 			human.setDefense(0);
 			human.setHealth(human.getHealth() - damageToHealth);
 		}
+	}
+	
+	public void runAndHit(Human human) {//added by carson. I will add this to UML. soon..
+		// TODO Auto-generated method stub
+		
 	}
 	
 	public boolean hasLowHealth() 

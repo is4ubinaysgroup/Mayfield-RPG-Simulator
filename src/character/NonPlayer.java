@@ -3,7 +3,6 @@
  */
 package src.character;
 
-import src.Room;
 import src.gui.MainExecutable;
 import src.items.Weapon;
 /**
@@ -89,7 +88,7 @@ UML
 		}
 		else if( ( r < Human.MOVEMENT)  && inRangeOf(player) && nearCorner() ) // if cornered
 		{
-			moveTo(Player);
+			moveTo(player);
 		}
 		else if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.MELEETYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))
 		{// 3. If the player is in melee attack range:
@@ -116,38 +115,30 @@ UML
 			{
 				runAndHit(player);
 			}
-			
-			/*
-				 Based on a random number from 1-2 the boss will:
-				If 1, attack the player.
-				If 2, move out of melee range but into non-melee range, then attack.
-				End of turn.
-			 */
 		}
 		else	if(!(player.inRangeOf(this))) 
 		{
 			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
-			/*
-			 * 5. player is not in range:
-			 * 	Based on a random number from 1-2 the boss will:
-				If 1, The boss will move only as close as it can to ensure the player is in it's melee range, however, if the boss can do this and be out of the players attack range it will move to the location that it can attack and be out of player range.
-				If 2, The boss will move only as close as it can to ensure the player is in it's non-melee range, however, if the boss can do this and be out of the players attack range it will move to the location that it can attack and be out of player range.
-				End of turn.
-			 */
+			if(random == 1) 
+			{
+				moveIn(player, true, Weapon.MELEETYPE);
+			}
+			else // random == 2 
+			{
+				moveIn(player, true, Weapon.RANGEDTYPE);
+			}
 		}
 		else	 if(inRangeOf(player)) 
 		{
 			moveOut(player);
-			/*
-				 6. The Boss is in player range
-				The boss will move out of player range and recover 1% of its health.
-				End of turn.
-			 */
+			setHealth( getHealth() + (int) Math.ceil(getMaxHealth()*0.01) );//recovers 1% of health.
 		}
 		else {}
 
 	}				
 
+
+	
 
 	private boolean nearCorner() {
 		// TODO Auto-generated method stub
