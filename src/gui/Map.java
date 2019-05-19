@@ -27,6 +27,15 @@ public class Map
 
 	public static void initGUI ()
 	{
+		JPanel background = new JPanel() 
+		{
+			public void paint(Graphics g) 
+			{
+				g.drawImage(Database.MapBackground, -150, 0, 1220, 800, null);
+			}
+		};
+		background.setBounds(0, 0, 800, 800);
+		background.setVisible(true);
 		// ------- map panel --------
 		mapPane = new JPanel ();
 		mapPane.setBackground(Database.ALT_MAYFIELD_BLUE);
@@ -172,7 +181,7 @@ public class Map
 		});
 
 		mapPane.add(btn_Back);
-
+		mapPane.add(background);
 	} // initGUI method
 
 	

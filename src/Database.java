@@ -112,7 +112,8 @@ public class Database {
 		public static BufferedImage imgHallMonitor;
 		public static BufferedImage imgGymTeacher;
 		public static BufferedImage MainMenuBackground;
-		
+		public static BufferedImage MapBackground;
+
 		public static BufferedImage readImg(String filepath) throws Exception
 		{
 			return ImageIO.read(new File(filepath)); 
@@ -143,6 +144,7 @@ public class Database {
 			imgTimbits =readImg(timbits);
 			imgTylenol =readImg(tylenol);
 			MainMenuBackground =readImg("src/resources/Background.jpeg");
+			MapBackground =readImg("src/resources/background2.png");
 			//imgGymTeacher =readImg(gymTeacher);
 			//imgBinay =readImg(binay);
 			//imgHallMonitor =readImg(hallMonitor);
