@@ -22,7 +22,15 @@ public class Navigation
 
 	public static void initGUI()
 	{
-		
+		JPanel background = new JPanel() 
+		{
+			public void paint(Graphics g) 
+			{
+				g.drawImage(Database.getMainMenuBackground(), 0, 0, 1314, 878, null);
+			}
+		};
+		background.setBounds(0, 0, 800, 800);
+		background.setVisible(true);
 		// ------- navigationPane -------
 		NavigationPane = new JPanel();
 		NavigationPane.setBackground(Database.ALT_MAYFIELD_BLUE);
@@ -99,6 +107,8 @@ public class Navigation
 				GUIExtension1.switchPane(MainMenu.getPane());
 			}
 		});
+		NavigationPane.add(background);
+
 		
 	} // initGUI method
 	
