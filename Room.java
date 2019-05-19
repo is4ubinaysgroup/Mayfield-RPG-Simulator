@@ -1,4 +1,3 @@
-package battleScreen;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,6 +7,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+
+/*
+Carson may 19th
+fixed errors
+ */
 public class Room extends JFrame {
 
 	private JPanel contentPane;
@@ -1640,102 +1644,102 @@ public class Room extends JFrame {
 	}
 	String labelNames[][]=new String[20][20]; {
 		//_____________________________________________________________________________________________________________
-		labelNames[0][0]="lblA; labelNames[0][1]="lblA_1"; labelNames[0][2]="lblA_2"; labelNames[0][3]="lblA_3"; labelNames[0][4]="lblA_4";
+		labelNames[0][0]= "lblA"; labelNames[0][1]="lblA_1"; labelNames[0][2]="lblA_2"; labelNames[0][3]="lblA_3"; labelNames[0][4]="lblA_4";
 		labelNames[0][5]="lblA_5"; labelNames[0][6]="lblA_6"; labelNames[0][7]="lblA_7"; labelNames[0][8]="lblA_8"; labelNames[0][9]="lblA_9";
 		labelNames[0][10]="lblA_10";labelNames[0][11]="lblA_11";labelNames[0][12]="lblA_12";labelNames[0][13]="lblA_13";labelNames[0][14]="lblA_14";
 		labelNames[0][15]="lblA_15";labelNames[0][16]="lblA_16";labelNames[0][17]="lblA_17";labelNames[0][18]="lblA_18";labelNames[0][19]="lblA_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[1][0]="lblB; labelNames[1][1]="lblB_1"; labelNames[1][2]="lblB_2"; labelNames[1][3]="lblB_3"; labelNames[1][4]="lblB_4";
+		labelNames[1][0]="lblB"; labelNames[1][1]="lblB_1"; labelNames[1][2]="lblB_2"; labelNames[1][3]="lblB_3"; labelNames[1][4]="lblB_4";
 		labelNames[1][5]="lblB_5"; labelNames[1][6]="lblB_6"; labelNames[1][7]="lblB_7"; labelNames[1][8]="lblB_8"; labelNames[1][9]="lblB_9";
 		labelNames[1][10]="lblB_10";labelNames[1][11]="lblB_11";labelNames[1][12]="lblB_12";labelNames[1][13]="lblB_13";labelNames[1][14]="lblB_14";
 		labelNames[1][15]="lblB_15";labelNames[1][16]="lblB_16";labelNames[1][17]="lblB_17";labelNames[1][18]="lblB_18";labelNames[1][19]="lblB_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[1][0]="lblC; labelNames[1][1]="lblC_1"; labelNames[1][2]="lblC_2"; labelNames[1][3]="lblC_3"; labelNames[1][4]="lblC_4";
+		labelNames[1][0]="lblC"; labelNames[1][1]="lblC_1"; labelNames[1][2]="lblC_2"; labelNames[1][3]="lblC_3"; labelNames[1][4]="lblC_4";
 		labelNames[1][5]="lblC_5"; labelNames[1][6]="lblC_6"; labelNames[1][7]="lblC_7"; labelNames[1][8]="lblC_8"; labelNames[1][9]="lblC_9";
 		labelNames[1][10]="lblC_10";labelNames[1][11]="lblC_11";labelNames[1][12]="lblC_12";labelNames[1][13]="lblC_13";labelNames[1][14]="lblC_14";
 		labelNames[1][15]="lblC_15";labelNames[1][16]="lblC_16";labelNames[1][17]="lblC_17";labelNames[1][18]="lblC_18";labelNames[1][19]="lblC_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[3][1]="lblD; labelNames[3][1]="lblD_1"; labelNames[3][2]="lblD_2"; labelNames[3][3]="lblD_3"; labelNames[3][4]="lblD_4";
+		labelNames[3][1]="lblD"; labelNames[3][1]="lblD_1"; labelNames[3][2]="lblD_2"; labelNames[3][3]="lblD_3"; labelNames[3][4]="lblD_4";
 		labelNames[3][5]="lblD_5"; labelNames[3][6]="lblD_6"; labelNames[3][7]="lblD_7"; labelNames[3][8]="lblD_8"; labelNames[3][9]="lblD_9";
 		labelNames[3][10]="lblD_10";labelNames[3][11]="lblD_11";labelNames[3][12]="lblD_12";labelNames[3][13]="lblD_13";labelNames[3][14]="lblD_14";
 		labelNames[3][15]="lblD_15";labelNames[3][16]="lblD_16";labelNames[3][17]="lblD_17";labelNames[3][18]="lblD_18";labelNames[3][19]="lblD_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[4][1]="lblE; labelNames[4][1]="lblE_1"; labelNames[4][2]="lblE_2"; labelNames[4][3]="lblE_3"; labelNames[4][4]="lblE_4";
+		labelNames[4][1]="lblE"; labelNames[4][1]="lblE_1"; labelNames[4][2]="lblE_2"; labelNames[4][3]="lblE_3"; labelNames[4][4]="lblE_4";
 		labelNames[4][5]="lblE_5"; labelNames[4][6]="lblE_6"; labelNames[4][7]="lblE_7"; labelNames[4][8]="lblE_8"; labelNames[4][9]="lblE_9";
 		labelNames[4][10]="lblE_10";labelNames[4][11]="lblE_11";labelNames[4][12]="lblE_12";labelNames[4][13]="lblE_13";labelNames[4][14]="lblE_14";
 		labelNames[4][15]="lblE_15";labelNames[4][16]="lblE_16";labelNames[4][17]="lblE_17";labelNames[4][18]="lblE_18";labelNames[4][19]="lblE_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[5][1]="lblF; labelNames[5][1]="lblF_1"; labelNames[5][2]="lblF_2"; labelNames[5][3]="lblF_3"; labelNames[5][4]="lblF_4";
+		labelNames[5][1]="lblF"; labelNames[5][1]="lblF_1"; labelNames[5][2]="lblF_2"; labelNames[5][3]="lblF_3"; labelNames[5][4]="lblF_4";
 		labelNames[5][5]="lblF_5"; labelNames[5][6]="lblF_6"; labelNames[5][7]="lblF_7"; labelNames[5][8]="lblF_8"; labelNames[5][9]="lblF_9";
 		labelNames[5][10]="lblF_10";labelNames[5][11]="lblF_11";labelNames[5][12]="lblF_12";labelNames[5][13]="lblF_13";labelNames[5][14]="lblF_14";
 		labelNames[5][15]="lblF_15";labelNames[5][16]="lblF_16";labelNames[5][17]="lblF_17";labelNames[5][18]="lblF_18";labelNames[5][19]="lblF_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[6][1]="lblG; labelNames[6][1]="lblG_1"; labelNames[6][2]="lblG_2"; labelNames[6][3]="lblG_3"; labelNames[6][4]="lblG_4";
+		labelNames[6][1]="lblG"; labelNames[6][1]="lblG_1"; labelNames[6][2]="lblG_2"; labelNames[6][3]="lblG_3"; labelNames[6][4]="lblG_4";
 		labelNames[6][5]="lblG_5"; labelNames[6][6]="lblG_6"; labelNames[6][7]="lblG_7"; labelNames[6][8]="lblG_8"; labelNames[6][9]="lblG_9";
 		labelNames[6][10]="lblG_10";labelNames[6][11]="lblG_11";labelNames[6][12]="lblG_12";labelNames[6][13]="lblG_13";labelNames[6][14]="lblG_14";
 		labelNames[6][15]="lblG_15";labelNames[6][16]="lblG_16";labelNames[6][17]="lblG_17";labelNames[6][18]="lblG_18";labelNames[6][19]="lblG_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[7][0]="lblH; labelNames[7][1]="lblH_1"; labelNames[7][2]="lblH_2"; labelNames[7][3]="lblH_3"; labelNames[7][4]="lblH_4";
+		labelNames[7][0]="lblH"; labelNames[7][1]="lblH_1"; labelNames[7][2]="lblH_2"; labelNames[7][3]="lblH_3"; labelNames[7][4]="lblH_4";
 		labelNames[7][5]="lblH_5"; labelNames[7][6]="lblH_6"; labelNames[7][7]="lblH_7"; labelNames[7][8]="lblH_8"; labelNames[7][9]="lblH_9";
 		labelNames[7][10]="lblH_10";labelNames[7][11]="lblH_11";labelNames[7][12]="lblH_12";labelNames[7][13]="lblH_13";labelNames[7][14]="lblH_14";
 		labelNames[7][15]="lblH_15";labelNames[7][16]="lblH_16";labelNames[7][17]="lblH_17";labelNames[7][18]="lblH_18";labelNames[7][19]="lblH_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[8][0]="lblI; labelNames[8][1]="lblI_1"; labelNames[8][2]="lblI_2"; labelNames[8][3]="lblI_3"; labelNames[8][4]="lblI_4";
+		labelNames[8][0]="lblI"; labelNames[8][1]="lblI_1"; labelNames[8][2]="lblI_2"; labelNames[8][3]="lblI_3"; labelNames[8][4]="lblI_4";
 		labelNames[8][5]="lblI_5"; labelNames[8][6]="lblI_6"; labelNames[8][7]="lblI_7"; labelNames[8][8]="lblI_8"; labelNames[8][9]="lblI_9";
 		labelNames[8][10]="lblI_10";labelNames[8][11]="lblI_11";labelNames[8][12]="lblI_12";labelNames[8][13]="lblI_13";labelNames[8][14]="lblI_14";
 		labelNames[8][15]="lblI_15";labelNames[8][16]="lblI_16";labelNames[8][17]="lblI_17";labelNames[8][18]="lblI_18";labelNames[8][19]="lblI_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[9][0]="lblJ; labelNames[9][1]="lblJ_1"; labelNames[9][2]="lblJ_2"; labelNames[9][3]="lblJ_3"; labelNames[9][4]="lblJ_4";
+		labelNames[9][0]="lblJ"; labelNames[9][1]="lblJ_1"; labelNames[9][2]="lblJ_2"; labelNames[9][3]="lblJ_3"; labelNames[9][4]="lblJ_4";
 		labelNames[9][5]="lblJ_5"; labelNames[9][6]="lblJ_6"; labelNames[9][7]="lblJ_7"; labelNames[9][8]="lblJ_8"; labelNames[9][9]="lblJ_9";
 		labelNames[9][10]="lblJ_10";labelNames[9][11]="lblJ_11";labelNames[9][12]="lblJ_12";labelNames[9][13]="lblJ_13";labelNames[9][14]="lblJ_14";
 		labelNames[9][15]="lblJ_15";labelNames[9][16]="lblJ_16";labelNames[9][17]="lblJ_17";labelNames[9][18]="lblJ_18";labelNames[9][19]="lblJ_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[10][0]="lblK; labelNames[10][1]="lblK_1"; labelNames[10][2]="lblK_2"; labelNames[10][3]="lblK_3"; labelNames[10][4]="lblK_4";
+		labelNames[10][0]="lblK"; labelNames[10][1]="lblK_1"; labelNames[10][2]="lblK_2"; labelNames[10][3]="lblK_3"; labelNames[10][4]="lblK_4";
 		labelNames[10][5]="lblK_5"; labelNames[10][6]="lblK_6"; labelNames[10][7]="lblK_7"; labelNames[10][8]="lblK_8"; labelNames[10][9]="lblK_9";
 		labelNames[10][10]="lblK_10";labelNames[10][11]="lblK_11";labelNames[10][12]="lblK_12";labelNames[10][13]="lblK_13";labelNames[10][14]="lblK_14";
 		labelNames[10][15]="lblK_15";labelNames[10][16]="lblK_16";labelNames[10][17]="lblK_17";labelNames[10][18]="lblK_18";labelNames[10][19]="lblK_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[11][0]="lblL; labelNames[11][1]="lblL_1"; labelNames[11][2]="lblL_2"; labelNames[11][3]="lblL_3"; labelNames[11][4]="lblL_4";
+		labelNames[11][0]="lblL"; labelNames[11][1]="lblL_1"; labelNames[11][2]="lblL_2"; labelNames[11][3]="lblL_3"; labelNames[11][4]="lblL_4";
 		labelNames[11][5]="lblL_5"; labelNames[11][6]="lblL_6"; labelNames[11][7]="lblL_7"; labelNames[11][8]="lblL_8"; labelNames[11][9]="lblL_9";
 		labelNames[11][10]="lblL_10";labelNames[11][11]="lblL_11";labelNames[11][12]="lblL_12";labelNames[11][13]="lblL_13";labelNames[11][14]="lblL_14";
 		labelNames[11][15]="lblL_15";labelNames[11][16]="lblL_16";labelNames[11][17]="lblL_17";labelNames[11][18]="lblL_18";labelNames[11][19]="lblL_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[12][0]="lblM; labelNames[12][1]="lblM_1"; labelNames[12][2]="lblM_2"; labelNames[12][3]="lblM_3"; labelNames[12][4]="lblM_4";
+		labelNames[12][0]="lblM"; labelNames[12][1]="lblM_1"; labelNames[12][2]="lblM_2"; labelNames[12][3]="lblM_3"; labelNames[12][4]="lblM_4";
 		labelNames[12][5]="lblM_5"; labelNames[12][6]="lblM_6"; labelNames[12][7]="lblM_7"; labelNames[12][8]="lblM_8"; labelNames[12][9]="lblM_9";
 		labelNames[12][10]="lblM_10";labelNames[12][11]="lblM_11";labelNames[12][12]="lblM_12";labelNames[12][13]="lblM_13";labelNames[12][14]="lblM_14";
 		labelNames[12][15]="lblM_15";labelNames[12][16]="lblM_16";labelNames[12][17]="lblM_17";labelNames[12][18]="lblM_18";labelNames[12][19]="lblM_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[13][0]="lblN; labelNames[13][1]="lblN_1"; labelNames[13][2]="lblN_2"; labelNames[13][3]="lblN_3"; labelNames[13][4]="lblN_4";
+		labelNames[13][0]="lblN"; labelNames[13][1]="lblN_1"; labelNames[13][2]="lblN_2"; labelNames[13][3]="lblN_3"; labelNames[13][4]="lblN_4";
 		labelNames[13][5]="lblN_5"; labelNames[13][6]="lblN_6"; labelNames[13][7]="lblN_7"; labelNames[13][8]="lblN_8"; labelNames[13][9]="lblN_9";
 		labelNames[13][10]="lblN_10";labelNames[13][11]="lblN_11";labelNames[13][12]="lblN_12";labelNames[13][13]="lblN_13";labelNames[13][14]="lblN_14";
 		labelNames[13][15]="lblN_15";labelNames[13][16]="lblN_16";labelNames[13][17]="lblN_17";labelNames[13][18]="lblN_18";labelNames[13][19]="lblN_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[14][0]="lblO; labelNames[14][1]="lblO_1"; labelNames[14][2]="lblO_2"; labelNames[14][3]="lblO_3"; labelNames[14][4]="lblO_4";
+		labelNames[14][0]="lblO"; labelNames[14][1]="lblO_1"; labelNames[14][2]="lblO_2"; labelNames[14][3]="lblO_3"; labelNames[14][4]="lblO_4";
 		labelNames[14][5]="lblO_5"; labelNames[14][6]="lblO_6"; labelNames[14][7]="lblO_7"; labelNames[14][8]="lblO_8"; labelNames[14][9]="lblO_9";
 		labelNames[14][10]="lblO_10";labelNames[14][11]="lblO_11";labelNames[14][12]="lblO_12";labelNames[14][13]="lblO_13";labelNames[14][14]="lblO_14";
 		labelNames[14][15]="lblO_15";labelNames[14][16]="lblO_16";labelNames[14][17]="lblO_17";labelNames[14][18]="lblO_18";labelNames[14][19]="lblO_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[15][0]="lblP; labelNames[15][1]="lblP_1"; labelNames[15][2]="lblP_2"; labelNames[15][3]="lblP_3"; labelNames[15][4]="lblP_4";
+		labelNames[15][0]="lblP"; labelNames[15][1]="lblP_1"; labelNames[15][2]="lblP_2"; labelNames[15][3]="lblP_3"; labelNames[15][4]="lblP_4";
 		labelNames[15][5]="lblP_5"; labelNames[15][6]="lblP_6"; labelNames[15][7]="lblP_7"; labelNames[15][8]="lblP_8"; labelNames[15][9]="lblP_9";
 		labelNames[15][10]="lblP_10";labelNames[15][11]="lblP_11";labelNames[15][12]="lblP_12";labelNames[15][13]="lblP_13";labelNames[15][14]="lblP_14";
 		labelNames[15][15]="lblP_15";labelNames[15][16]="lblP_16";labelNames[15][17]="lblP_17";labelNames[15][18]="lblP_18";labelNames[15][19]="lblP_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[16][0]="lblQ; labelNames[16][1]="lblQ_1"; labelNames[16][2]="lblQ_2"; labelNames[16][3]="lblQ_3"; labelNames[16][4]="lblQ_4";
+		labelNames[16][0]="lblQ"; labelNames[16][1]="lblQ_1"; labelNames[16][2]="lblQ_2"; labelNames[16][3]="lblQ_3"; labelNames[16][4]="lblQ_4";
 		labelNames[16][5]="lblQ_5"; labelNames[16][6]="lblQ_6"; labelNames[16][7]="lblQ_7"; labelNames[16][8]="lblQ_8"; labelNames[16][9]="lblQ_9";
 		labelNames[16][10]="lblQ_10";labelNames[16][11]="lblQ_11";labelNames[16][12]="lblQ_12";labelNames[16][13]="lblQ_13";labelNames[16][14]="lblQ_14";
 		labelNames[16][15]="lblQ_15";labelNames[16][16]="lblQ_16";labelNames[16][17]="lblQ_17";labelNames[16][18]="lblQ_18";labelNames[16][19]="lblQ_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[17][0]="lblR; labelNames[17][1]="lblR_1"; labelNames[17][2]="lblR_2"; labelNames[17][3]="lblR_3"; labelNames[17][4]="lblR_4";
+		labelNames[17][0]="lblR"; labelNames[17][1]="lblR_1"; labelNames[17][2]="lblR_2"; labelNames[17][3]="lblR_3"; labelNames[17][4]="lblR_4";
 		labelNames[17][5]="lblR_5"; labelNames[17][6]="lblR_6"; labelNames[17][7]="lblR_7"; labelNames[17][8]="lblR_8"; labelNames[17][9]="lblR_9";
 		labelNames[17][10]="lblR_10";labelNames[17][11]="lblR_11";labelNames[17][12]="lblR_12";labelNames[17][13]="lblR_13";labelNames[17][14]="lblR_14";
 		labelNames[17][15]="lblR_15";labelNames[17][16]="lblR_16";labelNames[17][17]="lblR_17";labelNames[17][18]="lblR_18";labelNames[17][19]="lblR_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[18][0]="lblS; labelNames[8][1]="lblS_1"; labelNames[8][2]="lblS_2"; labelNames[8][3]="lblS_3"; labelNames[8][4]="lblS_4";
+		labelNames[18][0]="lblS"; labelNames[8][1]="lblS_1"; labelNames[8][2]="lblS_2"; labelNames[8][3]="lblS_3"; labelNames[8][4]="lblS_4";
 		labelNames[8][5]="lblS_5"; labelNames[8][6]="lblS_6"; labelNames[8][7]="lblS_7"; labelNames[8][8]="lblS_8"; labelNames[8][9]="lblS_9";
 		labelNames[8][10]="lblS_10";labelNames[8][11]="lblS_11";labelNames[8][12]="lblS_12";labelNames[8][13]="lblS_13";labelNames[8][14]="lblS_14";
 		labelNames[8][15]="lblS_15";labelNames[8][16]="lblS_16";labelNames[8][17]="lblS_17";labelNames[8][18]="lblS_18";labelNames[8][19]="lblS_19";
 		//_____________________________________________________________________________________________________________
-		labelNames[19][0]="lblT; labelNames[19][1]="lblT_1"; labelNames[19][2]="lblT_2"; labelNames[19][3]="lblT_3"; labelNames[19][4]="lblT_4";
+		labelNames[19][0]="lblT"; labelNames[19][1]="lblT_1"; labelNames[19][2]="lblT_2"; labelNames[19][3]="lblT_3"; labelNames[19][4]="lblT_4";
 		labelNames[19][5]="lblT_5"; labelNames[19][6]="lblT_6"; labelNames[19][7]="lblT_7"; labelNames[19][8]="lblT_8"; labelNames[19][9]="lblT_9";
 		labelNames[19][10]="lblT_10";labelNames[19][11]="lblT_11";labelNames[19][12]="lblT_12";labelNames[19][13]="lblT_13";labelNames[19][14]="lblT_14";
 		labelNames[19][15]="lblT_15";labelNames[19][16]="lblT_16";labelNames[19][17]="lblT_17";labelNames[19][18]="lblT_18";labelNames[19][19]="lblT_19";

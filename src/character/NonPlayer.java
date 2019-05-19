@@ -76,7 +76,7 @@ UML
 		this.isBoss = isBoss;
 	}
 	
-		public void runTurn(Room room) //TODO
+		public void runTurn() //TODO
 	{
 		Player player = MainExecutable.getPlayer();
 		int r = player.getEquippedWeapon().getRange();
@@ -101,7 +101,7 @@ UML
 			else if( ( r < Human.MOVEMENT)  &&  inRangeOf(player)  && nearCorner())//2. If the boss is cornered:
 			{
 				//The boss will move to the other side of the player, however, if the boss cannot it will move as far as it can to the other side of the player.
-				moveTo(Player);
+				moveTo(player);
 			}
 		}
 		//Continues to the next true statement
@@ -114,7 +114,7 @@ UML
 			}
 			else
 			{
-				moveThenAttack(player);
+				runAndHit(player);
 			}
 			
 			/*
@@ -137,7 +137,7 @@ UML
 		}
 		else	 if(inRangeOf(player)) 
 		{
-			moveOutOfRange(player);
+			moveOut(player);
 			/*
 				 6. The Boss is in player range
 				The boss will move out of player range and recover 1% of its health.
