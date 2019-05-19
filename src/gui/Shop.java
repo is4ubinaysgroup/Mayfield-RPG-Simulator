@@ -32,6 +32,13 @@ May 16th, 2019
 /*
  * may 19th comboboxes are set to sStrings and not raw type. fixes to get images.
  */
+
+/*
+05-19 Mina
+forgot to compare hasEnoughCoins to true
+*/
+
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -539,7 +546,7 @@ public class Shop
 		
 		Product product =  Database.getProduct (selectedItemName);
 		
-		if (MainExecutable.getPlayer().hasEnoughCoins(product.getCost()) && MainExecutable.getPlayer().isProductCapacityFull() == false)
+		if (MainExecutable.getPlayer().hasEnoughCoins(product.getCost()) == true && MainExecutable.getPlayer().isProductCapacityFull() == false)
 		{			
 	
 			int coins = MainExecutable.getPlayer().getCoins() - product.getCost();
@@ -566,7 +573,7 @@ public class Shop
 		
 		Weapon weapon = Database.getWeapon (selectedItemName);
 		
-		if (MainExecutable.getPlayer().hasEnoughCoins(weapon.getCost()) && MainExecutable.getPlayer().alreadyOwnsWeapon(weapon) == false)
+		if (MainExecutable.getPlayer().hasEnoughCoins(weapon.getCost()) == true && MainExecutable.getPlayer().alreadyOwnsWeapon(weapon) == false)
 		{			
 	
 			int coins = MainExecutable.getPlayer().getCoins() - weapon.getCost();
