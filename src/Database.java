@@ -298,25 +298,6 @@ public class Database {
 		NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
 	
 		// ------------------------------------------- weapon stuff -------------------------------------------
-	
-		// Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
-	/*
-		public static int stats[][]=new int[3][2];{//this array stores all the information for the weapon's beside critical chance and weapon names
-			//  [damage]  [range]
-			stats[0][0]=4; stats[0][1]=3;//sets the "hat" weapon damage
-			stats[1][0]=1; stats[1][1]=1;//sets the "pencil" weapon damage
-			stats[2][0]=2; stats[2][1]=1;//sets the "ruler" weapon damage
-			stats[3][0]=2; stats[3][1]=3;//sets the "rubberBand" weapon damage
-		};
-		
-		public static double criticalChance[];{//sets the array and the values in the array for critical chances 
-			criticalChance[0]=.20;
-			criticalChance[1]=.05;
-			criticalChance[2]=.15;
-			criticalChance[3]=.10;
-		};
-		
-	*/
 			
 		public static int stats[][]= {//this array stores all the information for the weapon's beside critical chance and weapon names
 			//  [damage]  [range]
