@@ -1,6 +1,5 @@
 package src.gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,6 +15,10 @@ fixed errors and debuged a whole ton of code
 public class Room extends JFrame {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3276708249872258003L;
 	private JPanel contentPane;
 	private JLabel lblA;
 	private JLabel lblA_1;
