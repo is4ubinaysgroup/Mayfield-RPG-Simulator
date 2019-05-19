@@ -123,7 +123,12 @@ public class Human
 	
 	public void moveAway(Human human) //moves away from a human
 	{
-		//TODO
+		int x = human.getX();
+		int y = human.getY();
+		for(int i = 1; i != Human.MOVEMENT; i--) 
+		{
+			
+		}
 	}
 	
 	public void moveOut(Human human) //moves out of a human's weapons range
