@@ -6,6 +6,8 @@ import src.Database;
 in a blank room/"overworld" where the user clicks on their character sprite */
 //may 19th carson: recoloured
 
+// Mina 05-10 added Backpack.update() to backpack button listener
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -69,6 +71,7 @@ public class Navigation
 			public void actionPerformed (ActionEvent e)
 			{
 				GUIExtension1.switchPane(Backpack.getPane());
+				Backpack.update();
 			}
 		});
 		
