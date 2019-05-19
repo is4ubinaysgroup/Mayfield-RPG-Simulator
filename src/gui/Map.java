@@ -38,7 +38,7 @@ public class Map
 		background.setVisible(true);
 		// ------- map panel --------
 		mapPane = new JPanel ();
-		mapPane.setBackground(Database.ALT_MAYFIELD_BLUE);
+		mapPane.setBackground(Database.ALT_MAYFIELD_BLUE); 
 		mapPane.setLayout(null);
 
 

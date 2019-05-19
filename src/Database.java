@@ -140,7 +140,7 @@ public class Database {
 			imgMcChicken =readImg(mcChicken);
 			imgOrangeJuice =readImg(orangeJuice);
 			imgRubberband =readImg(rubberband);
-			imgRuler =readImg(ruler);
+			imgRuler =readImg(ruler); 
 			imgTimbits =readImg(timbits);
 			imgTylenol =readImg(tylenol);
 			MainMenuBackground =readImg("src/resources/Background.jpeg");
