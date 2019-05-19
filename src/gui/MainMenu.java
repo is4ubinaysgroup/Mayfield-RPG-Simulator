@@ -16,6 +16,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import src.Database;
+
 public class MainMenu
 {
 	static protected JPanel mainMenuPane;

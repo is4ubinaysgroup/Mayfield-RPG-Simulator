@@ -4,9 +4,17 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.imageio.ImageIO;
 
+import src.character.Human;
+import src.character.NonPlayer;
+import src.character.Player;
+import src.gui.MainExecutable;
+import src.items.Item;
 import src.items.Product;
 import src.items.Weapon;
 
@@ -41,9 +49,84 @@ changed spacing / code grouping
 
 // 05-17 updated by Mina
 
+/*
+ * Carson
+ * May 19th
+ * worked on loadAssets of which I created and added loadImages and all bufferedImages needed.
+ */
 
 public class Database {
+		public void loadAssets() throws Exception//loads all assets
+		{
+			try 
+			{
+				read(files[0]);
+			}
+			catch (Exception e) 
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			LoadImages();
+		}//Assets
+	
+	
+		//-------------------------------------------Image Loading.-------------------------
+		private BufferedImage imgCapacityUpgrade; 
+		private BufferedImage imgCappuccino;
+		private BufferedImage imgCoffee;
+		private BufferedImage imgEspresso;
+		private BufferedImage imgFootlongsub;
+		private BufferedImage imgMcChicken;
+		private BufferedImage imgOrangeJuice;
+		private BufferedImage imgPlayer;
+		private BufferedImage imgRubberband;
+		private BufferedImage imgRuler;
+		private BufferedImage imgTimbits;
+		private BufferedImage imgTylenol;
+		private BufferedImage imgTeacher;
+		private BufferedImage imgBinay;
+		private BufferedImage imgHallMonitor;
+		private BufferedImage imgGymTeacher;
 		
+		public BufferedImage readImg(String filepath) throws Exception
+		{
+			return ImageIO.read(new File(filepath));
+		}
+		
+		public BufferedImage readImg(Item item) throws Exception
+		{
+			return ImageIO.read(new File(item.getImagePath()));
+		}
+		
+		public BufferedImage readImg(Human human) throws Exception
+		{
+			return ImageIO.read(new File(human.getImagePath()));
+		}
+		
+		private void LoadImages() throws Exception
+		{
+			imgCapacityUpgrade = readImg(capacityUpgrade);
+			imgCappuccino =readImg(cappuccino);
+			imgCoffee =readImg(coffee);
+			imgEspresso =readImg(espresso);
+			imgFootlongsub =readImg(footLongSub);
+			imgMcChicken =readImg(mcChicken);
+			imgOrangeJuice =readImg(orangeJuice);
+			imgRubberband =readImg( rubberband);
+			imgRuler =readImg(ruler);
+			imgTimbits =readImg(timbits);
+			imgTylenol =readImg(tylenol);
+			
+			imgGymTeacher =readImg(gymTeacher);
+			imgBinay =readImg(binay);
+			imgHallMonitor =readImg(hallMonitor);
+			imgPlayer =readImg(MainExecutable.getPlayer());
+		}
+		
+
+
 		// ------------------------------------------- save file configuration stuff ------------------------------------------- 
 		
 		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
@@ -209,7 +292,10 @@ public class Database {
 		
 	
 	
-	
+	//-------------------------npc Stuff
+		NonPlayer hallMonitor = new NonPlayer("<name>", false);
+		NonPlayer binay = new NonPlayer("Binay", true);
+		NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
 	
 		// ------------------------------------------- weapon stuff -------------------------------------------
 	
@@ -312,6 +398,264 @@ public class Database {
 			else if (name.equals("Espresso")) {return Database.getEspresso();}
 			else {return Database.getOrangeJuice();} // "Orange Juice"
 		} // getProduct method
+
+
+		/**
+		 * @return the imgCapacityUpgrade
+		 */
+		public BufferedImage getImg_CapacityUpgrade() {
+			return imgCapacityUpgrade;
+		}
+
+
+		/**
+		 * @param imgCapacityUpgrade the imgCapacityUpgrade to set
+		 */
+		public void setImg_CapacityUpgrade(BufferedImage imgCapacityUpgrade) {
+			this.imgCapacityUpgrade = imgCapacityUpgrade;
+		}
+
+
+		/**
+		 * @return the imgCappuccino
+		 */
+		public BufferedImage getImg_Cappuccino() {
+			return imgCappuccino;
+		}
+
+
+		/**
+		 * @param imgCappuccino the imgCappuccino to set
+		 */
+		public void setImg_Cappuccino(BufferedImage imgCappuccino) {
+			this.imgCappuccino = imgCappuccino;
+		}
+
+
+		/**
+		 * @return the imgCoffee
+		 */
+		public BufferedImage getImg_Coffee() {
+			return imgCoffee;
+		}
+
+
+		/**
+		 * @param imgCoffee the imgCoffee to set
+		 */
+		public void setImg_Coffee(BufferedImage imgCoffee) {
+			this.imgCoffee = imgCoffee;
+		}
+
+
+		/**
+		 * @return the imgEspresso
+		 */
+		public BufferedImage getImg_Espresso() {
+			return imgEspresso;
+		}
+
+
+		/**
+		 * @param imgEspresso the imgEspresso to set
+		 */
+		public void setImg_Espresso(BufferedImage imgEspresso) {
+			this.imgEspresso = imgEspresso;
+		}
+
+
+		/**
+		 * @return the imgFootlongsub
+		 */
+		public BufferedImage getImg_Footlongsub() {
+			return imgFootlongsub;
+		}
+
+
+		/**
+		 * @param imgFootlongsub the imgFootlongsub to set
+		 */
+		public void setImg_Footlongsub(BufferedImage imgFootlongsub) {
+			this.imgFootlongsub = imgFootlongsub;
+		}
+
+		/**
+		 * @return the imgMcChicken
+		 */
+		public BufferedImage getImg_Mcchicken() {
+			return imgMcChicken;
+		}
+
+
+		/**
+		 * @param imgMcChicken the imgMcChicken to set
+		 */
+		public void setImg_Mcchicken(BufferedImage imgMcChicken) {
+			this.imgMcChicken = imgMcChicken;
+		}
+
+
+		/**
+		 * @return the imgOrangeJuice
+		 */
+		public BufferedImage getImg_Orangejuice() {
+			return imgOrangeJuice;
+		}
+
+
+		/**
+		 * @param imgOrangeJuice the imgOrangeJuice to set
+		 */
+		public void setImg_Orangejuice(BufferedImage imgOrangeJuice) {
+			this.imgOrangeJuice = imgOrangeJuice;
+		}
+
+
+		/**
+		 * @return the imgPlayer
+		 */
+		public BufferedImage getImg_Player() {
+			return imgPlayer;
+		}
+
+
+		/**
+		 * @param imgPlayer the imgPlayer to set
+		 */
+		public void setImg_Player(BufferedImage imgPlayer) {
+			this.imgPlayer = imgPlayer;
+		}
+
+
+		/**
+		 * @return the imgRubberband
+		 */
+		public BufferedImage getImg_Rubberband() {
+			return imgRubberband;
+		}
+
+
+		/**
+		 * @param imgRubberband the imgRubberband to set
+		 */
+		public void setImg_Rubberband(BufferedImage imgRubberband) {
+			this.imgRubberband = imgRubberband;
+		}
+
+
+		/**
+		 * @return the imgTimbits
+		 */
+		public BufferedImage getImg_Timbits() {
+			return imgTimbits;
+		}
+
+
+		/**
+		 * @param imgTimbits the imgTimbits to set
+		 */
+		public void setImg_Timbits(BufferedImage imgTimbits) {
+			this.imgTimbits = imgTimbits;
+		}
+
+
+		/**
+		 * @return the imgRuler
+		 */
+		public BufferedImage getImg_Ruler() {
+			return imgRuler;
+		}
+
+
+		/**
+		 * @param imgRuler the imgRuler to set
+		 */
+		public void setImg_Ruler(BufferedImage imgRuler) {
+			this.imgRuler = imgRuler;
+		}
+
+
+		/**
+		 * @return the imgTylenol
+		 */
+		public BufferedImage getImg_Tylenol() {
+			return imgTylenol;
+		}
+
+
+		/**
+		 * @param imgTylenol the imgTylenol to set
+		 */
+		public void setImg_Tylenol(BufferedImage imgTylenol) {
+			this.imgTylenol = imgTylenol;
+		}
+
+
+		/**
+		 * @return the imgTeacher
+		 */
+		public BufferedImage getImg_Teacher() {
+			return imgTeacher;
+		}
+
+
+		/**
+		 * @param imgTeacher the imgTeacher to set
+		 */
+		public void setImg_Teacher(BufferedImage imgTeacher) {
+			this.imgTeacher = imgTeacher;
+		}
+
+
+		/**
+		 * @return the imgBinay
+		 */
+		public BufferedImage getImg_Binay() {
+			return imgBinay;
+		}
+
+
+		/**
+		 * @param imgBinay the imgBinay to set
+		 */
+		public void setImg_Binay(BufferedImage imgBinay) {
+			this.imgBinay = imgBinay;
+		}
+
+
+		/**
+		 * @return the imgHallMonitor
+		 */
+		public BufferedImage getImg_HallMonitor() {
+			return imgHallMonitor;
+		}
+
+
+		/**
+		 * @param imgHallMonitor the imgHallMonitor to set
+		 */
+		public void setImg_HallMonitor(BufferedImage imgHallMonitor) {
+			this.imgHallMonitor = imgHallMonitor;
+		}
+
+
+		/**
+		 * @return the imgGymTeacher
+		 */
+		public BufferedImage getImg_GymTeacher() {
+			return imgGymTeacher;
+		}
+
+
+		/**
+		 * @param imgGymTeacher the imgGymTeacher to set
+		 */
+		public void setImgGymTeacher(BufferedImage imgGymTeacher) 
+		{
+			this.imgGymTeacher = imgGymTeacher;
+		}
+		
+		
 				 
 				 
 				 

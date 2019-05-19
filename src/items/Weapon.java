@@ -73,7 +73,6 @@ public class Weapon extends Item
 	private int rangedDamage;
 	
 	
-	
 	public Weapon(String name, int damage, int range, double critical_Chance, int type, int rangedDamage) 
 	{
 		this.setName(name);
