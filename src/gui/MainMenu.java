@@ -14,6 +14,8 @@ continue if the player's level is 0 instead of switching to navigation
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+
 import javax.swing.*;
 
 import src.Database;
@@ -26,6 +28,7 @@ public class MainMenu
 	static protected JButton btn_Continue;
 	static protected JButton btn_Help;
 	static protected JButton btn_Quit;
+	public static BufferedImage background;
 	
 	public static void initGUI()
 	{
@@ -34,7 +37,17 @@ public class MainMenu
 		mainMenuPane = new JPanel ();
 		mainMenuPane.setBackground(new Color(52, 52, 104));
 		mainMenuPane.setLayout(null);
-
+		
+		JPanel background = new JPanel() 
+		{
+			public void paint(Graphics g) 
+			{
+				g.drawImage(Database.getMainMenuBackground(), 0, 0, 1314, 878, null);
+			}
+		};
+		background.setBounds(0, 0, 800, 800);
+		background.setVisible(true);
+		
 		
 		// ------- lbl_Title -------
 		lbl_Title = new JLabel("MayField RPG Simulator");
@@ -126,6 +139,7 @@ public class MainMenu
 				GUIExtension1.switchPane(Help.getPane());
 			}
 		});
+		mainMenuPane.add(background);
 	} // initGUI method
 	public static JPanel getPane() {return mainMenuPane; } //getPane method
 } // MainMenu class

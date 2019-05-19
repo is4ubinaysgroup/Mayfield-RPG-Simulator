@@ -20,7 +20,7 @@ public class GUIExtension1
 	public static void initFrameAndParentPanel ()
 	{
 		frame = new JFrame ("Mayfield RPG Simulator");
-		
+		frame.setResizable(false);
 		frame.setSize (800, 800); // sets size 
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		try {

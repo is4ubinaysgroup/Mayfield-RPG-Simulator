@@ -111,7 +111,7 @@ public class Database {
 		public static BufferedImage imgBinay;
 		public static BufferedImage imgHallMonitor;
 		public static BufferedImage imgGymTeacher;
-		
+		public static BufferedImage MainMenuBackground;
 		
 		public static BufferedImage readImg(String filepath) throws Exception
 		{
@@ -142,7 +142,7 @@ public class Database {
 			imgRuler =readImg(ruler);
 			imgTimbits =readImg(timbits);
 			imgTylenol =readImg(tylenol);
-			
+			MainMenuBackground =readImg("src/resources/Background.jpeg");
 			//imgGymTeacher =readImg(gymTeacher);
 			//imgBinay =readImg(binay);
 			//imgHallMonitor =readImg(hallMonitor);
@@ -158,9 +158,9 @@ public class Database {
 	
 		private static File[] files = new File[2];
 		{
-			files[0] = new File("saves\\Save1.txt");
-			files[1] = new File("saves\\Save2.txt");
-			files[2] = new File("saves\\Save3.txt");
+			files[0] = new File("src/saves/Save1.txt");
+			files[1] = new File("src/saves/Save2.txt");
+			files[2] = new File("src/saves/Save3.txt");
 		}		
 		
 
@@ -668,6 +668,11 @@ public class Database {
 		
 		public static void setImgSoda(BufferedImage imgSoda) {
 			Database.imgSoda = imgSoda;
+		}
+
+
+		public static BufferedImage getMainMenuBackground() {
+			return MainMenuBackground;
 		}
 				 
 				 
