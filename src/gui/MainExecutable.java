@@ -16,6 +16,21 @@ public class MainExecutable
 
 	public static void main(String[] args)
 	{
+		int[] position = new int[2];
+		position[0] = 0;
+		position[1] = 0;
+		try {
+		player = new Player(100,10,10,100, Database.getPencil() , "src\\resources\\playerSprite.png", position, 0, 0, 10,10,10);//TODO set to actual data
+		}
+		catch(ExceptionInInitializerError e) 
+		{
+			try {
+				throw e.getCause();
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 		GUIExtension1.initFrameAndParentPanel ();
 		
 		MainMenu.initGUI();

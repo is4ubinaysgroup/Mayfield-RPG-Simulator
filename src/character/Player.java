@@ -46,7 +46,6 @@ public class Player extends Human {
 	// ------------------------------------------------ constructor ------------------------------------------------
 
 	public Player() {} // default constructor
-	
 	public Player(int health, int defense, int maxDefense, int maxHealth, Weapon equippedWeapon, String imagePath,
 					int [] position, 
 					int coins, int level, int numProducts, int numWeapons, int productCapacity)

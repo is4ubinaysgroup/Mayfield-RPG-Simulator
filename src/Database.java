@@ -300,36 +300,38 @@ public class Database {
 		// ------------------------------------------- weapon stuff -------------------------------------------
 	
 		// Zac's work that was moved from Weapon class: Stats[][], criticalChance[], and names[]
-	
+	/*
 		public static int stats[][]=new int[3][2];{//this array stores all the information for the weapon's beside critical chance and weapon names
 			//  [damage]  [range]
 			stats[0][0]=4; stats[0][1]=3;//sets the "hat" weapon damage
 			stats[1][0]=1; stats[1][1]=1;//sets the "pencil" weapon damage
 			stats[2][0]=2; stats[2][1]=1;//sets the "ruler" weapon damage
 			stats[3][0]=2; stats[3][1]=3;//sets the "rubberBand" weapon damage
-		}
+		};
 		
 		public static double criticalChance[];{//sets the array and the values in the array for critical chances 
 			criticalChance[0]=.20;
 			criticalChance[1]=.05;
 			criticalChance[2]=.15;
 			criticalChance[3]=.10;
-		}
+		};
 		
-		public static String names[]=new String[4];{ //this array stores all the names of the weapons and is used to find which row the weapon's stats in 
-			names[0]="hat";
-			names[1]="pencil";
-			names[2]="ruler";
-			names[3]="rubberBand";
-		}
-		
-	
+	*/
 			
+		public static int stats[][]= {//this array stores all the information for the weapon's beside critical chance and weapon names
+			//  [damage]  [range]
+			{4, 3},//sets the "hat" weapon damage
+			{1, 1},//sets the "pencil" weapon damage
+			{2, 1},//sets the "ruler" weapon damage
+			{2, 3}//sets the "rubberBand" weapon damage
+			};
+		
+		public static double criticalChance[] = {.20,.05,.15,.10};//sets the array and the values in the array for critical chances
+		
 		private static Weapon hat = new Weapon("Hat", stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE, 0 );
-		private static Weapon pencil = new Weapon("Pencil", stats[0][1],stats[0][1],criticalChance[0],Weapon.MELEETYPE, 0 );
-
-		private static Weapon ruler  = new Weapon("Ruler", 10, "description", "resources/ruler.png", stats[0][2],stats[0][1],criticalChance[0],Weapon.ALLTYPE, 1 );
-		private static Weapon rubberband = new Weapon("Rubber Band", 5, "description", "resources/rubberband.png", stats[0][3],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+		private static Weapon pencil = new Weapon("Pencil", stats[1][1],stats[1][1],criticalChance[0],Weapon.MELEETYPE, 0 );
+		private static Weapon ruler  = new Weapon("Ruler", 10, "description", "resources/ruler.png", stats[2][0],stats[2][1],criticalChance[0],Weapon.ALLTYPE, 1 );
+		private static Weapon rubberband = new Weapon("Rubber Band", 5, "description", "resources/rubberband.png", stats[3][0],stats[3][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
 	
 	
 		// gets and sets

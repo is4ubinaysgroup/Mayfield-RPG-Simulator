@@ -60,8 +60,8 @@ public class MainMenu
 				//Database.updateFile(); // writes starter file
 				//Database.read();
 				
-				Database.writeStarterSingle();
-				Database.loadSingle();
+				//Database.writeStarterSingle();
+				//Database.loadSingle();
 				
 				Map.updateMap(MainExecutable.getPlayer().getLevel());
 				Backpack.update();

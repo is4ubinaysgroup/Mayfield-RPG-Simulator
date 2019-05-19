@@ -226,7 +226,7 @@ public class Backpack
 		lbl_maxHealth.setText("Max Health : " + MainExecutable.getPlayer().getMaxHealth());
 		
 		Weapon equippedWeapon = MainExecutable.getPlayer().getEquippedWeapon();
-			
+		
 		lbl_damage.setText("Damage: " + Integer.toString(equippedWeapon.getDamage()));
 		lbl_rangedDamage.setText("Ranged Damage: " + Integer.toString(equippedWeapon.getRangedDamage() ));
 		lbl_criticalChance.setText("Critical Chance: " + Double.toString(equippedWeapon.getCriticalChance()));
