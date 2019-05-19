@@ -3,10 +3,12 @@ package src.gui;
 // Mina
 // updated 05-09
 // PM3: Carson: Evaluated 5/9/2019, 10/10. AWESOME!! :D
-
+// may 19th re Coloured. Carson
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import src.Database;
 
 public class Map
 {
@@ -27,7 +29,7 @@ public class Map
 	{
 		// ------- map panel --------
 		mapPane = new JPanel ();
-		mapPane.setBackground(new Color(0, 0, 0));
+		mapPane.setBackground(Database.ALT_MAYFIELD_BLUE);
 		mapPane.setLayout(null);
 
 
@@ -35,8 +37,8 @@ public class Map
 		// ------- btn_Level1 -------
 		btn_Level1 = new JButton("kitchen");
 		btn_Level1.setBounds(62, 239, 130, 130);
-		btn_Level1.setForeground(Color.WHITE);
-		btn_Level1.setBackground(new Color(0, 0, 204));
+		btn_Level1.setForeground(Database.MAYFIELD_YELLOW);
+		btn_Level1.setBackground(Database.MAYFIELD_BLUE);
 		btn_Level1.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
 
 
@@ -140,8 +142,8 @@ public class Map
 		// ------- btn_Shop -------
 		btn_Shop = new JButton("Shop");
 		btn_Shop.setBounds(580, 417, 130, 130);
-		btn_Shop.setForeground(Color.WHITE);
-		btn_Shop.setBackground(new Color(0, 0, 204));
+		btn_Shop.setForeground(Database.MAYFIELD_YELLOW);
+		btn_Shop.setBackground(Database.MAYFIELD_BLUE);
 		btn_Shop.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
 
 		btn_Shop.addActionListener(new ActionListener() {
@@ -158,8 +160,8 @@ public class Map
 		// ------- btn_Back -------
 		btn_Back = new JButton("back");
 		btn_Back.setBounds(325, 620, 130, 50);
-		btn_Back.setForeground(Color.WHITE);
-		btn_Back.setBackground(new Color(0, 0, 204));
+		btn_Back.setForeground(Database.MAYFIELD_YELLOW);
+		btn_Back.setBackground(Database.MAYFIELD_BLUE);
 		btn_Back.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
 
 		btn_Back.addActionListener(new ActionListener() {

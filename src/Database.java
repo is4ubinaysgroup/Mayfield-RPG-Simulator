@@ -1,4 +1,5 @@
 package src;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -54,7 +55,13 @@ changed spacing / code grouping
  */
 
 public class Database {
-		public void loadAssets() throws Exception//loads all assets
+	
+	public static final Color MAYFIELD_BLUE = new Color(14, 1, 141);
+	public static final Color MAYFIELD_YELLOW = new Color(247, 221, 0);
+	public  static final Color ALT_MAYFIELD_BLUE = new Color(52, 52, 104);
+	public  static final Color ALT_MAYFIELD_YELLOW = new Color(246, 235 ,22);
+	
+		public static void loadAssets() throws Exception//loads all assets
 		{
 			try 
 			{
@@ -71,56 +78,75 @@ public class Database {
 	
 	
 		//-------------------------------------------Image Loading.-------------------------
-		private BufferedImage imgCapacityUpgrade; 
-		private BufferedImage imgCappuccino;
-		private BufferedImage imgCoffee;
-		private BufferedImage imgEspresso;
-		private BufferedImage imgFootlongsub;
-		private BufferedImage imgMcChicken;
-		private BufferedImage imgOrangeJuice;
-		private BufferedImage imgPlayer;
-		private BufferedImage imgRubberband;
-		private BufferedImage imgRuler;
-		private BufferedImage imgTimbits;
-		private BufferedImage imgTylenol;
-		private BufferedImage imgTeacher;
-		private BufferedImage imgBinay;
-		private BufferedImage imgHallMonitor;
-		private BufferedImage imgGymTeacher;
 		
-		public BufferedImage readImg(String filepath) throws Exception
+		public static BufferedImage getProductImage (String name) //mina created Database.
 		{
-			return ImageIO.read(new File(filepath));
+			if (name.equals("Timbits")) {return Database.getImgTimbits();}
+			else if (name.equals("McChicken")) {return Database.getImgMcchicken();}
+			else if (name.equals("Foot Long Sub!")) {return Database.getImgFootLongSub();}
+			else if (name.equals("Soda")) {return Database.getImgSoda();}
+			else if (name.equals("Tylenol")) {return Database.getImgTylenol();}
+			else if (name.equals("Capacity Upgrade")) {return Database.getImgCapacityUpgrade();}
+			else if (name.equals("Coffee")) {return Database.getImgCoffee();}
+			else if (name.equals("Cappucino")) {return Database.getImgCappuccino();}
+			else if (name.equals("Expresso")) {return Database.getImgEspresso();}
+			else {return Database.getImgOrangeJuice();} // "Orange Juice"
+		} // getProduct method
+		
+
+		public static BufferedImage imgCapacityUpgrade; 
+		public static BufferedImage imgCappuccino;
+		public static BufferedImage imgCoffee;
+		public static BufferedImage imgEspresso;
+		public static BufferedImage imgFootlongsub;
+		public static BufferedImage imgMcChicken;
+		public static BufferedImage imgOrangeJuice;
+		public static BufferedImage imgPlayer;
+		public static BufferedImage imgRubberband;
+		public static BufferedImage imgRuler;
+		public static BufferedImage imgSoda;
+		public static BufferedImage imgTimbits;
+		public static BufferedImage imgTylenol;
+		public static BufferedImage imgTeacher;
+		public static BufferedImage imgBinay;
+		public static BufferedImage imgHallMonitor;
+		public static BufferedImage imgGymTeacher;
+		
+		
+		public static BufferedImage readImg(String filepath) throws Exception
+		{
+			return ImageIO.read(new File(filepath)); 
 		}
 		
-		public BufferedImage readImg(Item item) throws Exception
+		public static BufferedImage readImg(Item item) throws Exception
 		{
 			return ImageIO.read(new File(item.getImagePath()));
 		}
 		
-		public BufferedImage readImg(Human human) throws Exception
+		public static BufferedImage readImg(Human human) throws Exception
 		{
 			return ImageIO.read(new File(human.getImagePath()));
 		}
 		
-		private void LoadImages() throws Exception
+		public static void LoadImages() throws Exception
 		{
 			imgCapacityUpgrade = readImg(capacityUpgrade);
 			imgCappuccino =readImg(cappuccino);
 			imgCoffee =readImg(coffee);
 			imgEspresso =readImg(espresso);
 			imgFootlongsub =readImg(footLongSub);
+			imgSoda = readImg(soda);
 			imgMcChicken =readImg(mcChicken);
 			imgOrangeJuice =readImg(orangeJuice);
-			imgRubberband =readImg( rubberband);
+			imgRubberband =readImg(rubberband);
 			imgRuler =readImg(ruler);
 			imgTimbits =readImg(timbits);
 			imgTylenol =readImg(tylenol);
 			
-			imgGymTeacher =readImg(gymTeacher);
-			imgBinay =readImg(binay);
-			imgHallMonitor =readImg(hallMonitor);
-			imgPlayer =readImg(MainExecutable.getPlayer());
+			//imgGymTeacher =readImg(gymTeacher);
+			//imgBinay =readImg(binay);
+			//imgHallMonitor =readImg(hallMonitor);
+			//imgPlayer =readImg(MainExecutable.getPlayer());
 		}
 		
 
@@ -291,9 +317,9 @@ public class Database {
 	
 	
 	//-------------------------npc Stuff
-		NonPlayer hallMonitor = new NonPlayer("<name>", false);
-		NonPlayer binay = new NonPlayer("Binay", true);
-		NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
+		public static NonPlayer hallMonitor = new NonPlayer("<name>", false);
+		public static NonPlayer binay = new NonPlayer("Binay", true);
+		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
 	
 		// ------------------------------------------- weapon stuff -------------------------------------------
 			
@@ -309,8 +335,8 @@ public class Database {
 		
 		private static Weapon hat = new Weapon("Hat", stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE, 0 );
 		private static Weapon pencil = new Weapon("Pencil", stats[1][1],stats[1][1],criticalChance[0],Weapon.MELEETYPE, 0 );
-		private static Weapon ruler  = new Weapon("Ruler", 10, "description", "resources/ruler.png", stats[2][0],stats[2][1],criticalChance[0],Weapon.ALLTYPE, 1 );
-		private static Weapon rubberband = new Weapon("Rubber Band", 5, "description", "resources/rubberband.png", stats[3][0],stats[3][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+		private static Weapon ruler  = new Weapon("Ruler", 10, "description", "src/resources/ruler.png", stats[2][0],stats[2][1],criticalChance[0],Weapon.ALLTYPE, 1 );
+		private static Weapon rubberband = new Weapon("Rubber Band", 5, "description", "src/resources/rubberband.png", stats[3][0],stats[3][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
 	
 	
 		// gets and sets
@@ -341,16 +367,16 @@ public class Database {
 	
 		// ------------------------------------------- product stuff -------------------------------------------
 	
-		private static Product timbits = new Product("Timbits", Product.HEALTH, 10, 10,"+10 Health", "/resources/timbits.png");
-		private static Product mcChicken = new Product("McChicken", Product.HEALTH, 15, 20, "+15 Health", "/resources/mcchicken.png");
-		private static Product footLongSub = new Product("Foot Long Sub!", Product.HEALTH, 30, 50, "+30 Health", "/resources/footlongsub.png");
-		private static Product soda = new Product("Soda", Product.CRITICALCHANCE, 1, 20,"upgrades critical chance", "/resources/soda.png");
-		private static Product tylenol = new Product("Tylenol", Product.ARMOR, 5, 15,"+5 defense", "/resources/tylenol.png");
-		private static Product capacityUpgrade = new Product("Capacity Upgrade", Product.CAPACITY, 5, 50,"+5 product storage", "/resources/capacityupgrade.png");
-		private static Product coffee = new Product("Coffee", Product.MAXHEALTH, 20,32, "+20 Max Health", "/resources/coffee.png");
-		private static Product cappuccino = new Product("Cappuccino",Product.MAXHEALTH,40, 75,"+40 Max Health", "/resources/cappuccino.png");
-		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"+60 Max Health", "/resources/espresso.png");
-		private static Product orangeJuice = new Product("Orange Juice",Product.DAMAGE, 1, 30, "damage upgrade", "/resources/orangejuice.png"); // not sure what increase would be for this
+		private static Product timbits = new Product("Timbits", Product.HEALTH, 10, 10,"+10 Health", "src/resources/timbits.png");
+		private static Product mcChicken = new Product("McChicken", Product.HEALTH, 15, 20, "+15 Health", "src/resources/mcchicken.png");
+		private static Product footLongSub = new Product("Foot Long Sub!", Product.HEALTH, 30, 50, "+30 Health", "src/resources/footlongsub.png");
+		private static Product soda = new Product("Soda", Product.CRITICALCHANCE, 1, 20,"upgrades critical chance", "src/resources/soda.png");
+		private static Product tylenol = new Product("Tylenol", Product.ARMOR, 5, 15,"+5 defense", "src/resources/tylenol.png");
+		private static Product capacityUpgrade = new Product("Capacity Upgrade", Product.CAPACITY, 5, 50,"+5 product storage", "src/resources/capacityupgrade.png");
+		private static Product coffee = new Product("Coffee", Product.MAXHEALTH, 20,32, "+20 Max Health", "src/resources/coffee.png");
+		private static Product cappuccino = new Product("Cappuccino",Product.MAXHEALTH,40, 75,"+40 Max Health", "src/resources/cappuccino.png");
+		private static Product espresso = new Product("Espresso",Product.MAXHEALTH,60,100,"+60 Max Health", "src/resources/espresso.png");
+		private static Product orangeJuice = new Product("Orange Juice",Product.DAMAGE, 1, 30, "damage upgrade", "src/resources/orangejuice.png"); // not sure what increase would be for this
 
 		// gets
 		public static Product getTimbits() {return timbits;}
@@ -366,7 +392,7 @@ public class Database {
 
 
 
-		public static Product getProduct (String name) //mina created this.
+		public static Product getProduct (String name) //mina created Database.
 		{
 			if (name.equals("Timbits")) {return Database.getTimbits();}
 			else if (name.equals("McChicken")) {return Database.getMcChicken();}
@@ -384,7 +410,7 @@ public class Database {
 		/**
 		 * @return the imgCapacityUpgrade
 		 */
-		public BufferedImage getImg_CapacityUpgrade() {
+		public static BufferedImage getImgCapacityUpgrade() {
 			return imgCapacityUpgrade;
 		}
 
@@ -392,15 +418,15 @@ public class Database {
 		/**
 		 * @param imgCapacityUpgrade the imgCapacityUpgrade to set
 		 */
-		public void setImg_CapacityUpgrade(BufferedImage imgCapacityUpgrade) {
-			this.imgCapacityUpgrade = imgCapacityUpgrade;
+		public static void setImgCapacityUpgrade(BufferedImage imgCapacityUpgrade) {
+			Database.imgCapacityUpgrade = imgCapacityUpgrade;
 		}
 
 
 		/**
 		 * @return the imgCappuccino
 		 */
-		public BufferedImage getImg_Cappuccino() {
+		public static BufferedImage getImgCappuccino() {
 			return imgCappuccino;
 		}
 
@@ -408,15 +434,15 @@ public class Database {
 		/**
 		 * @param imgCappuccino the imgCappuccino to set
 		 */
-		public void setImg_Cappuccino(BufferedImage imgCappuccino) {
-			this.imgCappuccino = imgCappuccino;
+		public static void setImgCappuccino(BufferedImage imgCappuccino) {
+			Database.imgCappuccino = imgCappuccino;
 		}
 
 
 		/**
 		 * @return the imgCoffee
 		 */
-		public BufferedImage getImg_Coffee() {
+		public static BufferedImage getImgCoffee() {
 			return imgCoffee;
 		}
 
@@ -424,15 +450,15 @@ public class Database {
 		/**
 		 * @param imgCoffee the imgCoffee to set
 		 */
-		public void setImg_Coffee(BufferedImage imgCoffee) {
-			this.imgCoffee = imgCoffee;
+		public static void setImgCoffee(BufferedImage imgCoffee) {
+			Database.imgCoffee = imgCoffee;
 		}
 
 
 		/**
 		 * @return the imgEspresso
 		 */
-		public BufferedImage getImg_Espresso() {
+		public static BufferedImage getImgEspresso() {
 			return imgEspresso;
 		}
 
@@ -440,15 +466,15 @@ public class Database {
 		/**
 		 * @param imgEspresso the imgEspresso to set
 		 */
-		public void setImg_Espresso(BufferedImage imgEspresso) {
-			this.imgEspresso = imgEspresso;
+		public static void setImgEspresso(BufferedImage imgEspresso) {
+			Database.imgEspresso = imgEspresso;
 		}
 
 
 		/**
 		 * @return the imgFootlongsub
 		 */
-		public BufferedImage getImg_Footlongsub() {
+		public static BufferedImage getImgFootLongSub() {
 			return imgFootlongsub;
 		}
 
@@ -456,14 +482,14 @@ public class Database {
 		/**
 		 * @param imgFootlongsub the imgFootlongsub to set
 		 */
-		public void setImg_Footlongsub(BufferedImage imgFootlongsub) {
-			this.imgFootlongsub = imgFootlongsub;
+		public static void setImgFootlongsub(BufferedImage imgFootlongsub) {
+			Database.imgFootlongsub = imgFootlongsub;
 		}
 
 		/**
 		 * @return the imgMcChicken
 		 */
-		public BufferedImage getImg_Mcchicken() {
+		public static BufferedImage getImgMcchicken() {
 			return imgMcChicken;
 		}
 
@@ -471,15 +497,15 @@ public class Database {
 		/**
 		 * @param imgMcChicken the imgMcChicken to set
 		 */
-		public void setImg_Mcchicken(BufferedImage imgMcChicken) {
-			this.imgMcChicken = imgMcChicken;
+		public static void setImgMcchicken(BufferedImage imgMcChicken) {
+			Database.imgMcChicken = imgMcChicken;
 		}
 
 
 		/**
 		 * @return the imgOrangeJuice
 		 */
-		public BufferedImage getImg_Orangejuice() {
+		public static BufferedImage getImgOrangeJuice() {
 			return imgOrangeJuice;
 		}
 
@@ -487,15 +513,15 @@ public class Database {
 		/**
 		 * @param imgOrangeJuice the imgOrangeJuice to set
 		 */
-		public void setImg_Orangejuice(BufferedImage imgOrangeJuice) {
-			this.imgOrangeJuice = imgOrangeJuice;
+		public static void setImgOrangejuice(BufferedImage imgOrangeJuice) {
+			Database.imgOrangeJuice = imgOrangeJuice;
 		}
 
 
 		/**
 		 * @return the imgPlayer
 		 */
-		public BufferedImage getImg_Player() {
+		public static BufferedImage getImgPlayer() {
 			return imgPlayer;
 		}
 
@@ -503,15 +529,15 @@ public class Database {
 		/**
 		 * @param imgPlayer the imgPlayer to set
 		 */
-		public void setImg_Player(BufferedImage imgPlayer) {
-			this.imgPlayer = imgPlayer;
+		public static void setImgPlayer(BufferedImage imgPlayer) {
+			Database.imgPlayer = imgPlayer;
 		}
 
 
 		/**
 		 * @return the imgRubberband
 		 */
-		public BufferedImage getImg_Rubberband() {
+		public static BufferedImage getImgRubberband() {
 			return imgRubberband;
 		}
 
@@ -519,15 +545,15 @@ public class Database {
 		/**
 		 * @param imgRubberband the imgRubberband to set
 		 */
-		public void setImg_Rubberband(BufferedImage imgRubberband) {
-			this.imgRubberband = imgRubberband;
+		public static void setImgRubberband(BufferedImage imgRubberband) {
+			Database.imgRubberband = imgRubberband;
 		}
 
 
 		/**
 		 * @return the imgTimbits
 		 */
-		public BufferedImage getImg_Timbits() {
+		public static BufferedImage getImgTimbits() {
 			return imgTimbits;
 		}
 
@@ -535,15 +561,15 @@ public class Database {
 		/**
 		 * @param imgTimbits the imgTimbits to set
 		 */
-		public void setImg_Timbits(BufferedImage imgTimbits) {
-			this.imgTimbits = imgTimbits;
+		public static void setImgTimbits(BufferedImage imgTimbits) {
+			Database.imgTimbits = imgTimbits;
 		}
 
 
 		/**
 		 * @return the imgRuler
 		 */
-		public BufferedImage getImg_Ruler() {
+		public static BufferedImage getImgRuler() {
 			return imgRuler;
 		}
 
@@ -551,15 +577,15 @@ public class Database {
 		/**
 		 * @param imgRuler the imgRuler to set
 		 */
-		public void setImg_Ruler(BufferedImage imgRuler) {
-			this.imgRuler = imgRuler;
+		public static void setImgRuler(BufferedImage imgRuler) {
+			Database.imgRuler = imgRuler;
 		}
 
 
 		/**
 		 * @return the imgTylenol
 		 */
-		public BufferedImage getImg_Tylenol() {
+		public static BufferedImage getImgTylenol() {
 			return imgTylenol;
 		}
 
@@ -567,15 +593,15 @@ public class Database {
 		/**
 		 * @param imgTylenol the imgTylenol to set
 		 */
-		public void setImg_Tylenol(BufferedImage imgTylenol) {
-			this.imgTylenol = imgTylenol;
+		public static void setImgTylenol(BufferedImage imgTylenol) {
+			Database.imgTylenol = imgTylenol;
 		}
 
 
 		/**
 		 * @return the imgTeacher
 		 */
-		public BufferedImage getImg_Teacher() {
+		public static BufferedImage getImgTeacher() {
 			return imgTeacher;
 		}
 
@@ -583,15 +609,15 @@ public class Database {
 		/**
 		 * @param imgTeacher the imgTeacher to set
 		 */
-		public void setImg_Teacher(BufferedImage imgTeacher) {
-			this.imgTeacher = imgTeacher;
+		public static void setImgTeacher(BufferedImage imgTeacher) {
+			Database.imgTeacher = imgTeacher;
 		}
 
 
 		/**
 		 * @return the imgBinay
 		 */
-		public BufferedImage getImg_Binay() {
+		public static BufferedImage getImgBinay() {
 			return imgBinay;
 		}
 
@@ -599,15 +625,15 @@ public class Database {
 		/**
 		 * @param imgBinay the imgBinay to set
 		 */
-		public void setImg_Binay(BufferedImage imgBinay) {
-			this.imgBinay = imgBinay;
+		public static void setImgBinay(BufferedImage imgBinay) {
+			Database.imgBinay = imgBinay;
 		}
 
 
 		/**
 		 * @return the imgHallMonitor
 		 */
-		public BufferedImage getImg_HallMonitor() {
+		public static BufferedImage getImgHallMonitor() {
 			return imgHallMonitor;
 		}
 
@@ -615,15 +641,15 @@ public class Database {
 		/**
 		 * @param imgHallMonitor the imgHallMonitor to set
 		 */
-		public void setImg_HallMonitor(BufferedImage imgHallMonitor) {
-			this.imgHallMonitor = imgHallMonitor;
+		public static void setImgHallMonitor(BufferedImage imgHallMonitor) {
+			Database.imgHallMonitor = imgHallMonitor;
 		}
 
 
 		/**
 		 * @return the imgGymTeacher
 		 */
-		public BufferedImage getImg_GymTeacher() {
+		public static BufferedImage getImgGymTeacher() {
 			return imgGymTeacher;
 		}
 
@@ -631,12 +657,18 @@ public class Database {
 		/**
 		 * @param imgGymTeacher the imgGymTeacher to set
 		 */
-		public void setImgGymTeacher(BufferedImage imgGymTeacher) 
+		public static void setImgGymTeacher(BufferedImage imgGymTeacher) 
 		{
-			this.imgGymTeacher = imgGymTeacher;
+			Database.imgGymTeacher = imgGymTeacher;
 		}
 		
+		public static BufferedImage getImgSoda() {
+			return Database.imgSoda;
+		}
 		
+		public static void setImgSoda(BufferedImage imgSoda) {
+			Database.imgSoda = imgSoda;
+		}
 				 
 				 
 				 

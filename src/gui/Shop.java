@@ -29,8 +29,9 @@ May 16th, 2019
  */ 
 
 // 05-17 updated by Mina
-
-
+/*
+ * may 19th comboboxes are set to sStrings and not raw type. 
+ */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -43,18 +44,18 @@ import src.items.Weapon;
 public class Shop
 {
 
-	static String selectedItemName;
+	static String selectedItemName = "Capacity Upgrade";
 	
 	final static String TAB1NAME = "Upgrades";
-    	final static String TAB2NAME = "Health Restore";
-    	final static String TAB3NAME = "Stat Boost";
-    	final static String TAB4NAME = "Weapons";
-    
-   	static final String TAB1LIST [] = {"Capacity Upgrade", "Soda", "Orange Juice"};
-   	static final String TAB2LIST [] = {"Timbits", "McChicken", "Foot Long Sub!"};
-    	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappucino", "Expresso"};
-    	static final String TAB4LIST [] = {"Ruler", "Rubber Band"};
-    
+	final static String TAB2NAME = "Health Restore";
+	final static String TAB3NAME = "Stat Boost";
+	final static String TAB4NAME = "Weapons";
+
+	static final String TAB1LIST [] = {"Capacity Upgrade", "Soda", "Orange Juice"};
+	static final String TAB2LIST [] = {"Timbits", "McChicken", "Foot Long Sub!"};
+	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappucino", "Expresso"};
+	static final String TAB4LIST [] = {"Ruler", "Rubber Band"};
+
 	static protected JTabbedPane shopTabbedPane;
 	
 	// tab 1
@@ -144,7 +145,7 @@ public class Shop
 		
 		
 		// ------- comboB_tab1 -------
-		comboB_tab1 = new JComboBox (TAB1LIST);
+		comboB_tab1 = new JComboBox<String> (TAB1LIST);
 		comboB_tab1.setBounds(186, 146, 400, 26);
 		tabPane1.add(comboB_tab1);
 		
@@ -152,7 +153,7 @@ public class Shop
 		{	
 			public void actionPerformed (ActionEvent e)
 			{
-				selectedItemName = (String) comboB_tab1.getSelectedItem();
+				selectedItemName = comboB_tab1.getSelectedItem().toString();
 				
 				if (!selectedItemName.equals("") && null != selectedItemName)
 				{
@@ -230,7 +231,7 @@ public class Shop
 		
 
 		// ------- comboB_tab2 -------
-		comboB_tab2 = new JComboBox (TAB2LIST);
+		comboB_tab2 = new JComboBox<String> (TAB2LIST);
 		comboB_tab2.setBounds(186, 146, 400, 26);
 		tabPane2.add(comboB_tab2);
 
@@ -238,11 +239,12 @@ public class Shop
 		{	
 			public void actionPerformed (ActionEvent e)
 			{
-				selectedItemName = (String) comboB_tab2.getSelectedItem();
+				selectedItemName = comboB_tab2.getSelectedItem().toString();
 				
 				if (!selectedItemName.equals("") && null != selectedItemName)
 				{
 					updateProductInfo(2);
+					lbl_icon2.repaint();
 				} // if selected
 			}});
 		
@@ -316,7 +318,7 @@ public class Shop
 
 
 		// ------- comboB_tab3 -------
-		comboB_tab3 = new JComboBox (TAB3LIST);
+		comboB_tab3 = new JComboBox<String> (TAB3LIST);
 		comboB_tab3.setBounds(186, 146, 400, 26);
 		tabPane3.add(comboB_tab3);
 
@@ -403,7 +405,7 @@ public class Shop
 		
 		
 		// ------- comboB_tab4 -------
-		comboB_tab4 = new JComboBox (TAB4LIST);
+		comboB_tab4 = new JComboBox<String> (TAB4LIST);
 		comboB_tab4.setBounds(186, 146, 400, 26);
 		tabPane4.add(comboB_tab4);
 
@@ -411,7 +413,7 @@ public class Shop
 		{	
 			public void actionPerformed (ActionEvent e)
 			{
-				selectedItemName = (String) comboB_tab4.getSelectedItem();
+				selectedItemName = comboB_tab4.getSelectedItem().toString();
 				
 				if (!selectedItemName.equals("") && null != selectedItemName)
 				{
@@ -462,7 +464,8 @@ public class Shop
 		shopTabbedPane.addTab(TAB2NAME, tabPane2);
 		shopTabbedPane.addTab(TAB3NAME, tabPane3);
 		shopTabbedPane.addTab(TAB4NAME, tabPane4);
-		
+		//--update to set
+		updateProductInfo(1);
 		
 	} // initGUI method
 	
@@ -485,7 +488,8 @@ public class Shop
 		
 		if (tab == 1)
 		{
-			lbl_icon1.setIcon(new ImageIcon(Frame.class.getResource(product.getImagePath())));
+			lbl_icon1.setIcon(new ImageIcon( Database.getProductImage(selectedItemName)));
+			lbl_icon1.repaint();
 			lbl_name1.setText("Name: " + product.getName());
 			lbl_cost1.setText("Cost: " + Integer.toString (product.getCost()));
 			lbl_description1.setText ("Description: " + product.getDescription());
@@ -493,8 +497,9 @@ public class Shop
 		} // if tab 1
 
 		else if (tab == 2)
-		{
-			lbl_icon2.setIcon(new ImageIcon(Frame.class.getResource(product.getImagePath())));
+		{	
+			lbl_icon2.setIcon(new ImageIcon(Database.getProductImage(selectedItemName)));
+			lbl_icon2.repaint();
 			lbl_name2.setText("Name: " + product.getName());
 			lbl_cost2.setText("Cost: " + Integer.toString (product.getCost()));
 			lbl_description2.setText ("Description: " + product.getDescription());
@@ -503,7 +508,8 @@ public class Shop
 
 		else
 		{
-			lbl_icon3.setIcon(new ImageIcon(Frame.class.getResource(product.getImagePath())));
+			lbl_icon3.setIcon(new ImageIcon(Database.getProductImage(selectedItemName)));
+			lbl_icon3.repaint();
 			lbl_name3.setText("Name: " + product.getName());
 			lbl_cost3.setText("Cost: " + Integer.toString (product.getCost()));
 			lbl_description3.setText ("Description: " + product.getDescription());

@@ -16,6 +16,12 @@ public class MainExecutable
 
 	public static void main(String[] args)
 	{
+		try {
+			Database.LoadImages();
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		int[] position = new int[2];
 		position[0] = 0;
 		position[1] = 0;
