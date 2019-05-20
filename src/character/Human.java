@@ -176,7 +176,7 @@ public class Human
 		}// creates an array
 		
 		//shorten array 
-		 
+		  
 		ArrayList<Point> buffer = new ArrayList<Point>( (int) (Room.size.getWidth()* Room.size.getHeight()) );
 		for(int i = 0;  i < allPoints.length; i++) 
 		{
