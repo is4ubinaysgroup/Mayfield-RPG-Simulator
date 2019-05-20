@@ -54,6 +54,11 @@ changed spacing / code grouping
  * worked on loadAssets of which I created and added loadImages and all bufferedImages needed.
  */
 
+/*
+05-20 Mina
+worked more on save methods but still getting exceptions
+*/
+
 public class Database {
 	
 	public static final Color MAYFIELD_BLUE = new Color(14, 1, 141);
@@ -196,7 +201,7 @@ public class Database {
 	
 	
 	
-		public static void loadSingle ()
+				public static void loadSingle ()
 		{
 			try
 			{
@@ -214,8 +219,49 @@ public class Database {
 				line = input.readLine ();       //read next line
 				int maxHealth = Integer.parseInt(line);
 				
+				
+				
 				line = input.readLine ();       //read next line
-				Weapon equippedWeapon = Database.getWeapon(line);
+				Weapon equippedWeapon;
+				
+				String [] EWParts = line.split("-"); 
+				
+				String EWName = EWParts[0];
+				
+				if (EWName.equals("Pencil") || EWName.equals("Hat"))
+				{
+					
+					int EWDamage = Integer.parseInt(EWParts[1]);
+					int EWRange = Integer.parseInt(EWParts[2]);
+					double EWCriticalChance = Double.parseDouble(EWParts[3]);
+					int EWType = Integer.parseInt(EWParts[4]);
+					int EWRangedDamage = Integer.parseInt(EWParts[5]);
+					
+					equippedWeapon = new Weapon(EWName, EWDamage, EWRange, EWCriticalChance, EWType, EWRangedDamage);
+				} // if
+				else
+				{
+					int EWCost = Integer.parseInt(EWParts[1]);
+					String EWDescription = EWParts[2];
+					String EWImagePath = EWParts[3];
+					int EWDamage = Integer.parseInt(EWParts[4]);
+					int EWRange = Integer.parseInt(EWParts[5]);
+					double EWCriticalChance = Double.parseDouble(EWParts[6]);
+					int EWType = Integer.parseInt(EWParts[7]);
+					int EWRangedDamage = Integer.parseInt(EWParts[8]);
+					
+					equippedWeapon = new Weapon(EWName, EWCost, EWDescription, EWImagePath, EWDamage, EWRange, EWCriticalChance, EWType, EWRangedDamage);
+				} // else shop weapon
+				
+				
+				if (EWName == "Pencil"){setPencil(equippedWeapon);}
+				else if (EWName == "Hat"){setHat(equippedWeapon);}
+				else if (EWName == "Ruler"){setRuler (equippedWeapon);}
+				else{setRubberband(equippedWeapon);} // "Rubber Band"
+						
+				equippedWeapon = Database.getWeapon(EWName);
+				
+				
 				
 				line = input.readLine ();       //read next line
 				String imagePath = line;
@@ -251,10 +297,11 @@ public class Database {
 				// ----------------------- read next line for products -----------------------
 				
 				line = input.readLine ();       //read next line for products
-				String [] parts1 = line.split("-"); // split the line into parts for the fields
 
-				if (!parts1 [0].equals("0"))
+				if (!line.equals("0"))
 				{
+					String [] parts1 = line.split("-"); 
+
 					for (int i=0; i< numProducts; i++)
 					{
 						MainExecutable.getPlayer().addProduct(Database.getProduct(parts1[i]));
@@ -262,23 +309,64 @@ public class Database {
 				} // if not empty
 				
 				
-				
+
 				// ----------------------- read next line for weapons -----------------------
-				
+
+
 				line = input.readLine ();       
-				String [] parts2 = line.split("-"); // split the line into parts for the fields
-				
-				if (!parts2 [0].equals("0"))
+
+				if (!line.equals("0"))
 				{
-					for (int i=0; i< numWeapons; i++)
+					for (int i=0; i<numWeapons; i++)
 					{
-						MainExecutable.getPlayer().addWeapon(Database.getWeapon(parts2[i]));
-					} // for 0...numProducts-1
+						String [] parts2 = line.split("-"); 
+						Weapon weapon;
+
+						String WName = EWParts[0];
+						
+						if (WName.equals("Pencil") || WName.equals("Hat"))
+						{
+							
+							int WDamage = Integer.parseInt(EWParts[1]);
+							int WRange = Integer.parseInt(EWParts[2]);
+							double WCriticalChance = Double.parseDouble(EWParts[3]);
+							int WType = Integer.parseInt(EWParts[4]);
+							int WRangedDamage = Integer.parseInt(EWParts[5]);
+							
+							weapon = new Weapon(WName, WDamage, WRange, WCriticalChance, WType, WRangedDamage);
+						} // if
+						else
+						{
+							int WCost = Integer.parseInt(EWParts[1]);
+							String WDescription = EWParts[2];
+							String WImagePath = EWParts[3];
+							int WDamage = Integer.parseInt(EWParts[4]);
+							int WRange = Integer.parseInt(EWParts[5]);
+							double WCriticalChance = Double.parseDouble(EWParts[6]);
+							int WType = Integer.parseInt(EWParts[7]);
+							int WRangedDamage = Integer.parseInt(EWParts[8]);
+							
+							weapon = new Weapon(WName, WCost, WDescription, WImagePath, WDamage, WRange, WCriticalChance, WType, WRangedDamage);
+						} // else shop weapon
+						
+						
+						if (WName == "Pencil")
+						{setPencil(weapon);}
+						else if (WName == "Hat"){setHat(weapon);}
+						else if (WName == "Ruler"){setRuler (weapon);}
+						else{setRubberband(weapon);} // "Rubber Band"
+						
+						MainExecutable.getPlayer().addWeapon(Database.getWeapon(WName));
+
+						line = input.readLine ();  // would be an extra readLine at the end but it's also at the end of the method     
+					} // for 0...numWeapons-1
 				} // if not empty
-				
-				
+
+
+
+				input.close();
 			} // try
-			
+
 			catch (Exception e)
 			{
 				System.out.println ("exception in loadSingle()" + "\n");
@@ -286,9 +374,9 @@ public class Database {
 			} // catch
 			
 		} // loadSingle method
+
 	
-	
-			
+				
 		public static void writeStarterSingle()
 		{
 			try
