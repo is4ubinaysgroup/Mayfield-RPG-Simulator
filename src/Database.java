@@ -453,10 +453,13 @@ public class Database {
 				{
 					Product products[] = MainExecutable.getPlayer().getProductsArray();
 
-					for (int i=0; i <= numProducts-2; i++)
+					if (numProducts>1)
 					{
-						output.print(products[i].getName()+"-");
-					} // for 0...numProducts-2
+						for (int i=0; i <= numProducts-2; i++)
+						{
+							output.print(products[i].getName()+"-");
+						} // for 0...numProducts-2
+					}
 
 					output.print(products[numProducts-1].getName());
 
