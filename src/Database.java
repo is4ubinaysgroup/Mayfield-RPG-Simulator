@@ -56,7 +56,7 @@ changed spacing / code grouping
 
 /*
 05-20 Mina
-worked more on save methods but still getting exceptions
+finished single save file methods; working at this point but might need to be updated later
 fixed one spelling error of espresso
 */
 
@@ -156,16 +156,16 @@ public class Database {
 			//imgHallMonitor =readImg(hallMonitor);
 			//imgPlayer =readImg(MainExecutable.getPlayer());
 		}
-		
 
-	
+		
+		
 		// ------------------------------------------- npc Stuff -------------------------------------------
 		public static NonPlayer hallMonitor = new NonPlayer("<name>", false);
 		public static NonPlayer binay = new NonPlayer("Binay", true);
 		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
 	
-	
-	
+
+
 		// ------------------------------------------- save file configuration stuff ------------------------------------------- 
 		
 		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
@@ -179,34 +179,12 @@ public class Database {
 		}		
 		
 
-		public static void save(File file) throws Exception
-		{
-			
-		} // save method
-		
-	
-		public static void read(File file) throws Exception
-		{
-			BufferedReader reader = new BufferedReader(new FileReader(files[0]));
-			for(int i = 0; i < files[0].length(); i++) //reads the document.
-			{
-				//TODO
-			}
-		} // read method
-		
-	
-		public static void updateFile(File file)throws  Exception
-		{
-			
-		} // updateFile method
-	
-	
 	
 		public static void loadSingle ()
 		{
 			try
 			{
-				BufferedReader input = new BufferedReader (new FileReader (files[0]));
+				BufferedReader input = new BufferedReader (new FileReader ("src/saves/Save1.txt"));
 				
 				String line = input.readLine (); // read a line of data
 				int health = Integer.parseInt(line);
@@ -220,15 +198,13 @@ public class Database {
 				line = input.readLine ();       //read next line
 				int maxHealth = Integer.parseInt(line);
 				
-				
-				
 				line = input.readLine ();       //read next line
 				Weapon equippedWeapon;
 				
 				String [] EWParts = line.split("-"); 
 				
 				String EWName = EWParts[0];
-				
+								
 				if (EWName.equals("Pencil") || EWName.equals("Hat"))
 				{
 					
@@ -377,7 +353,8 @@ public class Database {
 		} // loadSingle method
 	
 	
-				
+	
+			
 		public static void writeStarterSingle()
 		{
 			try
@@ -408,7 +385,10 @@ public class Database {
 			
 			
 		} // writeStarterSingle method
-			
+		
+		
+		
+		
 		
 		
 		public static void writeSingle ()
@@ -550,7 +530,8 @@ public class Database {
 		} // writeSingle method
 		
 
-	
+		
+		
 		// ------------------------------------------- weapon stuff -------------------------------------------
 			
 		public static int stats[][]= {//this array stores all the information for the weapon's beside critical chance and weapon names
