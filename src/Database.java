@@ -389,7 +389,7 @@ public class Database {
 				output.println("0");
 				output.println("0");
 				output.println("20");
-				output.println("Pencil");
+				output.println("Pencil-1-1-0.20-0-0");
 				output.println("src/resources/playerSprite.png");
 				output.println("10");
 				output.println("1");
