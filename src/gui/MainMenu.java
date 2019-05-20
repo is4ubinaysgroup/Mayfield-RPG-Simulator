@@ -70,6 +70,8 @@ public class MainMenu
 		{
 			public void actionPerformed (ActionEvent e)
 			{
+				Backpack.removeAll();
+				
 				Database.writeStarterSingle();
 				Database.loadSingle();
 				
