@@ -1,5 +1,6 @@
 package src.character;
 import java.awt.Point;
+import java.util.ArrayList;
 
 import src.gui.Room;
 
@@ -160,11 +161,89 @@ public class Human
 		return false;
 	}
 
-	public void moveOut(Human human) //moves out of a human's weapons range
+	public void moveOut(Human human, Room room) //moves out of a human's weapons range
 	{
+		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];
+		for(int x = 0;  x != (int) Room.size.getWidth(); x++) 
+		{
+			for(int y= 0;  y != (int) Room.size.getHeight(); y++) // find all available points
+			{
+				if(canMoveTo(x,y)) // remove all points in array that are outside human range
+				{
+					allPoints[x+y] = new Point(x,y);// puts point into array.
+				}
+			}
+		}// creates an array
 		
+		//shorten array 
+		 
+		ArrayList<Point> buffer = new ArrayList<Point>( (int) (Room.size.getWidth()* Room.size.getHeight()) );
+		for(int i = 0;  i < allPoints.length; i++) 
+		{
+			if(allPoints[i] != null) // if not null
+			{
+				buffer.add(allPoints[i]);
+			}
+		}// creates an array
+		int newLength = 0;
+		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length.
+		
+		
+		
+		
+		// if one Point left in array: move there
+		if(newLength == 0) // if no Points left in array: move away from human
+		{
+			moveAway(human, room);
+		}
+		else 
+		{
+			
+		}
+
+		
+		
+		
+		// remove all points in array that aren't within it's movement
+		// if one Point left in array: move there
+		// if no Points left in array: move away from human
+		
+		//copy array.
+		
+		//remove all spots at the corners
+		// if one Point left in array: move there
+		// if no Points left in array: move away from human
+		
+		//remove all spots near the corners by 1
+		// if one Point left in array: move there
+		// if no Points left in array: use previous data and choose farthest point
+		
+		
+		// remove all spots out of its melee range
+		//if none left copy the orginal array
+		//removes all spots near the human by the human range + 1
+		//continue till there is only one point left
+		// if one Point left in array: move there
+		// if no Points left in array: use previous data and choose farthest point
+				
+
+		
+		
+		
+		
+		
+		//finds an available spot that is out of human range but is in its range
+		//finds an available spot that is out of human range
+		//finds a spot as far as it can from human range but towards an open area without nearing the player more
+		//finds a spot as far as it can from human range
+		//moves to the first range found
 	}
 	
+	private boolean canMoveTo(int x, int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	public void moveIn(Human human) //moves so that human is in it's weapon range
 	{
 		//TODO
