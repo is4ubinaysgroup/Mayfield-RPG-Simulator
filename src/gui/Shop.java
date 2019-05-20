@@ -38,6 +38,11 @@ May 16th, 2019
 forgot to compare hasEnoughCoins to true
 */
 
+/*
+05-20 Mina
+fixed espresso spelling and removed text from icon jlabels
+*/
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -60,7 +65,7 @@ public class Shop
 
 	static final String TAB1LIST [] = {"Capacity Upgrade", "Soda", "Orange Juice"};
 	static final String TAB2LIST [] = {"Timbits", "McChicken", "Foot Long Sub!"};
-	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappucino", "Expresso"};
+	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappucino", "Espresso"};
 	static final String TAB4LIST [] = {"Ruler", "Rubber Band"};
 
 	static protected JTabbedPane shopTabbedPane;
@@ -144,7 +149,7 @@ public class Shop
 		
 		
 		// ------- lbl_icon1 -------
-		lbl_icon1 = new JLabel("JLabel icon");
+		lbl_icon1 = new JLabel("");
 		//lbl_icon1.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
 		lbl_icon1.setBounds(339, 224, 100, 100);
 		tabPane1.add(lbl_icon1);
@@ -230,7 +235,7 @@ public class Shop
 		
 		
 		// ------- lbl_icon2 -------
-		lbl_icon2 = new JLabel("JLabel icon");
+		lbl_icon2 = new JLabel("");
 		//lbl_icon2.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
 		lbl_icon2.setBounds(339, 224, 100, 100);
 		tabPane2.add(lbl_icon2);
@@ -317,7 +322,7 @@ public class Shop
 		
 		
 		// ------- lbl_icon3 -------
-		lbl_icon3 = new JLabel("JLabel icon");
+		lbl_icon3 = new JLabel("");
 		//lbl_icon3.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
 		lbl_icon3.setBounds(339, 224, 100, 100);
 		tabPane3.add(lbl_icon3);
@@ -404,7 +409,7 @@ public class Shop
 		
 		
 		// ------- lbl_icon4 -------
-		lbl_icon4 = new JLabel("JLabel icon");
+		lbl_icon4 = new JLabel("");
 		//lbl_icon4.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
 		lbl_icon4.setBounds(339, 224, 100, 100);
 		tabPane4.add(lbl_icon4);
