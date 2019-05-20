@@ -417,7 +417,7 @@ public class Database {
 					output.print(equippedWeapon.getRange()+"-");
 					output.print(equippedWeapon.getCriticalChance()+"-");
 					output.print(equippedWeapon.getType()+"-");
-					output.print(equippedWeapon.getRangedDamage()+"-");
+					output.print(equippedWeapon.getRangedDamage());
 					output.println("");	
 
 				} // if pencil or hat
@@ -431,7 +431,7 @@ public class Database {
 					output.print(equippedWeapon.getRange()+"-");
 					output.print(equippedWeapon.getCriticalChance()+"-");
 					output.print(equippedWeapon.getType()+"-");
-					output.print(equippedWeapon.getRangedDamage()+"-");
+					output.print(equippedWeapon.getRangedDamage());
 					output.println("");	
 
 				} // else shop weapons
@@ -440,6 +440,9 @@ public class Database {
 				output.println(MainExecutable.getPlayer().getImagePath());
 				output.println(MainExecutable.getPlayer().getCoins());
 				output.println(MainExecutable.getPlayer().getLevel());
+				
+				System.out.println("Reached");
+				
 				output.println(MainExecutable.getPlayer().getNumProducts());
 				output.println(MainExecutable.getPlayer().getNumWeapons());
 				output.println(MainExecutable.getPlayer().getProductCapacity());
@@ -495,7 +498,7 @@ public class Database {
 							output.print(weapon.getRange()+"-");
 							output.print(weapon.getCriticalChance()+"-");
 							output.print(weapon.getType()+"-");
-							output.print(weapon.getRangedDamage()+"-");
+							output.print(weapon.getRangedDamage());
 							output.println("");	
 
 
@@ -510,7 +513,7 @@ public class Database {
 							output.print(weapon.getRange()+"-");
 							output.print(weapon.getCriticalChance()+"-");
 							output.print(weapon.getType()+"-");
-							output.print(weapon.getRangedDamage()+"-");
+							output.print(weapon.getRangedDamage());
 							output.println("");	
 
 						} // else shop weapons
@@ -536,7 +539,6 @@ public class Database {
 			
 		} // writeSingle method
 		
-
 		
 		
 		// ------------------------------------------- weapon stuff -------------------------------------------
