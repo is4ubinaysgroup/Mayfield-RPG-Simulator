@@ -7,6 +7,7 @@ in a blank room/"overworld" where the user clicks on their character sprite */
 //may 19th carson: recoloured
 
 // Mina 05-10 added Backpack.update() to backpack button listener
+// Mina 05-20 added Database.writeSingle();
 
 import java.awt.*;
 import java.awt.event.*;
@@ -89,7 +90,7 @@ public class Navigation
 		{
 			public void actionPerformed (ActionEvent e)
 			{
-				//Database.save();
+				Database.writeSingle();
 			}
 		});
 		
