@@ -41,6 +41,7 @@ forgot to compare hasEnoughCoins to true
 /*
 05-20 Mina
 fixed espresso spelling and removed text from icon jlabels
+fixed updateWeaponInfo() so that weapon images show
 */
 
 
@@ -536,7 +537,7 @@ public class Shop
 	{
 		Weapon weapon = Database.getWeapon (selectedItemName);
 		
-		lbl_icon4.setIcon(new ImageIcon(Frame.class.getResource(weapon.getImagePath())));
+		lbl_icon4.setIcon(new ImageIcon(Database.getProductImage(selectedItemName)));
 		lbl_name4.setText("Name: " + weapon.getName());
 		lbl_cost4.setText("Cost: " + Integer.toString (weapon.getCost()));
 		lbl_description4.setText ("Description: " + weapon.getDescription());
