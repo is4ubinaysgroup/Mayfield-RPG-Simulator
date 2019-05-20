@@ -57,6 +57,7 @@ changed spacing / code grouping
 /*
 05-20 Mina
 worked more on save methods but still getting exceptions
+fixed one spelling error of espresso
 */
 
 public class Database {
@@ -94,7 +95,7 @@ public class Database {
 			else if (name.equals("Capacity Upgrade")) {return Database.getImgCapacityUpgrade();}
 			else if (name.equals("Coffee")) {return Database.getImgCoffee();}
 			else if (name.equals("Cappucino")) {return Database.getImgCappuccino();}
-			else if (name.equals("Expresso")) {return Database.getImgEspresso();}
+			else if (name.equals("Espresso")) {return Database.getImgEspresso();}
 			else {return Database.getImgOrangeJuice();} // "Orange Juice"
 		} // getProduct method
 		
