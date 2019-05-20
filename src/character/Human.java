@@ -152,7 +152,7 @@ public class Human
 		return new Point(x,y);
 	}
 
-	private boolean nearCorner(Human human, Room room) {
+	public boolean nearCorner(Human human, Room room) {
 		if(human.getY() > room.getHeight()-Math.abs(Human.MOVEMENT) || human.getX() > room.getWidth()-Math.abs(Human.MOVEMENT) || human.getX() < Math.abs(Human.MOVEMENT) || human.getY() <  Math.abs(Human.MOVEMENT))
 		{
 			return true;
