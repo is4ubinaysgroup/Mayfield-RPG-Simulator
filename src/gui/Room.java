@@ -1,5 +1,7 @@
 package src.gui;
 
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -12,8 +14,7 @@ huge face lift and overhaul.
  */
 
 public class Room extends JPanel {
-
-
+	public static final Dimension size = new Dimension(20,20); 
 	/**
 	 * 
 	 */
