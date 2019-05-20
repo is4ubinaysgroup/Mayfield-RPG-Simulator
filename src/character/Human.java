@@ -1,6 +1,8 @@
 package src.character;
 import java.awt.Point;
 
+import src.gui.Room;
+
 /*
 @Author: Carson Fujita
 @Contributor:
@@ -37,6 +39,9 @@ Carson: added and coded inRangeOf(Human human) and bug fix
 date: May 17th 2016
 Carson: added and coded moveTo(Point), moveTo(Human), and recoverShield()
 */
+/*Carson
+ * may 21st added getCorner, inCorner to Human. programmed moveAway.
+ */
 import src.items.Weapon;
 
 public class Human
@@ -121,19 +126,43 @@ public class Human
 		moveTo(new Point(human.getX(), human.getY()));
 	}
 	
-	public void moveAway(Human human) //moves away from a human
+	public void moveAway(Human human, Room room) //moves away from a human
 	{
-		int x = human.getX();
-		int y = human.getY();
+		Point dir = getCorner(human, room);
+		Point Buffer = dir;
+		Buffer.setLocation(dir.x/ Math.abs(dir.x), dir.y / Math.abs(dir.y) );
 		for(int i = 1; i != Human.MOVEMENT; i--) 
 		{
-			
+			human.setX(getX()+(i*Buffer.x));
+			human.setY(getY()+(i*Buffer.y));
 		}
 	}
 	
+	public Point getCorner(Human human, Room room)  {
+		int x = 0;
+		int y = (int) Room.size.getHeight();
+		if(human.getX() < Math.abs(Human.MOVEMENT)) //incase movement is ever set to a negitive the ai will still work
+		{
+			x = (int) Room.size.getWidth();
+		}
+		if(human.getY() < Math.abs(Human.MOVEMENT)) 
+		{
+			y = 0;
+		}
+		return new Point(x,y);
+	}
+
+	private boolean nearCorner(Human human, Room room) {
+		if(human.getY() > room.getHeight()-Math.abs(Human.MOVEMENT) || human.getX() > room.getWidth()-Math.abs(Human.MOVEMENT) || human.getX() < Math.abs(Human.MOVEMENT) || human.getY() <  Math.abs(Human.MOVEMENT))
+		{
+			return true;
+		}
+		return false;
+	}
+
 	public void moveOut(Human human) //moves out of a human's weapons range
 	{
-		//TODO
+		
 	}
 	
 	public void moveIn(Human human) //moves so that human is in it's weapon range
