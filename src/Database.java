@@ -201,7 +201,7 @@ public class Database {
 	
 	
 	
-				public static void loadSingle ()
+		public static void loadSingle ()
 		{
 			try
 			{
@@ -300,11 +300,11 @@ public class Database {
 
 				if (!line.equals("0"))
 				{
-					String [] parts1 = line.split("-"); 
+					String [] productParts = line.split("-"); 
 
 					for (int i=0; i< numProducts; i++)
 					{
-						MainExecutable.getPlayer().addProduct(Database.getProduct(parts1[i]));
+						MainExecutable.getPlayer().addProduct(Database.getProduct(productParts[i]));
 					} // for 0...numProducts-1
 				} // if not empty
 				
