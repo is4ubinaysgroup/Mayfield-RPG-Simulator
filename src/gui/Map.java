@@ -4,6 +4,9 @@ package src.gui;
 // updated 05-09
 // PM3: Carson: Evaluated 5/9/2019, 10/10. AWESOME!! :D
 // may 19th re Coloured. Carson
+
+// Mina 05-20 back button should've been going to navigation
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -176,7 +179,7 @@ public class Map
 		btn_Back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				GUIExtension1.switchPane(MainMenu.getPane());
+				GUIExtension1.switchPane(Navigation.getPane());
 			}
 		});
 
