@@ -22,6 +22,8 @@ updated
 added hasEnoughCoins method
 */
 
+// Mina 05-20 added loadProduct and loadWeapon methods to avoid numWeapons or numProducts overlap
+
 
 public class Player extends Human {
 
@@ -126,6 +128,14 @@ public class Player extends Human {
 	
 	
 	
+	public void loadProduct (Product product, int i)
+	{
+		products [i] = product;
+		Backpack.addProduct (product.getName());
+	} // loadProduct method
+	
+	
+	
 	public void deleteProduct(Product product)
 	{
 		for (int i = 0; i< numProducts; i++)
@@ -171,6 +181,14 @@ public class Player extends Human {
 		numWeapons++;
 		
 	} // addWeapon method (push)
+	
+	
+	
+	public void loadWeapon (Weapon weapon, int i)
+	{
+		weapons [i] = weapon;
+		Backpack.addWeapon (weapon.getName());
+	} // loadWeapon method
 	
 	
 
