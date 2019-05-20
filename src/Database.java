@@ -312,39 +312,38 @@ public class Database {
 
 				// ----------------------- read next line for weapons -----------------------
 
-
 				line = input.readLine ();       
 
 				if (!line.equals("0"))
 				{
 					for (int i=0; i<numWeapons; i++)
 					{
-						String [] parts2 = line.split("-"); 
+						String [] WParts = line.split("-"); 
 						Weapon weapon;
 
-						String WName = EWParts[0];
+						String WName = WParts[0];
 						
 						if (WName.equals("Pencil") || WName.equals("Hat"))
 						{
 							
-							int WDamage = Integer.parseInt(EWParts[1]);
-							int WRange = Integer.parseInt(EWParts[2]);
-							double WCriticalChance = Double.parseDouble(EWParts[3]);
-							int WType = Integer.parseInt(EWParts[4]);
-							int WRangedDamage = Integer.parseInt(EWParts[5]);
+							int WDamage = Integer.parseInt(WParts[1]);
+							int WRange = Integer.parseInt(WParts[2]);
+							double WCriticalChance = Double.parseDouble(WParts[3]);
+							int WType = Integer.parseInt(WParts[4]);
+							int WRangedDamage = Integer.parseInt(WParts[5]);
 							
 							weapon = new Weapon(WName, WDamage, WRange, WCriticalChance, WType, WRangedDamage);
 						} // if
 						else
 						{
-							int WCost = Integer.parseInt(EWParts[1]);
-							String WDescription = EWParts[2];
-							String WImagePath = EWParts[3];
-							int WDamage = Integer.parseInt(EWParts[4]);
-							int WRange = Integer.parseInt(EWParts[5]);
-							double WCriticalChance = Double.parseDouble(EWParts[6]);
-							int WType = Integer.parseInt(EWParts[7]);
-							int WRangedDamage = Integer.parseInt(EWParts[8]);
+							int WCost = Integer.parseInt(WParts[1]);
+							String WDescription = WParts[2];
+							String WImagePath = WParts[3];
+							int WDamage = Integer.parseInt(WParts[4]);
+							int WRange = Integer.parseInt(WParts[5]);
+							double WCriticalChance = Double.parseDouble(WParts[6]);
+							int WType = Integer.parseInt(WParts[7]);
+							int WRangedDamage = Integer.parseInt(WParts[8]);
 							
 							weapon = new Weapon(WName, WCost, WDescription, WImagePath, WDamage, WRange, WCriticalChance, WType, WRangedDamage);
 						} // else shop weapon
@@ -359,6 +358,7 @@ public class Database {
 						MainExecutable.getPlayer().addWeapon(Database.getWeapon(WName));
 
 						line = input.readLine ();  // would be an extra readLine at the end but it's also at the end of the method     
+					
 					} // for 0...numWeapons-1
 				} // if not empty
 
@@ -374,7 +374,7 @@ public class Database {
 			} // catch
 			
 		} // loadSingle method
-
+	
 	
 				
 		public static void writeStarterSingle()
