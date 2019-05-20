@@ -39,6 +39,8 @@ added static methods that will remove and add strings to combobox
 edited equip button engine to use the switchWeapon method of Player
 */
 
+// Mina 05-20 added removeAll method for if the user clicks new game
+
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -253,5 +255,11 @@ public class Backpack
 	{
 		comboB_weapons.addItem (weaponName);
 	} // addProduct method
+	
+	public static void removeAll()
+	{
+		comboB_products.removeAll();
+		comboB_weapons.removeAll();
+	} // removeAll method
 	
 } // Backpack class
