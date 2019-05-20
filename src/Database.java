@@ -364,7 +364,7 @@ public class Database {
 			try
 			{
 				
-				PrintWriter output = new PrintWriter (new FileWriter ("files[0]"));
+				PrintWriter output = new PrintWriter (new FileWriter ("src/saves/Save1.txt"));
 				
 				output.println("20");
 				output.println("0");
@@ -400,7 +400,7 @@ public class Database {
 			try
 			{
 				
-				PrintWriter output = new PrintWriter (new FileWriter ("files[0]"));
+				PrintWriter output = new PrintWriter (new FileWriter ("src/saves/Save1.txt"));
 				
 				output.println(MainExecutable.getPlayer().getHealth());
 				output.println(MainExecutable.getPlayer().getDefense());
