@@ -1,6 +1,4 @@
 // execute was spelled wrong - Mina
-// last updated 05-14-19
-
 // 05-17 updated by Mina
 
 
@@ -22,9 +20,11 @@ public class MainExecutable
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
+		
 		int[] position = new int[2];
 		position[0] = 0;
 		position[1] = 0;
+		
 		try {
 		player = new Player(100,10,10,100, Database.getPencil() , "src\\resources\\playerSprite.png", position, 0, 0, 10,10,10);//TODO set to actual data
 		}
@@ -37,6 +37,13 @@ public class MainExecutable
 				e1.printStackTrace();
 			}
 		}
+		
+		
+		// single save file is loaded on new game or continue button click on main menu
+		// level starts at 1 for now; 0 would be for when the tutorial is implemented		
+		// position starts at 0, 0	
+		
+		
 		GUIExtension1.initFrameAndParentPanel ();
 		
 		MainMenu.initGUI();
@@ -45,18 +52,8 @@ public class MainExecutable
 		Map.initGUI();
 		Backpack.initGUI();
 		Shop.initGUI();
-		
-		
-		// null pointer error currently exists with private static hat weapon in database
-		
-		// single save file is loaded on new game or continue button click on main menu
-		
-		// level starts at 1 for now; 0 would be for when the tutorial is implemented		
-		// position starts at 0, 0	
-		
-		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
-	
+		
 	} // Main method
 
 	/**
