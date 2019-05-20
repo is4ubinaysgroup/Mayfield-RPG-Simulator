@@ -96,6 +96,10 @@ public class Database {
 			else if (name.equals("Coffee")) {return Database.getImgCoffee();}
 			else if (name.equals("Cappucino")) {return Database.getImgCappuccino();}
 			else if (name.equals("Espresso")) {return Database.getImgEspresso();}
+			
+			else if (name.equals("Rubber Band")) {return Database.getImgRubberband();}
+			else if (name.equals("Ruler")) {return Database.getImgRuler();}
+			
 			else {return Database.getImgOrangeJuice();} // "Orange Juice"
 		} // getProduct method
 		
