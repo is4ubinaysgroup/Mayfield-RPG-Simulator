@@ -152,7 +152,14 @@ public class Database {
 		}
 		
 
-
+	
+		// ------------------------------------------- npc Stuff -------------------------------------------
+		public static NonPlayer hallMonitor = new NonPlayer("<name>", false);
+		public static NonPlayer binay = new NonPlayer("Binay", true);
+		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
+	
+	
+	
 		// ------------------------------------------- save file configuration stuff ------------------------------------------- 
 		
 		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
@@ -281,11 +288,9 @@ public class Database {
 		} // loadSingle method
 	
 	
-	
 			
 		public static void writeStarterSingle()
 		{
-			
 			try
 			{
 				
@@ -296,7 +301,7 @@ public class Database {
 				output.println("0");
 				output.println("20");
 				output.println("Pencil");
-				output.println("resources/playerSprite.png");
+				output.println("src/resources/playerSprite.png");
 				output.println("10");
 				output.println("1");
 				output.println("0");
@@ -306,7 +311,6 @@ public class Database {
 				output.println("0");
 							
 				output.close (); // Close file.
-
 			} // try
 			catch (Exception e) 
 			{
@@ -315,13 +319,148 @@ public class Database {
 			
 			
 		} // writeStarterSingle method
+			
 		
-	
-	
-	//-------------------------npc Stuff
-		public static NonPlayer hallMonitor = new NonPlayer("<name>", false);
-		public static NonPlayer binay = new NonPlayer("Binay", true);
-		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
+		
+		public static void writeSingle ()
+		{
+			try
+			{
+				
+				PrintWriter output = new PrintWriter (new FileWriter ("files[0]"));
+				
+				output.println(MainExecutable.getPlayer().getHealth());
+				output.println(MainExecutable.getPlayer().getDefense());
+				output.println(MainExecutable.getPlayer().getMaxDefense());
+				output.println(MainExecutable.getPlayer().getMaxHealth());
+								
+				Weapon equippedWeapon = MainExecutable.getPlayer().getEquippedWeapon();
+				String name = equippedWeapon.getName();
+
+				if (name.equals("Pencil") || name.equals("Hat"))
+				{
+					output.print(equippedWeapon.getName()+"-");
+					output.print(equippedWeapon.getDamage()+"-");
+					output.print(equippedWeapon.getRange()+"-");
+					output.print(equippedWeapon.getCriticalChance()+"-");
+					output.print(equippedWeapon.getType()+"-");
+					output.print(equippedWeapon.getRangedDamage()+"-");
+					output.println("");	
+
+				} // if pencil or hat
+				else
+				{
+					output.print(equippedWeapon.getName()+"-");
+					output.print(equippedWeapon.getCost()+"-");
+					output.print(equippedWeapon.getDescription()+"-");
+					output.print(equippedWeapon.getImagePath()+"-");
+					output.print(equippedWeapon.getDamage()+"-");
+					output.print(equippedWeapon.getRange()+"-");
+					output.print(equippedWeapon.getCriticalChance()+"-");
+					output.print(equippedWeapon.getType()+"-");
+					output.print(equippedWeapon.getRangedDamage()+"-");
+					output.println("");	
+
+				} // else shop weapons
+
+				
+				output.println(MainExecutable.getPlayer().getImagePath());
+				output.println(MainExecutable.getPlayer().getCoins());
+				output.println(MainExecutable.getPlayer().getLevel());
+				output.println(MainExecutable.getPlayer().getNumProducts());
+				output.println(MainExecutable.getPlayer().getNumWeapons());
+				output.println(MainExecutable.getPlayer().getProductCapacity());
+				
+				
+				// ------- products -------
+				
+				int numProducts = MainExecutable.getPlayer().getNumProducts();
+				
+				if (numProducts >0)
+				{
+					Product products[] = MainExecutable.getPlayer().getProductsArray();
+
+					for (int i=0; i <= numProducts-2; i++)
+					{
+						output.print(products[i].getName()+"-");
+					} // for 0...numProducts-2
+
+					output.print(products[numProducts-1].getName());
+
+					output.println("");
+					
+				} // if there are products in storage
+
+				else
+				{
+					output.println("0");
+				} // else no products in storage
+
+				
+				
+				// ------- weapons -------
+				
+				int numWeapons = MainExecutable.getPlayer().getNumWeapons();
+
+				if (numWeapons>0)
+				{
+				
+					Weapon weapons[] = MainExecutable.getPlayer().getWeaponsArray();
+
+					for (int i=0; i< numWeapons; i++)
+					{
+						Weapon weapon = weapons[i];
+						String name1 = weapon.getName();
+
+						if (name1.equals("Pencil") || name1.equals("Hat"))
+						{
+							output.print(weapon.getName()+"-");
+							output.print(weapon.getDamage()+"-");
+							output.print(weapon.getRange()+"-");
+							output.print(weapon.getCriticalChance()+"-");
+							output.print(weapon.getType()+"-");
+							output.print(weapon.getRangedDamage()+"-");
+							output.println("");	
+
+
+						} // if pencil or hat
+						else
+						{
+							output.print(weapon.getName()+"-");
+							output.print(weapon.getCost()+"-");
+							output.print(weapon.getDescription()+"-");
+							output.print(weapon.getImagePath()+"-");
+							output.print(weapon.getDamage()+"-");
+							output.print(weapon.getRange()+"-");
+							output.print(weapon.getCriticalChance()+"-");
+							output.print(weapon.getType()+"-");
+							output.print(weapon.getRangedDamage()+"-");
+							output.println("");	
+
+						} // else shop weapons
+
+					} // for 0...numWeapons-1
+					
+				} // if at least 1 weapon in storage
+				else
+				{
+					output.println("0");
+				} // else no weapons in storage
+				
+				
+				
+				output.close (); // Close file.
+
+			} // try
+			catch (Exception e) 
+			{
+				System.out.println ("exception in writeSingle");
+			} // catch
+			
+			
+		} // writeSingle method
+		
+
 	
 		// ------------------------------------------- weapon stuff -------------------------------------------
 			
