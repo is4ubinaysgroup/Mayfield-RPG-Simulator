@@ -285,7 +285,7 @@ public class Database {
 
 					for (int i=0; i< numProducts; i++)
 					{
-						MainExecutable.getPlayer().addProduct(Database.getProduct(productParts[i]));
+						MainExecutable.getPlayer().loadProduct(Database.getProduct(productParts[i]), i);
 					} // for 0...numProducts-1
 				} // if not empty
 				
@@ -336,7 +336,7 @@ public class Database {
 						else if (WName == "Ruler"){setRuler (weapon);}
 						else{setRubberband(weapon);} // "Rubber Band"
 						
-						MainExecutable.getPlayer().addWeapon(Database.getWeapon(WName));
+						MainExecutable.getPlayer().loadWeapon(Database.getWeapon(WName), i);
 
 						line = input.readLine ();  // would be an extra readLine at the end but it's also at the end of the method     
 					
