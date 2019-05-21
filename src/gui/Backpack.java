@@ -48,6 +48,9 @@ edited equip button engine to use the switchWeapon method of Player
  * turned error label red for attention.
  */
 
+
+// Mina 05-21 added comparison to "" for selectedItemName for comboboxes
+
 import java.awt.event.*;
 import javax.swing.*;
 import src.*;
@@ -193,13 +196,13 @@ public class Backpack
 
 	public static void btn_EquipEngine()
 	{
-		if(comboB_weapons.getSelectedItem() != null) 
+		if(comboB_weapons.getSelectedItem() != null && !comboB_weapons.getSelectedItem().equals("")) 
 		{
-		lbl_error.setText(null);
-		String weaponName = (String) comboB_weapons.getSelectedItem();
-		Weapon weapon = Database.getWeapon (weaponName);
-		
-		MainExecutable.getPlayer().switchWeapon (weapon);
+			lbl_error.setText(null);
+			String weaponName = (String) comboB_weapons.getSelectedItem();
+			Weapon weapon = Database.getWeapon (weaponName);
+
+			MainExecutable.getPlayer().switchWeapon (weapon);
 		
 		// equip completed... change turn if boss battle is happening and go to battle panel
 		}
@@ -215,7 +218,7 @@ public class Backpack
 	public static void btn_UseEngine()
 	{
 		boolean used = false;
-		if(comboB_products.getSelectedItem() != null)
+		if(comboB_products.getSelectedItem() != null && !comboB_weapons.getSelectedItem().equals(""))
 		{
 			lbl_error.setText(null);
 			String productName = (String) comboB_products.getSelectedItem();
