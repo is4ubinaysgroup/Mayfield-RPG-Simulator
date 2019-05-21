@@ -4,6 +4,7 @@
 package src.character;
 
 import src.gui.MainExecutable;
+import src.gui.Room;
 import src.items.Weapon;
 /**
  * @author Carson Fujita
@@ -75,7 +76,7 @@ UML
 		this.isBoss = isBoss;
 	}
 	
-		public void runTurn() //TODO
+		public void runTurn(Room room) //TODO
 	{
 		Player player = MainExecutable.getPlayer();
 		int r = player.getEquippedWeapon().getRange();
@@ -130,7 +131,7 @@ UML
 		}
 		else	 if(inRangeOf(player)) 
 		{
-			moveOut(player);
+			moveOut(player,room);
 			setHealth( getHealth() + (int) Math.ceil(getMaxHealth()*0.01) );//recovers 1% of health.
 		}
 		else {}
