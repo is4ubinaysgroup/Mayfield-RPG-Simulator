@@ -105,7 +105,7 @@ public class Database {
 			
 			else if (name.equals("Rubber Band")) {return Database.getImgRubberband();}
 			else if (name.equals("Ruler")) {return Database.getImgRuler();}
-			
+
 			else {return Database.getImgOrangeJuice();} // "Orange Juice"
 		} // getProduct method
 		
@@ -213,7 +213,7 @@ public class Database {
 				
 				String [] EWParts = line.split("-"); 
 				
-				String EWName = EWParts[0];
+				String EWName = EWParts[0];				
 								
 				if (EWName.equals("Pencil") || EWName.equals("Hat"))
 				{
@@ -240,7 +240,7 @@ public class Database {
 					equippedWeapon = new Weapon(EWName, EWCost, EWDescription, EWImagePath, EWDamage, EWRange, EWCriticalChance, EWType, EWRangedDamage);
 				} // else shop weapon
 				
-				
+								
 				if (EWName.equals ("Pencil")){setPencil(equippedWeapon);}
 				else if (EWName.equals ("Hat")){setHat(equippedWeapon);}
 				else if (EWName.equals ("Ruler")){setRuler (equippedWeapon);}
@@ -360,10 +360,9 @@ public class Database {
 			} // catch
 			
 		} // loadSingle method
+		
 	
 	
-	
-			
 		public static void writeStarterSingle()
 		{
 			try
@@ -394,9 +393,6 @@ public class Database {
 			
 			
 		} // writeStarterSingle method
-		
-		
-		
 		
 		
 		
@@ -541,6 +537,7 @@ public class Database {
 			
 		} // writeSingle method
 		
+
 		
 		
 		// ------------------------------------------- weapon stuff -------------------------------------------
@@ -629,6 +626,12 @@ public class Database {
 		} // getProduct method
 
 
+		
+		
+		
+		
+		
+		
 		/**
 		 * @return the imgCapacityUpgrade
 		 */
