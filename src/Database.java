@@ -60,6 +60,11 @@ finished single save file methods; working at this point but might need to be up
 fixed one spelling error of espresso
 */
 
+/*
+05-21 Mina
+fixed error with using == instead of .equals for String
+*/
+
 public class Database {
 	
 	public static final Color MAYFIELD_BLUE = new Color(14, 1, 141);
@@ -235,9 +240,9 @@ public class Database {
 				} // else shop weapon
 				
 				
-				if (EWName == "Pencil"){setPencil(equippedWeapon);}
-				else if (EWName == "Hat"){setHat(equippedWeapon);}
-				else if (EWName == "Ruler"){setRuler (equippedWeapon);}
+				if (EWName.equals ("Pencil")){setPencil(equippedWeapon);}
+				else if (EWName.equals ("Hat")){setHat(equippedWeapon);}
+				else if (EWName.equals ("Ruler")){setRuler (equippedWeapon);}
 				else{setRubberband(equippedWeapon);} // "Rubber Band"
 						
 				equippedWeapon = Database.getWeapon(EWName);
@@ -330,10 +335,9 @@ public class Database {
 						} // else shop weapon
 						
 						
-						if (WName == "Pencil")
-						{setPencil(weapon);}
-						else if (WName == "Hat"){setHat(weapon);}
-						else if (WName == "Ruler"){setRuler (weapon);}
+						if (WName.equals ("Pencil")){setPencil(weapon);}
+						else if (WName.equals ("Hat")){setHat(weapon);}
+						else if (WName.equals ("Ruler")){setRuler (weapon);}
 						else{setRubberband(weapon);} // "Rubber Band"
 						
 						MainExecutable.getPlayer().loadWeapon(Database.getWeapon(WName), i);
@@ -440,9 +444,6 @@ public class Database {
 				output.println(MainExecutable.getPlayer().getImagePath());
 				output.println(MainExecutable.getPlayer().getCoins());
 				output.println(MainExecutable.getPlayer().getLevel());
-				
-				System.out.println("Reached");
-				
 				output.println(MainExecutable.getPlayer().getNumProducts());
 				output.println(MainExecutable.getPlayer().getNumWeapons());
 				output.println(MainExecutable.getPlayer().getProductCapacity());
