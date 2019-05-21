@@ -70,7 +70,7 @@ UML
 
 	public Boolean getIsBoss() {
 		return isBoss;
-	}
+	} 
 
 	public void setIsBoss(Boolean isBoss) {
 		this.isBoss = isBoss;
