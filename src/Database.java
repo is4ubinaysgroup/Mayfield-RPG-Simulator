@@ -63,6 +63,7 @@ fixed one spelling error of espresso
 /*
 05-21 Mina
 fixed error with using == instead of .equals for String
+fixed spelling error of cappuccino
 */
 
 public class Database {
@@ -99,7 +100,7 @@ public class Database {
 			else if (name.equals("Tylenol")) {return Database.getImgTylenol();}
 			else if (name.equals("Capacity Upgrade")) {return Database.getImgCapacityUpgrade();}
 			else if (name.equals("Coffee")) {return Database.getImgCoffee();}
-			else if (name.equals("Cappucino")) {return Database.getImgCappuccino();}
+			else if (name.equals("Cappuccino")) {return Database.getImgCappuccino();}
 			else if (name.equals("Espresso")) {return Database.getImgEspresso();}
 			
 			else if (name.equals("Rubber Band")) {return Database.getImgRubberband();}
