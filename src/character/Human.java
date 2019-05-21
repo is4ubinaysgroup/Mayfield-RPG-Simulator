@@ -1,6 +1,7 @@
 package src.character;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Random;
 
 import src.gui.Room;
 
@@ -161,7 +162,7 @@ public class Human
 		return false;
 	}
 
-	public void moveOut(Human human, Room room) //moves out of a human's weapons range
+	public void moveOut(Human human, Room room, boolean useMostOptimalMove) //moves out of a human's weapons range
 	{
 		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];
 		for(int x = 0;  x != (int) Room.size.getWidth(); x++) 
@@ -176,7 +177,10 @@ public class Human
 		}// creates an array
 		
 		//shorten array 
-		  
+		
+		
+		
+		
 		ArrayList<Point> buffer = new ArrayList<Point>( (int) (Room.size.getWidth()* Room.size.getHeight()) );
 		for(int i = 0;  i < allPoints.length; i++) 
 		{
@@ -185,12 +189,12 @@ public class Human
 				buffer.add(allPoints[i]);
 			}
 		}// creates an array
-		int newLength = 0;
-		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length.
+		int newLength = 0; 
+		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
 		
 		
-		
-		
+		if(useMostOptimalMove = true) 
+		{
 		// if one Point left in array: move there
 		if(newLength == 0) // if no Points left in array: move away from human
 		{
@@ -200,8 +204,14 @@ public class Human
 		{
 			
 		}
-
-		
+		}
+		else //useMostOptimalMove = false
+		{
+			Random random = new Random();
+			Point newPosition = buffer.get( (int) Math.floor(random.nextInt() * newLength) );
+			moveTo( buffer.get( (int) Math.floor(random.nextInt() * newLength) ));
+		}
+		//END
 		
 		
 		// remove all points in array that aren't within it's movement
