@@ -1,5 +1,7 @@
 package src.gui;
 
+import java.awt.Color;
+
 // initially uploaded 05-08 by Matthew to Code repository
 
 /* 
@@ -40,7 +42,11 @@ edited equip button engine to use the switchWeapon method of Player
 */
 
 // Mina 05-20 added removeAll method for if the user clicks new game
-
+/*
+ * Carson may 21st
+ * made the backpack equip and use tell player that it cannot use an item if there is none.
+ * turned error label red for attention.
+ */
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -117,6 +123,7 @@ public class Backpack
 		
 		// ------- lbl_error -------
 		lbl_error = new JLabel ("");
+		lbl_error.setForeground(Color.RED);//
 		lbl_error.setBounds(267, 485, 294, 20);
 		backpackPane.add(lbl_error);
 		
@@ -186,6 +193,8 @@ public class Backpack
 
 	public static void btn_EquipEngine()
 	{
+		if(comboB_weapons.getSelectedItem() != null) 
+		{
 		lbl_error.setText(null);
 		String weaponName = (String) comboB_weapons.getSelectedItem();
 		Weapon weapon = Database.getWeapon (weaponName);
@@ -193,7 +202,11 @@ public class Backpack
 		MainExecutable.getPlayer().switchWeapon (weapon);
 		
 		// equip completed... change turn if boss battle is happening and go to battle panel
-		
+		}
+		else
+		{
+			lbl_error.setText("Cannot equip nothing");
+		}
 		update();
 	} // btn_EquipEngine method
 	
@@ -201,19 +214,26 @@ public class Backpack
 	
 	public static void btn_UseEngine()
 	{
-		lbl_error.setText(null);
-		String productName = (String) comboB_products.getSelectedItem();
-		Product product = Database.getProduct(productName);//fixed by carson
-		
-		Boolean used = Product.use(product);
-		
-		if (used == false) {lbl_error.setText("using product error");}
-		else {
-			
-			// use completed... change turn if boss battle is happening and go to battle panel
-			
-			update();
-		} // else
+		boolean used = false;
+		if(comboB_products.getSelectedItem() != null)
+		{
+			lbl_error.setText(null);
+			String productName = (String) comboB_products.getSelectedItem();
+			Product product = Database.getProduct(productName);//fixed by carson
+
+			used = Product.use(product);
+			if (used == false) {lbl_error.setText("using product error");}
+			else {
+
+				// use completed... change turn if boss battle is happening and go to battle panel
+
+				update();
+			} // else
+		}
+		else
+		{
+			lbl_error.setText("Cannot use nothing");
+		}
 		
 	} // btn_UseEngine method
 	
