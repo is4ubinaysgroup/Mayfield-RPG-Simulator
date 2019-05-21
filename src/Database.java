@@ -62,9 +62,11 @@ fixed one spelling error of espresso
 
 /*
 05-21 Mina
-fixed error with using == instead of .equals for String
-fixed spelling error of cappuccino
+fixed error with using == instead of .equals for String causing wrong weapon setting and rubber band to display incorrectly in shop
+fixed spelling error of cappuccino causing its image to display incorrently
+added descriptions for ruler and rubber band
 */
+
 
 public class Database {
 	
@@ -554,8 +556,8 @@ public class Database {
 		
 		private static Weapon hat = new Weapon("Hat", stats[0][0],stats[0][1],criticalChance[0],Weapon.RANGEDTYPE, 0 );
 		private static Weapon pencil = new Weapon("Pencil", stats[1][1],stats[1][1],criticalChance[0],Weapon.MELEETYPE, 0 );
-		private static Weapon ruler  = new Weapon("Ruler", 10, "description", "src/resources/ruler.png", stats[2][0],stats[2][1],criticalChance[0],Weapon.ALLTYPE, 1 );
-		private static Weapon rubberband = new Weapon("Rubber Band", 5, "description", "src/resources/rubberband.png", stats[3][0],stats[3][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+		private static Weapon ruler  = new Weapon("Ruler", 10, "measuring tool", "src/resources/ruler.png", stats[2][0],stats[2][1],criticalChance[0],Weapon.ALLTYPE, 1 );
+		private static Weapon rubberband = new Weapon("Rubber Band", 5, "stretchy", "src/resources/rubberband.png", stats[3][0],stats[3][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
 	
 	
 		// gets and sets
