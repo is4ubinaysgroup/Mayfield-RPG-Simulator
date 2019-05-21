@@ -44,6 +44,12 @@ fixed espresso spelling and removed text from icon jlabels
 fixed updateWeaponInfo() so that weapon images show
 */
 
+/*
+05-21 Mina
+fixed spelling of Cappuccino
+moved leave and buy buttons slightly higher
+*/
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -66,7 +72,7 @@ public class Shop
 
 	static final String TAB1LIST [] = {"Capacity Upgrade", "Soda", "Orange Juice"};
 	static final String TAB2LIST [] = {"Timbits", "McChicken", "Foot Long Sub!"};
-	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappucino", "Espresso"};
+	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappuccino", "Espresso"};
 	static final String TAB4LIST [] = {"Ruler", "Rubber Band"};
 
 	static protected JTabbedPane shopTabbedPane;
@@ -178,7 +184,7 @@ public class Shop
 		
 		// ------- btn_buy1 -------
 		btn_buy1 = new JButton ("Buy");
-		btn_buy1.setBounds(421, 644, 115, 29);
+		btn_buy1.setBounds(421, 574, 115, 29);
 		tabPane1.add(btn_buy1);
 		
 		btn_buy1.addActionListener (new ActionListener ()   
@@ -197,7 +203,7 @@ public class Shop
 		
 		// ------- btn_leave1 -------
 		btn_leave1 = new JButton ("Leave");
-		btn_leave1.setBounds(230, 644, 115, 29);
+		btn_leave1.setBounds(230, 574, 115, 29);
 		tabPane1.add(btn_leave1);
 				
 		btn_leave1.addActionListener (new ActionListener ()   
@@ -265,7 +271,7 @@ public class Shop
 		
 		// ------- btn_buy2 -------
 		btn_buy2 = new JButton ("Buy");
-		btn_buy2.setBounds(421, 644, 115, 29);
+		btn_buy2.setBounds(421, 574, 115, 29);
 		tabPane2.add(btn_buy2);
 		
 		btn_buy2.addActionListener (new ActionListener ()   
@@ -284,7 +290,7 @@ public class Shop
 		
 		// ------- btn_leave2 -------
 		btn_leave2 = new JButton ("Leave");
-		btn_leave2.setBounds(230, 644, 115, 29);
+		btn_leave2.setBounds(230, 574, 115, 29);
 		tabPane2.add(btn_leave2);
 				
 		btn_leave2.addActionListener (new ActionListener ()   
@@ -351,7 +357,7 @@ public class Shop
 		
 		// ------- btn_buy3 -------
 		btn_buy3 = new JButton ("Buy");
-		btn_buy3.setBounds(421, 644, 115, 29);
+		btn_buy3.setBounds(421, 574, 115, 29);
 		tabPane3.add(btn_buy3);
 		
 		btn_buy3.addActionListener (new ActionListener ()   
@@ -370,7 +376,7 @@ public class Shop
 		
 		// ------- btn_leave3 -------
 		btn_leave3 = new JButton ("Leave");
-		btn_leave3.setBounds(230, 644, 115, 29);
+		btn_leave3.setBounds(230, 574, 115, 29);
 		tabPane3.add(btn_leave3);
 				
 		btn_leave3.addActionListener (new ActionListener ()   
@@ -438,7 +444,7 @@ public class Shop
 		
 		// ------- btn_buy4 -------
 		btn_buy4 = new JButton ("Buy");
-		btn_buy4.setBounds(421, 644, 115, 29);
+		btn_buy4.setBounds(421, 574, 115, 29);
 		tabPane4.add(btn_buy4);
 		
 		btn_buy4.addActionListener (new ActionListener ()   
@@ -457,7 +463,7 @@ public class Shop
 		
 		// ------- btn_leave4 -------
 		btn_leave4 = new JButton ("Leave");
-		btn_leave4.setBounds(230, 644, 115, 29);
+		btn_leave4.setBounds(230, 574, 115, 29);
 		tabPane4.add(btn_leave4);
 				
 		btn_leave4.addActionListener (new ActionListener ()   
