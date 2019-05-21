@@ -181,12 +181,12 @@ public class Database {
 		public final Exception ReadIncompleteError = new Exception("Reading file was incomplete: Some data may be lost.");// this will throw if reading a file and obtains only part of the information.
 
 	
-		private static File[] files = new File[2];
+		private static File[] files =
 		{
-			files[0] = new File("src/saves/Save1.txt");
-			files[1] = new File("src/saves/Save2.txt");
-			files[2] = new File("src/saves/Save3.txt");
-		}		
+			new File("src/saves/Save1.txt"),
+			new File("src/saves/Save2.txt"),
+			new File("src/saves/Save3.txt"),
+		};		
 		
 
 	
