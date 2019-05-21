@@ -613,15 +613,6 @@ public class Shop
 		lbl_coins3.setText ("Coins: " + Integer.toString( MainExecutable.getPlayer().getCoins() ));
 		lbl_coins4.setText ("Coins: " + Integer.toString( MainExecutable.getPlayer().getCoins() ));
 		
-		/* not sure if this part is needed; test later
-		shopTabbedPane.removeAll();
-		shopTabbedPane.addTab(TAB1NAME, tabPane1);
-		shopTabbedPane.addTab(TAB2NAME, tabPane2);
-		shopTabbedPane.addTab(TAB3NAME, tabPane3);
-		shopTabbedPane.addTab(TAB4NAME, tabPane4);
-		
-		GUIExtension1.switchToShop (shopTabbedPane); */
-		
 	} //updateCoinsLabels method
 	
 	
