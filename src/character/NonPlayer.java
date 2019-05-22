@@ -131,10 +131,13 @@ UML
 		}
 		else	 if(inRangeOf(player)) 
 		{
-			moveOut(player,room);
+			moveOut(player,room,false);
 			setHealth( getHealth() + (int) Math.ceil(getMaxHealth()*0.01) );//recovers 1% of health.
 		}
-		else {}
+		else 
+		{
+			
+		}
 
 	}				
 
