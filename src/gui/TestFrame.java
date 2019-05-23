@@ -1,3 +1,4 @@
+package src.gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -5,8 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import src.gui.CombatMenu;
-import src.gui.Room;
+import src.character.NonPlayer;
 
 public class TestFrame extends JFrame {
 
@@ -17,7 +17,7 @@ public class TestFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void initGui() {
+	public void initGui() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -44,6 +44,10 @@ public class TestFrame extends JFrame {
 		contentPane.add(room);
 		menu.setBounds(800, 0, 200, 800);
 		contentPane.add(menu);
-		room.update();
+		room.updatePlayer();
+	}
+
+	public TestFrame(NonPlayer gymTeacher) {
+		room.setNonPlayer(gymTeacher);
 	}
 }

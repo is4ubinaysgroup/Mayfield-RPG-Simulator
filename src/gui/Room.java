@@ -37,7 +37,7 @@ public class Room extends JPanel {
 	private static int mouseY;
 	private NonPlayer nonPlayer;
 	private static final long serialVersionUID = 3276708249872258003L;
-	private JLabel labels[][]=  new JLabel[20][20];
+	private JPanel labels[][]=  new JPanel[20][20];
 	private JButton btnNewButton = new JButton("Move Here");
   
 	/**
@@ -70,7 +70,7 @@ public class Room extends JPanel {
 			for(int counter = 0; counter != labels[i].length; counter++ ) 
 			{
 				//labels[i][counter] = new JLabel("label["+i+"]["+counter+"]");
-				labels[i][counter] = new JLabel();
+				labels[i][counter] = new JPanel();
 				labels[i][counter].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
 				labels[i][counter].setBounds(0+40*i, 0+40*counter, 40, 40);
 				add(labels[i][counter]);
@@ -78,7 +78,7 @@ public class Room extends JPanel {
 		}
 	}
 	
-		public void setRoom(JLabel[][] labels)
+		public void setRoom(JPanel[][] labels)
 		{
 			this.labels = labels;	
 		}
@@ -93,7 +93,7 @@ public class Room extends JPanel {
 				for(int y = npcY; y != npcY+range; y++ ) 
 				{
 
-					labels[x][y].setBackground(mixColorsWithAlpha(labels[x][y].getBackground(),Color.RED, 155));
+					labels[x][y].setBackground(mixColorsWithAlpha(labels[x][y].getBackground(),Color.RED, 0));
 				}
 			}
 			labels[npcX][npcY].setBackground(Color.BLACK);
@@ -104,12 +104,17 @@ public class Room extends JPanel {
 			 int range =MainExecutable.getPlayer().getEquippedWeapon().getRange();
 			int npcX = MainExecutable.getPlayer().getX();
 			int npcY = MainExecutable.getPlayer().getY();
-			for(int x = npcX; x != npcX+range; x++) 
+			for(int x = npcX-range; x != npcX+range*2; x++) 
 				{
-					for(int y = npcY; y != npcY+range; y++ ) 
+					for(int y = npcY-range; y != npcY+range*2; y++ ) 
 					{
-						 addPopup(labels[x][y], popupMenu);
-						labels[x][y].setBackground(mixColorsWithAlpha(labels[x][y].getBackground(),Color.BLUE, 155));
+						System.out.println("X:" + x +" Y:" +y);
+						if(x>=0 && y>= 0)
+						{
+							
+							addPopup(labels[x][y], popupMenu);
+							labels[x][y].setBackground(Color.BLUE);
+						}
 					}
 				}
 			labels[npcX][npcY].setBackground(Color.YELLOW);

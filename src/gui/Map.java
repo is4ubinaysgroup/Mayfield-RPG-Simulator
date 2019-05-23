@@ -198,7 +198,7 @@ public class Map
 		// start the battle with boss 1
 		// switch to the battle panel
 		//TEST
-		TestFrame frame = new TestFrame();
+		TestFrame frame = new TestFrame(Database.gymTeacher);
 		frame.initGui();
 		
 	} // btn_Level1Engine method

@@ -172,9 +172,9 @@ public class Database {
 		
 		
 		// ------------------------------------------- npc Stuff -------------------------------------------
-		public static NonPlayer hallMonitor = new NonPlayer("<name>", false);
-		public static NonPlayer binay = new NonPlayer("Binay", true);
-		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false);
+		public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler());
+		public static NonPlayer binay = new NonPlayer("Binay", true, getHat());
+		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband());
 	
 
 

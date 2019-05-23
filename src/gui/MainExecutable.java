@@ -22,8 +22,8 @@ public class MainExecutable
 		}
 		
 		int[] position = new int[2];
-		position[0] = 0;
-		position[1] = 0;
+		position[0] = 10;
+		position[1] =10;
 		
 		try {
 		player = new Player(100,10,10,100, Database.getPencil() , "src\\resources\\playerSprite.png", position, 0, 0, 10,10,10);//TODO set to actual data

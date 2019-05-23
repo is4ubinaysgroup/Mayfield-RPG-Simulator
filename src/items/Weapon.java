@@ -137,7 +137,7 @@ public class Weapon extends Item
 	
 	public int getMeleeRange () {
 	{ 
-		return range;//outputs the weapon's range
+		return this.range;//outputs the weapon's range
 	}
 	
 	}
@@ -214,7 +214,7 @@ public class Weapon extends Item
 	 * @return the range
 	 */
 	public int getRange() {
-		return range;
+		return this.range;
 	}
 
 
@@ -234,7 +234,7 @@ public class Weapon extends Item
 	 * @return the damage
 	 */
 	public int getDamage() {
-		return damage;
+		return this.damage;
 	}
 
 

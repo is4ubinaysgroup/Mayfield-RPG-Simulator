@@ -68,6 +68,12 @@ UML
 		this.setIsBoss(isBoss);
 	}
 
+	public NonPlayer(String name,Boolean isBoss, Weapon weapon) 
+	{
+		this.name = name;
+		this.setIsBoss(isBoss);
+		this.setEquippedWeapon(weapon);
+	}
 	public Boolean getIsBoss() {
 		return isBoss;
 	} 
