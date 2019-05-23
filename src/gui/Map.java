@@ -6,6 +6,7 @@ package src.gui;
 // may 19th re Coloured. Carson
 
 // Mina 05-20 back button should've been going to navigation
+// Mina 05-23 shifted GUI to fill frame
 
 import java.awt.*;
 import java.awt.event.*;
@@ -37,7 +38,7 @@ public class Map
 				g.drawImage(Database.MapBackground, -150, 0, 1220, 800, null);
 			}
 		};
-		background.setBounds(0, 0, 800, 800);
+		background.setBounds(0, 0, 1000, 800);
 		background.setVisible(true);
 		// ------- map panel --------
 		mapPane = new JPanel ();
@@ -48,7 +49,7 @@ public class Map
 
 		// ------- btn_Level1 -------
 		btn_Level1 = new JButton("kitchen");
-		btn_Level1.setBounds(62, 239, 130, 130);
+		btn_Level1.setBounds(162, 239, 130, 130);
 		btn_Level1.setForeground(Database.MAYFIELD_YELLOW);
 		btn_Level1.setBackground(Database.MAYFIELD_BLUE);
 		btn_Level1.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
@@ -67,7 +68,7 @@ public class Map
 		
 		// ------- btn_Level2 -------
 		btn_Level2 = new JButton("Level 2");
-		btn_Level2.setBounds(234, 239, 130, 130);
+		btn_Level2.setBounds(334, 239, 130, 130);
 
 		btn_Level2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,7 +82,7 @@ public class Map
 		
 		// ------- btn_Level3 -------
 		btn_Level3 = new JButton("Level 3");
-		btn_Level3.setBounds(408, 239, 130, 130);
+		btn_Level3.setBounds(508, 239, 130, 130);
 
 		btn_Level3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -96,7 +97,7 @@ public class Map
 		// ------- btn_Level4 -------
 
 		btn_Level4 = new JButton("Level 4");
-		btn_Level4.setBounds(580, 239, 130, 130);
+		btn_Level4.setBounds(680, 239, 130, 130);
 
 		btn_Level4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -111,7 +112,7 @@ public class Map
 		// ------- btn_Level5 -------
 
 		btn_Level5 = new JButton("Level 5");
-		btn_Level5.setBounds(62, 417, 130, 130);
+		btn_Level5.setBounds(162, 417, 130, 130);
 
 		btn_Level5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -125,7 +126,7 @@ public class Map
 		
 		// ------- btn_Level6 -------
 		btn_Level6 = new JButton("Level 6");
-		btn_Level6.setBounds(234, 417, 130, 130);
+		btn_Level6.setBounds(334, 417, 130, 130);
 
 		btn_Level6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -139,7 +140,7 @@ public class Map
 
 		// ------- btn_Level7 -------
 		btn_Level7 = new JButton("Level 7");
-		btn_Level7.setBounds(408, 417, 130, 130);
+		btn_Level7.setBounds(508, 417, 130, 130);
 
 		btn_Level7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -153,7 +154,7 @@ public class Map
 		
 		// ------- btn_Shop -------
 		btn_Shop = new JButton("Shop");
-		btn_Shop.setBounds(580, 417, 130, 130);
+		btn_Shop.setBounds(680, 417, 130, 130);
 		btn_Shop.setForeground(Database.MAYFIELD_YELLOW);
 		btn_Shop.setBackground(Database.MAYFIELD_BLUE);
 		btn_Shop.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
@@ -171,7 +172,7 @@ public class Map
 
 		// ------- btn_Back -------
 		btn_Back = new JButton("back");
-		btn_Back.setBounds(325, 620, 130, 50);
+		btn_Back.setBounds(425, 620, 130, 50);
 		btn_Back.setForeground(Database.MAYFIELD_YELLOW);
 		btn_Back.setBackground(Database.MAYFIELD_BLUE);
 		btn_Back.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));

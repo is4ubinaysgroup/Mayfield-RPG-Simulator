@@ -12,6 +12,8 @@ continue if the player's level is 0 instead of switching to navigation
 
 // 05-17 updated by Mina
 
+// Mina 05-23 shifted GUI to fill frame
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -45,7 +47,7 @@ public class MainMenu
 				g.drawImage(Database.getMainMenuBackground(), 0, 0, 1314, 878, null);
 			}
 		};
-		background.setBounds(0, 0, 800, 800);
+		background.setBounds(0, 0, 1000, 800);
 		background.setVisible(true);
 		
 		
@@ -54,7 +56,7 @@ public class MainMenu
 		lbl_Title.setForeground(new Color(247, 221, 0));
 		lbl_Title.setHorizontalAlignment(SwingConstants.CENTER);
 		lbl_Title.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
-		lbl_Title.setBounds(0, 167, 784, 64);
+		lbl_Title.setBounds(100, 167, 784, 64);
 		mainMenuPane.add(lbl_Title);
 
         
@@ -63,7 +65,7 @@ public class MainMenu
 		btn_NewGame.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
 		btn_NewGame.setForeground(new Color(247, 221, 0));
 		btn_NewGame.setBackground(new Color(14, 1, 141));
-		btn_NewGame.setBounds(319, 254, 145, 55);
+		btn_NewGame.setBounds(419, 254, 145, 55);
 		mainMenuPane.add(btn_NewGame);
 		
 		btn_NewGame.addActionListener (new ActionListener ()   
@@ -89,7 +91,7 @@ public class MainMenu
 		btn_Continue.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
 		btn_Continue.setForeground(new Color(247, 221, 0));
 		btn_Continue.setBackground(new Color(14, 1, 141));
-		btn_Continue.setBounds(319, 320, 145, 55);
+		btn_Continue.setBounds(419, 320, 145, 55);
 		mainMenuPane.add(btn_Continue);
 		
 		btn_Continue.addActionListener (new ActionListener ()   
@@ -112,7 +114,7 @@ public class MainMenu
 		btn_Quit.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
 		btn_Quit.setBackground(new Color(14, 1, 141));
 		btn_Quit.setForeground(new Color(247, 221, 0));
-		btn_Quit.setBounds(319, 452, 145, 55);
+		btn_Quit.setBounds(419, 452, 145, 55);
 		mainMenuPane.add(btn_Quit);
         
 		btn_Quit.addActionListener (new ActionListener ()   
@@ -128,7 +130,7 @@ public class MainMenu
 		btn_Help.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
 		btn_Help.setBackground(new Color(14, 1, 141));
 		btn_Help.setForeground(new Color(247, 221, 0));
-		btn_Help.setBounds(319, 386, 145, 55);
+		btn_Help.setBounds(419, 386, 145, 55);
 		mainMenuPane.add(btn_Help);
 		
 		btn_Help.addActionListener (new ActionListener ()   
