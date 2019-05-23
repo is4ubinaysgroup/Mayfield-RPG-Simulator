@@ -50,6 +50,7 @@ edited equip button engine to use the switchWeapon method of Player
 
 
 // Mina 05-21 added comparison to "" for selectedItemName for comboboxes
+// Mina 05-23 shifted GUI to accomodate frame size
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -86,64 +87,64 @@ public class Backpack
 		
 		// ------- lbl_coins -------
 		lbl_coins = new JLabel ("Coins: ");
-		lbl_coins.setBounds(155, 131, 181, 20);
+		lbl_coins.setBounds(255, 131, 181, 20);
 		backpackPane.add(lbl_coins);
 		
 		// ------- lbl_defense -------
 		lbl_defense = new JLabel ("Defense: ");
-		lbl_defense.setBounds(423, 131, 212, 20);
+		lbl_defense.setBounds(523, 131, 212, 20);
 		backpackPane.add(lbl_defense);
 		
 		// ------- lbl_health -------
 		lbl_health = new JLabel ("Health: ");
-		lbl_health.setBounds(155, 183, 162, 20);
+		lbl_health.setBounds(255, 183, 162, 20);
 		backpackPane.add(lbl_health);
 		
 		// ------- lbl_maxHealth -------
 		lbl_maxHealth = new JLabel ("Max Health: ");
-		lbl_maxHealth.setBounds(423, 183, 181, 20);
+		lbl_maxHealth.setBounds(523, 183, 181, 20);
 		backpackPane.add(lbl_maxHealth);
 		
 		// ------- lbl_damage -------
 		lbl_damage = new JLabel ("Damage: ");
-		lbl_damage.setBounds(155, 238, 162, 20);
+		lbl_damage.setBounds(255, 238, 162, 20);
 		backpackPane.add(lbl_damage);
 		
 		// ------- lbl_criticalChance -------
 		lbl_criticalChance = new JLabel ("Critical Chance: ");
-		lbl_criticalChance.setBounds(423, 238, 224, 20);
+		lbl_criticalChance.setBounds(523, 238, 224, 20);
 		backpackPane.add(lbl_criticalChance);
 		
 		// ------- lbl_rangedDamage -------
 		lbl_rangedDamage = new JLabel("Ranged Damage: ");
-		lbl_rangedDamage.setBounds(155, 289, 181, 20);
+		lbl_rangedDamage.setBounds(255, 289, 181, 20);
 		backpackPane.add(lbl_rangedDamage);
 		
 		// ------- lbl_movement -------
 		lbl_movement = new JLabel("Movement: 3");
-		lbl_movement.setBounds(423, 289, 124, 20);
+		lbl_movement.setBounds(523, 289, 124, 20);
 		backpackPane.add(lbl_movement);
 		
 		// ------- lbl_error -------
 		lbl_error = new JLabel ("");
 		lbl_error.setForeground(Color.RED);//
-		lbl_error.setBounds(267, 485, 294, 20);
+		lbl_error.setBounds(367, 485, 294, 20);
 		backpackPane.add(lbl_error);
 		
 		// ------- comboB_weapons ------- 
 		comboB_weapons = new JComboBox<String>();
-		comboB_weapons.setBounds(155, 337, 352, 26);
+		comboB_weapons.setBounds(255, 337, 352, 26);
 		backpackPane.add(comboB_weapons);
 		
 		// ------- comboB_products ------- 
 		comboB_products = new JComboBox<String>();
-		comboB_products.setBounds(155, 406, 352, 26);
+		comboB_products.setBounds(255, 406, 352, 26);
 		backpackPane.add(comboB_products);
 		
 		
 		// ------- btn_Equip ------- 
 		btn_Equip = new JButton("Equip");
-		btn_Equip.setBounds(522, 336, 115, 29);
+		btn_Equip.setBounds(622, 336, 115, 29);
 		backpackPane.add(btn_Equip);
 		
 		btn_Equip.addActionListener (new ActionListener ()   
@@ -157,7 +158,7 @@ public class Backpack
 		
 		// ------- btn_Use ------- 
 		btn_Use = new JButton("Use");
-		btn_Use.setBounds(522, 405, 115, 29);
+		btn_Use.setBounds(622, 405, 115, 29);
 		backpackPane.add(btn_Use);
 		
 		btn_Use.addActionListener (new ActionListener ()   
@@ -171,7 +172,7 @@ public class Backpack
 		
 		// ------- btn_Back ------- 
 		btn_Back = new JButton("Back");
-		btn_Back.setBounds(328, 572, 115, 29);
+		btn_Back.setBounds(428, 572, 115, 29);
 		backpackPane.add(btn_Back);
 		
 		btn_Back.addActionListener (new ActionListener ()   
