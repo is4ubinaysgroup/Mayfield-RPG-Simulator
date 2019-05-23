@@ -4,6 +4,12 @@ package src.gui;
 // initially completed 04-28-2019
 // updated 05-10
 
+
+/*
+Mina 05-23
+changed frame size
+*/
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +27,7 @@ public class GUIExtension1
 	{
 		frame = new JFrame ("Mayfield RPG Simulator");
 		frame.setResizable(false);
-		frame.setSize (800, 800); // sets size 
+		frame.setSize (1000, 800); // sets size 
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 		try {
 			frame.setIconImage( ImageIO.read(new File("src/resources/MayfieldSecondarySchool.png")));
