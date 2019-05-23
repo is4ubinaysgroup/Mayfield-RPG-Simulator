@@ -12,6 +12,8 @@ Version: 2
 Updated 05/10/2019 By Mina and Matthew
 */
 
+// Mina 05-23 shifted GUI components
+
 public class Help
 {
 	static protected JButton btn_Back;
@@ -29,18 +31,18 @@ public class Help
 		// ------- label main help title -------
 		lbl_Title = new JLabel("help instructions");
 		lbl_Title.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
-		lbl_Title.setBounds(240, 51, 784, 64);
+		lbl_Title.setBounds(340, 51, 784, 64);
 		helpPane.add(lbl_Title);
 		
 		// -------- lbl contents ---------------
 		lbl_Content = new JLabel ("BLANK");
-		lbl_Content.setBounds (85, 167, 56, 16);
+		lbl_Content.setBounds (185, 167, 56, 16);
 		helpPane.add(lbl_Content);
 
 		
 		// ------- btn_Back -------
 		btn_Back = new JButton("Back");
-		btn_Back.setBounds(292, 624, 190, 80);
+		btn_Back.setBounds(392, 624, 190, 80);
 
 		btn_Back.addActionListener(new ActionListener() 
 		{
