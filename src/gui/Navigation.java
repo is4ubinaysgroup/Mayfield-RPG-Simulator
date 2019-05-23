@@ -8,6 +8,7 @@ in a blank room/"overworld" where the user clicks on their character sprite */
 
 // Mina 05-10 added Backpack.update() to backpack button listener
 // Mina 05-20 added Database.writeSingle();
+// Mina 05-23 shifted GUI to fill frame
 
 import java.awt.*;
 import java.awt.event.*;
@@ -32,7 +33,7 @@ public class Navigation
 				g.drawImage(Database.getMainMenuBackground(), 0, 0, 1314, 878, null);
 			}
 		};
-		background.setBounds(0, 0, 800, 800);
+		background.setBounds(0, 0, 1000, 800);
 		background.setVisible(true);
 		// ------- navigationPane -------
 		NavigationPane = new JPanel();
@@ -46,7 +47,7 @@ public class Navigation
 		btn_Map.setForeground(Database.ALT_MAYFIELD_YELLOW);
 		btn_Map.setBackground(Database.MAYFIELD_BLUE);
 		btn_Map.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
-		btn_Map.setBounds(250, 100, 300, 100);
+		btn_Map.setBounds(350, 100, 300, 100);
 		NavigationPane.add(btn_Map);
 		
 		btn_Map.addActionListener (new ActionListener ()   
@@ -64,7 +65,7 @@ public class Navigation
 		btn_Backpack.setForeground(Database.MAYFIELD_YELLOW);
 		btn_Backpack.setBackground(Database.MAYFIELD_BLUE);
 		btn_Backpack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
-		btn_Backpack.setBounds(250, 400, 300, 100);
+		btn_Backpack.setBounds(350, 400, 300, 100);
 		NavigationPane.add(btn_Backpack);
 		
 		btn_Backpack.addActionListener (new ActionListener ()   
@@ -83,7 +84,7 @@ public class Navigation
 		btn_Save.setBackground(Database.MAYFIELD_BLUE);
 		btn_Save.setForeground(Database.MAYFIELD_YELLOW);
 		btn_Save.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
-		btn_Save.setBounds(250, 250, 300, 100);
+		btn_Save.setBounds(350, 250, 300, 100);
 		NavigationPane.add(btn_Save);
 		
 		btn_Save.addActionListener (new ActionListener ()   
@@ -101,7 +102,7 @@ public class Navigation
 		btn_Return.setBackground(Database.MAYFIELD_BLUE);
 		btn_Return.setForeground(Database.MAYFIELD_YELLOW);
 		btn_Return.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 40));
-		btn_Return.setBounds(250, 550, 300, 100);
+		btn_Return.setBounds(350, 550, 300, 100);
 		NavigationPane.add(btn_Return);
 		
 		btn_Return.addActionListener (new ActionListener ()   
