@@ -50,6 +50,7 @@ fixed spelling of Cappuccino
 moved leave and buy buttons slightly higher
 */
 
+// Mina 05-23 shifted GUI components to accomodate frame size
 
 import java.awt.*;
 import java.awt.event.*;
@@ -135,37 +136,37 @@ public class Shop
 		tabPane1.setLayout(null);
 		
 		lbl_error1 = new JLabel("");
-		lbl_error1.setBounds(323, 535, 294, 20);
+		lbl_error1.setBounds(423, 535, 294, 20);
 		tabPane1.add(lbl_error1);
 		
 		lbl_name1 = new JLabel("Name: ");
-		lbl_name1.setBounds(145, 360, 254, 20);
+		lbl_name1.setBounds(245, 360, 254, 20);
 		tabPane1.add(lbl_name1);
 		
 		lbl_cost1 = new JLabel("Cost: ");
-		lbl_cost1.setBounds(145, 409, 160, 20);
+		lbl_cost1.setBounds(245, 409, 160, 20);
 		tabPane1.add(lbl_cost1);
 		
 		lbl_description1 = new JLabel("Description: ");
-		lbl_description1.setBounds(145, 463, 600, 20);
+		lbl_description1.setBounds(245, 463, 600, 20);
 		tabPane1.add(lbl_description1);
 		
 		lbl_coins1 = new JLabel("Coins: ");
-		lbl_coins1.setBounds(636, 75, 127, 20);
+		lbl_coins1.setBounds(736, 75, 127, 20);
 		tabPane1.add(lbl_coins1);
 		
 		
 		// ------- lbl_icon1 -------
 		lbl_icon1 = new JLabel("");
 		//lbl_icon1.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
-		lbl_icon1.setBounds(339, 224, 100, 100);
+		lbl_icon1.setBounds(439, 224, 100, 100);
 		tabPane1.add(lbl_icon1);
 		
 		
 		
 		// ------- comboB_tab1 -------
 		comboB_tab1 = new JComboBox<String> (TAB1LIST);
-		comboB_tab1.setBounds(186, 146, 400, 26);
+		comboB_tab1.setBounds(286, 146, 400, 26);
 		tabPane1.add(comboB_tab1);
 		
 		comboB_tab1.addActionListener (new ActionListener ()
@@ -184,7 +185,7 @@ public class Shop
 		
 		// ------- btn_buy1 -------
 		btn_buy1 = new JButton ("Buy");
-		btn_buy1.setBounds(421, 574, 115, 29);
+		btn_buy1.setBounds(521, 574, 115, 29);
 		tabPane1.add(btn_buy1);
 		
 		btn_buy1.addActionListener (new ActionListener ()   
@@ -203,7 +204,7 @@ public class Shop
 		
 		// ------- btn_leave1 -------
 		btn_leave1 = new JButton ("Leave");
-		btn_leave1.setBounds(230, 574, 115, 29);
+		btn_leave1.setBounds(330, 574, 115, 29);
 		tabPane1.add(btn_leave1);
 				
 		btn_leave1.addActionListener (new ActionListener ()   
@@ -221,37 +222,37 @@ public class Shop
 		tabPane2.setLayout(null);
 		
 		lbl_error2 = new JLabel("");
-		lbl_error2.setBounds(323, 535, 294, 20);
+		lbl_error2.setBounds(423, 535, 294, 20);
 		tabPane2.add(lbl_error2);
 		
 		lbl_name2 = new JLabel("Name: ");
-		lbl_name2.setBounds(145, 360, 254, 20);
+		lbl_name2.setBounds(245, 360, 254, 20);
 		tabPane2.add(lbl_name2);
 		
 		lbl_cost2 = new JLabel("Cost: ");
-		lbl_cost2.setBounds(145, 409, 160, 20);
+		lbl_cost2.setBounds(245, 409, 160, 20);
 		tabPane2.add(lbl_cost2);
 		
 		lbl_description2 = new JLabel("Description: ");
-		lbl_description2.setBounds(145, 463, 600, 20);
+		lbl_description2.setBounds(245, 463, 600, 20);
 		tabPane2.add(lbl_description2);
 		
 		lbl_coins2 = new JLabel("Coins: ");
-		lbl_coins2.setBounds(636, 75, 127, 20);
+		lbl_coins2.setBounds(736, 75, 127, 20);
 		tabPane2.add(lbl_coins2);
 		
 		
 		// ------- lbl_icon2 -------
 		lbl_icon2 = new JLabel("");
 		//lbl_icon2.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
-		lbl_icon2.setBounds(339, 224, 100, 100);
+		lbl_icon2.setBounds(439, 224, 100, 100);
 		tabPane2.add(lbl_icon2);
 		
 		
 
 		// ------- comboB_tab2 -------
 		comboB_tab2 = new JComboBox<String> (TAB2LIST);
-		comboB_tab2.setBounds(186, 146, 400, 26);
+		comboB_tab2.setBounds(286, 146, 400, 26);
 		tabPane2.add(comboB_tab2);
 
 		comboB_tab2.addActionListener (new ActionListener ()
@@ -271,7 +272,7 @@ public class Shop
 		
 		// ------- btn_buy2 -------
 		btn_buy2 = new JButton ("Buy");
-		btn_buy2.setBounds(421, 574, 115, 29);
+		btn_buy2.setBounds(521, 574, 115, 29);
 		tabPane2.add(btn_buy2);
 		
 		btn_buy2.addActionListener (new ActionListener ()   
@@ -290,7 +291,7 @@ public class Shop
 		
 		// ------- btn_leave2 -------
 		btn_leave2 = new JButton ("Leave");
-		btn_leave2.setBounds(230, 574, 115, 29);
+		btn_leave2.setBounds(330, 574, 115, 29);
 		tabPane2.add(btn_leave2);
 				
 		btn_leave2.addActionListener (new ActionListener ()   
@@ -308,37 +309,37 @@ public class Shop
 		tabPane3.setLayout(null);
 		
 		lbl_error3 = new JLabel("");
-		lbl_error3.setBounds(323, 535, 294, 20);
+		lbl_error3.setBounds(423, 535, 294, 20);
 		tabPane3.add(lbl_error3);
 		
 		lbl_name3 = new JLabel("Name: ");
-		lbl_name3.setBounds(145, 360, 254, 20);
+		lbl_name3.setBounds(245, 360, 254, 20);
 		tabPane3.add(lbl_name3);
 		
 		lbl_cost3 = new JLabel("Cost: ");
-		lbl_cost3.setBounds(145, 409, 160, 20);
+		lbl_cost3.setBounds(245, 409, 160, 20);
 		tabPane3.add(lbl_cost3);
 		
 		lbl_description3 = new JLabel("Description: ");
-		lbl_description3.setBounds(145, 463, 600, 20);
+		lbl_description3.setBounds(245, 463, 600, 20);
 		tabPane3.add(lbl_description3);
 		
 		lbl_coins3 = new JLabel("Coins: ");
-		lbl_coins3.setBounds(636, 75, 127, 20);
+		lbl_coins3.setBounds(736, 75, 127, 20);
 		tabPane3.add(lbl_coins3);
 		
 		
 		// ------- lbl_icon3 -------
 		lbl_icon3 = new JLabel("");
 		//lbl_icon3.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
-		lbl_icon3.setBounds(339, 224, 100, 100);
+		lbl_icon3.setBounds(439, 224, 100, 100);
 		tabPane3.add(lbl_icon3);
 
 
 
 		// ------- comboB_tab3 -------
 		comboB_tab3 = new JComboBox<String> (TAB3LIST);
-		comboB_tab3.setBounds(186, 146, 400, 26);
+		comboB_tab3.setBounds(286, 146, 400, 26);
 		tabPane3.add(comboB_tab3);
 
 		comboB_tab3.addActionListener (new ActionListener ()
@@ -357,7 +358,7 @@ public class Shop
 		
 		// ------- btn_buy3 -------
 		btn_buy3 = new JButton ("Buy");
-		btn_buy3.setBounds(421, 574, 115, 29);
+		btn_buy3.setBounds(521, 574, 115, 29);
 		tabPane3.add(btn_buy3);
 		
 		btn_buy3.addActionListener (new ActionListener ()   
@@ -376,7 +377,7 @@ public class Shop
 		
 		// ------- btn_leave3 -------
 		btn_leave3 = new JButton ("Leave");
-		btn_leave3.setBounds(230, 574, 115, 29);
+		btn_leave3.setBounds(330, 574, 115, 29);
 		tabPane3.add(btn_leave3);
 				
 		btn_leave3.addActionListener (new ActionListener ()   
@@ -395,37 +396,37 @@ public class Shop
 		tabPane4.setLayout(null);
 		
 		lbl_error4 = new JLabel("");
-		lbl_error4.setBounds(323, 535, 294, 20);
+		lbl_error4.setBounds(423, 535, 294, 20);
 		tabPane4.add(lbl_error4);
 		
 		lbl_name4 = new JLabel("Name: ");
-		lbl_name4.setBounds(145, 360, 254, 20);
+		lbl_name4.setBounds(245, 360, 254, 20);
 		tabPane4.add(lbl_name4);
 		
 		lbl_cost4 = new JLabel("Cost: ");
-		lbl_cost4.setBounds(145, 409, 160, 20);
+		lbl_cost4.setBounds(245, 409, 160, 20);
 		tabPane4.add(lbl_cost4);
 		
 		lbl_description4 = new JLabel("Description: ");
-		lbl_description4.setBounds(145, 463, 600, 20);
+		lbl_description4.setBounds(245, 463, 600, 20);
 		tabPane4.add(lbl_description4);
 	
 		lbl_coins4 = new JLabel("Coins: ");
-		lbl_coins4.setBounds(636, 75, 127, 20);
+		lbl_coins4.setBounds(736, 75, 127, 20);
 		tabPane4.add(lbl_coins4);
 		
 		
 		// ------- lbl_icon4 -------
 		lbl_icon4 = new JLabel("");
 		//lbl_icon4.setIcon(new ImageIcon(frame.class.getResource("/resources/icon.png")));
-		lbl_icon4.setBounds(339, 224, 100, 100);
+		lbl_icon4.setBounds(439, 224, 100, 100);
 		tabPane4.add(lbl_icon4);
 		
 		
 		
 		// ------- comboB_tab4 -------
 		comboB_tab4 = new JComboBox<String> (TAB4LIST);
-		comboB_tab4.setBounds(186, 146, 400, 26);
+		comboB_tab4.setBounds(286, 146, 400, 26);
 		tabPane4.add(comboB_tab4);
 
 		comboB_tab4.addActionListener (new ActionListener ()
@@ -444,7 +445,7 @@ public class Shop
 		
 		// ------- btn_buy4 -------
 		btn_buy4 = new JButton ("Buy");
-		btn_buy4.setBounds(421, 574, 115, 29);
+		btn_buy4.setBounds(521, 574, 115, 29);
 		tabPane4.add(btn_buy4);
 		
 		btn_buy4.addActionListener (new ActionListener ()   
@@ -463,7 +464,7 @@ public class Shop
 		
 		// ------- btn_leave4 -------
 		btn_leave4 = new JButton ("Leave");
-		btn_leave4.setBounds(230, 574, 115, 29);
+		btn_leave4.setBounds(330, 574, 115, 29);
 		tabPane4.add(btn_leave4);
 				
 		btn_leave4.addActionListener (new ActionListener ()   
@@ -478,7 +479,7 @@ public class Shop
 
 		// ------- shopTabbedPane -------
 		shopTabbedPane = new JTabbedPane();
-		shopTabbedPane.setBounds(0,0,800,800);  
+		shopTabbedPane.setBounds(0,0,1000,800);  
 		shopTabbedPane.addTab(TAB1NAME, tabPane1);
 		shopTabbedPane.addTab(TAB2NAME, tabPane2);
 		shopTabbedPane.addTab(TAB3NAME, tabPane3);
