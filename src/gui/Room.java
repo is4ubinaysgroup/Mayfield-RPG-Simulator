@@ -64,7 +64,7 @@ public class Room extends JPanel {
 				{
 					e.printStackTrace();
 				}
-			}});
+			}}); 
 		for(int i = 0; i != labels.length; i++) 
 		{
 			for(int counter = 0; counter != labels[i].length; counter++ ) 
