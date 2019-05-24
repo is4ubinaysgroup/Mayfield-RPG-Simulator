@@ -14,6 +14,8 @@ continue if the player's level is 0 instead of switching to navigation
 
 // Mina 05-23 shifted GUI to fill frame
 
+// Mina 05-24 new game or continue would only go to navigation if the user has completed the tutorial
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -81,7 +83,10 @@ public class MainMenu
 				Backpack.update();
 				Shop.updateCoinsLabels();
 				
-				GUIExtension1.switchPane (Navigation.getPane());
+				if (MainExecutable.getPlayer().getLevel() > 0)
+				{
+					GUIExtension1.switchPane (Navigation.getPane());
+				} // if completed tutorial
 			}
 		});
 
@@ -104,7 +109,10 @@ public class MainMenu
 				Backpack.update();
 				Shop.updateCoinsLabels();
 				
-				GUIExtension1.switchPane (Navigation.getPane());
+				if (MainExecutable.getPlayer().getLevel() > 0)
+				{
+					GUIExtension1.switchPane (Navigation.getPane());
+				} // if completed tutorial
 			}
 		});
 
