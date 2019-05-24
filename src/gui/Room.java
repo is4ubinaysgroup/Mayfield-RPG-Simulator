@@ -11,18 +11,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
-
 import src.Database;
 import src.character.Human;
 import src.character.NonPlayer;
-import src.character.Player;
 
 
 /*
@@ -36,8 +31,8 @@ public class Room extends JPanel {
 	/**
 	 * 
 	 */
-	private static int mouseX;
-	private static int mouseY;
+	private int popupX;
+	private int popupY;
 	private NonPlayer nonPlayer;
 	private static final long serialVersionUID = 3276708249872258003L;
 	private JPanel labels[][]=  new JPanel[20][20];
@@ -77,20 +72,36 @@ public class Room extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				try 
 				{
-					MainExecutable.getPlayer().moveTo(new Point ( Math.round(mouseX/800) ,Math.round(mouseY/800) ), false);
-					update();
+					btnNewButton.getParent().setVisible(false);
+					Point location = new Point(popupX, popupY);
+					try 
+					{
+					  MainExecutable.getPlayer().moveTo(location, false);
+					  runEnemy();
+					  cleanBoard();
+						update();
+					}
+					catch(Exception e) 
+					{
+						
+					e.printStackTrace();
+					}
+					
 				}
 				catch(Exception e) 
 				{
 					e.printStackTrace();
 				}
-			}}); 
+			}
+
+			}); 
 		for(int i = 0; i != labels.length; i++) 
 		{
 			for(int counter = 0; counter != labels[i].length; counter++ ) 
 			{
 				//labels[i][counter] = new JLabel("label["+i+"]["+counter+"]");
 				labels[i][counter] = new JPanel();
+				addPopup(this,labels[i][counter], popupMenu);
 				labels[i][counter].setBackground(new Color(225,225,225,0));
 				labels[i][counter].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
 				labels[i][counter].setBounds(0+40*i, 0+40*counter, 40, 40);
@@ -101,6 +112,17 @@ public class Room extends JPanel {
 		add(background);
 	}
 	
+		protected void cleanBoard() 
+		{
+			for(int x =0; x<20; x++) 
+			{
+				for(int y = 0; y<20; y++) 
+				{
+					labels[x][y].setBackground(new Color(225,225,225,0));
+				}
+			}
+		}
+
 		public void setRoom(JPanel[][] labels)
 		{
 			this.labels = labels;	
@@ -121,10 +143,7 @@ public class Room extends JPanel {
 					if( (x>=0 && y>= 0) &&  (x<=19 && y<= 19))
 					{
 						//System.out.println("Player:" + player +", x:" + x +", y:" + y);
-						if(player) 
-						{
-								addPopup(labels[x][y], popupMenu);
-						}
+						popupMenu.getComponent().setVisible(player);
 						labels[x][y].setBackground( mixColorsWithAlpha(color, labels[x][y].getBackground()));
 					}
 				}
@@ -132,10 +151,10 @@ public class Room extends JPanel {
 			labels[npcX][npcY].setBackground(Color.YELLOW);
 			}
 		}
-		
-		 public void updateNonPlayer()
+		 
+		 
+		public void updateNonPlayer()
 		 {
-			 //System.out.print("Runned nonplayer");
 			 draw(nonPlayer, Color.BLACK, false);
 		 }
 		 
@@ -173,7 +192,7 @@ public class Room extends JPanel {
 		     return new Color(red, green, blue, alpha);
 		 }
 		 
-		 private static void addPopup(Component component, final JPopupMenu popup) {
+		 private void addPopup(Room room, Component component, final JPopupMenu popup) {
 				component.addMouseListener(new MouseAdapter() {
 					public void mousePressed(MouseEvent e) {
 						if (e.isPopupTrigger()) {
@@ -186,13 +205,43 @@ public class Room extends JPanel {
 						}
 					}
 					private void showMenu(MouseEvent e) {
-						mouseX = e.getX();
-						mouseY = e.getY();
+						room.setPopupX((component.getX())/40);
+						room.setPopupY((component.getY())/40);
 						popup.show(e.getComponent(), e.getX(), e.getY());
 					}
 				});
 			}
+
+		 public JButton getButton() 
+		 {
+			JButton newButton = this.btnNewButton; 
+			return newButton;
+		 }
+		public int getPopupX() {
+			return popupX;
+		}
+
+		public void setPopupX(int popupX) {
+			this.popupX = popupX;
+		}
+
+		public int getPopupY() {
+			return popupY;
+		}
+
+		public void setPopupY(int popupY) {
+			this.popupY = popupY;
+		}
 	
+		public void runEnemy() {
+			 try {
+				nonPlayer.runTurn(this);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+		}
 }
 	
 	
