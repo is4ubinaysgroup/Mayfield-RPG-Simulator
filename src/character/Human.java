@@ -129,7 +129,7 @@ public class Human
 			output.y = human.getY() + 1;
 		}
 		
-		moveTo(new Point(human.getX(), human.getY()),true);
+		moveTo(output,true);
 	}
 	
 	public void moveAway(Human human, Room room) //moves away from a human
@@ -166,6 +166,11 @@ public class Human
 		return false;
 	}
 
+	
+	Point[] allPoints() 
+	{
+		
+	}
 	public void moveOut(Human human, Room room, boolean useMostOptimalMove) throws Exception //moves out of a human's weapons range
 	{
 		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];
@@ -181,8 +186,6 @@ public class Human
 		}// creates an array
 		
 		//shorten array 
-		
-		
 		
 		
 		ArrayList<Point> buffer = new ArrayList<Point>( (int) (Room.size.getWidth()* Room.size.getHeight()) );
@@ -260,12 +263,10 @@ public class Human
 
 	public void moveIn(Human human) //moves so that human is in it's weapon range
 	{
-		//TODO
 	}
 	
-	public void moveIn(Human human, boolean useMostOptimalMove, int attackType)//optimal 
+	public void moveIn(Human human, boolean useMostOptimalMove, int attackType) throws Exception//optimal 
 	{
-		
 	}
 	
 	public void attack(Human human) 
@@ -341,6 +342,14 @@ public class Human
 	}
 	
 	public void setY(int y) {
+		if(y < 0) 
+		{
+			y = 0;
+		}
+		else if(y > 20) 
+		{
+			y = 20;
+		}
 		this.position[1] = y;
 	}
 	
@@ -349,6 +358,14 @@ public class Human
 	}
 	
 	public void setX(int x) {
+		if(x < 0) 
+		{
+			x = 0;
+		}
+		else if(x > 20) 
+		{
+			x = 20;
+		}
 		this.position[0] = x;
 	}
 	
