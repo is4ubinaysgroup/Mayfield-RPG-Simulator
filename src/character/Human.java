@@ -63,7 +63,7 @@ public class Human
 	 //to do this I need to get Movement
 	 
 	 */
-	public void moveTo(Point point) 
+	public void moveTo(Point point, boolean moveAnyWays) throws Exception 
 	{
 		//How much do we need to move to get there
 		int changeInX = point.x - getX();
@@ -73,7 +73,7 @@ public class Human
 			setX(point.x);
 			setY(point.y);
 		}
-		else
+		else if(moveAnyWays)
 		{// we want to move as close as we can
 
 			if(changeInX  < 0) // x is negative
@@ -97,10 +97,14 @@ public class Human
 			setX(changeInX);
 			setY(changeInY);
 		}
+		else 
+		{
+			throw new Exception("Cannot move to "+point.x + "," +point.y+".");
+		}
 	}
 	
 	//Movement related Functions
-	public void moveTo(Human human) // moves to a human
+	public void moveTo(Human human, boolean moveAnyWays) throws Exception // moves to a human
 	{
 		//we can't move on a human but only near.
 		int changeInX = human.getX() - getX();
@@ -125,7 +129,7 @@ public class Human
 			output.y = human.getY() + 1;
 		}
 		
-		moveTo(new Point(human.getX(), human.getY()));
+		moveTo(new Point(human.getX(), human.getY()),true);
 	}
 	
 	public void moveAway(Human human, Room room) //moves away from a human
@@ -162,7 +166,7 @@ public class Human
 		return false;
 	}
 
-	public void moveOut(Human human, Room room, boolean useMostOptimalMove) //moves out of a human's weapons range
+	public void moveOut(Human human, Room room, boolean useMostOptimalMove) throws Exception //moves out of a human's weapons range
 	{
 		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];
 		for(int x = 0;  x != (int) Room.size.getWidth(); x++) 
@@ -209,7 +213,7 @@ public class Human
 		{
 			Random random = new Random();
 			Point newPosition = buffer.get( (int) Math.floor(random.nextInt() * newLength) );
-			moveTo( buffer.get( (int) Math.floor(random.nextInt() * newLength) ));
+			moveTo( buffer.get( (int) Math.floor(random.nextInt() * newLength) ), true);
 		}
 		//END
 		

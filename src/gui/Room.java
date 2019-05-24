@@ -3,6 +3,7 @@ package src.gui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 
+import src.Database;
+import src.character.Human;
 import src.character.NonPlayer;
 import src.character.Player;
 
@@ -47,7 +50,23 @@ public class Room extends JPanel {
     
 	
 	
-	public Room() {
+	public Room(NonPlayer nonPlayer) {
+		JPanel background = new JPanel() 
+		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -6563003679240602762L;
+
+			public void paint(Graphics g) 
+			{
+				g.drawImage(Database.getBackground(), 0, 0, 800, 800, null);
+			}
+		};
+		
+		background.setBounds(0, 0, 800, 800);
+		background.setVisible(true);
+		this.nonPlayer = nonPlayer;
 		setBounds(0, 0, 800, 800);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
@@ -58,7 +77,8 @@ public class Room extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				try 
 				{
-					MainExecutable.getPlayer().moveTo(new Point ( Math.round(mouseX/800) ,Math.round(mouseY/800) ));
+					MainExecutable.getPlayer().moveTo(new Point ( Math.round(mouseX/800) ,Math.round(mouseY/800) ), false);
+					update();
 				}
 				catch(Exception e) 
 				{
@@ -71,11 +91,14 @@ public class Room extends JPanel {
 			{
 				//labels[i][counter] = new JLabel("label["+i+"]["+counter+"]");
 				labels[i][counter] = new JPanel();
+				labels[i][counter].setBackground(new Color(225,225,225,0));
 				labels[i][counter].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
 				labels[i][counter].setBounds(0+40*i, 0+40*counter, 40, 40);
 				add(labels[i][counter]);
 			}
 		}
+		
+		add(background);
 	}
 	
 		public void setRoom(JPanel[][] labels)
@@ -83,42 +106,42 @@ public class Room extends JPanel {
 			this.labels = labels;	
 		}
 		
-		 public void updateNonPlayer()
-		 {
-			int range =nonPlayer.getEquippedWeapon().getRange();
-			int npcX = nonPlayer.getX();
-			int npcY = nonPlayer.getY();
-			for(int x = npcX; x != npcX+range; x++) 
+		
+		private void draw(Human human, Color color, boolean player) 
+		{
+			if(human.getEquippedWeapon() != null) 
 			{
-				for(int y = npcY; y != npcY+range; y++ ) 
+			int range =human.getEquippedWeapon().getRange();
+			int npcX = human.getX();
+			int npcY = human.getY();
+			for(int x = npcX-range; x != npcX+range*2; x++) 
+			{
+				for(int y = npcY-range; y != npcY+range*2; y++ ) 
 				{
-
-					labels[x][y].setBackground(mixColorsWithAlpha(labels[x][y].getBackground(),Color.RED, 0));
+					if( (x>=0 && y>= 0) &&  (x<=19 && y<= 19))
+					{
+						//System.out.println("Player:" + player +", x:" + x +", y:" + y);
+						if(player) 
+						{
+								addPopup(labels[x][y], popupMenu);
+						}
+						labels[x][y].setBackground( mixColorsWithAlpha(color, labels[x][y].getBackground()));
+					}
 				}
 			}
-			labels[npcX][npcY].setBackground(Color.BLACK);
+			labels[npcX][npcY].setBackground(Color.YELLOW);
+			}
+		}
+		
+		 public void updateNonPlayer()
+		 {
+			 //System.out.print("Runned nonplayer");
+			 draw(nonPlayer, Color.BLACK, false);
 		 }
 		 
 		 public void updatePlayer()
 		 {
-			 int range =MainExecutable.getPlayer().getEquippedWeapon().getRange();
-			int npcX = MainExecutable.getPlayer().getX();
-			int npcY = MainExecutable.getPlayer().getY();
-			for(int x = npcX-range; x != npcX+range*2; x++) 
-				{
-					for(int y = npcY-range; y != npcY+range*2; y++ ) 
-					{
-						System.out.println("X:" + x +" Y:" +y);
-						if(x>=0 && y>= 0)
-						{
-							
-							addPopup(labels[x][y], popupMenu);
-							labels[x][y].setBackground(Color.BLUE);
-						}
-					}
-				}
-			labels[npcX][npcY].setBackground(Color.YELLOW);
-			//labels[npcX][npcY].setIcon(new ImageIcon(
+			draw(MainExecutable.getPlayer(),Color.BLUE, true);
 		 }
 		 
 		 public void setNonPlayer(NonPlayer nonPlayer)
@@ -128,17 +151,26 @@ public class Room extends JPanel {
 		 
 		 public void update() // sets the panel to update to the ranges of both players and players
 		 {
+			 if(this.nonPlayer != null) 
+			 {
 			 updatePlayer();
 			 updateNonPlayer();
+			 }
+			 else 
+			 {
+				 System.out.println("Could not update nonplayer since nonplayer is null");
+			 }
 		 }
 		 
-		 public static Color mixColorsWithAlpha(Color color1, Color color2, int alpha)
+		 public static Color mixColorsWithAlpha(Color color1, Color color2)
 		 {
-		     float factor = alpha / 255f;
+			 
+		     float factor = 45 / 255f;
 		     int red = (int) (color1.getRed() * (1 - factor) + color2.getRed() * factor);
 		     int green = (int) (color1.getGreen() * (1 - factor) + color2.getGreen() * factor);
 		     int blue = (int) (color1.getBlue() * (1 - factor) + color2.getBlue() * factor);
-		     return new Color(red, green, blue);
+		     int alpha = (int) (color1.getAlpha() * (1 - factor) + color2.getAlpha() * factor);
+		     return new Color(red, green, blue, alpha);
 		 }
 		 
 		 private static void addPopup(Component component, final JPopupMenu popup) {

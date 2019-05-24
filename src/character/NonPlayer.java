@@ -74,6 +74,15 @@ UML
 		this.setIsBoss(isBoss);
 		this.setEquippedWeapon(weapon);
 	}
+	
+	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int[] pos) 
+	{
+		this.name = name;
+		this.setIsBoss(isBoss);
+		this.setEquippedWeapon(weapon);
+		this.setPosition(pos);
+	}
+	
 	public Boolean getIsBoss() {
 		return isBoss;
 	} 
@@ -82,7 +91,7 @@ UML
 		this.isBoss = isBoss;
 	}
 	
-		public void runTurn(Room room) //TODO
+		public void runTurn(Room room) throws Exception //TODO
 	{
 		Player player = MainExecutable.getPlayer();
 		int r = player.getEquippedWeapon().getRange();
@@ -95,7 +104,7 @@ UML
 		}
 		else if( ( r < Human.MOVEMENT)  && inRangeOf(player) && nearCorner() ) // if cornered
 		{
-			moveTo(player);
+			moveTo(player,true);
 		}
 		else if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.MELEETYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))
 		{// 3. If the player is in melee attack range:
@@ -107,7 +116,7 @@ UML
 			else if( ( r < Human.MOVEMENT)  &&  inRangeOf(player)  && nearCorner())//2. If the boss is cornered:
 			{
 				//The boss will move to the other side of the player, however, if the boss cannot it will move as far as it can to the other side of the player.
-				moveTo(player);
+				moveTo(player,true);
 			}
 		}
 		//Continues to the next true statement

@@ -1,5 +1,6 @@
 package src;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -131,6 +132,7 @@ public class Database {
 		public static BufferedImage imgGymTeacher;
 		public static BufferedImage MainMenuBackground;
 		public static BufferedImage MapBackground;
+		private static BufferedImage imgClassroom;
 
 		public static BufferedImage readImg(String filepath) throws Exception
 		{
@@ -163,6 +165,7 @@ public class Database {
 			imgTylenol =readImg(tylenol);
 			MainMenuBackground =readImg("src/resources/Background.jpeg");
 			MapBackground =readImg("src/resources/background2.png");
+			imgClassroom =readImg("src/resources/room.jpg");
 			//imgGymTeacher =readImg(gymTeacher);
 			//imgBinay =readImg(binay);
 			//imgHallMonitor =readImg(hallMonitor);
@@ -171,10 +174,6 @@ public class Database {
 
 		
 		
-		// ------------------------------------------- npc Stuff -------------------------------------------
-		public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler());
-		public static NonPlayer binay = new NonPlayer("Binay", true, getHat());
-		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband());
 	
 
 
@@ -629,7 +628,12 @@ public class Database {
 
 
 		
-		
+		// ------------------------------------------- npc Stuff -------------------------------------------
+		public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler());
+		public static NonPlayer binay = new NonPlayer("Binay", true, getHat());
+		static int[] gymPos = {16, 16};
+		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),  gymPos );
+	
 		
 		
 		
@@ -900,6 +904,11 @@ public class Database {
 
 		public static BufferedImage getMainMenuBackground() {
 			return MainMenuBackground;
+		}
+
+
+		public static Image getBackground() {
+			return Database.imgClassroom;
 		}
 				 
 				 

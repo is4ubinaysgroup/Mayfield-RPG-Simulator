@@ -1,11 +1,13 @@
 package src.gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Graphics;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import src.Database;
 import src.character.NonPlayer;
 
 public class TestFrame extends JFrame {
@@ -13,7 +15,7 @@ public class TestFrame extends JFrame {
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
 	private CombatMenu menu = new CombatMenu();
-	private Room room = new Room();
+	private Room room = new Room(Database.gymTeacher);
 	/**
 	 * Launch the application.
 	 */
@@ -34,6 +36,10 @@ public class TestFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public TestFrame() {
+
+		
+		 int[] pos ={15,15};
+		Database.gymTeacher.setPosition(pos);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 800);
 		contentPane = new JPanel();
@@ -44,7 +50,7 @@ public class TestFrame extends JFrame {
 		contentPane.add(room);
 		menu.setBounds(800, 0, 200, 800);
 		contentPane.add(menu);
-		room.updatePlayer();
+		room.update();
 	}
 
 	public TestFrame(NonPlayer gymTeacher) {
