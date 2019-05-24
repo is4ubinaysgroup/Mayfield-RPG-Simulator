@@ -292,7 +292,11 @@ public class Human
 	
 	public boolean hasLowHealth() 
 	{
-		if(getHealth() <= 20 ) // I think 20 is little health
+		if(getHealth()==getMaxHealth()) 
+		{
+			return false;
+		}
+		if(0.25 < (getHealth()/getMaxHealth()) ) // I think below 25% is little health
 		{
 			return true;
 		}

@@ -95,20 +95,26 @@ UML
 	{
 		Player player = MainExecutable.getPlayer();
 		int r = player.getEquippedWeapon().getRange();
-
+		player.setHealth(player.maxHealth);
 
 
 		if(player.hasLowHealth()) //if Player has low health
 		{
+			System.out.println("Low Health");
 			attack(MainExecutable.getPlayer());
 		}
 		else if( ( r < Human.MOVEMENT)  && inRangeOf(player) && nearCorner() ) // if cornered
 		{
+			System.out.println("cornered");
+
+
+
+			
 			moveTo(player,true);
 		}
 		else if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.MELEETYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))
 		{// 3. If the player is in melee attack range:
-
+			System.out.println("melee attack range");
 			//The boss will check and follow the first true statement procedure in order of first to last:
 			if(MainExecutable.getPlayer().hasLowHealth()) //1. If the player has low health:
 			{
@@ -122,6 +128,7 @@ UML
 		//Continues to the next true statement
 		if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.RANGEDTYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))//If the player is in non-melee attack range:
 		{
+			System.out.println("nonmelee attack range");
 			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
 			if(random == 1) 
 			{
@@ -134,6 +141,7 @@ UML
 		}
 		else	if(!(player.inRangeOf(this))) 
 		{
+			System.out.println("in range");
 			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
 			if(random == 1) 
 			{
@@ -146,21 +154,25 @@ UML
 		}
 		else	 if(inRangeOf(player)) 
 		{
+			System.out.println("in player range");
 			moveOut(player,room,false);
 			setHealth( getHealth() + (int) Math.ceil(getMaxHealth()*0.01) );//recovers 1% of health.
 		}
 		else 
 		{
-			
+			System.out.println("else");
 		}
-
+		System.out.println("Finish");
 	}				
 
 
 	
 
 	private boolean nearCorner() {
-		// TODO Auto-generated method stub
+		if( (getX() < 3 && getY() <3 ) || (getX() > 14 && getY() >14 ) ) 
+		{
+			return true;
+		}
 		return false;
 	}
 

@@ -79,7 +79,7 @@ public class Room extends JPanel {
 					  MainExecutable.getPlayer().moveTo(location, false);
 					  runEnemy();
 					  cleanBoard();
-						update();
+					  update();
 					}
 					catch(Exception e) 
 					{
