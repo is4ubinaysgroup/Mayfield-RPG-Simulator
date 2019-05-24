@@ -21,23 +21,6 @@ public class MainExecutable
 			e2.printStackTrace();
 		}
 		
-		int[] position = new int[2];
-		position[0] = 10;
-		position[1] =10;
-		
-		try {
-		player = new Player(100,10,10,100, Database.getPencil() , "src\\resources\\playerSprite.png", position, 0, 0, 10,10,10);//TODO set to actual data
-		}
-		catch(ExceptionInInitializerError e) 
-		{
-			try {
-				throw e.getCause();
-			} catch (Throwable e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		
 		
 		// single save file is loaded on new game or continue button click on main menu
 		// level starts at 1 for now; 0 would be for when the tutorial is implemented		
