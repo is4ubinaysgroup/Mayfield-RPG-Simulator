@@ -1,5 +1,8 @@
-// execute was spelled wrong - Mina
-// 05-17 updated by Mina
+/*
+05-24 Mina
+removed temporary player "loading/default"
+added EndScreen
+*/
 
 
 
@@ -35,6 +38,8 @@ public class MainExecutable
 		Map.initGUI();
 		Backpack.initGUI();
 		Shop.initGUI();
+		EndScreen.initGUI();
+		
 		GUIExtension1.showFirstPane(MainMenu.getPane());
 		
 	} // Main method
