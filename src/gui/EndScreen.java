@@ -2,6 +2,10 @@
 05-24 Mina
  */
 
+package src.gui;
+
+import src.character.Player;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
