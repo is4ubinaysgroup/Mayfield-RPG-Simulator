@@ -15,13 +15,12 @@ continue if the player's level is 0 instead of switching to navigation
 // Mina 05-23 shifted GUI to fill frame
 
 // Mina 05-24 new game or continue would only go to navigation if the user has completed the tutorial
-// Mina 05-25 implemented mouse hover sound effect
+// Mina 05-25 added sound effects
 
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-
 import javax.swing.*;
 
 import src.Database;
@@ -92,15 +91,13 @@ public class MainMenu
 					GUIExtension1.switchPane (Navigation.getPane());
 				} // if completed tutorial
 				
+				playSound(Database.getSelectTone1());
+				
 			}
 
 			public void mouseEntered(MouseEvent arg0)
 			{
-				try {
-					Database.playSound("src/resources/rolloverSound.wav");
-				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-					e1.printStackTrace();
-				}
+				playSound(Database.getHoverSound1());
 			}
 
 			public void mouseExited(MouseEvent arg0) {}
@@ -132,15 +129,13 @@ public class MainMenu
 				{
 					GUIExtension1.switchPane (Navigation.getPane());
 				} // if completed tutorial
+				
+				playSound(Database.getSelectTone1());
 			}
 			
 			public void mouseEntered(MouseEvent arg0)
 			{
-				try {
-					Database.playSound("src/resources/rolloverSound.wav");
-				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-					e1.printStackTrace();
-				}
+				playSound(Database.getHoverSound1());
 			}
 
 			public void mouseExited(MouseEvent arg0) {}
@@ -162,16 +157,14 @@ public class MainMenu
 		{
 			public void mouseClicked(MouseEvent arg0)
 			{
+				playSound(Database.getSelectTone1());
+				
 				System.exit (0);
 			}
 			
 			public void mouseEntered(MouseEvent arg0)
 			{
-				try {
-					Database.playSound("src/resources/rolloverSound.wav");
-				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-					e1.printStackTrace();
-				}
+				playSound(Database.getHoverSound1());
 			}
 			
 			public void mouseExited(MouseEvent arg0) {}
@@ -193,15 +186,13 @@ public class MainMenu
 			public void mouseClicked(MouseEvent arg0)
 			{
 				GUIExtension1.switchPane(Help.getPane());
+				
+				playSound(Database.getSelectTone1());
 			}
 			
 			public void mouseEntered(MouseEvent arg0)
 			{
-				try {
-					Database.playSound("src/resources/rolloverSound.wav");
-				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-					e1.printStackTrace();
-				}
+				playSound(Database.getHoverSound1());
 			}
 
 			public void mouseExited(MouseEvent arg0) {}
@@ -218,6 +209,18 @@ public class MainMenu
 	
 	
 	public static JPanel getPane() {return mainMenuPane; } //getPane method
+	
+	
+	
+	public static void playSound (File file)
+	{
+		try {
+			Database.playSound(file);
+			
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		} // try-catch
+	} // playSound method
 	
 	
 } // MainMenu class
