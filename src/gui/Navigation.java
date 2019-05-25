@@ -1,5 +1,6 @@
 package src.gui;
 import src.Database;
+
 // initially completed 05-08 by Matthew
 // edited 05-09 by Mina
 /* will be finalized when Database.save method is complete; possibly change to pop-up
@@ -9,10 +10,19 @@ in a blank room/"overworld" where the user clicks on their character sprite */
 // Mina 05-10 added Backpack.update() to backpack button listener
 // Mina 05-20 added Database.writeSingle();
 // Mina 05-23 shifted GUI to fill frame
+// Mina 05-25 sound effects
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import java.awt.image.BufferedImage;
+
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 
 public class Navigation
 {
@@ -72,8 +82,12 @@ public class Navigation
 		{
 			public void actionPerformed (ActionEvent e)
 			{
+				
 				GUIExtension1.switchPane(Backpack.getPane());
 				Backpack.update();
+				
+				playSound(Database.getBackpackBtnSound());
+				
 			}
 		});
 		
@@ -92,6 +106,9 @@ public class Navigation
 			public void actionPerformed (ActionEvent e)
 			{
 				Database.writeSingle();
+				
+				playSound(Database.getSaveBtnSound());
+
 			}
 		});
 		
@@ -120,6 +137,18 @@ public class Navigation
 	
 	
 	public static JPanel getPane() {return NavigationPane; } //getPane method
+
+	
+	
+	public static void playSound (File file)
+	{
+		try {
+			Database.playSound(file);
+			
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		} // try-catch
+	} // playSound method
 	
 	
 } // Navigation class
