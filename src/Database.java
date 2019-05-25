@@ -101,6 +101,7 @@ public class Database {
 		// ------------------------------------------- Image Loading -------------------------------------------
 				
 		// ------- readImg methods -------- 			pass file path, Item, or Human
+											// might have to be Player or NonPlayer? - Mina
 		
 		public static BufferedImage readImg(String filepath) throws Exception
 		{
