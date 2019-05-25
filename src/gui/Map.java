@@ -7,6 +7,7 @@ package src.gui;
 
 // Mina 05-20 back button should've been going to navigation
 // Mina 05-23 shifted GUI to fill frame
+// Mina 05-24 replaced shop button with jlabel with walmart image
 
 import java.awt.*;
 import java.awt.event.*;
@@ -24,7 +25,7 @@ public class Map
 	static protected JButton btn_Level5;
 	static protected JButton btn_Level6;
 	static protected JButton btn_Level7;
-	static protected JButton btn_Shop;
+	static protected JLabel lbl_Shop;
 	static protected JButton btn_Back;
 
 	
@@ -152,21 +153,27 @@ public class Map
 
 
 		
-		// ------- btn_Shop -------
-		btn_Shop = new JButton("Shop");
-		btn_Shop.setBounds(680, 417, 130, 130);
-		btn_Shop.setForeground(Database.MAYFIELD_YELLOW);
-		btn_Shop.setBackground(Database.MAYFIELD_BLUE);
-		btn_Shop.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
+		// ------- lbl_Shop -------
+		lbl_Shop = new JLabel("");
+		lbl_Shop.setIcon(new ImageIcon(Database.getImgWalmart()));
+		lbl_Shop.setBounds(680, 417, 130, 130);
 
-		btn_Shop.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
+		lbl_Shop.addMouseListener(new MouseListener() {
+			
+			public void mouseClicked(MouseEvent arg0) {
+				
 				GUIExtension1.switchToShop(Shop.getTabbedPane());
 			}
+
+			// these have to be here for the code to work though they do nothing; too lazy to research more for now but please don't remove
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+			public void mousePressed(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {}
+
 		});
 
-		mapPane.add(btn_Shop);
+		mapPane.add(lbl_Shop);
 
 
 
@@ -197,6 +204,7 @@ public class Map
 	{
 		// start the battle with boss 1
 		// switch to the battle panel
+		
 		//TEST
 		TestFrame frame = new TestFrame(Database.gymTeacher);
 		frame.initGui();
