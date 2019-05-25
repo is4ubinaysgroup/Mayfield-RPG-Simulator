@@ -79,7 +79,7 @@ added descriptions for ruler and rubber band
 05-24 and 05-25 Mina
 changed spacing so everything's more organized
 added walmart image (used by Map.java)
-added playSound method
+added some sound stuff
 */
 
 
@@ -228,18 +228,30 @@ public class Database {
 		
 		// ------------------------------------------- sound effects -------------------------------------------
 		
-		public static void playSound (String filePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException
+		public final static File HOVER_SOUND1 = new File ("src/resources/rolloverSound.wav");
+		public static File getHoverSound1 () {return HOVER_SOUND1;}
+		
+		public final static File SELECT_TONE1 = new File ("src/resources/selectTone.wav");
+		public static File getSelectTone1 () {return SELECT_TONE1;}
+		
+		public final static File SAVE_BTN_SOUND = new File ("src/resources/tallySound.wav");
+		public static File getSaveBtnSound () {return SAVE_BTN_SOUND;}
+		
+		public final static File BACKPACK_BTN_SOUND = new File ("src/resources/zipperSound.wav");
+		public static File getBackpackBtnSound () {return BACKPACK_BTN_SOUND;}
+		
+		
+		
+		public static void playSound (File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException
 		{
-				File file = new File(filePath); // get the file path from the path
+			AudioInputStream audio = AudioSystem.getAudioInputStream(file); // get the audio data from file
 
-				AudioInputStream audio = AudioSystem.getAudioInputStream(file); // get the audio data from file
+			Clip segment = AudioSystem.getClip();
 
-				Clip segment = AudioSystem.getClip();
-
-				segment.open(audio);
-				segment.setFramePosition(0); 
-				segment.start();
-				segment.drain();
+			segment.open(audio);
+			segment.setFramePosition(0); 
+			segment.start();
+			segment.drain();
 
 		} // playSound method
 		
