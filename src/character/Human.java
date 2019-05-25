@@ -1,6 +1,7 @@
 package src.character;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 import src.gui.Room;
@@ -45,6 +46,7 @@ Carson: added and coded moveTo(Point), moveTo(Human), and recoverShield()
  * may 21st added getCorner, inCorner to Human. programmed moveAway.
  */
 import src.items.Weapon;
+import sun.security.util.Length;
 
 public class Human
 {
@@ -261,12 +263,127 @@ public class Human
 		return false;
 	}
 
-	public void moveIn(Human human) //moves so that human is in it's weapon range
+	public void moveIn(Human human) throws Exception //moves so that human is in it's weapon range
 	{
+		int x = human.getX();
+		int y = human.getY();
+		ArrayList<Point> output = cleanArray(getPointsInMovement(this));
+		output.remove(new Point(x,y));// we don't want it trying to move on the player
+		ArrayList<Point> position;
+		Point[][] selection = 
+			{
+				getPointsInMovement(human), getPointsInRange(human)
+			};
+		int length = getLength(output);
+		
+		for(int i = 0; i < 3 || length > 1; i++) 
+		{
+			position = cleanArray(selection[i]);
+			for(int pos = getLength(position); pos != -1; pos--) 
+			{
+				output.remove(position.get(pos));
+				output = cleanArray(output);
+				length = getLength(output);
+				if(length == 1) 
+				{
+					break;
+				}
+			
+			}
+		}
+		
+		
+		if(length == 1) 
+		{
+			moveTo(output.get(0), false);
+		}
+		
+		if(length > 1) 
+		{
+			Random random = new Random();
+			moveTo(output.get((int) random.nextInt()*(length+1)), false);
+		}
+		
 	}
+	
+	
+	private int getLength(ArrayList<Point> buffer)
+	{
+		int newLength = 0; 
+		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
+		return newLength;
+		
+	}
+	
+	public Point[] getPointsInMovement(Human human) 
+	{
+		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];
+		for(int x = 0;  x != (int) Room.size.getWidth(); x++) 
+		{
+			for(int y= 0;  y != (int) Room.size.getHeight(); y++) // find all available points
+			{
+				if(human.canMoveTo(x,y)) // remove all points in array that are outside human range
+				{
+					allPoints[x+y] = new Point(x,y);// puts point into array.
+				}
+			}
+		}// creates an array
+		return allPoints;
+	}
+	
+	
+	public Point[] getPointsInRange(Human human) 
+	{
+		int range = human.getEquippedWeapon().getRange();
+		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];
+		for(int x = 0;  x != (int) Room.size.getWidth(); x++) 
+		{
+			for(int y= 0;  y != (int) Room.size.getHeight(); y++) // find all available points
+			{
+				if(range + human.getX() < x && x < human.getX() - range &&	range + human.getY() <  y && y  <	human.getY() - range) 
+				{
+					allPoints[x+y] = new Point(x,y);// puts point into array.
+				}
+			}
+		}// creates an array
+		return allPoints;
+	}
+	
+	
 	
 	public void moveIn(Human human, boolean useMostOptimalMove, int attackType) throws Exception//optimal 
 	{
+	}
+	
+	
+	public ArrayList<Point> cleanArray(Point[] allPoints) 
+	{
+		ArrayList<Point> buffer = new ArrayList<Point>( (int) (Room.size.getWidth()* Room.size.getHeight()) );
+		for(int i = 0;  i < allPoints.length; i++) 
+		{
+			if(allPoints[i] != null) // if not null
+			{
+				buffer.add(allPoints[i]);
+			}
+		}// creates an array
+		int newLength = 0; 
+		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
+		return buffer;
+	}
+	
+	public ArrayList<Point> cleanArray(ArrayList<Point> allPoints) 
+	{
+		ArrayList<Point> buffer = new ArrayList<Point>( (int) (Room.size.getWidth()* Room.size.getHeight()) );
+		for(int i = 0;  i < allPoints.size() ; i++) 
+		{
+			if(allPoints.get(i) != null) // if not null
+			{
+				buffer.add(allPoints.get(i));
+			}
+		}// creates an array
+		int newLength = 0; 
+		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
+		return buffer;
 	}
 	
 	public void attack(Human human) 

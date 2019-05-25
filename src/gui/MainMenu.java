@@ -52,6 +52,11 @@ public class MainMenu
 		
 		JPanel background = new JPanel() 
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -2339005568596082953L;
+
 			public void paint(Graphics g) 
 			{
 				g.drawImage(Database.getMainMenuBackground(), 0, 0, 1314, 878, null);

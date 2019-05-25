@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.imageio.ImageIO;
@@ -248,7 +249,7 @@ public class Database {
 		
 		
 		
-		public static void playSound (File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException
+		public static void playSound (File file) throws UnsupportedAudioFileException, LineUnavailableException, IOException
 		{
 			AudioInputStream audio = AudioSystem.getAudioInputStream(file); // get the audio data from file
 
