@@ -173,6 +173,7 @@ public class Human
 	{
 		
 	}
+	
 	public void moveOut(Human human, Room room, boolean useMostOptimalMove) throws Exception //moves out of a human's weapons range
 	{
 		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];

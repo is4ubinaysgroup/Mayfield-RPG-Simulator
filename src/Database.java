@@ -197,30 +197,7 @@ public class Database {
 
 		
 		
-		// ------------------------------------------- npc Stuff -------------------------------------------
-
-		public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler());
-		public static NonPlayer binay = new NonPlayer("Binay", true, getHat());
-		static int[] gymPos = {16, 16};
-		public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),  gymPos );
-				
 		
-		
-		// ------- imgBinay -------
-		public static BufferedImage imgBinay;
-		public static BufferedImage getImgBinay() {return imgBinay;}
-		public static void setImgBinay(BufferedImage imgBinay) {Database.imgBinay = imgBinay;}
-		
-		
-		// ------- imgHallMonitor -------
-		public static BufferedImage imgHallMonitor;
-		public static BufferedImage getImgHallMonitor() {return imgHallMonitor;}
-		public static void setImgHallMonitor(BufferedImage imgHallMonitor) {Database.imgHallMonitor = imgHallMonitor;}
-		
-		// ------- imgGymTeacher -------
-		public static BufferedImage imgGymTeacher;
-		public static BufferedImage getImgGymTeacher() {return imgGymTeacher;}
-		public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
 		
 		
 		
@@ -801,7 +778,32 @@ public class Database {
 
 
 		} // writeSingle method
+		
+		
+		// ------------------------------------------- npc Stuff -------------------------------------------
 
+				public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler());
+				public static NonPlayer binay = new NonPlayer("Binay", true, getHat());
+				static int[] gymPos = {16, 16};
+				public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),  gymPos );
+						
+				
+				
+				// ------- imgBinay -------
+				public static BufferedImage imgBinay;
+				public static BufferedImage getImgBinay() {return imgBinay;}
+				public static void setImgBinay(BufferedImage imgBinay) {Database.imgBinay = imgBinay;}
+				
+				
+				// ------- imgHallMonitor -------
+				public static BufferedImage imgHallMonitor;
+				public static BufferedImage getImgHallMonitor() {return imgHallMonitor;}
+				public static void setImgHallMonitor(BufferedImage imgHallMonitor) {Database.imgHallMonitor = imgHallMonitor;}
+				
+				// ------- imgGymTeacher -------
+				public static BufferedImage imgGymTeacher;
+				public static BufferedImage getImgGymTeacher() {return imgGymTeacher;}
+				public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
 
 
 } // Database class
