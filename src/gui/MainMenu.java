@@ -97,6 +97,11 @@ public class MainMenu
 				{
 					GUIExtension1.switchPane (Navigation.getPane());
 				} // if completed tutorial
+				else
+				{
+					// start tutorial
+					
+				} // else start tutorial
 				
 				playSound(Database.getSelectTone1());
 				
@@ -136,6 +141,11 @@ public class MainMenu
 				{
 					GUIExtension1.switchPane (Navigation.getPane());
 				} // if completed tutorial
+				else
+				{
+					// start tutorial
+					
+				} // else start tutorial
 				
 				playSound(Database.getSelectTone1());
 			}
