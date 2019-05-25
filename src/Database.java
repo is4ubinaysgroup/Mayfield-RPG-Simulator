@@ -234,8 +234,14 @@ public class Database {
 		public final static File SELECT_TONE1 = new File ("src/resources/selectTone.wav");
 		public static File getSelectTone1 () {return SELECT_TONE1;}
 		
-		public final static File SAVE_BTN_SOUND = new File ("src/resources/tallySound.wav");
-		public static File getSaveBtnSound () {return SAVE_BTN_SOUND;}
+		public final static File DREAMY_MALLET_NOTIFICATION = new File ("src/resources/dreamyMallet.wav");
+		public static File getDreamyMallet () {return DREAMY_MALLET_NOTIFICATION;}
+		
+		public final static File PAGE_TURN_SOUND = new File ("src/resources/pageTurnSound.wav");
+		public static File getPageTurnSound () {return PAGE_TURN_SOUND;}
+		
+		public final static File MOO_SOUND = new File ("src/resources/mooSound.wav");
+		public static File getMooSound () {return MOO_SOUND;}
 		
 		public final static File BACKPACK_BTN_SOUND = new File ("src/resources/zipperSound.wav");
 		public static File getBackpackBtnSound () {return BACKPACK_BTN_SOUND;}
