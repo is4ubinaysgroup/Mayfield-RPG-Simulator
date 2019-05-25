@@ -237,16 +237,10 @@ public class Database {
 			Clip segment = AudioSystem.getClip();
 			segment.open(audio);
 			
-			boolean play = true; 
-			
-			while (play == true)// play it 
-			{ 
-				segment.setFramePosition(0); 
-				segment.start();
-				segment.drain();
-				play = false;
-			}
-	
+			segment.setFramePosition(0); 
+			segment.start();
+			segment.drain();
+		
 		} // playSound method
 		
 		
