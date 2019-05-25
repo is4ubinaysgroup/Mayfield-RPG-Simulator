@@ -10,6 +10,12 @@ import java.io.PrintWriter;
 
 import javax.imageio.ImageIO;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import src.character.Human;
 import src.character.NonPlayer;
 import src.character.Player;
@@ -70,10 +76,12 @@ added descriptions for ruler and rubber band
 
 
 /*
-05-24 Mina
+05-24 and 05-25 Mina
 changed spacing so everything's more organized
 added walmart image (used by Map.java)
+added playSound method
 */
+
 
 
 public class Database {
@@ -215,9 +223,37 @@ public class Database {
 		
 		
 		
+		
+		
+		
+		// ------------------------------------------- sound effects -------------------------------------------
+		
+		public static void playSound (String filePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException
+		{
+			File file = new File(filePath); // get the file path from the path
+
+			AudioInputStream audio = AudioSystem.getAudioInputStream(file); // get the audio data from file
+			
+			Clip segment = AudioSystem.getClip();
+			segment.open(audio);
+			
+			boolean play = true; 
+			
+			while (play == true)// play it 
+			{ 
+				segment.setFramePosition(0); 
+				segment.start();
+				segment.drain();
+				play = false;
+			}
+	
+		} // playSound method
+		
+		
 
 				
 				
+	
 		// ------------------------------------------- item images for shop -------------------------------------------
 		
 		public static BufferedImage imgCapacityUpgrade; 
