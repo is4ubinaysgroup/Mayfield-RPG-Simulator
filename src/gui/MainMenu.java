@@ -20,10 +20,17 @@ continue if the player's level is 0 instead of switching to navigation
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
 
+import java.awt.image.BufferedImage;
+
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import src.Database;
+
 
 public class MainMenu
 {
