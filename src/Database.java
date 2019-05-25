@@ -226,21 +226,28 @@ public class Database {
 		
 		
 		
-		// ------------------------------------------- sound effects -------------------------------------------
+		// ------------------------------------------- playSound method -------------------------------------------
 		
 		public static void playSound (String filePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException
 		{
-			File file = new File(filePath); // get the file path from the path
+			try
+			{
+				File file = new File(filePath); // get the file path from the path
 
-			AudioInputStream audio = AudioSystem.getAudioInputStream(file); // get the audio data from file
-			
-			Clip segment = AudioSystem.getClip();
-			segment.open(audio);
-			
-			segment.setFramePosition(0); 
-			segment.start();
-			segment.drain();
-		
+				AudioInputStream audio = AudioSystem.getAudioInputStream(file); // get the audio data from file
+
+				Clip segment = AudioSystem.getClip();
+
+				segment.open(audio);
+				segment.setFramePosition(0); 
+				segment.start();
+				segment.drain();
+
+			} // try
+			catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1)
+			{
+				e1.printStackTrace();
+			} // catch
 		} // playSound method
 		
 		
@@ -266,7 +273,7 @@ public class Database {
 		
 		
 		
-		public static BufferedImage getProductImage (String name) //mina created Database.
+		public static BufferedImage getProductImage (String name)
 		{
 			if (name.equals("Timbits")) {return Database.getImgTimbits();}
 			else if (name.equals("McChicken")) {return Database.getImgMcchicken();}
