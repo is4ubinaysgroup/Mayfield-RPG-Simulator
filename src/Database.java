@@ -72,6 +72,7 @@ added descriptions for ruler and rubber band
 /*
 05-24 Mina
 changed spacing so everything's more organized
+added walmart image (used by Map.java)
 */
 
 
@@ -137,6 +138,7 @@ public class Database {
 			MainMenuBackground =readImg("src/resources/Background.jpeg");
 			MapBackground =readImg("src/resources/background2.png");
 			imgClassroom =readImg("src/resources/room.jpg");
+			imgWalmart = readImg ("src/resources/walmart.jpg");
 			//imgGymTeacher =readImg(gymTeacher);
 			//imgBinay =readImg(binay);
 			//imgHallMonitor =readImg(hallMonitor);
@@ -175,6 +177,11 @@ public class Database {
 
 		// ------- MapBackground -------
 		public static BufferedImage MapBackground;
+	
+		
+		// ------- imgWalmart -------
+		public static BufferedImage imgWalmart;
+		public static BufferedImage getImgWalmart() {return imgWalmart;}
 		
 	
 
