@@ -51,6 +51,7 @@ edited equip button engine to use the switchWeapon method of Player
 
 // Mina 05-21 added comparison to "" for selectedItemName for comboboxes
 // Mina 05-23 shifted GUI to accomodate frame size
+// Mina 05-25 was using removeAll instead of removeAllItems
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -282,8 +283,8 @@ public class Backpack
 	
 	public static void removeAll()
 	{
-		comboB_products.removeAll();
-		comboB_weapons.removeAll();
+		comboB_products.removeAllItems();
+		comboB_weapons.removeAllItems();
 	} // removeAll method
 	
 } // Backpack class
