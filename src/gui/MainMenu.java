@@ -15,6 +15,8 @@ continue if the player's level is 0 instead of switching to navigation
 // Mina 05-23 shifted GUI to fill frame
 
 // Mina 05-24 new game or continue would only go to navigation if the user has completed the tutorial
+// Mina 05-25 implemented mouse hover sound effect
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -70,10 +72,12 @@ public class MainMenu
 		btn_NewGame.setBounds(419, 254, 145, 55);
 		mainMenuPane.add(btn_NewGame);
 		
-		btn_NewGame.addActionListener (new ActionListener ()   
+		btn_NewGame.addMouseListener (new MouseListener()   
 		{
-			public void actionPerformed (ActionEvent e)
+			
+			public void mouseClicked(MouseEvent arg0)
 			{
+				
 				Backpack.removeAll();
 				
 				Database.writeStarterSingle();
@@ -87,7 +91,22 @@ public class MainMenu
 				{
 					GUIExtension1.switchPane (Navigation.getPane());
 				} // if completed tutorial
+				
 			}
+
+			public void mouseEntered(MouseEvent arg0)
+			{
+				try {
+					Database.playSound("src/resources/rolloverSound.wav");
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			public void mouseExited(MouseEvent arg0) {}
+			public void mousePressed(MouseEvent arg0) {}
+			public void mouseReleased(MouseEvent arg0) {}
+			
 		});
 
 		
@@ -99,9 +118,9 @@ public class MainMenu
 		btn_Continue.setBounds(419, 320, 145, 55);
 		mainMenuPane.add(btn_Continue);
 		
-		btn_Continue.addActionListener (new ActionListener ()   
+		btn_Continue.addMouseListener (new MouseListener()   
 		{
-			public void actionPerformed (ActionEvent e)
+			public void mouseClicked(MouseEvent arg0)
 			{
 				Database.loadSingle();
 				
@@ -114,6 +133,20 @@ public class MainMenu
 					GUIExtension1.switchPane (Navigation.getPane());
 				} // if completed tutorial
 			}
+			
+			public void mouseEntered(MouseEvent arg0)
+			{
+				try {
+					Database.playSound("src/resources/rolloverSound.wav");
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			public void mouseExited(MouseEvent arg0) {}
+			public void mousePressed(MouseEvent arg0) {}
+			public void mouseReleased(MouseEvent arg0) {}
+			
 		});
 
 	
@@ -125,12 +158,26 @@ public class MainMenu
 		btn_Quit.setBounds(419, 452, 145, 55);
 		mainMenuPane.add(btn_Quit);
         
-		btn_Quit.addActionListener (new ActionListener ()   
+		btn_Quit.addMouseListener (new MouseListener()   
 		{
-			public void actionPerformed (ActionEvent e)
+			public void mouseClicked(MouseEvent arg0)
 			{
 				System.exit (0);
 			}
+			
+			public void mouseEntered(MouseEvent arg0)
+			{
+				try {
+					Database.playSound("src/resources/rolloverSound.wav");
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+					e1.printStackTrace();
+				}
+			}
+			
+			public void mouseExited(MouseEvent arg0) {}
+			public void mousePressed(MouseEvent arg0) {}
+			public void mouseReleased(MouseEvent arg0) {}
+			
 		});
 
 		// -------- btn_Help -----------
@@ -141,14 +188,36 @@ public class MainMenu
 		btn_Help.setBounds(419, 386, 145, 55);
 		mainMenuPane.add(btn_Help);
 		
-		btn_Help.addActionListener (new ActionListener ()   
+		btn_Help.addMouseListener (new MouseListener()   
 		{
-			public void actionPerformed (ActionEvent e)
+			public void mouseClicked(MouseEvent arg0)
 			{
 				GUIExtension1.switchPane(Help.getPane());
 			}
+			
+			public void mouseEntered(MouseEvent arg0)
+			{
+				try {
+					Database.playSound("src/resources/rolloverSound.wav");
+				} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			public void mouseExited(MouseEvent arg0) {}
+			public void mousePressed(MouseEvent arg0) {}
+			public void mouseReleased(MouseEvent arg0) {}
+			
 		});
+		
+		
 		mainMenuPane.add(background);
+		
 	} // initGUI method
+	
+	
+	
 	public static JPanel getPane() {return mainMenuPane; } //getPane method
+	
+	
 } // MainMenu class
