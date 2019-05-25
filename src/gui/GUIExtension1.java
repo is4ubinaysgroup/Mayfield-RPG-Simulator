@@ -10,6 +10,8 @@ Mina 05-23
 changed frame size
 */
 
+// Mina 05-25 added one line to center the frame on any monitor
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -29,12 +31,15 @@ public class GUIExtension1
 		frame.setResizable(false);
 		frame.setSize (1000, 800); // sets size 
 		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		
 		try {
 			frame.setIconImage( ImageIO.read(new File("src/resources/MayfieldSecondarySchool.png")));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		cards = new JPanel(new CardLayout());
 		
 	} // initFrameAndParentPanel method
