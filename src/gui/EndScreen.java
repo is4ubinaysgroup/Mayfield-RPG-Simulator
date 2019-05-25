@@ -1,10 +1,9 @@
 /*
 05-24 Mina
+not sure if any additional imports are needed because in my IDE put everying in one folder
  */
 
 package src.gui;
-
-import src.character.Player;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -65,7 +64,7 @@ public class EndScreen
 
 	
 	
-	public static void update(boolean win, int coinsAmount, boolean alreadyOwnsWeapon)
+	public static void update(boolean win, int coinsAmount, boolean alreadyOwnsWeapon, boolean had0Coins)
 	{
 		
 		String message1;
@@ -91,7 +90,7 @@ public class EndScreen
 		{
 			message1 = "YOU'VE LOST!!!";
 			
-			if (MainExecutable.getPlayer().getCoins() > 0)
+			if (had0Coins == false)
 			{
 				message2 = ("You've lost " + coinsAmount + "coins.");
 			}
