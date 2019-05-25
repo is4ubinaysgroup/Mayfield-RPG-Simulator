@@ -226,12 +226,10 @@ public class Database {
 		
 		
 		
-		// ------------------------------------------- playSound method -------------------------------------------
+		// ------------------------------------------- sound effects -------------------------------------------
 		
 		public static void playSound (String filePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException
 		{
-			try
-			{
 				File file = new File(filePath); // get the file path from the path
 
 				AudioInputStream audio = AudioSystem.getAudioInputStream(file); // get the audio data from file
@@ -243,11 +241,6 @@ public class Database {
 				segment.start();
 				segment.drain();
 
-			} // try
-			catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1)
-			{
-				e1.printStackTrace();
-			} // catch
 		} // playSound method
 		
 		
