@@ -168,12 +168,6 @@ public class Human
 		return false;
 	}
 
-	
-	Point[] allPoints() 
-	{
-		
-	}
-	
 	public void moveOut(Human human, Room room, boolean useMostOptimalMove) throws Exception //moves out of a human's weapons range
 	{
 		Point[] allPoints = new Point[(int) Room.size.getWidth()*(int) Room.size.getHeight()];
@@ -260,7 +254,12 @@ public class Human
 	}
 	
 	private boolean canMoveTo(int x, int y) {
-		// TODO Auto-generated method stub
+		int changeInX = x - getX();
+		int changeInY = y - getY();
+		if(Math.abs(changeInX) <= MOVEMENT && Math.abs(changeInY) <= MOVEMENT  ) //can move here with no issues
+		{
+			return true;
+		}
 		return false;
 	}
 
@@ -277,7 +276,7 @@ public class Human
 			};
 		int length = getLength(output);
 		
-		for(int i = 0; i < 3 || length > 1; i++) 
+		for(int i = 0; i < 2 && length > 1; i++) 
 		{
 			position = cleanArray(selection[i]);
 			for(int pos = getLength(position); pos != -1; pos--) 
@@ -301,8 +300,7 @@ public class Human
 		
 		if(length > 1) 
 		{
-			Random random = new Random();
-			moveTo(output.get((int) random.nextInt()*(length+1)), false);
+			moveTo(output.get((int) Math.random()*(length)), false);
 		}
 		
 	}
@@ -310,9 +308,9 @@ public class Human
 	
 	private int getLength(ArrayList<Point> buffer)
 	{
-		int newLength = 0; 
-		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
-		return newLength;
+		int newLength = buffer.size(); 
+		//for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
+		return newLength-1;
 		
 	}
 	
@@ -341,7 +339,7 @@ public class Human
 		{
 			for(int y= 0;  y != (int) Room.size.getHeight(); y++) // find all available points
 			{
-				if(range + human.getX() < x && x < human.getX() - range &&	range + human.getY() <  y && y  <	human.getY() - range) 
+				if(range + human.getX() > x && x > human.getX() - range &&	range + human.getY() >  y && y  >	human.getY() - range) 
 				{
 					allPoints[x+y] = new Point(x,y);// puts point into array.
 				}
@@ -367,8 +365,6 @@ public class Human
 				buffer.add(allPoints[i]);
 			}
 		}// creates an array
-		int newLength = 0; 
-		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
 		return buffer;
 	}
 	
@@ -382,8 +378,6 @@ public class Human
 				buffer.add(allPoints.get(i));
 			}
 		}// creates an array
-		int newLength = 0; 
-		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
 		return buffer;
 	}
 	
@@ -488,11 +482,8 @@ public class Human
 	}
 	
 	public boolean inRangeOf(Human human) {//if it is in the range of this humans weapons it returns true
-		Point node1 = new Point(human.getX()- human.getEquippedWeapon().getRange(), human.getY()- human.getEquippedWeapon().getRange()); // top right node
-		Point node2 = new Point(human.getX()+ human.getEquippedWeapon().getRange(), human.getY()- human.getEquippedWeapon().getRange()); // top left node
-		Point node3 = new Point(human.getX()- human.getEquippedWeapon().getRange(), human.getY()+ human.getEquippedWeapon().getRange());// bottom right node
-		Point node4 = new Point(human.getX()+ human.getEquippedWeapon().getRange(),human.getY()+ human.getEquippedWeapon().getRange());// bottom left node
-		if( ( getX() >= node1.getX() && getX() <= node4.getX() ) && (getY() <= node3.getY() && getY() >= node2.getY() )  ) 
+		if((human.getX() + human.getEquippedWeapon().getRange() > getX() && getX() > human.getX() - human.getEquippedWeapon().getRange() ) &&
+				(human.getY() + human.getEquippedWeapon().getRange() > getY() && getY() < human.getY() - human.getEquippedWeapon().getRange()) )
 		{
 			return true;
 		}

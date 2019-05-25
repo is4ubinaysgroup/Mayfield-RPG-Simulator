@@ -112,7 +112,7 @@ UML
 			
 			moveTo(player,true);
 		}
-		else if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.MELEETYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))
+		else if( player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.MELEETYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ) )
 		{// 3. If the player is in melee attack range:
 			System.out.println("melee attack range");
 			//The boss will check and follow the first true statement procedure in order of first to last:
@@ -139,10 +139,11 @@ UML
 				runAndHit(player);
 			}
 		}
-		else	if(!(player.inRangeOf(this))) 
+		else if(!(player.inRangeOf(this))) 
 		{
-			System.out.println("in range");
-			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
+			System.out.println("in not range");
+			moveIn(player);
+			/*int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
 			if(random == 1) 
 			{
 				moveIn(player, true, Weapon.MELEETYPE);
@@ -150,9 +151,9 @@ UML
 			else // random == 2 
 			{
 				moveIn(player, true, Weapon.RANGEDTYPE);
-			}
+			}*/
 		}
-		else	 if(inRangeOf(player)) 
+		else if(inRangeOf(player)) 
 		{
 			System.out.println("in player range");
 			moveOut(player,room,false);
