@@ -207,7 +207,7 @@ public class Map
 		
 		//TEST
 		TestFrame frame = new TestFrame();
-		frame.initGui();
+		frame.initGui(frame);
 		
 	} // btn_Level1Engine method
 		
