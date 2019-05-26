@@ -3,6 +3,10 @@
  */
 package src.character;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.Random;
+
 import src.gui.MainExecutable;
 import src.gui.Room;
 import src.items.Weapon;
@@ -61,6 +65,7 @@ UML
 	 */
 	
 	private Boolean isBoss;
+	private Room room;
 	
 	public NonPlayer(String name,Boolean isBoss) 
 	{
@@ -91,7 +96,297 @@ UML
 		this.isBoss = isBoss;
 	}
 	
-		public void runTurn(Room room) throws Exception //TODO
+	
+	//Movement related Functions
+	public void moveTo(Human human, boolean moveAnyWays) throws Exception // moves to a human
+	{
+		//we can't move on a human but only near.
+		int changeInX = human.getX() - getX();
+		int changeInY =human.getY() - getY();
+		
+		Point output = new Point(0,0);
+		if(changeInX != 0) 
+		{
+			output.x = human.getX() + (  changeInX /  ( Math.abs( changeInX ) ) );
+		}
+		else //x =0
+		{
+			output.x = human.getX() + 1;
+		}
+		
+		if(changeInY != 0)
+		{
+			output.y = human.getY() + (  changeInY /  ( Math.abs( changeInY ) ) );
+		}
+		else //y =0
+		{
+			output.y = human.getY() + 1;
+		}
+		
+		moveTo(output,true);
+	}
+	
+	public void moveAway(Human human) //moves away from a human
+	{
+		Point dir = getCorner(human);
+		Point Buffer = dir;
+		Buffer.setLocation(dir.x/ Math.abs(dir.x), dir.y / Math.abs(dir.y) );
+		for(int i = 1; i != Human.MOVEMENT; i--) 
+		{
+			human.setX(getX()+(i*Buffer.x));
+			human.setY(getY()+(i*Buffer.y));
+		}
+	}
+	
+	public Point getCorner(Human human )  {
+		int x = 0;
+		int y = (int) getRoom().getHeight();
+		if(human.getX() < Math.abs(Human.MOVEMENT)) //incase movement is ever set to a negitive the ai will still work
+		{
+			x = (int) getRoom().getWidth();
+		}
+		if(human.getY() < Math.abs(Human.MOVEMENT)) 
+		{
+			y = 0;
+		}
+		return new Point(x,y);
+	}
+
+	public boolean nearCorner(Human human ) {
+		if(human.getY() > getRoom().getHeight()-Math.abs(Human.MOVEMENT) || human.getX() > getRoom().getWidth()-Math.abs(Human.MOVEMENT) || human.getX() < Math.abs(Human.MOVEMENT) || human.getY() <  Math.abs(Human.MOVEMENT))
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public void moveOut(Human human, boolean useMostOptimalMove) throws Exception //moves out of a human's weapons range
+	{
+		Point[] allPoints = new Point[(int) getRoom().getWidth()*(int) getRoom().getHeight()];
+		for(int x = 0;  x != (int) getRoom().getWidth(); x++) 
+		{
+			for(int y= 0;  y != (int) getRoom().getHeight(); y++) // find all available points
+			{
+				if(canMoveTo(x,y)) // remove all points in array that are outside human range
+				{
+					allPoints[x+y] = new Point(x,y);// puts point into array.
+				}
+			}
+		}// creates an array
+		
+		//shorten array 
+		
+		
+		ArrayList<Point> buffer = new ArrayList<Point>( (int) (getRoom().getWidth()* getRoom().getHeight()) );
+		for(int i = 0;  i < allPoints.length; i++) 
+		{
+			if(allPoints[i] != null) // if not null
+			{
+				buffer.add(allPoints[i]);
+			}
+		}// creates an array
+		int newLength = 0; 
+		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
+		
+		
+		if(useMostOptimalMove = true) 
+		{
+		// if one Point left in array: move there
+		if(newLength == 0) // if no Points left in array: move away from human
+		{
+			moveAway(human);
+		}
+		else 
+		{
+			
+		}
+		}
+		else //useMostOptimalMove = false
+		{
+			Random random = new Random();
+			Point newPosition = buffer.get( (int) Math.floor(random.nextInt() * newLength) );
+			moveTo( buffer.get( (int) Math.floor(random.nextInt() * newLength) ), true);
+		}
+		//END
+		
+		
+		// remove all points in array that aren't within it's movement
+		// if one Point left in array: move there
+		// if no Points left in array: move away from human
+		
+		//copy array.
+		
+		//remove all spots at the corners
+		// if one Point left in array: move there
+		// if no Points left in array: move away from human
+		
+		//remove all spots near the corners by 1
+		// if one Point left in array: move there
+		// if no Points left in array: use previous data and choose farthest point
+		
+		
+		// remove all spots out of its melee range
+		//if none left copy the orginal array
+		//removes all spots near the human by the human range + 1
+		//continue till there is only one point left
+		// if one Point left in array: move there
+		// if no Points left in array: use previous data and choose farthest point
+				
+
+		
+		
+		
+		
+		
+		//finds an available spot that is out of human range but is in its range
+		//finds an available spot that is out of human range
+		//finds a spot as far as it can from human range but towards an open area without nearing the player more
+		//finds a spot as far as it can from human range
+		//moves to the first range found
+	}
+	
+
+	public void moveIn(Human human) throws Exception //moves so that human is in it's weapon range
+	{
+		int x = human.getX();
+		int y = human.getY();
+		ArrayList<Point> output = cleanArray(getPointsInMovement(this));
+		output.remove(new Point(x,y));// we don't want it trying to move on the player
+		ArrayList<Point> position;
+		Point[][] selection = 
+			{
+				getPointsInMovement(human), getPointsInRange(human)
+			};
+		int length = getLength(output);
+		
+		for(int i = 0; i < 2 && length > 1; i++) 
+		{
+			position = cleanArray(selection[i]);
+			for(int pos = getLength(position); pos != -1; pos--) 
+			{
+				output.remove(position.get(pos));
+				output = cleanArray(output);
+				length = getLength(output);
+				if(length == 1) 
+				{
+					break;
+				}
+			
+			}
+		}
+		
+		
+		if(length == 1) 
+		{
+			moveTo(output.get(0), false);
+		}
+		
+		if(length > 1) 
+		{
+			moveTo(output.get((int) Math.random()*(length)), false);
+		}
+		
+	}
+	
+	
+	private int getLength(ArrayList<Point> buffer)
+	{
+		int newLength = buffer.size(); 
+		//for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
+		return newLength-1;
+		
+	}
+	
+	public Point[] getPointsInMovement(Human human) 
+	{
+		Point[] allPoints = new Point[(int) getRoom().getWidth()*(int) getRoom().getHeight()];
+		for(int x = 0;  x != (int) getRoom().getWidth(); x++) 
+		{
+			for(int y= 0;  y != (int) getRoom().getHeight(); y++) // find all available points
+			{
+				if(human.canMoveTo(x,y)) // remove all points in array that are outside human range
+				{
+					allPoints[x+y] = new Point(x,y);// puts point into array.
+				}
+			}
+		}// creates an array
+		return allPoints;
+	}
+	
+	
+	public Point[] getPointsInRange(Human human) 
+	{
+		int range = human.getEquippedWeapon().getRange();
+		Point[] allPoints = new Point[(int) getRoom().getWidth()*(int) getRoom().getHeight()];
+		for(int x = 0;  x != (int) getRoom().getWidth(); x++) 
+		{
+			for(int y= 0;  y != (int) getRoom().getHeight(); y++) // find all available points
+			{
+				if(range + human.getX() > x && x > human.getX() - range &&	range + human.getY() >  y && y  >	human.getY() - range) 
+				{
+					allPoints[x+y] = new Point(x,y);// puts point into array.
+				}
+			}
+		}// creates an array
+		return allPoints;
+	}
+	
+	
+	
+	public void moveIn(Human human, boolean useMostOptimalMove, int attackType) throws Exception//optimal 
+	{
+	}
+	
+	
+	public ArrayList<Point> cleanArray(Point[] allPoints) 
+	{
+		ArrayList<Point> buffer = new ArrayList<Point>( (int) (getRoom().getWidth()* getRoom().getHeight()) );
+		for(int i = 0;  i < allPoints.length; i++) 
+		{
+			if(allPoints[i] != null) // if not null
+			{
+				buffer.add(allPoints[i]);
+			}
+		}// creates an array
+		return buffer;
+	}
+	
+	public ArrayList<Point> cleanArray(ArrayList<Point> allPoints) 
+	{
+		ArrayList<Point> buffer = new ArrayList<Point>( (int) (getRoom().getWidth()* getRoom().getHeight()) );
+		for(int i = 0;  i < allPoints.size() ; i++) 
+		{
+			if(allPoints.get(i) != null) // if not null
+			{
+				buffer.add(allPoints.get(i));
+			}
+		}// creates an array
+		return buffer;
+	}
+	
+	public void attack(Human human) 
+	{
+		//Cuts damage from armor then if there is more damage it cuts to health. 
+		//also adds critical change 
+		int initialDamage =this.getEquippedWeapon().getDamage();
+		if (Math.random() <= this.equippedWeapon.getCriticalChance()) 
+		{
+			initialDamage= initialDamage*2;
+		}
+		int damageToHealth = human.getDefense() - initialDamage;
+		if(damageToHealth < 0) 
+		{
+			human.setDefense(0);
+			human.setHealth(human.getHealth() - damageToHealth);
+		}
+	}
+	
+	public void runAndHit(Human human) {//added by carson. I will add this to UML. soon..
+		// TODO Auto-generated method stub
+		
+	}
+	
+		public void runTurn() throws Exception //TODO
 	{
 		Player player = MainExecutable.getPlayer();
 		int r = player.getEquippedWeapon().getRange();
@@ -156,7 +451,7 @@ UML
 		else if(inRangeOf(player)) 
 		{
 			System.out.println("in player range");
-			moveOut(player,room,false);
+			moveOut(player,false);
 			setHealth( getHealth() + (int) Math.ceil(getMaxHealth()*0.01) );//recovers 1% of health.
 		}
 		else 
@@ -175,6 +470,20 @@ UML
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * @return the getRoom()
+	 */
+	public Room getRoom() {
+		return this.room;
+	}
+
+	/**
+	 * @param getRoom() the getRoom() to set
+	 */
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
 	

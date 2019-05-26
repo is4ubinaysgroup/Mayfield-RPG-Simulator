@@ -148,10 +148,10 @@ public class Database {
 			MapBackground =readImg("src/resources/background2.png");
 			imgClassroom =readImg("src/resources/room.jpg");
 			imgWalmart = readImg ("src/resources/walmart.jpg");
-			//imgGymTeacher =readImg(gymTeacher);
-			//imgBinay =readImg(binay);
-			//imgHallMonitor =readImg(hallMonitor);
-			//imgPlayer =readImg(MainExecutable.getPlayer());
+			imgGymTeacher =readImg("src/resources/GymTeacher.png");
+			imgBinay =readImg(binay);
+			imgHallMonitor =readImg(hallMonitor);
+			imgPlayer =readImg(MainExecutable.getPlayer());
 			
 		} // LoadImages method
 

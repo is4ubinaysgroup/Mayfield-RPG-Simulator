@@ -15,7 +15,7 @@ public class TestFrame extends JFrame {
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
 	private CombatMenu menu = new CombatMenu();
-	private Room room = new Room(Database.gymTeacher);
+	private Room room;
 	/**
 	 * Launch the application.
 	 */
@@ -37,9 +37,12 @@ public class TestFrame extends JFrame {
 	 */
 	public TestFrame() {
 
-		
-		 int[] pos ={15,15};
-		Database.gymTeacher.setPosition(pos);
+		try {
+			room = new Room(20,20, true, true, false, false, Database.gymTeacher, Database.getImgGymTeacher());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 800);
 		contentPane = new JPanel();
@@ -51,9 +54,5 @@ public class TestFrame extends JFrame {
 		menu.setBounds(800, 0, 200, 800);
 		contentPane.add(menu);
 		room.update();
-	}
-
-	public TestFrame(NonPlayer gymTeacher) {
-		room.setNonPlayer(gymTeacher);
 	}
 }

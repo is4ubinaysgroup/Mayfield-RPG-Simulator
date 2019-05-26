@@ -206,7 +206,7 @@ public class Map
 		// switch to the battle panel
 		
 		//TEST
-		TestFrame frame = new TestFrame(Database.gymTeacher);
+		TestFrame frame = new TestFrame();
 		frame.initGui();
 		
 	} // btn_Level1Engine method
