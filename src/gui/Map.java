@@ -18,6 +18,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import src.Database;
+import src.MatchExtension;
 
 
 public class Map
@@ -222,10 +223,10 @@ public class Map
 	{
 		// start the battle with boss 1
 		// switch to the battle panel
-		
+				
 		//TEST
-		TestFrame frame = new TestFrame();
-		frame.initGui(frame);
+
+		MatchExtension.runMatch(1);
 		
 	} // btn_Level1Engine method
 		

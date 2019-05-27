@@ -803,5 +803,5 @@ public class Database {
 	public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
 
 
-
+	
 } // Database class
