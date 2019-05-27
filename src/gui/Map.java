@@ -335,6 +335,5 @@ public class Map
 		} // try-catch
 	} // playSound method
 	
-	
-	
+
 } // Map class
