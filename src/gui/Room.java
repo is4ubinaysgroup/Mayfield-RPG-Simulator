@@ -49,7 +49,7 @@ public class Room extends JPanel
 	private int west = 0;
 	private int east = 0;
 	/**
-	 * Create the frame.
+	 * Create the  frame.
 	 */
 	private JPanel board[][]=  new JPanel[20][20]; //labels
 	private JButton btn = new JButton();

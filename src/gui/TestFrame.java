@@ -17,7 +17,7 @@ public class TestFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void initGui(TestFrame frame) 
+	public static void initGui(TestFrame fram e) 
 	{
 	}
 
