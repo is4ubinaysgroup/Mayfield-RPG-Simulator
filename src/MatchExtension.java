@@ -10,11 +10,13 @@ import src.gui.TestFrame;
 public class MatchExtension
 {
 
-	public static int matchLevel;
-	public static boolean turn = false; // true if player's turn
-	public static boolean run = false; // if the game is ongoing
-	public static boolean win = false; // true if player wins
+	public static int matchLevel; // needed to compare if the player is playing a level they've already beaten
+	public static boolean run = false; // if the game is ongoing; needed for distinguishing if Backpack is being accessed out of battle
+	
+	public static boolean turn = false; // true if player's turn; not sure if this reference will be useful depending on logic for turns
+	public static boolean win = false; // true if player wins; this variable may or may not be needed (see static endResult method in this class)
 
+	
 
 	public static void runMatch (int level)
 	{
@@ -46,7 +48,7 @@ public class MatchExtension
 	
 	
 	
-	public static void endResult (NonPlayer boss, Boolean win)
+	public static void endResult (NonPlayer boss, Boolean win) // win either needs to be set or passed
 	{
 		
 		int level = MainExecutable.getPlayer().getLevel();
