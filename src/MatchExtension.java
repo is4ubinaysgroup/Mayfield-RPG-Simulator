@@ -5,9 +5,9 @@ import src.gui.TestFrame;
 public class MatchExtension
 {
 
-	static boolean turn; // true if player's turn
-	static boolean run; // if the game is ongoing
-	static boolean win; // true if player wins
+	public static boolean turn = false; // true if player's turn
+	public static boolean run = false; // if the game is ongoing
+	public static boolean win = false; // true if player wins
 
 
 	public static void runMatch (int level)

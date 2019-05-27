@@ -205,8 +205,15 @@ public class Backpack
 			Weapon weapon = Database.getWeapon (weaponName);
 
 			MainExecutable.getPlayer().switchWeapon (weapon);
-		
-		// equip completed... change turn if boss battle is happening and go to battle panel
+
+
+			if (MatchExtension.run == true)
+			{
+
+				// go back to battle panel
+				MatchExtension.turn = false;		
+			} // go back if a battle is happening
+
 		}
 		else
 		{
@@ -228,11 +235,16 @@ public class Backpack
 
 			used = Product.use(product);
 			if (used == false) {lbl_error.setText("using product error");}
-			else {
-
-				// use completed... change turn if boss battle is happening and go to battle panel
-
+			else
+			{
 				update();
+				
+				if (MatchExtension.run == true)
+				{
+
+					// go back to battle panel
+					MatchExtension.turn = false;
+				} // go back if a battle is happening
 			} // else
 		}
 		else
