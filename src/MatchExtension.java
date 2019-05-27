@@ -1,3 +1,7 @@
+// Mina 05-27
+// not sure yet what GUIshenanigans will be needed to switch to the end screen (will frame.removeAll be needed?)
+
+
 package src;
 
 import src.character.NonPlayer;
