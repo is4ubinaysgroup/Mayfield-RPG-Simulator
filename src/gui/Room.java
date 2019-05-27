@@ -43,10 +43,6 @@ public class Room extends JPanel
 	private Point popupLocation = new Point();
 	private int enemy;
 	private Image enemyImg;
-	private int x = 0;
-	private int y = 0;
-	private int width = 800;
-	private int height = 800;
 	
 	private int north = 0;
 	private int south = 0;
@@ -55,7 +51,7 @@ public class Room extends JPanel
 	/**
 	 * Create the frame.
 	 */
-	private JPanel board[][]=  new JPanel[width][height]; //labels
+	private JPanel board[][]=  new JPanel[20][20]; //labels
 	private JButton btn = new JButton();
 	private JPopupMenu popupMenu = new JPopupMenu();
 	
@@ -72,12 +68,9 @@ public class Room extends JPanel
 	 * @param enemyID
 	 * @throws Exception
 	 */
-	public Room(int x, int y,int width, int height, int north, int east, int south, int west, int enemyID) throws Exception 
+	public Room( int north, int east, int south, int west, int enemyID) throws Exception 
 	{
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+
 		this.north = north;
 		this.east = east;
 		this.south = south;
@@ -85,13 +78,13 @@ public class Room extends JPanel
 		this.enemy = enemyID;
 
 		
-		if(getEnemy().getX()+west > width-east || getEnemy().getX() < 0 ) 
+		if(getEnemy().getX()+west > 20-east || getEnemy().getX() < 0 ) 
 		{
-			throw new Exception("Enemy X position out of range:" + (width - getEnemy().getX()) );
+			throw new Exception("Enemy X position out of range:" + (20 - getEnemy().getX()) );
 		}
-		if(getEnemy().getY()+north > height-south || getEnemy().getY() < 0) 
+		if(getEnemy().getY()+north > 20-south || getEnemy().getY() < 0) 
 		{
-			throw new Exception("Enemy Y position out of range:" + (height - getEnemy().getY()) );
+			throw new Exception("Enemy Y position out of range:" + (20 - getEnemy().getY()) );
 		}
 		
 		/**
@@ -117,7 +110,7 @@ public class Room extends JPanel
 		/**
 		 * Setup
 		 */
-		setBounds(x, y, width, height);
+		setBounds(0, 0, 800, 800);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
 		popupMenu.add(btn);
@@ -136,7 +129,7 @@ public class Room extends JPanel
 		  */
 		for(int xPos = 0 + west; xPos != board.length - east; xPos++) 
 		{
-			for(int yPos = 0 + north; yPos != board[x].length - south; yPos++ ) 
+			for(int yPos = 0 + north; yPos != board.length - south; yPos++ ) 
 			{
 				//labels[i][yPos] = new JLabel("label["+i+"]["+yPos+"]");
 				board[xPos][yPos] = new JPanel();
@@ -182,9 +175,9 @@ public class Room extends JPanel
 	
 	protected void cleanBoard() 
 	{
-		for(int x = this.west; x< getWidth()-this.east; x++) 
+		for(int x = 20-this.west; x< 20-this.east; x++) 
 		{
-			for(int y = getNorth(); y< getHeight()-getSouth(); y++) 
+			for(int y = 20 -getNorth(); y< 20-getSouth(); y++) 
 			{
 				this.board[x][y].setBackground(new Color(225,225,225,0));
 			}
@@ -197,13 +190,13 @@ public class Room extends JPanel
 		{
 			throw new Exception("Human contains no EquippedWeapon. ");
 		}
-		if(getEnemy().getX()+west > width-east || getEnemy().getX() < 0 ) 
+		if(getEnemy().getX()+west > 20-east || getEnemy().getX() < 0 ) 
 		{
-			throw new Exception("Enemy X position out of range:" + (width - getEnemy().getX()) );
+			throw new Exception("Enemy X position out of range:" + (20 - getEnemy().getX()) );
 		}
-		if(getEnemy().getY()+north > height-south || getEnemy().getY() < 0) 
+		if(getEnemy().getY()+north > 20-south || getEnemy().getY() < 0) 
 		{
-			throw new Exception("Enemy Y position out of range:" + (height - getEnemy().getY()) );
+			throw new Exception("Enemy Y position out of range:" + (20 - getEnemy().getY()) );
 		}
 
 		int range = human.getEquippedWeapon().getRange();
@@ -359,30 +352,6 @@ public class Room extends JPanel
 	 */
 	public void setEnemyImg(Image enemyImg) {
 		this.enemyImg = enemyImg;
-	}
-	/**
-	 * @return the x
-	 */
-	public int getX() {
-		return x;
-	}
-	/**
-	 * @param x the x to set
-	 */
-	public void setX(int x) {
-		this.x = x;
-	}
-	/**
-	 * @return the y
-	 */
-	public int getY() {
-		return y;
-	}
-	/**
-	 * @param y the y to set
-	 */
-	public void setY(int y) {
-		this.y = y;
 	}
 	/**
 	 * @return the north
