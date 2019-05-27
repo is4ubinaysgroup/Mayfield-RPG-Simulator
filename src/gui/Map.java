@@ -12,8 +12,13 @@ package src.gui;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import src.Database;
+
 
 public class Map
 {
@@ -184,11 +189,24 @@ public class Map
 		btn_Back.setBackground(Database.MAYFIELD_BLUE);
 		btn_Back.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 24));
 
-		btn_Back.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btn_Back.addMouseListener (new MouseListener()   
+		{
+			public void mouseClicked(MouseEvent arg0)
+			{
 
 				GUIExtension1.switchPane(Navigation.getPane());
+				playSound(Database.getSelectTone1());
 			}
+			
+			public void mouseEntered(MouseEvent arg0)
+			{
+				playSound(Database.getHoverSound1());
+			}
+
+			public void mouseExited(MouseEvent arg0) {}
+			public void mousePressed(MouseEvent arg0) {}
+			public void mouseReleased(MouseEvent arg0) {}
+			
 		});
 
 		mapPane.add(btn_Back);
@@ -303,6 +321,19 @@ public class Map
 		}
 		
 	} // updateMap method
+	
+	
+	
+	public static void playSound (File file)
+	{
+		try {
+			Database.playSound(file);
+			
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		} // try-catch
+	} // playSound method
+	
 	
 	
 } // Map class
