@@ -225,7 +225,6 @@ public class Map
 		// switch to the battle panel
 				
 		//TEST
-
 		MatchExtension.runMatch(1);
 		
 	} // btn_Level1Engine method

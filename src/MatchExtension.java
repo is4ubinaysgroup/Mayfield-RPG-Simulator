@@ -12,6 +12,11 @@ public class MatchExtension
 
 	public static void runMatch (int level)
 	{
+		turn = true;
+		run = true;
+		win = false;
+		
+		
 		if (level == 0)
 		{
 			// tutorial
@@ -19,11 +24,7 @@ public class MatchExtension
 
 		else if (level == 1)
 		{
-			turn = true;
-			run = true;
-			win = false;
-
-			
+		
 			//TEST
 			TestFrame frame = new TestFrame();
 			frame.initGui(frame);
