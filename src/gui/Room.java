@@ -135,8 +135,8 @@ public class Room extends JPanel
 				board[xPos][yPos] = new JPanel();
 				board[xPos][yPos].setBackground(new Color(225,225,225,0));
 				board[xPos][yPos].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
-				board[xPos][yPos].setBounds(west+40*xPos, north+40*yPos, 40, 40);
-				addPopup(this,board[xPos][yPos], popupMenu);
+				board[xPos][yPos].setBounds(0+40*xPos, 0+40*yPos, 40, 40);
+				addPopup(this,board[xPos][yPos], popupMenu); 
 				add(board[xPos][yPos]);
 			}
 		}
