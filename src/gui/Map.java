@@ -221,11 +221,19 @@ public class Map
 	
 	public static void btn_Level1Engine ()
 	{
+		
+		playSound(Database.getSelectTone1());
+		
 		// start the battle with boss 1
 		// switch to the battle panel
 				
 		//TEST
-		MatchExtension.runMatch(1);
+		TestFrame frame = new TestFrame();
+		
+		//initGui is a static method? why the TestFrame object
+		//frame.initGui(frame); 
+		
+		//MatchExtension.runMatch(1);
 		
 	} // btn_Level1Engine method
 		

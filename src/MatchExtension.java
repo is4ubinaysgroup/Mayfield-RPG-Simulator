@@ -37,9 +37,10 @@ public class MatchExtension
 
 		else if (level == 1)
 		{
-			//TEST
+			/*TEST
 			TestFrame frame = new TestFrame();
 			frame.initGui(frame);
+			*/
 
 
 		} // level 1
