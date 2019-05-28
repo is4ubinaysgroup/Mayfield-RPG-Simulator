@@ -57,7 +57,7 @@ public class CombatMenu extends JPanel {
 		// defense
 		JLabel lblDefense = new JLabel("DEFENSE");
 		lblDefense.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
-		lblDefense.setBounds(12, 118, 66, 16);
+		lblDefense.setBounds(12, 118, 80, 16);
 		CombatPanel.add(lblDefense);
 		
 		JLabel lblDefenseInt = new JLabel("");
@@ -69,7 +69,7 @@ public class CombatMenu extends JPanel {
 		// movement
 		JLabel lblMovement = new JLabel("MOVEMENT");
 		lblMovement.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
-		lblMovement.setBounds(12, 163, 80, 16);
+		lblMovement.setBounds(12, 163, 88, 16);
 		CombatPanel.add(lblMovement);
 		
 		JLabel lblMovementInt = new JLabel("");
@@ -99,29 +99,38 @@ public class CombatMenu extends JPanel {
 		btnBackpack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
 		btnBackpack.setForeground(new Color(247, 221, 0));
 		btnBackpack.setBackground(new Color(14, 1, 141));
-		btnBackpack.setBounds(33, 464, 122, 46);
+		btnBackpack.setBounds(33, 352, 122, 46);
 		CombatPanel.add(btnBackpack);
+		
+		JButton btnEndTurn = new JButton("END TURN");
+		btnEndTurn.setForeground(new Color(247, 221, 0));
+		btnEndTurn.setFont(new Font("Dialog", Font.PLAIN, 17));
+		btnEndTurn.setBackground(new Color(14, 1, 141));
+		btnEndTurn.setBounds(33, 432, 122, 46);
+		CombatPanel.add(btnEndTurn);
+		
+		JLabel enemyHealth = new JLabel("");
+		enemyHealth.setFont(new Font("Dialog", Font.PLAIN, 15));
+		enemyHealth.setBounds(112, 605, 56, 16);
+		CombatPanel.add(enemyHealth);
+		
+		JLabel enemyHealthlbl = new JLabel("HEALTH");
+		enemyHealthlbl.setFont(new Font("Dialog", Font.PLAIN, 15));
+		enemyHealthlbl.setBounds(12, 605, 56, 16);
+		CombatPanel.add(enemyHealthlbl);
+		
+		JLabel lblEnemy = new JLabel("ENEMY");
+		lblEnemy.setFont(new Font("Dialog", Font.PLAIN, 15));
+		lblEnemy.setBounds(61, 557, 56, 16);
+		CombatPanel.add(lblEnemy);
 		
 		btnBackpack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//-------------------------- go to Backpack Panel ---------------------
 			
-				//GUIExtension1.switchPane(Backpack.getPane());
-			
-			}
-		});
-		
-		
+				
+				GUIExtension1.switchPane (Backpack.getPane());
 
-		JButton btnMove = new JButton("MOVE");
-		btnMove.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
-		btnMove.setForeground(new Color(247, 221, 0));
-		btnMove.setBackground(new Color(14, 1, 141));
-		btnMove.setBounds(33, 369, 122, 46);
-		CombatPanel.add(btnMove);
-		
-		btnMove.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {//-------------------------- Move Methods -----------------------------
-				//moveTo(Point point);
+			
 			}
 		});
 		
@@ -136,7 +145,4 @@ public class CombatMenu extends JPanel {
 		
 		
 	} // AttackMethod method
-	
-	
-	
 } // CombatMenu class
