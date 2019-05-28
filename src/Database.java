@@ -151,7 +151,7 @@ public class Database {
 		imgGymTeacher =readImg("src/resources/GymTeacher.png");
 		//imgBinay =readImg(binay);
 		imgHallMonitor =readImg("src/resources/HallMonitor.png");
-		imgPlayer =readImg(MainExecutable.getPlayer());
+		imgPlayer = readImg("src/resources/playerSprite.png"); // this method is called before user can click continue or new game
 
 	} // LoadImages method
 
@@ -216,6 +216,12 @@ public class Database {
 
 	public final static File BACKPACK_BTN_SOUND = new File ("src/resources/zipperSound.wav");
 	public static File getBackpackBtnSound () {return BACKPACK_BTN_SOUND;}
+	
+	public final static File ERROR_TONE = new File ("src/resources/ErrorTone.wav");
+	public static File getErrorTone () {return ERROR_TONE;}
+	
+	public final static File LOCKER_SOUND = new File ("src/resources/LockerSound.wav");
+	public static File getLockerSound () {return LOCKER_SOUND;}
 
 
 
