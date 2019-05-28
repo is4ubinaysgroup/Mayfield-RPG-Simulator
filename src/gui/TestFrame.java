@@ -31,7 +31,7 @@ public class TestFrame extends JFrame {
 		setBounds(100, 100, 1000, 800);
 		
 		try {//(int x, int y,int width, int height, int north, int east, int south, int west, int enemyID
-			room = new Room(0,0,800,800,0,0,0,0,Room.GYMTEACHER);
+			room = new Room(3,3,3,3,Room.GYMTEACHER);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
