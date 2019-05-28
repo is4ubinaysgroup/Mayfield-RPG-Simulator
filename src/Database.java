@@ -228,7 +228,7 @@ public class Database {
 	
 	public final static File FOOTSTEPS = new File ("src/resources/footSteps.wav");
 	public static File getFootsteps () {return FOOTSTEPS;}
-
+	
 
 
 	public static void playSound (File file) throws UnsupportedAudioFileException, LineUnavailableException, IOException

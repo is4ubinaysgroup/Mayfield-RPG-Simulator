@@ -157,7 +157,7 @@ public class Map
 
 		mapPane.add(btn_Level7);
 
-
+		
 		
 		// ------- lbl_Shop -------
 		lbl_Shop = new JLabel("");
