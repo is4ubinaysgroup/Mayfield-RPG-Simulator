@@ -151,7 +151,7 @@ public class Database {
 			imgGymTeacher =readImg("src/resources/GymTeacher.png");
 			//imgBinay =readImg(binay);
 			imgHallMonitor =readImg("src/resources/HallMonitor.png");
-			imgPlayer =readImg(MainExecutable.getPlayer());
+			//imgPlayer =readImg(MainExecutable.getPlayer());
 			
 		} // LoadImages method
 

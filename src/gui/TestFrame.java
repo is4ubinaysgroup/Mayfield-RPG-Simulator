@@ -17,9 +17,6 @@ public class TestFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void initGui(TestFrame fram e) 
-	{
-	}
 
 	/**
 	 * Create the frame.
@@ -34,8 +31,8 @@ public class TestFrame extends JFrame {
 		menu.setBounds(800, 0, 200, 800);
 		contentPane.add(menu);
 		try {
-			room = new Room(3,0,3,0,Room.GYMTEACHER);
-			room.setBounds(0, 0, 800, 800);
+			room = new Room(3,3,3,3,Room.GYMTEACHER);
+			//room.setBounds(0, 0, 800, 800);
 			contentPane.add(room);
 			room.updateBoard();
 		} catch (Exception e) {
