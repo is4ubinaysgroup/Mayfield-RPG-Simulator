@@ -54,6 +54,11 @@ moved leave and buy buttons slightly higher
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import src.Database;
@@ -195,7 +200,10 @@ public class Shop
 				if (!selectedItemName.equals("") && null != selectedItemName)
 				{
 					boolean completed = buyProductEngine();
-					if (completed == false) {lbl_error1.setText("insufficient coins or storage"); }
+					if (completed == false) {
+						lbl_error1.setText("insufficient coins or storage");
+						playSound(Database.getErrorTone());
+						}
 				} // if selected
 			}
 		});
@@ -282,7 +290,10 @@ public class Shop
 				if (!selectedItemName.equals("") && null != selectedItemName)
 				{
 					boolean completed = buyProductEngine();
-					if (completed == false) {lbl_error2.setText("insufficient coins or storage"); }
+					if (completed == false) {
+						lbl_error2.setText("insufficient coins or storage");
+						playSound(Database.getErrorTone());
+						}
 				} // if selected
 			}
 		});
@@ -368,7 +379,10 @@ public class Shop
 				if (!selectedItemName.equals("") && null != selectedItemName)
 				{
 					boolean completed = buyProductEngine();
-					if (completed == false) {lbl_error3.setText("insufficient coins or storage"); }
+					if (completed == false){
+						lbl_error3.setText("insufficient coins or storage");
+						playSound(Database.getErrorTone());
+						}
 				} // if selected
 			}
 		});
@@ -455,7 +469,10 @@ public class Shop
 				if (!selectedItemName.equals("") && null != selectedItemName)
 				{
 					boolean completed = buyWeaponEngine();
-					if (completed == false) {lbl_error4.setText("insufficient coins or already owned"); }
+					if (completed == false){
+						lbl_error4.setText("insufficient coins or already owned"); 
+						playSound(Database.getErrorTone());
+						}
 				} // if selected
 			}
 		});
@@ -498,6 +515,7 @@ public class Shop
 	public static void leaveEngine()
 	{
 		GUIExtension1.leaveShop(Map.getPane());
+		playSound(Database.getFootsteps());
 	} // leaveEngine method
 	
 	
@@ -571,6 +589,7 @@ public class Shop
 			
 			updateCoinsLabels();
 			Backpack.update();
+			playSound(Database.getCashRegister());
 			
 		} // if enough coins and capacity is not full
 			
@@ -599,6 +618,8 @@ public class Shop
 			updateCoinsLabels();
 			Backpack.update();
 			
+			playSound(Database.getCashRegister());
+			
 		} // if enough coins and capacity is not full
 		
 		return completed;
@@ -615,6 +636,18 @@ public class Shop
 		lbl_coins4.setText ("Coins: " + Integer.toString( MainExecutable.getPlayer().getCoins() ));
 		
 	} //updateCoinsLabels method
+	
+	
+	
+	public static void playSound (File file)
+	{
+		try {
+			Database.playSound(file);
+			
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		} // try-catch
+	} // playSound method
 	
 	
 } // Shop class

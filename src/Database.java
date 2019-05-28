@@ -222,6 +222,12 @@ public class Database {
 	
 	public final static File LOCKER_SOUND = new File ("src/resources/LockerSound.wav");
 	public static File getLockerSound () {return LOCKER_SOUND;}
+	
+	public final static File CASH_REGISTER_SOUND = new File ("src/resources/cashRegister.wav");
+	public static File getCashRegister () {return CASH_REGISTER_SOUND;}
+	
+	public final static File FOOTSTEPS = new File ("src/resources/footSteps.wav");
+	public static File getFootsteps () {return FOOTSTEPS;}
 
 
 

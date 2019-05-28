@@ -169,6 +169,7 @@ public class Map
 			public void mouseClicked(MouseEvent arg0) {
 				
 				GUIExtension1.switchToShop(Shop.getTabbedPane());
+				playSound(Database.getFootsteps());
 			}
 
 			// these have to be here for the code to work though they do nothing; too lazy to research more for now but please don't remove
