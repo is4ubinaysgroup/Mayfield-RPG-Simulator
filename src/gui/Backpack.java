@@ -54,6 +54,11 @@ edited equip button engine to use the switchWeapon method of Player
 // Mina 05-25 was using removeAll instead of removeAllItems
 
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import src.*;
 import src.items.Product;
@@ -176,16 +181,33 @@ public class Backpack
 		btn_Back.setBounds(428, 572, 115, 29);
 		backpackPane.add(btn_Back);
 		
-		btn_Back.addActionListener (new ActionListener ()   
+		btn_Back.addMouseListener (new MouseListener()   
 		{
-			public void actionPerformed (ActionEvent e)
+			public void mouseClicked(MouseEvent arg0)
 			{
 				lbl_error.setText(null);
+				playSound(Database.getSelectTone1());
 				
-				// if in battle switches to the battle pane; the player may choose to attack if they haven't used their turn
+				if (MatchExtension.run == true)
+				{
+					
+					// if in battle switches to the battle pane; the player may choose to attack if they haven't used their turn
 				
-				GUIExtension1.switchPane (Navigation.getPane());
+				}
+				else
+				{
+					GUIExtension1.switchPane (Navigation.getPane());
+				} // else out of battle
 			}
+			
+			public void mouseEntered(MouseEvent arg0)
+			{
+				playSound(Database.getHoverSound1());
+			}
+
+			public void mouseExited(MouseEvent arg0) {}
+			public void mousePressed(MouseEvent arg0) {}
+			public void mouseReleased(MouseEvent arg0) {}
 		});
 		
 	} // initGUI method
@@ -198,19 +220,28 @@ public class Backpack
 
 	public static void btn_EquipEngine()
 	{
-		if(comboB_weapons.getSelectedItem() != null && !comboB_weapons.getSelectedItem().equals("")) 
+		if(null != comboB_weapons.getSelectedItem()) 
 		{
 			lbl_error.setText(null);
 			String weaponName = (String) comboB_weapons.getSelectedItem();
 			Weapon weapon = Database.getWeapon (weaponName);
 
 			MainExecutable.getPlayer().switchWeapon (weapon);
-		
-		// equip completed... change turn if boss battle is happening and go to battle panel
+			playSound(Database.getLockerSound());
+
+			if (MatchExtension.run == true)
+			{
+
+				// go back to battle panel
+				
+				MatchExtension.turn = false;		
+			} // go back if a battle is happening
+
 		}
 		else
 		{
 			lbl_error.setText("Cannot equip nothing");
+			playSound(Database.getErrorTone());
 		}
 		update();
 	} // btn_EquipEngine method
@@ -220,7 +251,7 @@ public class Backpack
 	public static void btn_UseEngine()
 	{
 		boolean used = false;
-		if(comboB_products.getSelectedItem() != null && !comboB_weapons.getSelectedItem().equals(""))
+		if(null != comboB_products.getSelectedItem())
 		{
 			lbl_error.setText(null);
 			String productName = (String) comboB_products.getSelectedItem();
@@ -228,16 +259,24 @@ public class Backpack
 
 			used = Product.use(product);
 			if (used == false) {lbl_error.setText("using product error");}
-			else {
-
-				// use completed... change turn if boss battle is happening and go to battle panel
-
+			else
+			{
 				update();
+				playSound(Database.getDreamyMallet());
+				
+				if (MatchExtension.run == true)
+				{
+
+					// go back to battle panel
+					
+					MatchExtension.turn = false;
+				} // go back if a battle is happening
 			} // else
 		}
 		else
 		{
 			lbl_error.setText("Cannot use nothing");
+			playSound(Database.getErrorTone());
 		}
 		
 	} // btn_UseEngine method
@@ -286,5 +325,18 @@ public class Backpack
 		comboB_products.removeAllItems();
 		comboB_weapons.removeAllItems();
 	} // removeAll method
+	
+	
+	
+	public static void playSound (File file)
+	{
+		try {
+			Database.playSound(file);
+			
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		} // try-catch
+	} // playSound method
+	
 	
 } // Backpack class

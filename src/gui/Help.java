@@ -10,9 +10,8 @@ import javax.swing.*;
 Help panels displays advice and tips for the user.
 Version: 2
 Updated 05/10/2019 By Mina and Matthew
+Updated 05/27/19 by Zac
 */
-
-// Mina 05-23 shifted GUI components
 
 public class Help
 {
@@ -31,19 +30,21 @@ public class Help
 		// ------- label main help title -------
 		lbl_Title = new JLabel("help instructions");
 		lbl_Title.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
-		lbl_Title.setBounds(340, 51, 784, 64);
+		lbl_Title.setBounds(240, 51, 784, 64);
 		helpPane.add(lbl_Title);
 		
 		// -------- lbl contents ---------------
 		lbl_Content = new JLabel ("BLANK");
-		lbl_Content.setBounds (185, 167, 56, 16);
+		lbl_Content.setBounds (85, 167, 56, 16);
 		helpPane.add(lbl_Content);
 
 		
 		// ------- btn_Back -------
 		btn_Back = new JButton("Back");
-		btn_Back.setBounds(392, 624, 190, 80);
-
+		btn_Back.setBounds(292, 624, 190, 80);
+		btn_Back.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
+		btn_Back.setBackground(new Color(14, 1, 141));
+		btn_Back.setForeground(new Color(247, 221, 0));
 		btn_Back.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 

@@ -433,7 +433,7 @@ public class Room extends JPanel
 	}
 	/**
 	 * @param popupMenu the popupMenu to set
-	 */
+	 */  
 	public void setPopupMenu(JPopupMenu popupMenu) {
 		this.popupMenu = popupMenu;
 	}
@@ -441,4 +441,7 @@ public class Room extends JPanel
 	
 
 }
+<<<<<<< HEAD
 	
+=======
+>>>>>>> refs/remotes/origin/master
