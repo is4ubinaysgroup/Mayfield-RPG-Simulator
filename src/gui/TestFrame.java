@@ -17,21 +17,22 @@ public class TestFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void initGui(TestFrame frame) 
-	{
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public TestFrame() {
+<<<<<<< HEAD
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1000, 800);
+=======
 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 800);
 		
 		try {//(int x, int y,int width, int height, int north, int east, int south, int west, int enemyID
-			room = new Room(0,0,800,800,0,0,0,0,Room.GYMTEACHER);
+			room = new Room(3,3,3,3,Room.GYMTEACHER);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,11 +41,15 @@ public class TestFrame extends JFrame {
 		room.setBounds(0, 0, 800, 800);
 
 	
+>>>>>>> refs/remotes/origin/master
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
+<<<<<<< HEAD
+=======
 		contentPane.add(room);
 		
+>>>>>>> refs/remotes/origin/master
 		menu.setBounds(800, 0, 200, 800);
 		contentPane.add(menu);
 		
@@ -52,11 +57,17 @@ public class TestFrame extends JFrame {
 
 		
 		try {
+			room = new Room(3,3,3,3,Room.GYMTEACHER);
+			//room.setBounds(0, 0, 800, 800);
+			contentPane.add(room);
 			room.updateBoard();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
+	}
+}
+=======
 		
 		System.out.println("setting visible");
 		setVisible(true);
@@ -67,3 +78,4 @@ public class TestFrame extends JFrame {
 	
 	
 } // TestFrame class
+>>>>>>> refs/remotes/origin/master

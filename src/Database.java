@@ -103,6 +103,41 @@ public class Database {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
+		
+		public static BufferedImage readImg(Human human) throws Exception
+		{
+			return ImageIO.read(new File(human.getImagePath()));
+		}
+		
+		
+		
+		public static void LoadImages() throws Exception
+		{
+			imgCapacityUpgrade = readImg(capacityUpgrade);
+			imgCappuccino =readImg(cappuccino);
+			imgCoffee =readImg(coffee);
+			imgEspresso =readImg(espresso);
+			imgFootlongsub =readImg(footLongSub);
+			imgSoda = readImg(soda);
+			imgMcChicken =readImg(mcChicken);
+			imgOrangeJuice =readImg(orangeJuice);
+			imgRubberband =readImg(rubberband);
+			imgRuler =readImg(ruler); 
+			imgTimbits =readImg(timbits);
+			imgTylenol =readImg(tylenol);
+			MainMenuBackground =readImg("src/resources/Background.jpeg");
+			MapBackground =readImg("src/resources/background2.png");
+			imgClassroom =readImg("src/resources/room.jpg");
+			imgWalmart = readImg ("src/resources/walmart.jpg");
+			imgGymTeacher =readImg("src/resources/GymTeacher.png");
+			//imgBinay =readImg(binay);
+			imgHallMonitor =readImg("src/resources/HallMonitor.png");
+			//imgPlayer =readImg(MainExecutable.getPlayer());
+			
+		} // LoadImages method
+=======
+>>>>>>> refs/remotes/origin/master
 
 		LoadImages();
 	}//	LoadAssets method
