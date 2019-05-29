@@ -22,10 +22,8 @@ public class TestFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public TestFrame() {
-<<<<<<< HEAD
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 800);
-=======
 
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,15 +39,12 @@ public class TestFrame extends JFrame {
 		room.setBounds(0, 0, 800, 800);
 
 	
->>>>>>> refs/remotes/origin/master
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
-<<<<<<< HEAD
-=======
+
 		contentPane.add(room);
-		
->>>>>>> refs/remotes/origin/master
+
 		menu.setBounds(800, 0, 200, 800);
 		contentPane.add(menu);
 		
@@ -64,10 +59,6 @@ public class TestFrame extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-	}
-}
-=======
 		
 		System.out.println("setting visible");
 		setVisible(true);
@@ -78,4 +69,4 @@ public class TestFrame extends JFrame {
 	
 	
 } // TestFrame class
->>>>>>> refs/remotes/origin/master
+

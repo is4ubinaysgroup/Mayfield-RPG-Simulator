@@ -44,6 +44,7 @@ public class Room extends JPanel
 	private int enemy;
 	private Image enemyImg;
 	
+	private boolean showingMovement = false;
 	private int north = 0;
 	private int south = 0;
 	private int west = 0;
@@ -76,6 +77,7 @@ public class Room extends JPanel
 		this.south = south;
 		this.west = west;
 		this.enemy = enemyID;
+		
 
 		
 		if(getEnemy().getX()+west > 20-east || getEnemy().getX() < 0 ) 
@@ -202,6 +204,10 @@ public class Room extends JPanel
 		int range = human.getEquippedWeapon().getRange();
 		int npcX = human.getX();
 		int npcY = human.getY();
+		if(isShowingMovement()) 
+		{
+			range = Human.MOVEMENT;
+		}
 		
 		for(int x = npcX-range; x != npcX+range*2; x++) 
 		{
@@ -269,10 +275,19 @@ public class Room extends JPanel
 			Point location = this.popupLocation;
 			try 
 			{
-				MainExecutable.getPlayer().moveTo(location, false);
-				enemyTurn();
-				cleanBoard();
-				updateBoard();
+				if(isShowingMovement()) 
+				{
+					MainExecutable.getPlayer().moveTo(location, false);
+					enemyTurn();
+					cleanBoard();
+					updateBoard();
+
+				}
+				else 
+				{
+							//TODO
+				}
+			
 			}
 			catch(Exception e) 
 			{
@@ -438,10 +453,15 @@ public class Room extends JPanel
 		this.popupMenu = popupMenu;
 	}
 
+	public boolean isShowingMovement() {
+		return showingMovement;
+	}
+
+	public void setShowingMovement(boolean showingMovement) {
+		this.showingMovement = showingMovement;
+	}
+
 	
 
 }
-<<<<<<< HEAD
-	
-=======
->>>>>>> refs/remotes/origin/master
+
