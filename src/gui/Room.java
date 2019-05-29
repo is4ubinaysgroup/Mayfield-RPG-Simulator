@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -44,7 +45,7 @@ public class Room extends JPanel
 	private int enemy;
 	private Image enemyImg;
 	
-	private boolean showingMovement = false;
+	private boolean showingMovement = true;
 	private int north = 0;
 	private int south = 0;
 	private int west = 0;
@@ -52,7 +53,7 @@ public class Room extends JPanel
 	/**
 	 * Create the  frame.
 	 */
-	private JPanel board[][]=  new JPanel[20][20]; //labels
+	private ImageFrame board[][]=  new ImageFrame[20][20]; //labels
 	private JButton btn = new JButton();
 	private JPopupMenu popupMenu = new JPopupMenu();
 	
@@ -134,17 +135,18 @@ public class Room extends JPanel
 			for(int yPos = 0 + north; yPos != board.length - south; yPos++ ) 
 			{
 				//labels[i][yPos] = new JLabel("label["+i+"]["+yPos+"]");
-				board[xPos][yPos] = new JPanel();
-				board[xPos][yPos].setBackground(new Color(225,225,225,0));
-				board[xPos][yPos].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
-				board[xPos][yPos].setBounds(0+40*xPos, +40*yPos, 40, 40);
-				addPopup(this,board[xPos][yPos], popupMenu); 
-				add(board[xPos][yPos]);
+				this.board[xPos][yPos] = new ImageFrame(null);
+				this.board[xPos][yPos].setBackground(new Color(225,225,225,0));
+				this.board[xPos][yPos].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
+				this.board[xPos][yPos].setBounds(0+40*xPos, +40*yPos, 40, 40);
+				addPopup(this,this.board[xPos][yPos], popupMenu); 
+				add(this.board[xPos][yPos]);
 			}
 		}
 		
 		//Finally adding the background Image.
 		add(background);
+		setShowingMovement(true);
 		System.out.println("finished");
 	}
 	
@@ -175,12 +177,30 @@ public class Room extends JPanel
 			
 	}
 	
+	public void updateBoard() throws Exception // sets the panel to update to the ranges of both players and players
+	 {
+		System.out.println("Updating Board");
+		 draw(MainExecutable.getPlayer(),Color.BLUE, true);
+		 System.out.println("Updating Enemy");
+		 draw(getEnemy(), Color.BLACK, false);
+		 System.out.println("Updating complete");
+	 }
+	
 	protected void cleanBoard() 
 	{
-		for(int x = 20-this.west; x< 20-this.east; x++) 
-		{
-			for(int y = 20 -getNorth(); y< 20-getSouth(); y++) 
+		for(int x = 0 + getWest(); x != this.board.length - getEast(); x++) {
+		
+			for(int y = 0 + getNorth(); y != this.board.length - getSouth(); y++ ) 
 			{
+				if(isShowingMovement()) 
+				{
+					btn.setText("Move here");
+				}
+				else 
+				{
+					btn.setText("Attack here");
+				}
+				this.board[x][y].setImage(null);
 				this.board[x][y].setBackground(new Color(225,225,225,0));
 			}
 		}
@@ -200,7 +220,14 @@ public class Room extends JPanel
 		{
 			throw new Exception("Enemy Y position out of range:" + (20 - getEnemy().getY()) );
 		}
-
+		if(human.getX()+west > 20-east || human.getX() < 0 ) 
+		{
+			throw new Exception("human X position out of range:" + (20 - human.getX()) );
+		}
+		if(human.getY()+north > 20-south || human.getY() < 0) 
+		{
+			throw new Exception("human Y position out of range:" + (20 - human.getY()) );
+		}
 		int range = human.getEquippedWeapon().getRange();
 		int npcX = human.getX();
 		int npcY = human.getY();
@@ -217,56 +244,31 @@ public class Room extends JPanel
 				{
 					//System.out.println("Player:" + player +", x:" + x +", y:" + y);
 					popupMenu.getComponent().setVisible(player);
-					board[x][y].setBackground( mixColors(color, board[x][y].getBackground()));
+					if(this.board[x][y] != null)
+					{
+						this.board[x][y].setBackground( mixColors(color , board[x][y].getBackground()));
+					}
 				}
 			}
 		}
 		if(!player) 
 		{
-			board[npcX][npcY] = new JPanel() {
-
-				/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-				public void paint (Graphics g) 
-				{
-					g.drawImage(Database.getImgPlayer(), 0, 0, 40, 40, null);
-				}
-			};
-			board[npcX][npcY].setBackground(new Color(225,225,225,0));
-			board[npcX][npcY].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
-			board[npcX][npcY].setBounds(0+40*npcX, 0+40*npcY, 40, 40);
+			this.board[npcX][npcY] =new  ImageFrame( Database.getImgPlayer() );
+			this.board[npcX][npcY].setBackground(new Color(225,225,225,0));
+			this.board[npcX][npcY].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
+			this.board[npcX][npcY].setBounds(0+40*npcX, 0+40*npcY, 40, 40);
 		}
 		else 
-		{
-			board[npcX][npcY] = new JPanel() {
+		{	
+			this.board[npcX][npcY] =new  ImageFrame( Database.getImgGymTeacher() );
+			this.board[npcX][npcY].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
+			this.board[npcX][npcY].setBounds(0+40*npcX, 0+40*npcY, 40, 40);
+			this.board[npcX][npcY].setBackground(new Color(225,225,225,0));
 
-				/**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
-				public void paint (Graphics g) 
-				{
-					g.drawImage(Database.getImgGymTeacher(), 0, 0, 40, 40, null);
-				}
-			};
-			board[npcX][npcY].setBackground(new Color(225,225,225,0));
-			board[npcX][npcY].setFont(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 5));
-			board[npcX][npcY].setBounds(0+40*npcX, 0+40*npcY, 40, 40);
 		}
 
 
 	}
-
-	 public void updateBoard() throws Exception // sets the panel to update to the ranges of both players and players
-	 {
-		System.out.println("Updating Board");
-		 draw(MainExecutable.getPlayer(),Color.BLUE, true);
-		 System.out.println("Updating Enemy");
-		 draw(getEnemy(), Color.BLACK, false);
-		 System.out.println("Updating complete");
-	 }
 	 
 	protected void btnFunction() {
 		try 
@@ -426,7 +428,7 @@ public class Room extends JPanel
 	 * @param board the board to set
 	 */
 	public void setBoard(JPanel board[][]) {
-		this.board = board;
+		this.board = (ImageFrame[][]) board;
 	}
 	/**
 	 * @return the btn
@@ -459,9 +461,46 @@ public class Room extends JPanel
 
 	public void setShowingMovement(boolean showingMovement) {
 		this.showingMovement = showingMovement;
+		cleanBoard();
 	}
 
 	
 
 }
 
+
+
+class ImageFrame extends JPanel
+{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7535309559989379922L;
+	private BufferedImage image;
+	public ImageFrame(BufferedImage image) 
+	{
+		this.setImage(image);
+	}
+
+	/**
+	 * 
+	 */
+
+	public void paint (Graphics g) 
+	{
+		if(this.image != null) {
+		g.drawImage(getImage(), 0, 0, 40, 40, null);//TODO update to different boss and enemy
+		}
+	}
+
+	public BufferedImage getImage() {
+		return image;
+	}
+
+	public void setImage(BufferedImage image) {
+		this.image = image;
+	}
+
+
+}
