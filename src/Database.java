@@ -96,7 +96,7 @@ public class Database {
 	{
 		try 
 		{
-			read(files[0]);
+			//read(files[0]);
 		}
 		catch (Exception e) 
 		{
@@ -789,7 +789,7 @@ public class Database {
 	
 	// ------------------------------------------- npc Stuff -------------------------------------------
 
-	static int[] gymPos = {5, 5};
+	static int[] gymPos = {5, 7};
 	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(), gymPos);
 	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(), gymPos);
 	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),  gymPos );
