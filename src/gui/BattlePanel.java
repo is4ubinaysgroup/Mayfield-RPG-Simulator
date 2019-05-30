@@ -29,7 +29,7 @@ public class BattlePanel extends JPanel {
 	 */
 	public void initGui() {
 		try {
-			new Room(0,0,0,0, Room.GYMTEACHER);
+			new Room(2,0,2,0, Room.GYMTEACHER);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

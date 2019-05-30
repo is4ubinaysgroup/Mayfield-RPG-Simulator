@@ -180,7 +180,6 @@ public class Room extends JPanel
 	
 	protected void cleanBoard() 
 	{
-		/*
 			for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
 		{
 			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
@@ -196,7 +195,7 @@ public class Room extends JPanel
 				this.board[xPos][yPos] = new ImageFrame();
 			}
 		}
-		*/
+		
 	}
 	
 	private void draw(Human human, Color color, boolean player) throws Exception 
