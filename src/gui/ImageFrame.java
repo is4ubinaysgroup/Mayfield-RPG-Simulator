@@ -24,7 +24,7 @@ public class ImageFrame extends JPanel{
 	public ImageFrame(BufferedImage image) 
 	{
 		this.setImage(image);
-		this.setColor(new Color(225,225,44,40));
+		this.setColor(new Color(7,225,44,40));
 	}
 
 	/**

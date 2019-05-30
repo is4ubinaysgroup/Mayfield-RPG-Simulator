@@ -44,9 +44,9 @@ public class Room extends JPanel
 	 * Create the Variables
 	 **/
 	private Point popupLocation = new Point();
-	private int enemy;
+	private NonPlayer enemy;
 	
-	private boolean showingMovement = true;
+	private boolean showingMovement =false;
 	private int north = 0;
 	private int south = 0;
 	private int west = 0;
@@ -54,7 +54,7 @@ public class Room extends JPanel
 	/**
 	 * Create the  frame.
 	 */
-	private ImageFrame board[][]=  new ImageFrame[20][20]; //labels
+	private ImageFrame board[][]; //labels
 	private JButton btn = new JButton();
 	private JPopupMenu popupMenu = new JPopupMenu();
 	
@@ -73,22 +73,21 @@ public class Room extends JPanel
 	 */
 	public Room( int north, int east, int south, int west, int enemyID) throws Exception 
 	{
-
 		this.north = north;
 		this.east = east;
 		this.south = south;
 		this.west = west;
-		this.enemy = enemyID;
+		this.enemy = getEnemy(enemyID);
 		
 
 		
-		if(getEnemy().getX()+west > 20-east || getEnemy().getX() < 0 ) 
+		if(this.enemy.getX()+west > 20-east || this.enemy.getX() < 0 ) 
 		{
-			throw new Exception("Enemy X position out of range:" + (20 - getEnemy().getX()) );
+			throw new Exception("Enemy X position out of range:" + (20 - this.enemy.getX()) );
 		}
-		if(getEnemy().getY()+north > 20-south || getEnemy().getY() < 0) 
+		if(this.enemy.getY()+north > 20-south || this.enemy.getY() < 0) 
 		{
-			throw new Exception("Enemy Y position out of range:" + (20 - getEnemy().getY()) );
+			throw new Exception("Enemy Y position out of range:" + (20 - this.enemy.getY()) );
 		}
 		
 		/**
@@ -131,28 +130,26 @@ public class Room extends JPanel
 		 /**
 		  * placing Labels
 		  */
+		this.board = new ImageFrame[20 - (east+west)][ 20 - (south+north)] ;
 		for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
 		{
 			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
 			{//TODO
 				System.out.println("xPos:" + xPos + " yPos:" + yPos);
 				this.board[xPos][yPos] = new ImageFrame();
-				this.board[xPos][yPos].setBackground(new Color(225,225,225,0));
+				this.board[xPos][yPos].setBackground(new Color(225,225,34,40));
 				this.board[xPos][yPos].setBounds(0+40*east+40*xPos,0+40*south +40*yPos, 40, 40);
-				//addPopup(this,this.board[xPos][yPos], popupMenu); 
+				addPopup(this,this.board[xPos][yPos], popupMenu); 
 				add(this.board[xPos][yPos]);
 			}
-		}
-		
-		//Finally adding the background Image.
+		}		
 		add(background);
-		setShowingMovement(true);
 		System.out.println("finished");
 	}
 	
-	private NonPlayer getEnemy() throws Exception
+	private NonPlayer getEnemy(int enemyID) throws Exception
 	{
-		switch(this.enemy) 
+		switch(enemyID) 
 		{
 		case 0 : //Binay
 			return Database.binay;
@@ -165,23 +162,11 @@ public class Room extends JPanel
 		}
 	}
 	
-	private void enemyTurn() 
-	{
-		 try 
-		 {
-			getEnemy().runTurn();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-	}
-	
 	
 	protected void cleanBoard() 
 	{
 			for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
-		{
+			{
 			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
 			{
 				if(isShowingMovement()) 
@@ -192,7 +177,7 @@ public class Room extends JPanel
 				{
 					btn.setText("Attack here");
 				}
-				this.board[xPos][yPos] = new ImageFrame();
+				board[xPos][yPos].setBackground(new Color(225,225,225,0));
 			}
 		}
 		
@@ -204,23 +189,7 @@ public class Room extends JPanel
 		{
 			throw new Exception("Human contains no EquippedWeapon. ");
 		}
-		/* TODO
-		if(getEnemy().getX()+west > 20-east || getEnemy().getX() < 0 ) 
-		{
-			throw new Exception("Enemy X position out of range:" + (20 - getEnemy().getX()) );
-		}
-		if(getEnemy().getY()+north > 20-south || getEnemy().getY() < 0) 
-		{
-			throw new Exception("Enemy Y position out of range:" + (20 - getEnemy().getY()) );
-		}
-		if(human.getX()+west > 20-east || human.getX() < 0 ) 
-		{
-			throw new Exception("human X position out of range:" + (20 - human.getX()) );
-		}
-		if(human.getY()+north > 20-south || human.getY() < 0) 
-		{
-			throw new Exception("human Y position out of range:" + (20 - human.getY()) );
-		}*/
+
 		
 		int range = human.getEquippedWeapon().getRange();
 		int npcX = human.getX();
@@ -235,29 +204,36 @@ public class Room extends JPanel
 		{
 			for(int y = npcY-range; y != npcY+range*2; y++ ) 
 			{
-				if( (x>=0 && y>= 0) &&  (x <= 20-(getEast()+getWest()) && y<= 20-(getNorth() + getSouth())))
-				{
+				
 					System.out.println("Player:" + player +", x:" + x +", y:" + y);
 					popupMenu.getComponent().setVisible(player);
-					this.board[x][y].setBackground( mixColors(color , board[x][y].getBackground()));
-				}
+					try 
+					{
+						board[x][y] = new ImageFrame();
+						board[x][y].setBackground( mixColors(color, board[x][y].getBackground()));
+					}
+					catch(Exception e) 
+					{
+						e.printStackTrace();
+					}
 			}
 		}
 		
 		Rectangle rect = this.board[npcX][npcY].getBounds();
 
-		if(!player) 
+		if(player) 
 		{
-			this.board[npcX][npcY] =new  ImageFrame ( Database.getImgPlayer() );
-			this.board[npcX][npcY].setBounds(rect);
+			board[npcX][npcY] = new  ImageFrame ( Database.getImgPlayer() );
+			board[npcX][npcY].setBounds(rect);
+			board[npcX][npcY].repaint();
 		}
 		else 
 		{	
-			this.board[npcX][npcY] =new  ImageFrame( Database.getImgGymTeacher() );
+			this.board[npcX][npcY] =new  ImageFrame( Database.getImgBinay());
 			this.board[npcX][npcY].setBounds(rect);
+			board[npcX][npcY].repaint();
 
 		}
-
 
 	}
 	 
@@ -269,7 +245,7 @@ public class Room extends JPanel
 				if(isShowingMovement()) 
 				{
 					MainExecutable.getPlayer().moveTo(location, false);
-					enemyTurn();
+					///enemyTurn();
 					cleanBoard();
 					updateBoard();
 
@@ -290,33 +266,18 @@ public class Room extends JPanel
 	
 	public void updateBoard() throws Exception // sets the panel to update to the ranges of both players and players
 	 {
-		System.out.println("Updating Board");
 		 draw(MainExecutable.getPlayer(),Color.BLUE, true);
-		 System.out.println("Updating Enemy");
-		 draw(getEnemy(), Color.BLACK, false);
-		 System.out.println("Updating complete");
+		 draw(this.enemy, Color.BLACK, false);
 	 }
 	
 	private static Color mixColors(Color color1, Color color2)
 	{
-		if(!(color1 != null)) 
-		{
-			color1 = color2;
-		}
-		if(!(color2 != null)) 
-		{
-			color2 = color1;
-		}
-		if(!(color2 != null) && !(color1 != null)) 
-		{
-			return null;
-		}
-		float factor = /*Alpha factor ->*/90 / 255f;/* <-- 225 is completely invisible to the eye.*/
+		float factor = /*Alpha factor ->*/45 / 255f;/* <-- 225 is completely invisible to the eye.*/
 		int red = (int) (color1.getRed() * (1 - factor) + color2.getRed() * factor);
 		int green = (int) (color1.getGreen() * (1 - factor) + color2.getGreen() * factor);
 		int blue = (int) (color1.getBlue() * (1 - factor) + color2.getBlue() * factor);
-		//int alpha = (int) (color1.getAlpha() * (1 - factor) + color2.getAlpha() * factor);
-		return new Color(red, green, blue, 40);
+		int alpha = (int) (color1.getAlpha() * (1 - factor) + color2.getAlpha() * factor);
+		return new Color(red, green, blue, alpha);
 	}
 
 	private static void addPopup(Room room, Component component, final JPopupMenu popup) {
@@ -349,18 +310,6 @@ public class Room extends JPanel
 	 */
 	public void setPopupLocation(Point popupLocation) {
 		this.popupLocation = popupLocation;
-	}
-	/**
-	 * @return the enemy
-	 */
-	public int getEnemyID() {
-		return enemy;
-	}
-	/**
-	 * @param enemy the enemyID to set
-	 */
-	public void setEnemyID(int enemy) {
-		this.enemy = enemy;
 	}
 	/**
 	 * @return the north
