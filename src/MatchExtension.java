@@ -53,7 +53,7 @@ public class MatchExtension
 	
 	
 	
-	public static void endResult (NonPlayer boss, Boolean win) // win either needs to be set or passed
+	public static void endResult (NonPlayer boss, boolean win) // win either needs to be set or passed
 	{
 		
 		int level = MainExecutable.getPlayer().getLevel();
