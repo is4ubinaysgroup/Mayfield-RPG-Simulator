@@ -11,6 +11,7 @@ public class ImageFrame extends JPanel{
 	/**
 	 * 
 	 */
+	private Color defaultColor = new Color(209,	166,	228, 105);
 	private Color color;
 	private static final long serialVersionUID = 7535309559989379922L;
 	private BufferedImage image;
