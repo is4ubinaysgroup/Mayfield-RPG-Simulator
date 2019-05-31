@@ -62,12 +62,6 @@ public class TestFrame extends JFrame {
 		
 		System.out.println("setting visible");
 		setVisible(true);
-		try {
-			room.updateBoard();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		System.out.println("done");
 		
 	} // TestFrame constructor

@@ -46,7 +46,7 @@ public class Room extends JPanel
 	private Point popupLocation = new Point();
 	private NonPlayer enemy;
 	
-	private boolean showingMovement =false;
+	private boolean showingMovement =true;
 	private int north = 0;
 	private int south = 0;
 	private int west = 0;
@@ -56,6 +56,7 @@ public class Room extends JPanel
 	 */
 	private ImageFrame board[][]; //labels
 	private JButton btn = new JButton();
+	
 	private JPopupMenu popupMenu = new JPopupMenu();
 	
 	/**
@@ -79,13 +80,17 @@ public class Room extends JPanel
 		this.west = west;
 		this.enemy = getEnemy(enemyID);
 		
+		int[] position = {19-(east+west),19-(south+north)};
+		this.enemy.setPosition(position);
+		int[] playerPosition = {19-(east+west),19-(south+north)};
+		MainExecutable.getPlayer().setPosition(playerPosition);
 
 		
-		if(this.enemy.getX()+west > 20-east || this.enemy.getX() < 0 ) 
+		if(this.enemy.getX() > 20-(east+west) || this.enemy.getX() < 0 ) 
 		{
 			throw new Exception("Enemy X position out of range:" + (20 - this.enemy.getX()) );
 		}
-		if(this.enemy.getY()+north > 20-south || this.enemy.getY() < 0) 
+		if(this.enemy.getY() > 20-(south+north) || this.enemy.getY() < 0) 
 		{
 			throw new Exception("Enemy Y position out of range:" + (20 - this.enemy.getY()) );
 		}
@@ -131,13 +136,14 @@ public class Room extends JPanel
 		  * placing Labels
 		  */
 		this.board = new ImageFrame[20 - (east+west)][ 20 - (south+north)] ;
+		
 		for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
 		{
 			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
 			{//TODO
 				System.out.println("xPos:" + xPos + " yPos:" + yPos);
 				this.board[xPos][yPos] = new ImageFrame();
-				this.board[xPos][yPos].setBackground(new Color(225,225,34,40));
+				this.board[xPos][yPos].setBackground(new Color(55,55,55,40));
 				this.board[xPos][yPos].setBounds(0+40*east+40*xPos,0+40*south +40*yPos, 40, 40);
 				addPopup(this,this.board[xPos][yPos], popupMenu); 
 				add(this.board[xPos][yPos]);
@@ -190,50 +196,40 @@ public class Room extends JPanel
 			throw new Exception("Human contains no EquippedWeapon. ");
 		}
 
-		
+		popupMenu.getComponent().setVisible(false);
 		int range = human.getEquippedWeapon().getRange();
 		int npcX = human.getX();
 		int npcY = human.getY();
-		
 		if(isShowingMovement()) 
 		{
 			range = Human.MOVEMENT;
 		}
 		
-		for(int x = npcX-range; x != npcX+range*2; x++) 
+		for(int xPos = npcX-range; xPos!= npcX+range*2; xPos++) 
 		{
-			for(int y = npcY-range; y != npcY+range*2; y++ ) 
+			for(int yPos = npcY-range; yPos != npcY+range*2; yPos++ ) 
 			{
-				
-					System.out.println("Player:" + player +", x:" + x +", y:" + y);
-					popupMenu.getComponent().setVisible(player);
-					try 
-					{
-						board[x][y] = new ImageFrame();
-						board[x][y].setBackground( mixColors(color, board[x][y].getBackground()));
-					}
-					catch(Exception e) 
-					{
-						e.printStackTrace();
-					}
+				if(xPos >= 20-(getWest()+getEast()) || yPos>= 20-(getNorth()+getEast()) || yPos < 0 || xPos <0) 
+				{
+					System.out.println("Cannot place title at: Player:" + player +", x:" + xPos +", y:" + yPos);
+				}
+				else 
+				{
+					System.out.println("Player:" + player +", x:" + xPos +", y:" + yPos);
+					board[xPos][yPos].setBackground( mixColors(color, board[xPos][yPos].getColor() ));
+				}
 			}
 		}
-		
-		Rectangle rect = this.board[npcX][npcY].getBounds();
-
 		if(player) 
 		{
-			board[npcX][npcY] = new  ImageFrame ( Database.getImgPlayer() );
-			board[npcX][npcY].setBounds(rect);
-			board[npcX][npcY].repaint();
+			//board[npcX][npcY].setImage(Database.getImgPlayer() );
 		}
 		else 
 		{	
-			this.board[npcX][npcY] =new  ImageFrame( Database.getImgBinay());
-			this.board[npcX][npcY].setBounds(rect);
-			board[npcX][npcY].repaint();
+			//board[npcX][npcY].setImage(Database.getImgGymTeacher());
 
 		}
+		popupMenu.getComponent().setVisible(true);//done
 
 	}
 	 
