@@ -20,15 +20,20 @@ public class BattlePanel extends JPanel {
 		add(room0);
 		menu.setBounds(800, 0, 200, 800);
 		add(menu);
-		room0.updatePlayer();
 	}
 
 	private CombatMenu menu = new CombatMenu();
-	private Room room0 = new Room(Database.gymTeacher);
+	private Room room0;
 	/**
 	 * Launch the application.
 	 */
 	public void initGui() {
+		try {
+			new Room(2,0,2,0, Room.GYMTEACHER);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//TODO
 	}
 
