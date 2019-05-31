@@ -152,6 +152,7 @@ public class Room extends JPanel
 		}		
 		add(background);
 		System.out.println("finished");
+		updateBoard();
 	}
 	
 	private NonPlayer getEnemy(int enemyID) throws Exception
@@ -185,6 +186,7 @@ public class Room extends JPanel
 					btn.setText("Attack here");
 				}
 				board[xPos][yPos].setColor(new Color(225,225,225,0));
+				board[xPos][yPos].removeImage();
 			}
 		}
 		
@@ -218,6 +220,7 @@ public class Room extends JPanel
 				{
 					System.out.println("Player:" + player +", x:" + xPos +", y:" + yPos);
 					board[xPos][yPos].setColor( mixColors(color, board[xPos][yPos].getColor() ));
+					board[xPos][yPos].removeImage();
 				}
 			}
 		}

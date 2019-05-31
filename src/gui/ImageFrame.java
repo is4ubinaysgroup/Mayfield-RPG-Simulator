@@ -34,7 +34,16 @@ public class ImageFrame extends JPanel{
 	/**
 	 * 
 	 */
-
+	public void paint(Graphics g) 
+	{
+		g.setColor(getColor());
+		g.fillRect(0, 0, 40, 40);
+		if(this.hasImage) 
+		{
+		g.drawImage(getImage(), 0, 0, 40, 40, null);//TODO update to different boss and enemythis.getGraphics();
+		}
+	}
+	
 	public BufferedImage getImage()
 	{
 		return image;
@@ -43,11 +52,15 @@ public class ImageFrame extends JPanel{
 	public void setImage(BufferedImage image) 
 	{
 		this.hasImage = true;
-		this.color = null;
 		this.image = image;
-		getGraphics().drawImage(getImage(), 0, 0, 40, 40, null);//TODO update to different boss and enemythis.getGraphics();
 	}
 
+	public void removeImage() 
+	{
+		this.image = null;
+		this.hasImage = false;
+	}
+	
 	public Color getColor() 
 	{
 		return color;
@@ -55,8 +68,6 @@ public class ImageFrame extends JPanel{
 
 	public void setColor(Color color) 
 	{
-		this.image = null;
-		this.hasImage = false;
 		this.color = color;
 		setBackground(color);
 	}
