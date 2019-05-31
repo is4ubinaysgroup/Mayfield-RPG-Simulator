@@ -60,7 +60,8 @@ public class Room extends JPanel
 	private JPopupMenu popupMenu = new JPopupMenu();
 	
 	/**
-	 * 
+	 * 					System.out.println("Player X:" + MainExecutable.getPlayer().getX()+", Player Y:"+ MainExecutable.getPlayer().getY());
+
 	 * @param x
 	 * @param y
 	 * @param width
@@ -82,7 +83,7 @@ public class Room extends JPanel
 		
 		int[] position = {19-(east+west),19-(south+north)};
 		this.enemy.setPosition(position);
-		int[] playerPosition = {19-(east+west),19-(south+north)};
+		int[] playerPosition = {0,0};
 		MainExecutable.getPlayer().setPosition(playerPosition);
 
 		
@@ -143,7 +144,7 @@ public class Room extends JPanel
 			{//TODO
 				System.out.println("xPos:" + xPos + " yPos:" + yPos);
 				this.board[xPos][yPos] = new ImageFrame();
-				this.board[xPos][yPos].setBackground(new Color(55,55,55,40));
+				this.board[xPos][yPos].setColor(new Color(55,55,55,40));
 				this.board[xPos][yPos].setBounds(0+40*east+40*xPos,0+40*south +40*yPos, 40, 40);
 				addPopup(this,this.board[xPos][yPos], popupMenu); 
 				add(this.board[xPos][yPos]);
@@ -183,7 +184,7 @@ public class Room extends JPanel
 				{
 					btn.setText("Attack here");
 				}
-				board[xPos][yPos].setBackground(new Color(225,225,225,0));
+				board[xPos][yPos].setColor(new Color(225,225,225,0));
 			}
 		}
 		
@@ -205,28 +206,28 @@ public class Room extends JPanel
 			range = Human.MOVEMENT;
 		}
 		
-		for(int xPos = npcX-range; xPos!= npcX+range*2; xPos++) 
+		for(int xPos = npcX-range; xPos!= npcX+range+1; xPos++) 
 		{
-			for(int yPos = npcY-range; yPos != npcY+range*2; yPos++ ) 
+			for(int yPos = npcY+range; yPos != npcY-range-1; yPos-- ) 
 			{
-				if(xPos >= 20-(getWest()+getEast()) || yPos>= 20-(getNorth()+getEast()) || yPos < 0 || xPos <0) 
+				if(xPos >= 20-(getWest()+getEast()) || yPos>= 20-(getNorth()+getSouth()) || yPos < 0 || xPos <0) 
 				{
-					System.out.println("Cannot place title at: Player:" + player +", x:" + xPos +", y:" + yPos);
+					System.out.println("Cannot place tile at: Player:" + player +", x:" + xPos +", y:" + yPos);
 				}
 				else 
 				{
 					System.out.println("Player:" + player +", x:" + xPos +", y:" + yPos);
-					board[xPos][yPos].setBackground( mixColors(color, board[xPos][yPos].getColor() ));
+					board[xPos][yPos].setColor( mixColors(color, board[xPos][yPos].getColor() ));
 				}
 			}
 		}
 		if(player) 
 		{
-			//board[npcX][npcY].setImage(Database.getImgPlayer() );
+			board[npcX][npcY].setImage(Database.getImgPlayer() );
 		}
 		else 
 		{	
-			//board[npcX][npcY].setImage(Database.getImgGymTeacher());
+			board[npcX][npcY].setImage(Database.getImgGymTeacher());
 
 		}
 		popupMenu.getComponent().setVisible(true);//done
@@ -240,11 +241,15 @@ public class Room extends JPanel
 			Point location = this.popupLocation;
 				if(isShowingMovement()) 
 				{
+					//System.out.println("player x:"+MainExecutable.getPlayer().getX()+" player y:"+MainExecutable.getPlayer().getY());
 					MainExecutable.getPlayer().moveTo(location, false);
 					///enemyTurn();
 					cleanBoard();
 					updateBoard();
-
+/*
+ * 
+ * 
+ */
 				}
 				else 
 				{
@@ -289,7 +294,10 @@ public class Room extends JPanel
 				}
 			}
 			private void showMenu(MouseEvent e) {
-				room.popupLocation.setLocation(component.getX()/(room.getWidth()/20),component.getY()/(room.getHeight()/20));
+				System.out.println("x:"+component.getX()/40+" y:"+component.getY()/40);
+				//this.board[xPos][yPos].setBounds(0+40*east+40*xPos,0+40*south +40*yPos, 40, 40);
+
+				room.popupLocation.setLocation((component.getX() - (room.getEast()*40))/40, (component.getY()-(room.getSouth()*40))/40);//TODO
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		});
