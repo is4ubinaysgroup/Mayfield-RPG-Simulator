@@ -80,12 +80,16 @@ UML
 		this.setEquippedWeapon(weapon);
 	}
 	
-	public NonPlayer(String name,Boolean isBoss, Weapon weapon, Point pos) 
+	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos) 
 	{
 		this.name = name;
 		this.setIsBoss(isBoss);
 		this.setEquippedWeapon(weapon);
 		this.setPosition(pos);
+		this.maxDefense = maxDefense;
+		this.defense = maxDefense;
+		this.maxHealth = maxHealth;
+		this.health = maxHealth;
 	}
 	
 	public Boolean getIsBoss() {
@@ -363,23 +367,7 @@ UML
 		}// creates an array
 		return buffer;
 	}
-	
-	public void attack(Human human) 
-	{
-		//Cuts damage from armor then if there is more damage it cuts to health. 
-		//also adds critical change 
-		int initialDamage =this.getEquippedWeapon().getDamage();
-		if (Math.random() <= this.equippedWeapon.getCriticalChance()) 
-		{
-			initialDamage= initialDamage*2;
-		}
-		int damageToHealth = human.getDefense() - initialDamage;
-		if(damageToHealth < 0) 
-		{
-			human.setDefense(0);
-			human.setHealth(human.getHealth() - damageToHealth);
-		}
-	}
+
 	
 	public void runAndHit(Human human) {//added by carson. I will add this to UML. soon..
 		// TODO Auto-generated method stub

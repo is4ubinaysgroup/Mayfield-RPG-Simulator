@@ -29,10 +29,10 @@ public class CombatMenu extends JPanel {
 	 */
 	private static final long serialVersionUID = 8116636656495531817L;
 	private JList<String> dialog;
-	private static JProgressBar enemyHealth;
-	private static JProgressBar enemyDefense;
-	private static JProgressBar playerHealth;
-	private static JProgressBar playerDefense;
+	private static JProgressBar enemyHealth= new JProgressBar();
+	private static JProgressBar enemyDefense= new JProgressBar();
+	private static JProgressBar playerHealth= new JProgressBar();
+	private static JProgressBar playerDefense= new JProgressBar();
 	private static boolean mode = false;
 	//private JprogressBar
 
@@ -70,7 +70,6 @@ public class CombatMenu extends JPanel {
 		add(lblHealth);
 		
 		
-		playerHealth = new JProgressBar();
 		playerHealth.setBounds(90, 80, 100, 16);
 		add(playerHealth);
 		
@@ -81,7 +80,6 @@ public class CombatMenu extends JPanel {
 		lblDefense.setBounds(12, 118, 80, 16);
 		add(lblDefense);
 		
-		playerDefense = new JProgressBar();
 		playerDefense.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		playerDefense.setBounds(90, 118, 100, 16);
 		add(playerDefense);
@@ -158,12 +156,10 @@ public class CombatMenu extends JPanel {
 		lblenemyDefense.setBounds(12, 572, 80, 16);
 		add(lblenemyDefense);
 		
-		enemyHealth = new JProgressBar();
 		enemyHealth.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		enemyHealth.setBounds(90, 545, 100, 16);
 		add(enemyHealth);
 		
-		enemyDefense = new JProgressBar();
 		enemyDefense.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		enemyDefense.setBounds(90, 572, 100, 16);
 		add(enemyDefense);
@@ -196,17 +192,26 @@ public class CombatMenu extends JPanel {
 	
 	public static void update(NonPlayer enemy) 
 	{
-		enemyHealth = new JProgressBar(enemy.getHealth(),enemy.getMaxHealth());
-		enemyHealth.setToolTipText("Enemy Health" + enemy.getHealth());
+		enemyHealth.setMinimum(0);
+		enemyHealth.setMaximum(enemy.getMaxHealth());
+		enemyHealth.setValue( enemy.getHealth());
+		enemyHealth.setToolTipText("Enemy Health is" + enemy.getHealth());
 		
-		enemyDefense = new JProgressBar(enemy.getDefense(),enemy.getMaxDefense());
-		enemyDefense.setToolTipText("Enemy Defense" + enemy.getDefense());
 		
-		playerHealth = new JProgressBar(MainExecutable.getPlayer().getHealth(), MainExecutable.getPlayer().getMaxHealth());
-		playerHealth.setToolTipText("Your Health");
+		enemyDefense.setMinimum(0);
+		enemyDefense.setMaximum(enemy.getMaxDefense());
+		enemyDefense.setValue(enemy.getDefense());
+		enemyDefense.setToolTipText("Enemy Defense is" + enemy.getDefense());
 		
-		playerDefense = new JProgressBar(MainExecutable.getPlayer().getDefense(), MainExecutable.getPlayer().getMaxDefense());
-		playerDefense.setToolTipText("Your Defense");
+		playerHealth.setMinimum(0);
+		playerHealth.setMaximum(MainExecutable.getPlayer().getMaxHealth());
+		playerHealth.setValue(MainExecutable.getPlayer().getHealth());
+		playerHealth.setToolTipText("Your Health is " + MainExecutable.getPlayer().getHealth());
+		
+		playerDefense.setMinimum(0);
+		playerDefense.setMaximum(MainExecutable.getPlayer().getMaxDefense());
+		playerDefense.setValue(MainExecutable.getPlayer().getDefense());
+		playerDefense.setToolTipText("Your Defense is " + MainExecutable.getPlayer().getDefense());
 	}
 	
 	public static void modeMethod(boolean mode ) {

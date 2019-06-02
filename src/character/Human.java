@@ -148,7 +148,19 @@ public class Human
 	
 	public void attack(Human human) 
 	{
-	//TODO
+		//Cuts damage from armor then if there is more damage it cuts to health. 
+		//also adds critical change 
+		int initialDamage =this.getEquippedWeapon().getDamage();
+		if (Math.random() <= this.equippedWeapon.getCriticalChance()) 
+		{
+			initialDamage= initialDamage*2;
+		}
+		int damageToHealth = human.getDefense() - initialDamage;
+		if(damageToHealth < 0) 
+		{
+			human.setDefense(0);
+			human.setHealth(human.getHealth() - damageToHealth);
+		}
 	}
 	
 	public void recoverShield() //sets to Max Defense
