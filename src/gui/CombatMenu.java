@@ -109,7 +109,7 @@ public class CombatMenu extends JPanel {
 		btnMode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				if(mode == false) 
+				if(mode) 
 				{
 					btnMode.setText("MOVE");
 				}
@@ -134,6 +134,13 @@ public class CombatMenu extends JPanel {
 		add(btnBackpack);
 		
 		JButton btnEndTurn = new JButton("END TURN");
+		btnEndTurn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				BattlePanel.getRoom().skipTurn();
+			}});
 		btnEndTurn.setForeground(new Color(247, 221, 0));
 		btnEndTurn.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnEndTurn.setBackground(new Color(14, 1, 141));

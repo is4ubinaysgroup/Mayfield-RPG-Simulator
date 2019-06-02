@@ -150,16 +150,25 @@ public class Human
 	{
 		//Cuts damage from armor then if there is more damage it cuts to health. 
 		//also adds critical change 
-		int initialDamage =this.getEquippedWeapon().getDamage();
+		int initialDamage = this.getEquippedWeapon().getDamage();
 		if (Math.random() <= this.equippedWeapon.getCriticalChance()) 
 		{
 			initialDamage= initialDamage*2;
 		}
 		int damageToHealth = human.getDefense() - initialDamage;
-		if(damageToHealth < 0) 
+		if(initialDamage == 0) 
+		{
+			//do Nothing
+		}
+		else if(damageToHealth <= 0) 
 		{
 			human.setDefense(0);
 			human.setHealth(human.getHealth() - damageToHealth);
+		}
+		
+		else 
+		{
+			human.setDefense(damageToHealth);
 		}
 	}
 	
@@ -226,8 +235,9 @@ public class Human
 	}
 	
 	public boolean inRangeOf(Human human) {//if it is in the range of this humans weapons it returns true
-		if((human.getX() + human.getEquippedWeapon().getRange() > getX() && getX() > human.getX() - human.getEquippedWeapon().getRange() ) &&
-				(human.getY() + human.getEquippedWeapon().getRange() > getY() && getY() < human.getY() - human.getEquippedWeapon().getRange()) )
+		int changeInX = human.getX() - getX();
+		int changeInY = human.getY() - getY();
+		if(Math.abs(changeInX) <= human.getEquippedWeapon().getRange() && Math.abs(changeInY) <= human.getEquippedWeapon().getRange()  ) //can move here with no issues
 		{
 			return true;
 		}

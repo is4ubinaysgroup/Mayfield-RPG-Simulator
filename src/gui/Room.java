@@ -43,6 +43,8 @@ public class Room extends JPanel
 	/**
 	 * Create the Variables
 	 **/
+	private boolean attacked = false;
+	private boolean moved = false;
 	private Point popupLocation = new Point();
 	private NonPlayer enemy;
 	private boolean showingMovement =true;//if true this will show movement if false this will show range.
@@ -228,52 +230,95 @@ public class Room extends JPanel
 				}
 			}
 		}
-		if(player) 
-		{
-			board[npcX][npcY].setImage(Database.getImgPlayer() );
-		}
-		else 
-		{	
-			board[npcX][npcY].setImage(Database.getImgGymTeacher());
-
-		}
 		popupMenu.getComponent().setVisible(true);//done
 
 	}
 	 
 	protected void btnFunction() {
-		try 
+		Point location = this.popupLocation;
+		if(isShowingMovement() && hasMoved() == false) 
 		{
-				Point location = this.popupLocation;
-				if(isShowingMovement()) 
-				{
-					MainExecutable.getPlayer().moveTo(location, false);
-					cleanBoard();
-					updateBoard();
-/*
- * 
- * 
- */
-				}
-				else 
+			try 
+			{
+				MainExecutable.getPlayer().moveTo(location, false);
+				setMoved(true);
+			}
+			catch(Exception e) 
+			{
+				e.printStackTrace();
+			}
+
+			cleanBoard();
+			updateBoard();
+			/*
+			 * 
+			 * 
+			 */
+		}
+		else if(isShowingMovement() && hasMoved() == true) 
+		{
+			try 
+			{
+				throw new Exception("Already moved");
+			}
+			catch(Exception e) 
+			{
+				e.printStackTrace();
+			}//TODO
+		}
+		else if(hasAttacked() == false)
+		{
+			if(this.enemy.inRangeOf(MainExecutable.getPlayer())) 
+			{
+
+				try 
 				{
 					MainExecutable.getPlayer().attack(this.enemy);
-					cleanBoard();
-					updateBoard();	//TODO
-				}
 
+					setAttacked(true);
+				}
+				catch(Exception e) 
+				{
+					e.printStackTrace();
+				}
+				cleanBoard();
+				updateBoard();	//TODO
+			}
+			else 
+			{
+				try 
+				{
+					throw new Exception("not in range");
+				}
+				catch(Exception e) 
+				{
+					e.printStackTrace();//TODO
+				}
+			}
 		}
-		catch(Exception e) 
+		else 
 		{
-			e.printStackTrace();
+		
+			try {
+				enemy.runTurn();
+				setAttacked(false);
+				setMoved(false);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 
 	}
 	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	 {
-		 draw(MainExecutable.getPlayer(),Color.BLUE, true);
 		 draw(this.enemy, Color.BLACK, false);
+		 draw(MainExecutable.getPlayer(),Color.BLUE, true);
+		 
+			board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getImgGymTeacher());
+			board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
 		 if(isShowingMovement()) 
 		 {
 			 this.btn.setText("Move here");
@@ -283,12 +328,13 @@ public class Room extends JPanel
 			 this.btn.setText("Attack here");
 		 }
 		 CombatMenu.update(this.enemy); 
+		 
 		
 	 }
 	
 	private static Color mixColors(Color color1, Color color2)
 	{
-		float factor = /*Alpha factor ->*/45 / 255f;/* <-- 225 is completely invisible to the eye.*/
+		float factor = /*Alpha factor ->*/130 / 255f;/* <-- 225 is completely invisible to the eye.*/
 		int red = (int) (color1.getRed() * (1 - factor) + color2.getRed() * factor);
 		int green = (int) (color1.getGreen() * (1 - factor) + color2.getGreen() * factor);
 		int blue = (int) (color1.getBlue() * (1 - factor) + color2.getBlue() * factor);
@@ -427,6 +473,47 @@ public class Room extends JPanel
 		cleanBoard();
 		updateBoard();
 		this.setVisible(true);
+	}
+
+	/**
+	 * @return the attacked
+	 */
+	public boolean hasAttacked() {
+		return attacked;
+	}
+
+	/**
+	 * @param attacked the attacked to set
+	 */
+	public void setAttacked(boolean attacked) {
+		this.attacked = attacked;
+	}
+
+	/**
+	 * @return the moved
+	 */
+	public boolean hasMoved() {
+		return moved;
+	}
+
+	/**
+	 * @param moved the moved to set
+	 */
+	public void setMoved(boolean moved) {
+		this.moved = moved;
+	}
+
+	public void skipTurn() {
+
+		try {
+			enemy.runTurn();
+			setAttacked(false);
+			setMoved(false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	
