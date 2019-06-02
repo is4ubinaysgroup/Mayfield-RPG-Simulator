@@ -1,5 +1,7 @@
 package src.character;
 
+import java.awt.Point;
+
 import src.gui.Backpack;
 import src.items.Product;
 import src.items.Weapon;
@@ -33,7 +35,7 @@ public class Player extends Human {
 	
 	// ------------------------------------------------ object fields ------------------------------------------------
 
-	private int level;
+	private int level = 0;
 	private int coins;
 	
 	private int numProducts;
@@ -49,7 +51,7 @@ public class Player extends Human {
 
 	public Player() {} // default constructor
 	public Player(int health, int defense, int maxDefense, int maxHealth, Weapon equippedWeapon, String imagePath,
-					int [] position, 
+					Point position, 
 					int coins, int level, int numProducts, int numWeapons, int productCapacity)
 	{
 		this.setHealth (health);

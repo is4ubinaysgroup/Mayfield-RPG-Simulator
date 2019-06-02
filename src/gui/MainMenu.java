@@ -105,7 +105,7 @@ public class MainMenu
 				else
 				{
 					// start tutorial
-					
+					tutorial();
 				} // else start tutorial
 				
 				playSound(Database.getSelectTone1());
@@ -230,6 +230,14 @@ public class MainMenu
 	
 	
 	
+	protected static void tutorial() {
+		BattlePanel tutorialMode = new BattlePanel();
+		GUIExtension1.switchPane (tutorialMode);
+		tutorialMode.initGui();
+	}
+
+
+
 	public static JPanel getPane() {return mainMenuPane; } //getPane method
 	
 	

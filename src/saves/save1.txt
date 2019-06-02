@@ -5,7 +5,7 @@
 Pencil-1-1-0.20-0-0
 src/resources/playerSprite.png
 10
-1
+0
 0
 0
 10

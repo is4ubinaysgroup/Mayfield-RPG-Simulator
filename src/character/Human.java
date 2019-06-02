@@ -59,7 +59,7 @@ public class Human
 	protected int maxHealth;
 	protected Weapon equippedWeapon;
 	protected String imagePath;
-	private int[] position = new int[2];
+	private Point position = new Point(0,0);
 	
 	/*
 	 //We will move as close as we can to the position
@@ -132,6 +132,11 @@ public class Human
 		}
 	}
 	
+	public void attack(Human human) 
+	{
+	//TODO
+	}
+	
 	public void recoverShield() //sets to Max Defense
 	{
 		setDefense(getMaxDefense());
@@ -155,15 +160,15 @@ public class Human
 	public void setImagePath (String imagePath) {this.imagePath = imagePath;}
 	public String getImagePath () {return this.imagePath;}
 	
-	public int[] getPosition() {
+	public Point getPosition() {
 		return position;
 	}
-	public void setPosition(int[] position) {
+	public void setPosition(Point position) {
 		this.position = position;
 	}
 	
 	public int getY() {
-		return this.position[1];
+		return this.position.y;
 	}
 	
 	public void setY(int y) {
@@ -175,11 +180,11 @@ public class Human
 		{
 			y = 20;
 		}
-		this.position[1] = y;
+		this.position.setLocation(this.position.getX(), y);
 	}
 	
 	public int getX() {
-		return this.position[0];
+		return (int) this.position.getX();
 	}
 	
 	public void setX(int x) {
@@ -191,7 +196,7 @@ public class Human
 		{
 			x = 20;
 		}
-		this.position[0] = x;
+		this.position.setLocation(x,this.position.getY());
 	}
 	
 	public boolean inRangeOf(Human human) {//if it is in the range of this humans weapons it returns true

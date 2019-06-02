@@ -45,8 +45,7 @@ public class Room extends JPanel
 	 **/
 	private Point popupLocation = new Point();
 	private NonPlayer enemy;
-	
-	private boolean showingMovement =true;
+	private boolean showingMovement =true;//if true this will show movement if false this will show range.
 	private int north = 0;
 	private int south = 0;
 	private int west = 0;
@@ -73,28 +72,25 @@ public class Room extends JPanel
 	 * @param enemyID
 	 * @throws Exception
 	 */
-	public Room( int north, int east, int south, int west, int enemyID) throws Exception 
+	public Room( int north, int east, int south, int west, int enemyID)
 	{
 		this.north = north;
 		this.east = east;
 		this.south = south;
 		this.west = west;
-		this.enemy = getEnemy(enemyID);
 		
-		int[] position = {19-(east+west),19-(south+north)};
-		this.enemy.setPosition(position);
-		int[] playerPosition = {0,0};
-		MainExecutable.getPlayer().setPosition(playerPosition);
-
 		
-		if(this.enemy.getX() > 20-(east+west) || this.enemy.getX() < 0 ) 
+		
+		try 
 		{
-			throw new Exception("Enemy X position out of range:" + (20 - this.enemy.getX()) );
+			this.enemy = getEnemy(enemyID);
+		} catch (Exception e) 
+		{// TODO There is no valid enemy
+			e.printStackTrace();
 		}
-		if(this.enemy.getY() > 20-(south+north) || this.enemy.getY() < 0) 
-		{
-			throw new Exception("Enemy Y position out of range:" + (20 - this.enemy.getY()) );
-		}
+		
+		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
+		MainExecutable.getPlayer().setPosition(new Point(0,0));
 		
 		/**
 		 * JPanel
@@ -104,13 +100,15 @@ public class Room extends JPanel
 			/**
 			 * 
 			 */
+			
 			private static final long serialVersionUID = -6563003679240602762L;
-
+			
+			
+			
 			public void paint(Graphics g) 
 			{
-
-					g.drawImage(Database.getBackground(), 0, 0, 800, 800, null);//TODO
 				
+					g.drawImage(Database.getBackground(), 0, 0, 800, 800, null);//TODO
 			}
 		};
 		background.setBounds(0, 0, 800, 800);
@@ -122,8 +120,7 @@ public class Room extends JPanel
 		setBounds(0, 0, 800, 800);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
-		popupMenu.add(btn);
-		btn.addActionListener(new ActionListener() {
+		this.btn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
@@ -136,13 +133,13 @@ public class Room extends JPanel
 		 /**
 		  * placing Labels
 		  */
+		popupMenu.add(this.btn);
 		this.board = new ImageFrame[20 - (east+west)][ 20 - (south+north)] ;
 		
 		for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
 		{
 			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
 			{//TODO
-				System.out.println("xPos:" + xPos + " yPos:" + yPos);
 				this.board[xPos][yPos] = new ImageFrame();
 				this.board[xPos][yPos].setColor(new Color(55,55,55,40));
 				this.board[xPos][yPos].setBounds(0+40*east+40*xPos,0+40*south +40*yPos, 40, 40);
@@ -152,10 +149,23 @@ public class Room extends JPanel
 		}		
 		add(background);
 		System.out.println("finished");
-		updateBoard();
+		try 
+		{
+			updateBoard();
+		} 
+		catch (Exception e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	private NonPlayer getEnemy(int enemyID) throws Exception
+	public NonPlayer getEnemy()
+	{
+		return this.enemy;
+	}
+	
+	private static NonPlayer getEnemy(int enemyID) throws Exception
 	{
 		switch(enemyID) 
 		{
@@ -171,20 +181,15 @@ public class Room extends JPanel
 	}
 	
 	
+
+	
+	
 	protected void cleanBoard() 
 	{
 			for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
 			{
 			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
 			{
-				if(isShowingMovement()) 
-				{
-					btn.setText("Move here");
-				}
-				else 
-				{
-					btn.setText("Attack here");
-				}
 				board[xPos][yPos].setColor(new Color(225,225,225,0));
 				board[xPos][yPos].removeImage();
 			}
@@ -192,12 +197,12 @@ public class Room extends JPanel
 		
 	}
 	
-	private void draw(Human human, Color color, boolean player) throws Exception 
+	private void draw(Human human, Color color, boolean player)  
 	{
-		if(!(human.getEquippedWeapon() != null)) 
+		/*if(!(human.getEquippedWeapon() != null)) 
 		{
 			throw new Exception("Human contains no EquippedWeapon. ");
-		}
+		}*/
 
 		popupMenu.getComponent().setVisible(false);
 		int range = human.getEquippedWeapon().getRange();
@@ -214,11 +219,10 @@ public class Room extends JPanel
 			{
 				if(xPos >= 20-(getWest()+getEast()) || yPos>= 20-(getNorth()+getSouth()) || yPos < 0 || xPos <0) 
 				{
-					System.out.println("Cannot place tile at: Player:" + player +", x:" + xPos +", y:" + yPos);
+					//System.out.println("Cannot place tile at: Player:" + player +", x:" + xPos +", y:" + yPos);
 				}
 				else 
 				{
-					System.out.println("Player:" + player +", x:" + xPos +", y:" + yPos);
 					board[xPos][yPos].setColor( mixColors(color, board[xPos][yPos].getColor() ));
 					board[xPos][yPos].removeImage();
 				}
@@ -240,13 +244,10 @@ public class Room extends JPanel
 	protected void btnFunction() {
 		try 
 		{
-			this.btn.getParent().setVisible(false);
-			Point location = this.popupLocation;
+				Point location = this.popupLocation;
 				if(isShowingMovement()) 
 				{
-					//System.out.println("player x:"+MainExecutable.getPlayer().getX()+" player y:"+MainExecutable.getPlayer().getY());
 					MainExecutable.getPlayer().moveTo(location, false);
-					///enemyTurn();
 					cleanBoard();
 					updateBoard();
 /*
@@ -256,6 +257,7 @@ public class Room extends JPanel
 				}
 				else 
 				{
+					MainExecutable.getPlayer().attack(this.enemy);
 					cleanBoard();
 					updateBoard();	//TODO
 				}
@@ -268,10 +270,20 @@ public class Room extends JPanel
 
 	}
 	
-	public void updateBoard() throws Exception // sets the panel to update to the ranges of both players and players
+	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	 {
 		 draw(MainExecutable.getPlayer(),Color.BLUE, true);
 		 draw(this.enemy, Color.BLACK, false);
+		 if(isShowingMovement()) 
+		 {
+			 this.btn.setText("Move here");
+		 }
+		 else 
+		 {
+			 this.btn.setText("Attack here");
+		 }
+		 CombatMenu.update(this.enemy); 
+		
 	 }
 	
 	private static Color mixColors(Color color1, Color color2)
@@ -297,14 +309,16 @@ public class Room extends JPanel
 				}
 			}
 			private void showMenu(MouseEvent e) {
-				System.out.println("x:"+component.getX()/40+" y:"+component.getY()/40);
-				//this.board[xPos][yPos].setBounds(0+40*east+40*xPos,0+40*south +40*yPos, 40, 40);
-
 				room.popupLocation.setLocation((component.getX() - (room.getEast()*40))/40, (component.getY()-(room.getSouth()*40))/40);//TODO
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		});
 	}
+	
+	
+	
+	
+	
 	
 	/**
 	 * @return the popupLocation
@@ -409,9 +423,13 @@ public class Room extends JPanel
 
 	public void setShowingMovement(boolean showingMovement) {
 		this.showingMovement = showingMovement;
+		this.setVisible(false);
 		cleanBoard();
+		updateBoard();
+		this.setVisible(true);
 	}
 
+	
 	
 
 }

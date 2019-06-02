@@ -80,7 +80,7 @@ UML
 		this.setEquippedWeapon(weapon);
 	}
 	
-	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int[] pos) 
+	public NonPlayer(String name,Boolean isBoss, Weapon weapon, Point pos) 
 	{
 		this.name = name;
 		this.setIsBoss(isBoss);

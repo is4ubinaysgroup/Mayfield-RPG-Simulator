@@ -10,31 +10,50 @@ public class BattlePanel extends JPanel {
 	/**
 	 * 
 	 */
+	private static Room room0 = new Room(3,0,3,0,Room.GYMTEACHER);
+	private static CombatMenu menu;
+	
+	private static Room room;//current updated room.
 	private static final long serialVersionUID = 1427930290972166548L;
 	public BattlePanel() 
 	{
 		setBounds(100, 100, 1000, 800);
 		setBorder(new EmptyBorder(5, 5, 5, 5));
 		setLayout(null);
-		room0.setBounds(0, 0, 800, 800);
-		add(room0);
-		menu.setBounds(800, 0, 200, 800);
+		loadRoom();
+		room.setBounds(0, 0, 800, 800);
+		add(room);
+		menu  = new CombatMenu( );
 		add(menu);
+		menu.setVisible(true);
 	}
 
-	private CombatMenu menu = new CombatMenu();
-	private Room room0;
+	
+	
 	/**
 	 * Launch the application.
 	 */
-	public void initGui() {
+	public static void initGui() {
 		try {
-			new Room(2,0,2,0, Room.GYMTEACHER);
+			loadRoom();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//TODO
+	}
+	
+	public static void loadRoom() 
+	{
+		if(MainExecutable.getPlayer().getLevel() == 0) 
+		{
+			room = room0;
+		}
+	}
+	
+	public static Room getRoom() 
+	{
+		return room;
 	}
 
 }
