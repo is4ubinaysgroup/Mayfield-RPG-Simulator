@@ -76,12 +76,26 @@ public class Human
 		return false;
 	}
 	
+	
+	public void moveTo(Point point) throws Exception 
+	{
+		if(canMoveTo(point.x, point.y)) //can move here with no issues
+		{
+			setX(point.x);
+			setY(point.y);
+		}
+		else 
+		{
+			throw new Exception("Cannot move to "+point.x + "," +point.y+".");
+		}
+	}
+	
 	public void moveTo(Point point, boolean moveAnyWays) throws Exception 
 	{
 		//How much do we need to move to get there
 		int changeInX = point.x - getX();
 		int changeInY = point.y - getY();
-		if(Math.abs(changeInX) <= MOVEMENT) //can move here with no issues
+		if(canMoveTo(point.x, point.y)) //can move here with no issues
 		{
 			setX(point.x);
 			setY(point.y);
