@@ -138,9 +138,9 @@ public class Room extends JPanel
 		popupMenu.add(this.btn);
 		this.board = new ImageFrame[20 - (east+west)][ 20 - (south+north)] ;
 		
-		for(int xPos = 0 ; xPos != 19 - (east+west); xPos++) 
+		for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
 		{
-			for(int yPos = 0 ; yPos != 19 - (south+north); yPos++ ) 
+			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
 			{//TODO
 				this.board[xPos][yPos] = new ImageFrame();
 				this.board[xPos][yPos].setColor(new Color(55,55,55,40));
@@ -313,24 +313,23 @@ public class Room extends JPanel
 	}
 	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
-	 {
-		 draw(this.enemy, Color.BLACK, false);
-		 draw(MainExecutable.getPlayer(),Color.BLUE, true);
-		 
-			board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getImgGymTeacher());
-			board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
-		 if(isShowingMovement()) 
-		 {
-			 this.btn.setText("Move here");
-		 }
-		 else 
-		 {
-			 this.btn.setText("Attack here");
-		 }
-		 CombatMenu.update(this.enemy); 
-		 
-		
-	 }
+	{
+		draw(this.enemy, Color.BLACK, false);
+		draw(MainExecutable.getPlayer(),Color.BLUE, true);
+		board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getImgGymTeacher());
+		board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
+		if(isShowingMovement()) 
+		{
+			this.btn.setText("Move here");
+		}
+		else 
+		{
+			this.btn.setText("Attack here");
+		}
+		CombatMenu.update(this.enemy); 
+
+
+	}
 	
 	private static Color mixColors(Color color1, Color color2)
 	{

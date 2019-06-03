@@ -274,8 +274,8 @@ UML
 	
 	public Point[] getPointsInMovement(Human human) 
 	{
-		Point[] allPoints = new Point[(int) getRoom().getWidth()*(int) getRoom().getBoardHeight()];
-		for(int x = 0;  x != (int) getRoom().getWidth(); x++) 
+		Point[] allPoints = new Point[(int) getRoom().getBoardWidth()*(int) getRoom().getBoardHeight()];
+		for(int x = 0;  x != (int) getRoom().getBoardWidth(); x++) 
 		{
 			for(int y= 0;  y != (int) getRoom().getBoardHeight(); y++) // find all available points
 			{

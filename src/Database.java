@@ -818,7 +818,7 @@ public class Database {
 	
 	// ------------------------------------------- npc Stuff -------------------------------------------
 
-	static Point gymPos = new Point(5, 7);
+	static Point gymPos = new Point(14, 14);
 	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos);
 	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),5,20, gymPos);
 	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),3,15,  gymPos );
