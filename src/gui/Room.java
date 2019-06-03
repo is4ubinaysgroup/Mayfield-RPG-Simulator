@@ -138,9 +138,9 @@ public class Room extends JPanel
 		popupMenu.add(this.btn);
 		this.board = new ImageFrame[20 - (east+west)][ 20 - (south+north)] ;
 		
-		for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
+		for(int xPos = 0 ; xPos != 19 - (east+west); xPos++) 
 		{
-			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
+			for(int yPos = 0 ; yPos != 19 - (south+north); yPos++ ) 
 			{//TODO
 				this.board[xPos][yPos] = new ImageFrame();
 				this.board[xPos][yPos].setColor(new Color(55,55,55,40));
@@ -188,9 +188,9 @@ public class Room extends JPanel
 	
 	protected void cleanBoard() 
 	{
-			for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
+			for(int xPos = 0 ; xPos != 19 - (east+west); xPos++) 
 			{
-			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
+			for(int yPos = 0 ; yPos != 19 - (south+north); yPos++ ) 
 			{
 				board[xPos][yPos].setColor(new Color(225,225,225,0));
 				board[xPos][yPos].removeImage();
@@ -219,7 +219,7 @@ public class Room extends JPanel
 		{
 			for(int yPos = npcY+range; yPos != npcY-range-1; yPos-- ) 
 			{
-				if(xPos >= 20-(getWest()+getEast()) || yPos>= 20-(getNorth()+getSouth()) || yPos < 0 || xPos <0) 
+				if(xPos >= 19-(getWest()+getEast()) || yPos>= 19-(getNorth()+getSouth()) || yPos < 0 || xPos <0) 
 				{
 					//System.out.println("Cannot place tile at: Player:" + player +", x:" + xPos +", y:" + yPos);
 				}
@@ -356,6 +356,7 @@ public class Room extends JPanel
 			}
 			private void showMenu(MouseEvent e) {
 				room.popupLocation.setLocation((component.getX() - (room.getEast()*40))/40, (component.getY()-(room.getSouth()*40))/40);//TODO
+				System.out.println("X:"+(component.getX() - (room.getEast()*40))/40+", Y:"+ (component.getY()-(room.getSouth()*40))/40);
 				popup.show(e.getComponent(), e.getX(), e.getY());
 			}
 		});
@@ -438,6 +439,14 @@ public class Room extends JPanel
 	public void setBoard(ImageFrame board[][]) {
 		this.board =  board;
 	}
+	public int getBoardWidth() 
+	{
+		return (19-(getEast()+getWest()));
+	}
+	public int getBoardHeight() 
+	{
+		return (19-(getSouth()+getNorth()));
+	}
 	/**
 	 * @return the btn
 	 */
@@ -509,6 +518,8 @@ public class Room extends JPanel
 			enemy.runTurn(this);
 			setAttacked(false);
 			setMoved(false);
+			cleanBoard();
+			updateBoard();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
