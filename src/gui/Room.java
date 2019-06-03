@@ -300,7 +300,7 @@ public class Room extends JPanel
 		{
 		
 			try {
-				enemy.runTurn();
+				enemy.runTurn(this);
 				setAttacked(false);
 				setMoved(false);
 			} catch (Exception e) {
@@ -506,7 +506,7 @@ public class Room extends JPanel
 	public void skipTurn() {
 
 		try {
-			enemy.runTurn();
+			enemy.runTurn(this);
 			setAttacked(false);
 			setMoved(false);
 		} catch (Exception e) {

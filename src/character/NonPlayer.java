@@ -165,88 +165,51 @@ UML
 	}
 
 	public void moveOut(Human human, boolean useMostOptimalMove) throws Exception //moves out of a human's weapons range
-	{
-		Point[] allPoints = new Point[(int) getRoom().getWidth()*(int) getRoom().getHeight()];
-		for(int x = 0;  x != (int) getRoom().getWidth(); x++) 
-		{
-			for(int y= 0;  y != (int) getRoom().getHeight(); y++) // find all available points
+	{	 
+		int x = human.getX();
+		int y = human.getY();
+		ArrayList<Point> output = cleanArray(getPointsInMovement(this));
+		output.remove(new Point(x,y));// we don't want it trying to move on the player, don't worry if it isn't there it wont throw an exception.
+		/*We want to find the most optimal position that the ai will go to. 
+		we will create an array containing the entire field then we will remove them piece by piece till there is one left.
+		*/
+		ArrayList<Point> position;
+		Point[][] selection = 
 			{
-				if(canMoveTo(x,y)) // remove all points in array that are outside human range
+				getPointsInRange(human), getPointsInMovement(human)
+			};
+		/*
+	alrighty so this is a list of the lists of the points it will remove. read slowly if you didn't get it. 
+	Guarantee this will result in one left.
+		 */
+		
+		int length = getLength(output);
+		
+		for(int i = 0; i < 2 && length > 1; i++) 
+		{
+			position = cleanArray(selection[i]);
+			for(int pos = getLength(position); pos != -1; pos--) 
+			{
+				output.remove(position.get(pos));
+				output = cleanArray(output);
+				length = getLength(output);
+				if(length == 1) 
 				{
-					allPoints[x+y] = new Point(x,y);// puts point into array.
+					break;
 				}
-			}
-		}// creates an array
-		
-		//shorten array 
-		
-		
-		ArrayList<Point> buffer = new ArrayList<Point>( (int) (getRoom().getWidth()* getRoom().getHeight()) );
-		for(int i = 0;  i < allPoints.length; i++) 
-		{
-			if(allPoints[i] != null) // if not null
-			{
-				buffer.add(allPoints[i]);
-			}
-		}// creates an array
-		int newLength = 0; 
-		for(newLength = 0; buffer.get(newLength) != null ; newLength++) {}//finds the new length. since it will include null positions we want only till it gets null
-		
-		
-		if(useMostOptimalMove = true) 
-		{
-		// if one Point left in array: move there
-		if(newLength == 0) // if no Points left in array: move away from human
-		{
-			moveAway(human);
-		}
-		else 
-		{
 			
+			}
 		}
-		}
-		else //useMostOptimalMove = false
+		
+		if(length == 1) 
 		{
-			Random random = new Random();
-			Point newPosition = buffer.get( (int) Math.floor(random.nextInt() * newLength) );
-			moveTo( buffer.get( (int) Math.floor(random.nextInt() * newLength) ), true);
+			moveTo(output.get(0), false);
 		}
-		//END
 		
-		
-		// remove all points in array that aren't within it's movement
-		// if one Point left in array: move there
-		// if no Points left in array: move away from human
-		
-		//copy array.
-		
-		//remove all spots at the corners
-		// if one Point left in array: move there
-		// if no Points left in array: move away from human
-		
-		//remove all spots near the corners by 1
-		// if one Point left in array: move there
-		// if no Points left in array: use previous data and choose farthest point
-		
-		
-		// remove all spots out of its melee range
-		//if none left copy the orginal array
-		//removes all spots near the human by the human range + 1
-		//continue till there is only one point left
-		// if one Point left in array: move there
-		// if no Points left in array: use previous data and choose farthest point
-				
-
-		
-		
-		
-		
-		
-		//finds an available spot that is out of human range but is in its range
-		//finds an available spot that is out of human range
-		//finds a spot as far as it can from human range but towards an open area without nearing the player more
-		//finds a spot as far as it can from human range
-		//moves to the first range found
+		if(length > 1) 
+		{
+			moveTo(output.get((int) Math.random()*(length)), false);
+		}
 	}
 	
 
@@ -255,12 +218,20 @@ UML
 		int x = human.getX();
 		int y = human.getY();
 		ArrayList<Point> output = cleanArray(getPointsInMovement(this));
-		output.remove(new Point(x,y));// we don't want it trying to move on the player
+		output.remove(new Point(x,y));// we don't want it trying to move on the player, don't worry if it isn't there it wont throw an exception.
+		/*We want to find the most optimal position that the ai will go to. 
+		we will create an array containing the entire field then we will remove them piece by piece till there is one left.
+		*/
 		ArrayList<Point> position;
 		Point[][] selection = 
 			{
 				getPointsInMovement(human), getPointsInRange(human)
 			};
+		/*
+	alrighty so this is a list of the lists of the points it will remove. read slowly if you didn't get it. 
+	Guarantee this will result in one left.
+		 */
+		
 		int length = getLength(output);
 		
 		for(int i = 0; i < 2 && length > 1; i++) 
@@ -374,8 +345,9 @@ UML
 		
 	}
 	
-		public void runTurn() throws Exception //TODO
-	{
+		public void runTurn(Room room) throws Exception //TODO
+		{
+			setRoom(room);
 		Player player = MainExecutable.getPlayer();
 		int r = player.getEquippedWeapon().getRange();
 		player.setHealth(player.maxHealth);
