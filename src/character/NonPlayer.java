@@ -163,7 +163,7 @@ UML
 		ArrayList<Point> position;
 		Point[][] selection = 
 			{
-				getPointsInRange(human), getPointsInMovement(human), getPointsNearEdges(this)
+				getPointsInRange(human), getPointsNearEdges(this), getPointsInMovement(human), 
 			};
 		/*
 	alrighty so this is a list of the lists of the points it will remove. read slowly if you didn't get it. 
@@ -180,7 +180,7 @@ UML
 				output.remove(position.get(pos));
 				output = cleanArray(output);
 				length = getLength(output);
-				if(length == 1) 
+				if(length == 2) 
 				{
 					break;
 				}
@@ -224,13 +224,13 @@ UML
 		for(int i = 0; i < 3 && length > 1; i++) 
 		{
 			position = cleanArray(selection[i]);
-			if(random.nextInt(1) == 1) {
+			if(random.nextInt(8) >= 4) {
 				for(int pos = getLength(position); pos != -1; pos--) 
 				{
 					output.remove(position.get(pos));
 					output = cleanArray(output);
 					length = getLength(output);
-					if(length == 1) 
+					if(length == 2) 
 					{
 						break;
 					}
@@ -239,7 +239,7 @@ UML
 			}
 			else 
 			{
-				for(int pos = 0; pos !=  getLength(position); pos++) 
+				for(int pos = 0; pos <  getLength(position); pos++) 
 				{
 					output.remove(position.get(pos));
 					output = cleanArray(output);
@@ -269,7 +269,7 @@ UML
 	
 	private Point[] getPointsNearEdges(NonPlayer nonPlayer) 
 	{
-		Point[] results = getPointsInMovement(nonPlayer);
+		Point[] results = new Point[(int) getRoom().getBoardWidth()*(int) getRoom().getBoardHeight()];
 		for(int point = 0;  point != results.length; point++) 
 		{
 			if(results[point] != null) 
@@ -336,6 +336,24 @@ UML
 			{
 				buffer.add(allPoints[i]);
 			}
+		}// creates an array
+		return buffer;
+	}
+	
+	public void swapIndex(ArrayList<Point> allPoints, int index1, int index2)
+	{
+		Point buffer1 = allPoints.get(index1);
+		Point buffer2  =allPoints.get(index2);
+		allPoints.set(index2, buffer1);
+		allPoints.set(index1, buffer2);
+	}
+	
+	public ArrayList<Point> scatterArray(ArrayList<Point> allPoints) //randomizes the index of all objects in array
+	{//TODO
+		ArrayList<Point> buffer = new ArrayList<Point>( (int) (getRoom().getBoardWidth()* getRoom().getBoardHeight()) );
+		for(int i = 0;  i < allPoints.length; i++) 
+		{
+			
 		}// creates an array
 		return buffer;
 	}
@@ -407,16 +425,14 @@ UML
 		else if(!(MainExecutable.getPlayer().inRangeOf(this))) 
 		{
 			System.out.println("in not range");
-			moveIn(MainExecutable.getPlayer());
 			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
 			if(random == 1) 
 			{
-				//moveIn(player, true, Weapon.MELEETYPE);
 				moveIn(MainExecutable.getPlayer());
 			}
-			else // random == 2 
+			else 
 			{
-				moveIn(MainExecutable.getPlayer());//moveIn(player, true, Weapon.RANGEDTYPE);
+				moveOut(MainExecutable.getPlayer());//moveIn(player, true, Weapon.RANGEDTYPE);
 			}
 		}
 		else if(inRangeOf(MainExecutable.getPlayer())) 
