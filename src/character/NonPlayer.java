@@ -239,7 +239,7 @@ UML
 			}
 			else 
 			{
-				for(int pos = 0; pos !=  getLength(position); pos--) 
+				for(int pos = 0; pos !=  getLength(position); pos++) 
 				{
 					output.remove(position.get(pos));
 					output = cleanArray(output);
