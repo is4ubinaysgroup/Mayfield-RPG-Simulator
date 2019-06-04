@@ -153,6 +153,7 @@ public class Room extends JPanel
 		System.out.println("finished");
 		try 
 		{
+			cleanBoard();
 			updateBoard();
 		} 
 		catch (Exception e) 
@@ -188,9 +189,9 @@ public class Room extends JPanel
 	
 	protected void cleanBoard() 
 	{
-			for(int xPos = 0 ; xPos != 19 - (east+west); xPos++) 
+			for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
 			{
-			for(int yPos = 0 ; yPos != 19 - (south+north); yPos++ ) 
+			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
 			{
 				board[xPos][yPos].setColor(new Color(225,225,225,0));
 				board[xPos][yPos].removeImage();
@@ -219,7 +220,7 @@ public class Room extends JPanel
 		{
 			for(int yPos = npcY+range; yPos != npcY-range-1; yPos-- ) 
 			{
-				if(xPos >= 19-(getWest()+getEast()) || yPos>= 19-(getNorth()+getSouth()) || yPos < 0 || xPos <0) 
+				if(xPos >= 20-(getWest()+getEast()) || yPos>= 20-(getNorth()+getSouth()) || yPos < 0 || xPos <0) 
 				{
 					//System.out.println("Cannot place tile at: Player:" + player +", x:" + xPos +", y:" + yPos);
 				}
