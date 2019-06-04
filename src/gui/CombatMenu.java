@@ -201,8 +201,8 @@ public class CombatMenu extends JPanel {
 	{
 		enemyHealth.setMinimum(0);
 		enemyHealth.setMaximum(enemy.getMaxHealth());
-		enemyHealth.setValue( enemy.getHealth());
-		enemyHealth.setToolTipText("Enemy Health is" + enemy.getHealth());
+		enemyHealth.setValue(enemy.getHealth());
+		enemyHealth.setToolTipText("Enemy Health is " + enemy.getHealth());
 		
 		
 		enemyDefense.setMinimum(0);

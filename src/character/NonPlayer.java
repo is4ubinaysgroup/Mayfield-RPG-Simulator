@@ -67,19 +67,6 @@ UML
 	private Boolean isBoss;
 	private Room room;
 	
-	public NonPlayer(String name,Boolean isBoss) 
-	{
-		this.name = name;
-		this.setIsBoss(isBoss);
-	}
-
-	public NonPlayer(String name,Boolean isBoss, Weapon weapon) 
-	{
-		this.name = name;
-		this.setIsBoss(isBoss);
-		this.setEquippedWeapon(weapon);
-	}
-	
 	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos) 
 	{
 		this.name = name;
@@ -176,7 +163,7 @@ UML
 		ArrayList<Point> position;
 		Point[][] selection = 
 			{
-				getPointsInRange(human), getPointsInMovement(human)
+				getPointsInRange(human), getPointsInMovement(human), getPointsNearEdges(this)
 			};
 		/*
 	alrighty so this is a list of the lists of the points it will remove. read slowly if you didn't get it. 
@@ -185,7 +172,7 @@ UML
 		
 		int length = getLength(output);
 		
-		for(int i = 0; i < 2 && length > 1; i++) 
+		for(int i = 0; i < 3 && length > 1; i++) 
 		{
 			position = cleanArray(selection[i]);
 			for(int pos = getLength(position); pos != -1; pos--) 
@@ -225,7 +212,7 @@ UML
 		ArrayList<Point> position;
 		Point[][] selection = 
 			{
-				getPointsInMovement(human), getPointsInRange(human)
+				getPointsInMovement(human), getPointsNearEdges(this) ,getPointsInRange(human)
 			};
 		/*
 	alrighty so this is a list of the lists of the points it will remove. read slowly if you didn't get it. 
@@ -233,24 +220,40 @@ UML
 		 */
 		
 		int length = getLength(output);
-		
-		for(int i = 0; i < 2 && length > 1; i++) 
+		Random random = new Random();
+		for(int i = 0; i < 3 && length > 1; i++) 
 		{
 			position = cleanArray(selection[i]);
-			for(int pos = getLength(position); pos != -1; pos--) 
-			{
-				output.remove(position.get(pos));
-				output = cleanArray(output);
-				length = getLength(output);
-				if(length == 1) 
+			if(random.nextInt(1) == 1) {
+				for(int pos = getLength(position); pos != -1; pos--) 
 				{
-					break;
+					output.remove(position.get(pos));
+					output = cleanArray(output);
+					length = getLength(output);
+					if(length == 1) 
+					{
+						break;
+					}
+
 				}
-			
+			}
+			else 
+			{
+				for(int pos = 0; pos !=  getLength(position); pos--) 
+				{
+					output.remove(position.get(pos));
+					output = cleanArray(output);
+					length = getLength(output);
+					if(length == 1) 
+					{
+						break;
+					}
+
+				}
 			}
 		}
-		
-		
+
+
 		if(length == 1) 
 		{
 			moveTo(output.get(0), false);
@@ -264,6 +267,23 @@ UML
 	}
 	
 	
+	private Point[] getPointsNearEdges(NonPlayer nonPlayer) 
+	{
+		Point[] results = getPointsInMovement(nonPlayer);
+		for(int point = 0;  point != results.length; point++) 
+		{
+			if(results[point] != null) 
+			{
+				if(results[point].x > (int) Math.random()*3 || results[point].y > (int) Math.random()*3)
+				{
+					results[point] = null;
+				}
+			}
+		}
+		return results;
+		
+	}
+
 	private int getLength(ArrayList<Point> buffer)
 	{
 		int newLength = buffer.size(); 
@@ -307,12 +327,6 @@ UML
 	}
 	
 	
-	
-	public void moveIn(Human human, boolean useMostOptimalMove, int attackType) throws Exception//optimal 
-	{
-	}
-	
-	
 	public ArrayList<Point> cleanArray(Point[] allPoints) 
 	{
 		ArrayList<Point> buffer = new ArrayList<Point>( (int) (getRoom().getBoardWidth()* getRoom().getBoardHeight()) );
@@ -338,88 +352,83 @@ UML
 		}// creates an array
 		return buffer;
 	}
-
-	
-	public void runAndHit(Human human) {//added by carson. I will add this to UML. soon..
-		// TODO Auto-generated method stub
-		
-	}
 	
 		public void runTurn(Room room) throws Exception //TODO
 		{
 		setRoom(room);
-		Player player = MainExecutable.getPlayer();
-		int r = player.getEquippedWeapon().getRange();
-		player.setHealth(player.maxHealth);
+		int r = MainExecutable.getPlayer().getEquippedWeapon().getRange();
+		MainExecutable.getPlayer().setHealth(MainExecutable.getPlayer().maxHealth);
 
 
-		if(player.hasLowHealth()) //if Player has low health
+		if(MainExecutable.getPlayer().hasLowHealth()) //if Player has low health
 		{
 			System.out.println("Low Health");
 			moveIn(MainExecutable.getPlayer());
 			attack(MainExecutable.getPlayer());
 		}
-		else if( ( r < Human.MOVEMENT)  && inRangeOf(player) && nearCorner() ) // if cornered
+		else if( ( r < Human.MOVEMENT)  && inRangeOf(MainExecutable.getPlayer()) && nearCorner() ) // if cornered
 		{
 			System.out.println("cornered");
-			moveIn(player);
+			moveIn(MainExecutable.getPlayer());
 			attack(MainExecutable.getPlayer());
 		}
-		else if( player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.MELEETYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ) )
+		else if( MainExecutable.getPlayer().inRangeOf(this) && ( MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.MELEETYPE || MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.ALLTYPE ) )
 		{// 3. If the player is in melee attack range:
 			System.out.println("melee attack range");
 			//The boss will check and follow the first true statement procedure in order of first to last:
 			if(MainExecutable.getPlayer().hasLowHealth()) //1. If the player has low health:
 			{
-				moveOut(MainExecutable.getPlayer());
+				moveIn(MainExecutable.getPlayer());
 				attack(MainExecutable.getPlayer());
 			}
-			else if( ( r < Human.MOVEMENT)  &&  inRangeOf(player)  && nearCorner())//2. If the boss is cornered:
+			else if( ( r < Human.MOVEMENT)  &&  inRangeOf(MainExecutable.getPlayer())  && nearCorner())//2. If the boss is cornered:
 			{
 				//The boss will move to the other side of the player, however, if the boss cannot it will move as far as it can to the other side of the player.
-				moveIn(player);
+				moveIn(MainExecutable.getPlayer());
 				attack(MainExecutable.getPlayer());
 
 			}
 		}
 		//Continues to the next true statement
-		if(player.inRangeOf(this) && ( player.getEquippedWeapon().getType() == Weapon.RANGEDTYPE || player.getEquippedWeapon().getType() == Weapon.ALLTYPE ))//If the player is in non-melee attack range:
+		if(MainExecutable.getPlayer().inRangeOf(this) && ( MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.RANGEDTYPE || MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.ALLTYPE ))//If the player is in non-melee attack range:
 		{
 			System.out.println("nonmelee attack range");
 			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
 			if(random == 1) 
 			{
-				attack(player);
+				attack(MainExecutable.getPlayer());
 			}
 			else
 			{
-				runAndHit(player);
+				moveOut(MainExecutable.getPlayer());
+				attack(MainExecutable.getPlayer());
 			}
 		}
-		else if(!(player.inRangeOf(this))) 
+		else if(!(MainExecutable.getPlayer().inRangeOf(this))) 
 		{
 			System.out.println("in not range");
-			moveIn(player);
+			moveIn(MainExecutable.getPlayer());
 			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
 			if(random == 1) 
 			{
 				//moveIn(player, true, Weapon.MELEETYPE);
-				moveIn(player);
+				moveIn(MainExecutable.getPlayer());
 			}
 			else // random == 2 
 			{
-				moveIn(player);//moveIn(player, true, Weapon.RANGEDTYPE);
+				moveIn(MainExecutable.getPlayer());//moveIn(player, true, Weapon.RANGEDTYPE);
 			}
 		}
-		else if(inRangeOf(player)) 
+		else if(inRangeOf(MainExecutable.getPlayer())) 
 		{
 			System.out.println("in player range");
-			moveOut(player);
-			setHealth( getHealth() + (int) Math.ceil(getMaxHealth()*0.01) );//recovers 1% of health.
+			moveOut(MainExecutable.getPlayer());
+			setDefense( getDefense() + (int) Math.round(getMaxDefense()*0.01) );//recovers 1% of health.
 		}
 		else 
 		{
-			System.out.println("else");
+			moveIn(MainExecutable.getPlayer());
+			attack(MainExecutable.getPlayer());
 		}
 		System.out.println("Finish");
 	}				

@@ -155,21 +155,25 @@ public class Human
 		{
 			initialDamage= initialDamage*2;
 		}
+		
 		int damageToHealth = human.getDefense() - initialDamage;
-		if(initialDamage == 0) 
-		{
-			//do Nothing
-		}
-		else if(damageToHealth <= 0) 
+		if(damageToHealth < 0) 
 		{
 			human.setDefense(0);
-			human.setHealth(human.getHealth() - damageToHealth);
+			if(human.getHealth() <= 0) 
+			{
+				human.setHealth(0);
+			}
+			else 
+			{
+				human.setHealth(human.getHealth() + damageToHealth);
+			}
 		}
-		
 		else 
 		{
 			human.setDefense(damageToHealth);
 		}
+		
 	}
 	
 	public void recoverShield() //sets to Max Defense
