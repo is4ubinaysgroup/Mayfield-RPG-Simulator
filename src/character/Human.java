@@ -166,7 +166,7 @@ public class Human
 			}
 			else 
 			{
-				human.setHealth(human.getHealth() + damageToHealth);
+				human.setHealth(human.getHealth() - Math.abs(damageToHealth));
 			}
 		}
 		else 

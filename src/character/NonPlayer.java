@@ -155,7 +155,7 @@ UML
 	{	 
 		int x = human.getX();
 		int y = human.getY();
-		ArrayList<Point> output = cleanArray(getPointsInMovement(this));
+		ArrayList<Point> output = scatterArray(cleanArray(getPointsInMovement(this)));
 		output.remove(new Point(x,y));// we don't want it trying to move on the player, don't worry if it isn't there it wont throw an exception.
 		/*We want to find the most optimal position that the ai will go to. 
 		we will create an array containing the entire field then we will remove them piece by piece till there is one left.
@@ -163,7 +163,7 @@ UML
 		ArrayList<Point> position;
 		Point[][] selection = 
 			{
-				getPointsInRange(human), getPointsNearEdges(this), getPointsInMovement(human), 
+				getPointsInRange(human), getPointsInMovement(human), getPointsNearEdges(this)
 			};
 		/*
 	alrighty so this is a list of the lists of the points it will remove. read slowly if you didn't get it. 
@@ -174,7 +174,7 @@ UML
 		
 		for(int i = 0; i < 3 && length > 1; i++) 
 		{
-			position = cleanArray(selection[i]);
+			position = scatterArray((cleanArray(selection[i])));
 			for(int pos = getLength(position); pos != -1; pos--) 
 			{
 				output.remove(position.get(pos));
@@ -204,7 +204,7 @@ UML
 	{
 		int x = human.getX();
 		int y = human.getY();
-		ArrayList<Point> output = cleanArray(getPointsInMovement(this));
+		ArrayList<Point> output = scatterArray(scatterArray(cleanArray(getPointsInMovement(this))));
 		output.remove(new Point(x,y));// we don't want it trying to move on the player, don't worry if it isn't there it wont throw an exception.
 		/*We want to find the most optimal position that the ai will go to. 
 		we will create an array containing the entire field then we will remove them piece by piece till there is one left.
@@ -212,7 +212,7 @@ UML
 		ArrayList<Point> position;
 		Point[][] selection = 
 			{
-				getPointsInMovement(human), getPointsNearEdges(this) ,getPointsInRange(human)
+				getPointsInMovement(human) ,getPointsInRange(human), getPointsNearEdges(this)
 			};
 		/*
 	alrighty so this is a list of the lists of the points it will remove. read slowly if you didn't get it. 
@@ -223,7 +223,7 @@ UML
 		Random random = new Random();
 		for(int i = 0; i < 3 && length > 1; i++) 
 		{
-			position = cleanArray(selection[i]);
+			position = scatterArray(scatterArray(cleanArray(selection[i])));
 			if(random.nextInt(8) >= 4) {
 				for(int pos = getLength(position); pos != -1; pos--) 
 				{
@@ -274,7 +274,7 @@ UML
 		{
 			if(results[point] != null) 
 			{
-				if(results[point].x > (int) Math.random()*3 || results[point].y > (int) Math.random()*3)
+				if(results[point].x > (int) Math.random()*6 || results[point].y > (int) Math.random()*6)
 				{
 					results[point] = null;
 				}
@@ -350,12 +350,15 @@ UML
 	
 	public ArrayList<Point> scatterArray(ArrayList<Point> allPoints) //randomizes the index of all objects in array
 	{//TODO
-		ArrayList<Point> buffer = new ArrayList<Point>( (int) (getRoom().getBoardWidth()* getRoom().getBoardHeight()) );
-		for(int i = 0;  i < allPoints.length; i++) 
+		for(int i = 0;  i != allPoints.size(); i++) 
 		{
-			
+			swapIndex(allPoints,i,(int) Math.round(Math.random()*(allPoints.size()-1)));
 		}// creates an array
-		return buffer;
+		for(int i = 0;  i != allPoints.size(); i++) 
+		{
+			swapIndex(allPoints,i,(int) Math.round(Math.random()*(allPoints.size()-1)));
+		}// creates an array
+		return allPoints;
 	}
 	
 	public ArrayList<Point> cleanArray(ArrayList<Point> allPoints) 
@@ -368,6 +371,7 @@ UML
 				buffer.add(allPoints.get(i));
 			}
 		}// creates an array
+		
 		return buffer;
 	}
 	
@@ -375,20 +379,18 @@ UML
 		{
 		setRoom(room);
 		int r = MainExecutable.getPlayer().getEquippedWeapon().getRange();
-		MainExecutable.getPlayer().setHealth(MainExecutable.getPlayer().maxHealth);
 
 
 		if(MainExecutable.getPlayer().hasLowHealth()) //if Player has low health
 		{
 			System.out.println("Low Health");
 			moveIn(MainExecutable.getPlayer());
-			attack(MainExecutable.getPlayer());
+			
 		}
 		else if( ( r < Human.MOVEMENT)  && inRangeOf(MainExecutable.getPlayer()) && nearCorner() ) // if cornered
 		{
 			System.out.println("cornered");
 			moveIn(MainExecutable.getPlayer());
-			attack(MainExecutable.getPlayer());
 		}
 		else if( MainExecutable.getPlayer().inRangeOf(this) && ( MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.MELEETYPE || MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.ALLTYPE ) )
 		{// 3. If the player is in melee attack range:
@@ -397,29 +399,16 @@ UML
 			if(MainExecutable.getPlayer().hasLowHealth()) //1. If the player has low health:
 			{
 				moveIn(MainExecutable.getPlayer());
-				attack(MainExecutable.getPlayer());
 			}
-			else if( ( r < Human.MOVEMENT)  &&  inRangeOf(MainExecutable.getPlayer())  && nearCorner())//2. If the boss is cornered:
-			{
-				//The boss will move to the other side of the player, however, if the boss cannot it will move as far as it can to the other side of the player.
-				moveIn(MainExecutable.getPlayer());
-				attack(MainExecutable.getPlayer());
-
-			}
+			
 		}
 		//Continues to the next true statement
-		if(MainExecutable.getPlayer().inRangeOf(this) && ( MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.RANGEDTYPE || MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.ALLTYPE ))//If the player is in non-melee attack range:
+		else if(MainExecutable.getPlayer().inRangeOf(this) && ( MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.RANGEDTYPE || MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.ALLTYPE ))//If the player is in non-melee attack range:
 		{
 			System.out.println("nonmelee attack range");
-			int random =  (int) ( Math.random() * 2 + 1); // will return either 1 or 2
-			if(random == 1) 
-			{
-				attack(MainExecutable.getPlayer());
-			}
-			else
-			{
+			int random =  (int) Math.round( Math.random() * 2) + 1; // will return either 1 or 2
+			if(random == 1) {
 				moveOut(MainExecutable.getPlayer());
-				attack(MainExecutable.getPlayer());
 			}
 		}
 		else if(!(MainExecutable.getPlayer().inRangeOf(this))) 
@@ -439,13 +428,21 @@ UML
 		{
 			System.out.println("in player range");
 			moveOut(MainExecutable.getPlayer());
-			setDefense( getDefense() + (int) Math.round(getMaxDefense()*0.01) );//recovers 1% of health.
+			
 		}
 		else 
 		{
 			moveIn(MainExecutable.getPlayer());
-			attack(MainExecutable.getPlayer());
 		}
+		
+		if(MainExecutable.getPlayer().inRangeOf(this)) {
+			
+		attack(MainExecutable.getPlayer());
+		}
+		
+		setDefense( getDefense() + (int) Math.round(getMaxDefense()*0.01) );//recovers 1% of health.
+		MainExecutable.getPlayer().setDefense( (int) (MainExecutable.getPlayer().getDefense() + MainExecutable.getPlayer().getMaxDefense()*0.01 ));//recovers 1% of health.
+
 		System.out.println("Finish");
 	}				
 
