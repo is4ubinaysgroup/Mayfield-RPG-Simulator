@@ -231,9 +231,9 @@ public class MainMenu
 	
 	
 	protected static void tutorial() {
-		BattlePanel tutorialMode = new BattlePanel();
-		GUIExtension1.switchPane (tutorialMode);
-		tutorialMode.initGui();
+		BattlePanel.RunBattlePanel();
+		GUIExtension1.switchPane (BattlePanel.getPanel());
+		BattlePanel.initGui();
 	}
 
 

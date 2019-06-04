@@ -5,26 +5,27 @@ import javax.swing.border.EmptyBorder;
 import src.Database;
 
 
-public class BattlePanel extends JPanel {
+public class BattlePanel  {
 
 	/**
 	 * 
 	 */
 	private static Room room0 = new Room(3,0,3,0,Room.GYMTEACHER);
 	private static CombatMenu menu;
-	
+	private static JPanel panel;
 	private static Room room;//current updated room.
-	private static final long serialVersionUID = 1427930290972166548L;
-	public BattlePanel() 
+	
+	public static void RunBattlePanel() 
 	{
-		setBounds(100, 100, 1000, 800);
-		setBorder(new EmptyBorder(5, 5, 5, 5));
-		setLayout(null);
+		panel = new JPanel();
+		panel.setBounds(100, 100, 1000, 800);
+		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panel.setLayout(null);
 		loadRoom();
 		room.setBounds(0, 0, 800, 800);
-		add(room);
+		panel.add(room);
 		menu  = new CombatMenu( );
-		add(menu);
+		panel.add(menu);
 		menu.setVisible(true);
 	}
 
@@ -35,7 +36,9 @@ public class BattlePanel extends JPanel {
 	 */
 	public static void initGui() {
 		try {
+			
 			loadRoom();
+			GUIExtension1.InBattle();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +48,11 @@ public class BattlePanel extends JPanel {
 	
 	public static void loadRoom() 
 	{
-		if(MainExecutable.getPlayer().getLevel() == 0) 
+		if(MainExecutable.getPlayer().getLevel() == 0 && GUIExtension1.isinBattle()) 
+		{
+			
+		}
+		else if(MainExecutable.getPlayer().getLevel() == 0)
 		{
 			room = room0;
 		}
@@ -54,6 +61,18 @@ public class BattlePanel extends JPanel {
 	public static Room getRoom() 
 	{
 		return room;
+	}
+
+
+
+	public static JPanel getPanel() {
+		return panel;
+	}
+
+
+
+	public static void setPanel(JPanel panel) {
+		BattlePanel.panel = panel;
 	}
 
 }

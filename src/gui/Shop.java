@@ -514,7 +514,14 @@ public class Shop
 	
 	public static void leaveEngine()
 	{
+		if(GUIExtension1.isinBattle())
+		{
+			GUIExtension1.switchPane(BattlePanel.getPanel());
+		}
+		else 
+		{
 		GUIExtension1.leaveShop(Map.getPane());
+		}
 		playSound(Database.getFootsteps());
 	} // leaveEngine method
 	

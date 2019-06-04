@@ -21,6 +21,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import src.character.Human;
 import src.character.NonPlayer;
 import src.character.Player;
+import src.gui.BattlePanel;
 import src.gui.MainExecutable;
 import src.items.Item;
 import src.items.Product;
@@ -840,7 +841,7 @@ public class Database {
 	public static BufferedImage imgGymTeacher;
 	public static BufferedImage getImgGymTeacher() {return imgGymTeacher;}
 	public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
-
+	public static BattlePanel battlePanel;
 
 	
 } // Database class

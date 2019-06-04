@@ -23,7 +23,7 @@ public class GUIExtension1
 
 	static protected JFrame frame;
 	static protected JPanel cards;
-	
+	static protected boolean battle = false;
 	
 	public static void initFrameAndParentPanel ()
 	{
@@ -88,6 +88,24 @@ public class GUIExtension1
 		frame.repaint();
 	
 	} // leaveShop method
+
+
+
+	public static boolean isinBattle() {
+		return battle;
+	}
+
+
+
+	public static void InBattle() {
+		// TODO Auto-generated method stub
+		battle = true;
+	}
+	
+	public static void endBattle() {
+		// TODO Auto-generated method stub
+		battle = false;
+	}
 	
 	
 } // GUIExtension1

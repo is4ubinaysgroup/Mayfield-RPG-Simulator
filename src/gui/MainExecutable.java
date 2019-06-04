@@ -24,7 +24,6 @@ public class MainExecutable
 			e2.printStackTrace();
 		}
 		
-		
 		// single save file is loaded on new game or continue button click on main menu
 		// level starts at 1 for now; 0 would be for when the tutorial is implemented		
 		// position starts at 0, 0	
@@ -40,6 +39,7 @@ public class MainExecutable
 		Shop.initGUI();
 		EndScreen.initGUI();
 		
+
 		GUIExtension1.showFirstPane(MainMenu.getPane());
 		
 	} // Main method
