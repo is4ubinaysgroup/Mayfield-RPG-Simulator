@@ -29,27 +29,10 @@ public class MatchExtension
 		run = true;
 		win = false;
 		
+		BattlePanel.RunBattlePanel();
+		GUIExtension1.switchPane (BattlePanel.getPanel());
+		BattlePanel.initGui();
 		
-		if (level == 0)
-		{
-			BattlePanel.RunBattlePanel();
-			GUIExtension1.switchPane (BattlePanel.getPanel());
-			BattlePanel.initGui();
-		}
-
-		else if (level == 1)
-		{
-			/*TEST
-			TestFrame frame = new TestFrame();
-			frame.initGui(frame);
-			*/
-
-
-		} // level 1
-
-		else
-		{
-		}
 
 	} // runMatch method
 	
