@@ -227,12 +227,6 @@ public class Map
 		
 		// start the battle with boss 1
 		// switch to the battle panel
-				
-		//TEST
-		TestFrame frame = new TestFrame();		
-		
-		//initGui is a static method? why the TestFrame object
-		//frame.initGui(frame); 
 		
 		//MatchExtension.runMatch(1);
 		
