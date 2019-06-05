@@ -33,7 +33,7 @@ public class CombatMenu extends JPanel {
 	private static JProgressBar enemyDefense= new JProgressBar();
 	private static JProgressBar playerHealth= new JProgressBar();
 	private static JProgressBar playerDefense= new JProgressBar();
-	private static boolean mode = false;
+	private static boolean mode = true;
 	//private JprogressBar
 
 

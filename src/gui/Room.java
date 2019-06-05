@@ -231,8 +231,6 @@ public class Room extends JPanel
 				}
 			}
 		}
-		popupMenu.getComponent().setVisible(true);//done
-
 	}
 	 
 	protected void btnFunction() {
@@ -315,6 +313,7 @@ public class Room extends JPanel
 	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	{
+		setVisible(false);
 		draw(this.enemy, Color.BLACK, false);
 		draw(MainExecutable.getPlayer(),Color.BLUE, true);
 		board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getImgGymTeacher());
@@ -328,6 +327,7 @@ public class Room extends JPanel
 			this.btn.setText("Attack here");
 		}
 		CombatMenu.update(this.enemy); 
+		setVisible(true);
 
 
 	}
