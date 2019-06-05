@@ -1,6 +1,7 @@
 package src;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +21,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import src.character.Human;
 import src.character.NonPlayer;
 import src.character.Player;
+import src.gui.BattlePanel;
 import src.gui.MainExecutable;
 import src.items.Item;
 import src.items.Product;
@@ -150,7 +152,8 @@ public class Database {
 		//imgBinay =readImg(binay);
 		imgHallMonitor =readImg("src/resources/HallMonitor.png");
 		imgPlayer = readImg("src/resources/playerSprite.png"); // this method is called before user can click continue or new game
-
+		imgGym = readImg("src/resources/Gym.png");
+		imgHall = readImg("src/resources/Hall.png");
 	} // LoadImages method
 
 
@@ -176,12 +179,39 @@ public class Database {
 	public static BufferedImage getMainMenuBackground() {return MainMenuBackground;}
 
 
+	// ------- imgHall -------
+	private static BufferedImage imgHall;
+
+	public static Image getImgHall() {return Database.imgHall;}
+
+
+	// ------- imgGyn -------
+	private static BufferedImage imgGym;
+
+	public static Image getImgGym() {return Database.imgGym;}
+		
+		
 	// ------- imgClassroom -------
 	private static BufferedImage imgClassroom;
 
-	public static Image getBackground() {return Database.imgClassroom;}
-
-
+	public static Image getClassroom() {return Database.imgClassroom;}
+	
+	
+	//---------
+	public static Image getBackground() 
+	{//TODO incorporate hallways
+		switch(MainExecutable.getPlayer().getLevel()) 
+		{
+		case 0:
+			return Database.imgGym;
+		default: 
+			return Database.imgClassroom;
+		}
+	
+	}
+		
+		
+	
 	// ------- MapBackground -------
 	public static BufferedImage MapBackground;
 
@@ -520,7 +550,7 @@ public class Database {
 			/* Player constructor (int health, int defense, int maxDefense, int maxHealth, Weapon equippedWeapon, String imagePath, int [] position, int coins, int level, int numProducts, int numWeapons, int productCapacity) */
 
 			// position always starts at 0,0 (see constructor)
-			int [] tempPosition = new int [2];
+			Point tempPosition = new Point(0,0);
 
 			MainExecutable.setPlayer(new Player (health, defense, maxDefense, maxHealth, equippedWeapon, imagePath, tempPosition, coins, level, numProducts, numWeapons,productCapacity));
 
@@ -622,7 +652,7 @@ public class Database {
 			output.println("Pencil-1-1-0.20-0-0");
 			output.println("src/resources/playerSprite.png");
 			output.println("10");
-			output.println("1");
+			output.println("0");
 			output.println("0");
 			output.println("0");
 			output.println("10");
@@ -789,10 +819,10 @@ public class Database {
 	
 	// ------------------------------------------- npc Stuff -------------------------------------------
 
-	static int[] gymPos = {5, 7};
-	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(), gymPos);
-	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(), gymPos);
-	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),  gymPos );
+	static Point gymPos = new Point(14, 14);
+	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos);
+	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),5,20, gymPos);
+	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),3,15,  gymPos );
 
 
 
@@ -811,7 +841,7 @@ public class Database {
 	public static BufferedImage imgGymTeacher;
 	public static BufferedImage getImgGymTeacher() {return imgGymTeacher;}
 	public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
-
+	public static BattlePanel battlePanel;
 
 	
 } // Database class

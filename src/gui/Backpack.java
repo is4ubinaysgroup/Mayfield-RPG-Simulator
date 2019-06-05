@@ -188,11 +188,9 @@ public class Backpack
 				lbl_error.setText(null);
 				playSound(Database.getSelectTone1());
 				
-				if (MatchExtension.run == true)
+				if(GUIExtension1.isinBattle())
 				{
-					
-					// if in battle switches to the battle pane; the player may choose to attack if they haven't used their turn
-				
+					GUIExtension1.switchPane(BattlePanel.getPanel());
 				}
 				else
 				{

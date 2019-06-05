@@ -2,6 +2,8 @@ package src.gui;
 
 /* Zac 5/27/19
  * added button color and font
+ * Carson 2019-06-02
+ * I added all sorts of functionality including progressbars, and updating functions.
  */
 
 import javax.swing.JPanel;
@@ -10,11 +12,30 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
+import src.character.Human;
+import src.character.NonPlayer;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
 //import Human.java;
 
 public class CombatMenu extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8116636656495531817L;
+	private JList<String> dialog;
+	private static JProgressBar enemyHealth= new JProgressBar();
+	private static JProgressBar enemyDefense= new JProgressBar();
+	private static JProgressBar playerHealth= new JProgressBar();
+	private static JProgressBar playerDefense= new JProgressBar();
+	private static boolean mode = true;
+	//private JprogressBar
+
 
 	/**
 	 * Create the panel.
@@ -27,9 +48,9 @@ public class CombatMenu extends JPanel {
 		
 		// ------- CombatPanel -------
 		JPanel CombatPanel = new JPanel();
-		CombatPanel.setBounds(800, 0, 200, 800);
-		CombatPanel.setBackground(Color.LIGHT_GRAY);
-		CombatPanel.setLayout(null);
+		setBounds(800, 0, 200, 800);
+		setBackground(Color.LIGHT_GRAY);
+		setLayout(null);
 		
 		add(CombatPanel);
 		
@@ -37,58 +58,68 @@ public class CombatMenu extends JPanel {
 		// labels
 		
 		JLabel lblNewLabel = new JLabel("COMBAT MENU");
-		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
 		lblNewLabel.setBounds(33, 13, 135, 29);
-		CombatPanel.add(lblNewLabel);
+		add(lblNewLabel);
 		
 		
 		// health
 		JLabel lblHealth = new JLabel("HEALTH");
-		lblHealth.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
+		lblHealth.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		lblHealth.setBounds(12, 80, 56, 16);
-		CombatPanel.add(lblHealth);
+		add(lblHealth);
 		
-		JLabel lblHealthInt = new JLabel("");
-		lblHealthInt.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
-		lblHealthInt.setBounds(99, 80, 56, 16);
-		CombatPanel.add(lblHealthInt);
+		
+		playerHealth.setBounds(90, 80, 100, 16);
+		add(playerHealth);
 		
 		
 		// defense
 		JLabel lblDefense = new JLabel("DEFENSE");
-		lblDefense.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
+		lblDefense.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		lblDefense.setBounds(12, 118, 80, 16);
-		CombatPanel.add(lblDefense);
+		add(lblDefense);
 		
-		JLabel lblDefenseInt = new JLabel("");
-		lblDefenseInt.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
-		lblDefenseInt.setBounds(90, 118, 56, 16);
-		CombatPanel.add(lblDefenseInt);
+		playerDefense.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
+		playerDefense.setBounds(90, 118, 100, 16);
+		add(playerDefense);
 		
 		
 		// movement
-		JLabel lblMovement = new JLabel("MOVEMENT");
-		lblMovement.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
+		JLabel lblMovement = new JLabel("MOVEMENT:");
+		lblMovement.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		lblMovement.setBounds(12, 163, 88, 16);
-		CombatPanel.add(lblMovement);
+		add(lblMovement);
 		
-		JLabel lblMovementInt = new JLabel("");
-		lblMovementInt.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 15));
+		JLabel lblMovementInt = new JLabel(Integer.toString(Human.MOVEMENT));
+		lblMovementInt.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		lblMovementInt.setBounds(112, 163, 56, 16);
-		CombatPanel.add(lblMovementInt);
+		add(lblMovementInt);
 		
 		
 		
 		// ------- btnAttack -------
-		JButton btnAttack = new JButton("ATTACK");
-		btnAttack.setBounds(33, 271, 122, 46);
-		btnAttack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
-		btnAttack.setForeground(new Color(247, 221, 0));
-		btnAttack.setBackground(new Color(14, 1, 141));
-		CombatPanel.add(btnAttack);
+		JButton btnMode = new JButton("ATTACK");
+		btnMode.setBounds(33, 271, 122, 46);
+		btnMode.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
+		btnMode.setForeground(new Color(247, 221, 0));
+		btnMode.setBackground(new Color(14, 1, 141));
+		add(btnMode);
 		
-		btnAttack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {//-------------------------- Attack Methods --------------------------
+		btnMode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				if(mode) 
+				{
+					btnMode.setText("MOVE");
+				}
+				else 
+				{
+					btnMode.setText("ATTACK");
+				}
+				modeMethod(!(mode));
+				mode = !(mode);
+				
 			}
 		});
 		
@@ -96,33 +127,61 @@ public class CombatMenu extends JPanel {
 		
 		// ------- btnBackpack -------
 		JButton btnBackpack = new JButton("BACKPACK");
-		btnBackpack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
+		btnBackpack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		btnBackpack.setForeground(new Color(247, 221, 0));
 		btnBackpack.setBackground(new Color(14, 1, 141));
 		btnBackpack.setBounds(33, 352, 122, 46);
-		CombatPanel.add(btnBackpack);
+		add(btnBackpack);
 		
 		JButton btnEndTurn = new JButton("END TURN");
+		btnEndTurn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				BattlePanel.getRoom().skipTurn();
+			}});
 		btnEndTurn.setForeground(new Color(247, 221, 0));
-		btnEndTurn.setFont(new Font("Dialog", Font.PLAIN, 17));
+		btnEndTurn.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnEndTurn.setBackground(new Color(14, 1, 141));
-		btnEndTurn.setBounds(33, 432, 122, 46);
-		CombatPanel.add(btnEndTurn);
-		
-		JLabel enemyHealth = new JLabel("");
-		enemyHealth.setFont(new Font("Dialog", Font.PLAIN, 15));
-		enemyHealth.setBounds(112, 605, 56, 16);
-		CombatPanel.add(enemyHealth);
+		btnEndTurn.setBounds(33, 431, 122, 46);
+		add(btnEndTurn);
 		
 		JLabel enemyHealthlbl = new JLabel("HEALTH");
-		enemyHealthlbl.setFont(new Font("Dialog", Font.PLAIN, 15));
-		enemyHealthlbl.setBounds(12, 605, 56, 16);
-		CombatPanel.add(enemyHealthlbl);
+		enemyHealthlbl.setFont(new Font("Dialog", Font.PLAIN, 12));
+		enemyHealthlbl.setBounds(12, 545, 80, 16);
+		add(enemyHealthlbl);
 		
 		JLabel lblEnemy = new JLabel("ENEMY");
-		lblEnemy.setFont(new Font("Dialog", Font.PLAIN, 15));
-		lblEnemy.setBounds(61, 557, 56, 16);
-		CombatPanel.add(lblEnemy);
+		lblEnemy.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEnemy.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblEnemy.setBounds(12, 497, 178, 16);
+		add(lblEnemy);
+		
+		JLabel lblenemyDefense = new JLabel("DEFENSE");
+		lblenemyDefense.setFont(new Font("Dialog", Font.PLAIN, 12));
+		lblenemyDefense.setBounds(12, 572, 80, 16);
+		add(lblenemyDefense);
+		
+		enemyHealth.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
+		enemyHealth.setBounds(90, 545, 100, 16);
+		add(enemyHealth);
+		
+		enemyDefense.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
+		enemyDefense.setBounds(90, 572, 100, 16);
+		add(enemyDefense);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 599, 180, 190);
+		add(scrollPane);
+		
+		dialog = new JList<String>();
+		scrollPane.setViewportView(dialog);
+		
+		JLabel list = new JLabel("DIALOG");
+		scrollPane.setColumnHeaderView(dialog);
+		list.setHorizontalAlignment(SwingConstants.CENTER);
+		list.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		
 		btnBackpack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {//-------------------------- go to Backpack Panel ---------------------
@@ -138,11 +197,118 @@ public class CombatMenu extends JPanel {
 	} // CombatMenu constructor
 	
 	
-	
-	public static void AttackMethod() {
-		//Select Enemy and check if in range.
+	public static void update(NonPlayer enemy) 
+	{
+		enemyHealth.setMinimum(0);
+		enemyHealth.setMaximum(enemy.getMaxHealth());
+		enemyHealth.setValue(enemy.getHealth());
+		enemyHealth.setToolTipText("Enemy Health is " + enemy.getHealth());
 		
+		
+		enemyDefense.setMinimum(0);
+		enemyDefense.setMaximum(enemy.getMaxDefense());
+		enemyDefense.setValue(enemy.getDefense());
+		enemyDefense.setToolTipText("Enemy Defense is" + enemy.getDefense());
+		
+		playerHealth.setMinimum(0);
+		playerHealth.setMaximum(MainExecutable.getPlayer().getMaxHealth());
+		playerHealth.setValue(MainExecutable.getPlayer().getHealth());
+		playerHealth.setToolTipText("Your Health is " + MainExecutable.getPlayer().getHealth());
+		
+		playerDefense.setMinimum(0);
+		playerDefense.setMaximum(MainExecutable.getPlayer().getMaxDefense());
+		playerDefense.setValue(MainExecutable.getPlayer().getDefense());
+		playerDefense.setToolTipText("Your Defense is " + MainExecutable.getPlayer().getDefense());
+	}
+	
+	public static void modeMethod(boolean mode ) {
+		BattlePanel.getRoom().setShowingMovement(mode);
 		
 		
 	} // AttackMethod method
+
+
+	/**
+	 * @return the enemyHealth
+	 */
+	public JProgressBar getEnemyHealth() {
+		return enemyHealth;
+	}
+
+
+
+	/**
+	 * @param enemyHealth the enemyHealth to set
+	 */
+	public void setEnemyHealth(JProgressBar enemyHealth) {
+		CombatMenu.enemyHealth = enemyHealth;
+	}
+
+
+
+	/**
+	 * @return the enemyDefense
+	 */
+	public JProgressBar getEnemyDefense() {
+		return enemyDefense;
+	}
+
+
+
+	/**
+	 * @param enemyDefense the enemyDefense to set
+	 */
+	public void setEnemyDefense(JProgressBar enemyDefense) {
+		CombatMenu.enemyDefense = enemyDefense;
+	}
+
+	/**
+	 * @return the playerHealth
+	 */
+	public JProgressBar getPlayerHealth() {
+		return playerHealth;
+	}
+
+
+
+	/**
+	 * @param playerHealth the playerHealth to set
+	 */
+	public void setPlayerHealth(JProgressBar playerHealth) {
+		CombatMenu.playerHealth = playerHealth;
+	}
+
+
+
+	/**
+	 * @return the playerDefense
+	 */
+	public JProgressBar getPlayerDefense() {
+		return playerDefense;
+	}
+
+
+
+	/**
+	 * @param playerDefense the playerDefense to set
+	 */
+	public void setPlayerDefense(JProgressBar playerDefense) {
+		CombatMenu.playerDefense = playerDefense;
+	}
+
+
+	/**
+	 * @return the dialog
+	 */
+	public JList<String> getDialog() {
+		return dialog;
+	}
+
+
+	/**
+	 * @param dialog the dialog to set
+	 */
+	public void setDialog(JList<String> dialog) {
+		this.dialog = dialog;
+	}
 } // CombatMenu class

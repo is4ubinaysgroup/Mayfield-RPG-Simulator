@@ -59,7 +59,7 @@ public class Human
 	protected int maxHealth;
 	protected Weapon equippedWeapon;
 	protected String imagePath;
-	private int[] position = new int[2];
+	private Point position = new Point(0,0);
 	
 	/*
 	 //We will move as close as we can to the position
@@ -76,12 +76,26 @@ public class Human
 		return false;
 	}
 	
+	
+	public void moveTo(Point point) throws Exception 
+	{
+		if(canMoveTo(point.x, point.y)) //can move here with no issues
+		{
+			setX(point.x);
+			setY(point.y);
+		}
+		else 
+		{
+			throw new Exception("Cannot move to "+point.x + "," +point.y+".");
+		}
+	}
+	
 	public void moveTo(Point point, boolean moveAnyWays) throws Exception 
 	{
 		//How much do we need to move to get there
 		int changeInX = point.x - getX();
 		int changeInY = point.y - getY();
-		if(Math.abs(changeInX) <= MOVEMENT) //can move here with no issues
+		if(canMoveTo(point.x, point.y)) //can move here with no issues
 		{
 			setX(point.x);
 			setY(point.y);
@@ -132,6 +146,36 @@ public class Human
 		}
 	}
 	
+	public void attack(Human human) 
+	{
+		//Cuts damage from armor then if there is more damage it cuts to health. 
+		//also adds critical change 
+		int initialDamage = this.getEquippedWeapon().getDamage();
+		if (Math.random() <= this.equippedWeapon.getCriticalChance()) 
+		{
+			initialDamage= initialDamage*2;
+		}
+		
+		int damageToHealth = human.getDefense() - initialDamage;
+		if(damageToHealth < 0) 
+		{
+			human.setDefense(0);
+			if(human.getHealth() <= 0) 
+			{
+				human.setHealth(0);
+			}
+			else 
+			{
+				human.setHealth(human.getHealth() - Math.abs(damageToHealth));
+			}
+		}
+		else 
+		{
+			human.setDefense(damageToHealth);
+		}
+		
+	}
+	
 	public void recoverShield() //sets to Max Defense
 	{
 		setDefense(getMaxDefense());
@@ -155,15 +199,15 @@ public class Human
 	public void setImagePath (String imagePath) {this.imagePath = imagePath;}
 	public String getImagePath () {return this.imagePath;}
 	
-	public int[] getPosition() {
+	public Point getPosition() {
 		return position;
 	}
-	public void setPosition(int[] position) {
+	public void setPosition(Point position) {
 		this.position = position;
 	}
 	
 	public int getY() {
-		return this.position[1];
+		return this.position.y;
 	}
 	
 	public void setY(int y) {
@@ -175,11 +219,11 @@ public class Human
 		{
 			y = 20;
 		}
-		this.position[1] = y;
+		this.position.setLocation(this.position.getX(), y);
 	}
 	
 	public int getX() {
-		return this.position[0];
+		return (int) this.position.getX();
 	}
 	
 	public void setX(int x) {
@@ -191,12 +235,13 @@ public class Human
 		{
 			x = 20;
 		}
-		this.position[0] = x;
+		this.position.setLocation(x,this.position.getY());
 	}
 	
 	public boolean inRangeOf(Human human) {//if it is in the range of this humans weapons it returns true
-		if((human.getX() + human.getEquippedWeapon().getRange() > getX() && getX() > human.getX() - human.getEquippedWeapon().getRange() ) &&
-				(human.getY() + human.getEquippedWeapon().getRange() > getY() && getY() < human.getY() - human.getEquippedWeapon().getRange()) )
+		int changeInX = human.getX() - getX();
+		int changeInY = human.getY() - getY();
+		if(Math.abs(changeInX) <= human.getEquippedWeapon().getRange() && Math.abs(changeInY) <= human.getEquippedWeapon().getRange()  ) //can move here with no issues
 		{
 			return true;
 		}

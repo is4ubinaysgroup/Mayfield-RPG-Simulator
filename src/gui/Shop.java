@@ -514,7 +514,14 @@ public class Shop
 	
 	public static void leaveEngine()
 	{
+		if(GUIExtension1.isinBattle())
+		{
+			GUIExtension1.switchPane(BattlePanel.getPanel());
+		}
+		else 
+		{
 		GUIExtension1.leaveShop(Map.getPane());
+		}
 		playSound(Database.getFootsteps());
 	} // leaveEngine method
 	
@@ -645,7 +652,7 @@ public class Shop
 			Database.playSound(file);
 			
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-			e.printStackTrace();
+			new ErrorFrame(e).error();
 		} // try-catch
 	} // playSound method
 	

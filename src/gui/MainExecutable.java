@@ -19,11 +19,11 @@ public class MainExecutable
 	{
 		try {
 			Database.LoadImages();
+			//throw new Exception("Test exception");
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
-			e2.printStackTrace();
+			new ErrorFrame(e2).error();
 		}
-		
 		
 		// single save file is loaded on new game or continue button click on main menu
 		// level starts at 1 for now; 0 would be for when the tutorial is implemented		
@@ -40,6 +40,7 @@ public class MainExecutable
 		Shop.initGUI();
 		EndScreen.initGUI();
 		
+
 		GUIExtension1.showFirstPane(MainMenu.getPane());
 		
 	} // Main method
