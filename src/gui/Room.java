@@ -136,19 +136,7 @@ public class Room extends JPanel
 		  * placing Labels
 		  */
 		popupMenu.add(this.btn);
-		this.board = new ImageFrame[20 - (east+west)][ 20 - (south+north)] ;
-		
-		for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
-		{
-			for(int yPos = 0 ; yPos != 20 - (south+north); yPos++ ) 
-			{//TODO
-				this.board[xPos][yPos] = new ImageFrame();
-				this.board[xPos][yPos].setColor(new Color(55,55,55,40));
-				this.board[xPos][yPos].setBounds(0+40*east+40*xPos,0+40*south +40*yPos, 40, 40);
-				addPopup(this,this.board[xPos][yPos], popupMenu); 
-				add(this.board[xPos][yPos]);
-			}
-		}		
+		placeLabels();
 		add(background);
 		System.out.println("finished");
 		try 
@@ -161,6 +149,93 @@ public class Room extends JPanel
 			new ErrorFrame(e).notifyIssue();
 		}
 	}
+	
+	public Room( int north, int east, int south, int west, NonPlayer enemy) 
+	{
+		this.north = north;
+		this.east = east;
+		this.south = south;
+		this.west = west;
+		this.enemy = enemy;
+
+		
+		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
+		MainExecutable.getPlayer().setPosition(new Point(0,0));
+		
+		/**
+		 * JPanel
+		 */
+		JPanel background = new JPanel() 
+		{
+			/**
+			 * 
+			 */
+			
+			private static final long serialVersionUID = -6563003679240602762L;
+			
+			
+			
+			public void paint(Graphics g) 
+			{
+				
+					g.drawImage(Database.getBackground(), 0, 0, 800, 800, null);//TODO
+			}
+		};
+		background.setBounds(0, 0, 800, 800);
+		background.setVisible(true);
+		
+		/**
+		 * Setup
+		 */
+		setBounds(0, 0, 800, 800);
+		setBorder(new EmptyBorder(5, 5, 5, 5));
+		setLayout(null);
+		this.btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				btnFunction();
+			}
+
+			}); 
+		 
+		 /**
+		  * placing Labels
+		  */
+		popupMenu.add(this.btn);
+		placeLabels();
+		add(background);
+		System.out.println("finished");
+		try 
+		{
+			cleanBoard();
+			updateBoard();
+		} 
+		catch (Exception e) 
+		{
+			new ErrorFrame(e).notifyIssue();
+		}
+	}
+	
+	private void placeLabels() 
+	{
+		this.board = new ImageFrame[20 - (getEast()+getWest())][ 20 - (getSouth()+getNorth())] ;
+		
+		for(int xPos = 0 ; xPos != 20 - (getEast()+getWest()); xPos++) 
+		{
+			for(int yPos = 0 ; yPos != 20 - (getSouth()+getNorth()); yPos++ ) 
+			{//TODO
+				this.board[xPos][yPos] = new ImageFrame();
+				this.board[xPos][yPos].setColor(new Color(55,55,55,40));
+				this.board[xPos][yPos].setBounds(0+40*getEast()+40*xPos,0+40*getSouth() +40*yPos, 40, 40);
+				addPopup(this,this.board[xPos][yPos], this.popupMenu); 
+				add(this.board[xPos][yPos]);
+			}
+		}		
+
+	}
+	
 	
 	public NonPlayer getEnemy()
 	{
