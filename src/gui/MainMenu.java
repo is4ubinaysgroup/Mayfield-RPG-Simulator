@@ -30,6 +30,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import src.Database;
+import src.MatchExtension;
 
 
 public class MainMenu
@@ -105,7 +106,7 @@ public class MainMenu
 				else
 				{
 					// start tutorial
-					tutorial();
+					MatchExtension.runMatch(0);
 				} // else start tutorial
 				
 				playSound(Database.getSelectTone1());
@@ -230,11 +231,6 @@ public class MainMenu
 	
 	
 	
-	protected static void tutorial() {
-		BattlePanel.RunBattlePanel();
-		GUIExtension1.switchPane (BattlePanel.getPanel());
-		BattlePanel.initGui();
-	}
 
 
 
