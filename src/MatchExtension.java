@@ -32,9 +32,9 @@ public class MatchExtension
 		
 		if (level == 0)
 		{
-			BattlePanel.RunBattlePanel();
+			BattlePanel.RunBattlePanel(); // create panel and add room and combat menu
 			GUIExtension1.switchPane (BattlePanel.getPanel());
-			BattlePanel.initGui();
+			BattlePanel.initGui(); // calls loadRoom again and sets inBattle to true
 		}
 
 		else if (level == 1)
