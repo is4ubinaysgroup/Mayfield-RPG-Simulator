@@ -230,6 +230,21 @@ public class Map
 
 	
 	public static JPanel getPane () {return mapPane;} // getPane method
+
+	
+	
+	
+	public static void btn_Level1Engine ()
+	{
+		
+		playSound(Database.getSelectTone1());
+		
+		// start the battle with boss 1
+		// switch to the battle panel
+		
+		MatchExtension.runMatch(1);
+		
+	} // btn_Level1Engine method
 		
 	
 	
