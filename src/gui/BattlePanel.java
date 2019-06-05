@@ -3,6 +3,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import src.Database;
+import src.MatchExtension;
 
 
 public class BattlePanel  {
@@ -40,7 +41,6 @@ public class BattlePanel  {
 		try {
 			
 			loadRoom();
-			GUIExtension1.InBattle();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,7 +50,7 @@ public class BattlePanel  {
 	
 	public static void loadRoom() 
 	{
-		if(MainExecutable.getPlayer().getLevel() == 0 && GUIExtension1.isinBattle()) 
+		if(MainExecutable.getPlayer().getLevel() == 0 && MatchExtension.run == true) 
 		{
 			
 		}
@@ -58,7 +58,7 @@ public class BattlePanel  {
 		{
 			room = room0;
 		}
-		if(MainExecutable.getPlayer().getLevel() == 1 && GUIExtension1.isinBattle()) 
+		if(MainExecutable.getPlayer().getLevel() == 1 && MatchExtension.run == true) 
 		{
 			
 		}
