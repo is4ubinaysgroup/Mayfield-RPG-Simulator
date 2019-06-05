@@ -16,6 +16,7 @@ continue if the player's level is 0 instead of switching to navigation
 
 // Mina 05-24 new game or continue would only go to navigation if the user has completed the tutorial
 // Mina 05-25 added sound effects
+// Mina 06-05 put tutorial method into matchExtension instead
 
 
 import java.awt.*;
@@ -30,6 +31,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import src.Database;
+import src.MatchExtension;
 
 
 public class MainMenu
@@ -52,9 +54,6 @@ public class MainMenu
 		
 		JPanel background = new JPanel() 
 		{
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = -2339005568596082953L;
 
 			public void paint(Graphics g) 
@@ -105,7 +104,7 @@ public class MainMenu
 				else
 				{
 					// start tutorial
-					tutorial();
+					MatchExtension.runMatch(0);
 				} // else start tutorial
 				
 				playSound(Database.getSelectTone1());
@@ -149,6 +148,7 @@ public class MainMenu
 				else
 				{
 					// start tutorial
+					MatchExtension.runMatch(0);
 					
 				} // else start tutorial
 				
@@ -228,14 +228,6 @@ public class MainMenu
 		
 	} // initGUI method
 	
-	
-	
-	protected static void tutorial() {
-		BattlePanel.RunBattlePanel();
-		GUIExtension1.switchPane (BattlePanel.getPanel());
-		BattlePanel.initGui();
-	}
-
 
 
 	public static JPanel getPane() {return mainMenuPane; } //getPane method

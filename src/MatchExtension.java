@@ -5,11 +5,11 @@
 package src;
 
 import src.character.NonPlayer;
+import src.gui.BattlePanel;
 import src.gui.EndScreen;
 import src.gui.GUIExtension1;
 import src.gui.MainExecutable;
 import src.gui.Map;
-import src.gui.TestFrame;
 
 public class MatchExtension
 {
@@ -32,7 +32,9 @@ public class MatchExtension
 		
 		if (level == 0)
 		{
-			// tutorial
+			BattlePanel.RunBattlePanel();
+			GUIExtension1.switchPane (BattlePanel.getPanel());
+			BattlePanel.initGui();
 		}
 
 		else if (level == 1)
