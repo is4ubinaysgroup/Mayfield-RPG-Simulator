@@ -652,7 +652,7 @@ public class Shop
 			Database.playSound(file);
 			
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-			e.printStackTrace();
+			new ErrorFrame(e).error();
 		} // try-catch
 	} // playSound method
 	
