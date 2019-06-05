@@ -9,7 +9,6 @@ import src.gui.EndScreen;
 import src.gui.GUIExtension1;
 import src.gui.MainExecutable;
 import src.gui.Map;
-import src.gui.TestFrame;
 
 public class MatchExtension
 {
