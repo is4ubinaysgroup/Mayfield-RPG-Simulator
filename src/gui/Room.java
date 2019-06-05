@@ -219,7 +219,7 @@ public class Room extends JPanel
 	}
 	
 	private void placeLabels() 
-	{
+	{ 
 		this.board = new ImageFrame[20 - (getEast()+getWest())][ 20 - (getSouth()+getNorth())] ;
 		
 		for(int xPos = 0 ; xPos != 20 - (getEast()+getWest()); xPos++) 
