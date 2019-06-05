@@ -49,7 +49,15 @@ public class EndScreen
 			public void actionPerformed(ActionEvent e) 
 			{
 
-				GUIExtension1.switchPane(Map.getPane());;
+				if (MainExecutable.getPlayer().getLevel() > 0)
+				{
+					GUIExtension1.switchPane(Map.getPane());
+				}
+				else
+				{
+					GUIExtension1.switchPane(MainMenu.getPane()); // go back to mainmenu if lost tutorial
+					btn_Map.setText("Back to Map");
+				}
 			}
 		});
 
@@ -66,8 +74,22 @@ public class EndScreen
 	
 	public static void updateForTutorial (boolean win)
 	{
-		
-		
+		if (win == true)
+		{
+			MainExecutable.getPlayer().setCoins(MainExecutable.getPlayer().getCoins() + 10);
+			
+			lbl_message1.setText("You've passed your first test!");
+			lbl_message2.setText("Here's 10 more coins.");
+			
+		} // if won tutorial
+		else
+		{
+			btn_Map.setText("Back to Start");
+			
+			lbl_message1.setText("You've been beaten by the gym teacher...");
+			lbl_message2.setText("TRY AGAIN!!!");
+			
+		} // else lost tutorial
 	} // updateForTutorial method
 
 	
