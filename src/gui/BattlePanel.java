@@ -11,6 +11,8 @@ public class BattlePanel  {
 	 * 
 	 */
 	private static Room room0 = new Room(3,0,3,0,Room.GYMTEACHER);
+	private static Room room1 = new Room(3,3,3,0,Room.BINAY);
+	private static Room hall = new Room(3,0,3,0,Room.HALLMONITOR);
 	private static CombatMenu menu;
 	private static JPanel panel;
 	private static Room room;//current updated room.
@@ -56,6 +58,14 @@ public class BattlePanel  {
 		{
 			room = room0;
 		}
+		if(MainExecutable.getPlayer().getLevel() == 1 && GUIExtension1.isinBattle()) 
+		{
+			
+		}
+		else if(MainExecutable.getPlayer().getLevel() == 1)
+		{
+			room = room1;
+		}
 	}
 	
 	public static Room getRoom() 
@@ -73,6 +83,30 @@ public class BattlePanel  {
 
 	public static void setPanel(JPanel panel) {
 		BattlePanel.panel = panel;
+	}
+
+
+
+	public static Room getRoom1() {
+		return room1;
+	}
+
+
+
+	public static void setRoom1(Room room1) {
+		BattlePanel.room1 = room1;
+	}
+
+
+
+	public static Room getHall() {
+		return hall;
+	}
+
+
+
+	public static void setHall(Room hall) {
+		BattlePanel.hall = hall;
 	}
 
 }
