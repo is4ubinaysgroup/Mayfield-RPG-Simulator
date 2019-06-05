@@ -17,17 +17,18 @@ public class MatchExtension
 	public static int matchLevel; // needed to compare if the player is playing a level they've already beaten
 	public static boolean run = false; // if the game is ongoing; needed for distinguishing if Backpack is being accessed out of battle
 	
-	public static boolean turn = false; // true if player's turn; not sure if this reference will be useful depending on logic for turns
-	public static boolean win = false; // true if player wins; this variable may or may not be needed (see static endResult method in this class)
+	//public static boolean turn = false; // true if player's turn; not sure if this reference will be useful depending on logic for turns
+	//public static boolean win = false; // true if player wins; this variable may or may not be needed (see static endResult method in this class)
 
 	
 
 	public static void runMatch (int level)
 	{
 		matchLevel = level;
-		turn = true;
 		run = true;
-		win = false;
+
+		//turn = true;
+		//win = false;
 
 		BattlePanel.RunBattlePanel(level); // create panel and add room and combat menu
 		GUIExtension1.switchPane (BattlePanel.getPanel());
@@ -40,7 +41,7 @@ public class MatchExtension
 	{
 		
 		run = false;
-		turn = false;
+		//turn = false;
 		
 		int level = MainExecutable.getPlayer().getLevel();
 		int coins = MainExecutable.getPlayer().getCoins();
@@ -48,7 +49,11 @@ public class MatchExtension
 		
 		if (win == true)
 		{
-			int winningAmount = level * coins;
+			
+			if (level == 0){EndScreen.updateForTutorial(true);}
+			else {
+			
+			int winningAmount = level * 50;
 			MainExecutable.getPlayer().setCoins(winningAmount); // the player wins coins
 	
 			if (level == matchLevel)
@@ -66,12 +71,16 @@ public class MatchExtension
 			
 			EndScreen.update(true, winningAmount, false, false); // update the battle over screen
 			
+			} // else level is not tutorial
 		} // if the player was won the battle
 		
 		
 		
 		else
 		{
+			if (level == 0){EndScreen.updateForTutorial(false);}
+			else {
+			
 			// alreadyOwnsWeapon boolean would be arbitrary
 			
 			if (coins == 0)
@@ -108,7 +117,7 @@ public class MatchExtension
 				EndScreen.update(false, losingAmount, true, false);
 				
 			} // else the player has 10 or more coins
-			
+			} // else level is not tutorial
 		} // else lose
 		
 		

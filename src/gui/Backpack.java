@@ -232,7 +232,6 @@ public class Backpack
 
 				GUIExtension1.switchPane(BattlePanel.getPanel());
 				// still need to check how ending the turn would work
-				MatchExtension.turn = false;
 				
 			} // go back if a battle is happening
 
@@ -268,7 +267,6 @@ public class Backpack
 
 					GUIExtension1.switchPane(BattlePanel.getPanel());
 					// still need to check how ending the turn would work
-					MatchExtension.turn = false;
 					
 				} // go back if a battle is happening
 			} // else

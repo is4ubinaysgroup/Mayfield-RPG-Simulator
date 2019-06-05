@@ -62,6 +62,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import src.Database;
+import src.MatchExtension;
 import src.items.Product;
 import src.items.Weapon;
 
@@ -514,7 +515,7 @@ public class Shop
 	
 	public static void leaveEngine()
 	{
-		if(GUIExtension1.isinBattle())
+		if(MatchExtension.run == true)
 		{
 			GUIExtension1.switchPane(BattlePanel.getPanel());
 		}

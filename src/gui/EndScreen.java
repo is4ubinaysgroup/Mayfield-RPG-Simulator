@@ -64,6 +64,14 @@ public class EndScreen
 
 	
 	
+	public static void updateForTutorial (boolean win)
+	{
+		
+		
+	} // updateForTutorial method
+
+	
+	
 	public static void update(boolean win, int coinsAmount, boolean alreadyOwnsWeapon, boolean had0Coins)
 	{
 		
