@@ -391,13 +391,13 @@ public class Room extends JPanel
 		{
 			MainExecutable.getPlayer().setLevel(0);
 			GUIExtension1.endBattle();
+			MainExecutable.getPlayer().setCoins(MainExecutable.getPlayer().getCoins()+10);
+			MainExecutable.getPlayer().addWeapon(enemy.getEquippedWeapon());
 			GUIExtension1.switchPane(Navigation.getPane());
 		}
 		else if(MainExecutable.getPlayer().getHealth() == 0) 
 		{ 
 			MainExecutable.getPlayer().setLevel(1);
-			MainExecutable.getPlayer().setCoins(MainExecutable.getPlayer().getCoins()+10);
-			MainExecutable.getPlayer().addWeapon(enemy.getEquippedWeapon());
 			GUIExtension1.endBattle();
 			GUIExtension1.switchPane(Navigation.getPane());
 
