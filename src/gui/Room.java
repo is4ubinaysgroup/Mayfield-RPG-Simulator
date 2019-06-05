@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.border.EmptyBorder;
 import src.Database;
+import src.MatchExtension;
 import src.character.Human;
 import src.character.NonPlayer;
 /*
@@ -387,21 +388,23 @@ public class Room extends JPanel
 	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	{
-		if(this.enemy.getHealth() == 0) 
+		
+		// this check would be more efficient if placed after every attack; however saves me from having to find the attack methods xD - Mina
+		if(this.enemy.getHealth() == 0)
 		{
-			MainExecutable.getPlayer().setLevel(0);
-			GUIExtension1.endBattle();
-			MainExecutable.getPlayer().setCoins(MainExecutable.getPlayer().getCoins()+10);
-			MainExecutable.getPlayer().addWeapon(enemy.getEquippedWeapon());
-			GUIExtension1.switchPane(Navigation.getPane());
-		}
+			MatchExtension.endResult(getEnemy(), true);
+			
+			// possibly make the player start with no weapon and win pencil from the tutorial? if they lose the tutorial they have to keep trying?
+		
+		} // if the player wins
+		
 		else if(MainExecutable.getPlayer().getHealth() == 0) 
 		{ 
-			MainExecutable.getPlayer().setLevel(1);
-			GUIExtension1.endBattle();
-			GUIExtension1.switchPane(Navigation.getPane());
-
-		}
+			MatchExtension.endResult(getEnemy(), false);
+		} // else the player loses
+		
+		
+		
 		else {
 		
 		setVisible(false);

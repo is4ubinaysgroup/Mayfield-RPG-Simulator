@@ -55,6 +55,9 @@ public class MatchExtension
 	public static void endResult (NonPlayer boss, boolean win) // win either needs to be set or passed
 	{
 		
+		run = false;
+		turn = false;
+		
 		int level = MainExecutable.getPlayer().getLevel();
 		int coins = MainExecutable.getPlayer().getCoins();
 		
@@ -89,7 +92,7 @@ public class MatchExtension
 			
 			if (coins == 0)
 			{
-				if (level == matchLevel)
+				if (level == matchLevel && level > 0)
 				{
 					MainExecutable.getPlayer().setLevel(level-1);
 					Map.updateMap(MainExecutable.getPlayer().getLevel()); // update the map

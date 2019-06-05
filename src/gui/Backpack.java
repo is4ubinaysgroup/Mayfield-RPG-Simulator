@@ -188,7 +188,7 @@ public class Backpack
 				lbl_error.setText(null);
 				playSound(Database.getSelectTone1());
 				
-				if(GUIExtension1.isinBattle())
+				if (MatchExtension.run == true)
 				{
 					GUIExtension1.switchPane(BattlePanel.getPanel());
 				}
@@ -230,9 +230,10 @@ public class Backpack
 			if (MatchExtension.run == true)
 			{
 
-				// go back to battle panel
+				GUIExtension1.switchPane(BattlePanel.getPanel());
+				// still need to check how ending the turn would work
+				MatchExtension.turn = false;
 				
-				MatchExtension.turn = false;		
 			} // go back if a battle is happening
 
 		}
@@ -265,9 +266,10 @@ public class Backpack
 				if (MatchExtension.run == true)
 				{
 
-					// go back to battle panel
-					
+					GUIExtension1.switchPane(BattlePanel.getPanel());
+					// still need to check how ending the turn would work
 					MatchExtension.turn = false;
+					
 				} // go back if a battle is happening
 			} // else
 		}
