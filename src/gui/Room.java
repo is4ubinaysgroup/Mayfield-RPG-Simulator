@@ -387,6 +387,23 @@ public class Room extends JPanel
 	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	{
+		if(this.enemy.getHealth() == 0) 
+		{
+			MainExecutable.getPlayer().setLevel(0);
+			GUIExtension1.endBattle();
+			GUIExtension1.switchPane(Navigation.getPane());
+		}
+		else if(MainExecutable.getPlayer().getHealth() == 0) 
+		{
+			MainExecutable.getPlayer().setLevel(1);
+			MainExecutable.getPlayer().setCoins(MainExecutable.getPlayer().getCoins()+10);
+			MainExecutable.getPlayer().addWeapon(enemy.getEquippedWeapon());
+			GUIExtension1.endBattle();
+			GUIExtension1.switchPane(Navigation.getPane());
+
+		}
+		else {
+		
 		setVisible(false);
 		draw(this.enemy, Color.BLACK, false);
 		draw(MainExecutable.getPlayer(),Color.BLUE, true);
@@ -403,7 +420,7 @@ public class Room extends JPanel
 		CombatMenu.update(this.enemy); 
 		setVisible(true);
 
-
+		}
 	}
 	
 	private static Color mixColors(Color color1, Color color2)
