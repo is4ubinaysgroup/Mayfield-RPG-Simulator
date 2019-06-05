@@ -16,6 +16,7 @@ continue if the player's level is 0 instead of switching to navigation
 
 // Mina 05-24 new game or continue would only go to navigation if the user has completed the tutorial
 // Mina 05-25 added sound effects
+// Mina 06-05 put tutorial method into matchExtension instead
 
 
 import java.awt.*;
@@ -53,9 +54,6 @@ public class MainMenu
 		
 		JPanel background = new JPanel() 
 		{
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = -2339005568596082953L;
 
 			public void paint(Graphics g) 
@@ -150,6 +148,7 @@ public class MainMenu
 				else
 				{
 					// start tutorial
+					MatchExtension.runMatch(0);
 					
 				} // else start tutorial
 				
@@ -229,10 +228,6 @@ public class MainMenu
 		
 	} // initGUI method
 	
-	
-	
-
-
 
 	public static JPanel getPane() {return mainMenuPane; } //getPane method
 	
