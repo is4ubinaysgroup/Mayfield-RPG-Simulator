@@ -28,28 +28,12 @@ public class MatchExtension
 		turn = true;
 		run = true;
 		win = false;
-		
-		
-		if (level == 0)
-		{
-			BattlePanel.RunBattlePanel(); // create panel and add room and combat menu
-			GUIExtension1.switchPane (BattlePanel.getPanel());
-			BattlePanel.initGui(); // calls loadRoom again and sets inBattle to true
-		}
 
-		else if (level == 1)
-		{
-			
-
-
-		} // level 1
-
-		else
-		{
-		}
+		BattlePanel.RunBattlePanel(level); // create panel and add room and combat menu
+		GUIExtension1.switchPane (BattlePanel.getPanel());
 
 	} // runMatch method
-	
+
 	
 	
 	public static void endResult (NonPlayer boss, boolean win) // win either needs to be set or passed
