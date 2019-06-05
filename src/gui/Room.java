@@ -88,7 +88,7 @@ public class Room extends JPanel
 			this.enemy = getEnemy(enemyID);
 		} catch (Exception e) 
 		{// TODO There is no valid enemy
-			e.printStackTrace();
+			new ErrorFrame(e).error();
 		}
 		
 		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
@@ -158,8 +158,7 @@ public class Room extends JPanel
 		} 
 		catch (Exception e) 
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			new ErrorFrame(e).error();
 		}
 	}
 	
@@ -244,7 +243,7 @@ public class Room extends JPanel
 			}
 			catch(Exception e) 
 			{
-				e.printStackTrace();
+				new ErrorFrame(e).error();
 			}
 
 			cleanBoard();
@@ -262,7 +261,7 @@ public class Room extends JPanel
 			}
 			catch(Exception e) 
 			{
-				e.printStackTrace();
+				new ErrorFrame(e).error();
 			}//TODO
 		}
 		else if(hasAttacked() == false)
@@ -278,7 +277,7 @@ public class Room extends JPanel
 				}
 				catch(Exception e) 
 				{
-					e.printStackTrace();
+					new ErrorFrame(e).error();
 				}
 				cleanBoard();
 				updateBoard();	//TODO
@@ -291,7 +290,7 @@ public class Room extends JPanel
 				}
 				catch(Exception e) 
 				{
-					e.printStackTrace();//TODO
+					new ErrorFrame(e).error();
 				}
 			}
 		}
@@ -304,7 +303,7 @@ public class Room extends JPanel
 				setMoved(false);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				new ErrorFrame(e).error();
 			}
 			
 		}
@@ -522,7 +521,7 @@ public class Room extends JPanel
 			updateBoard();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			new ErrorFrame(e).error();
 		}
 		
 	}
