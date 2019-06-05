@@ -30,6 +30,12 @@ public class ErrorFrame extends JOptionPane {
 		this.optionType= ErrorFrame.OK_CANCEL_OPTION;
 	}
 	
+	public void notifyIssue() 
+	{
+		showMessageDialog(null, getMessage(), "Bruh...", JOptionPane.ERROR_MESSAGE);
+		
+	}
+	
 	public void error() 
 	{
 		showMessageDialog(null, getMessage(), "OOPSY DOOPSY", JOptionPane.ERROR_MESSAGE);

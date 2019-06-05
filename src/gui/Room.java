@@ -158,7 +158,7 @@ public class Room extends JPanel
 		} 
 		catch (Exception e) 
 		{
-			new ErrorFrame(e).error();
+			new ErrorFrame(e).notifyIssue();
 		}
 	}
 	
@@ -243,7 +243,7 @@ public class Room extends JPanel
 			}
 			catch(Exception e) 
 			{
-				new ErrorFrame(e).error();
+				new ErrorFrame(e).notifyIssue();
 			}
 
 			cleanBoard();
@@ -261,7 +261,7 @@ public class Room extends JPanel
 			}
 			catch(Exception e) 
 			{
-				new ErrorFrame(e).error();
+				new ErrorFrame(e).notifyIssue();
 			}//TODO
 		}
 		else if(hasAttacked() == false)
@@ -290,7 +290,7 @@ public class Room extends JPanel
 				}
 				catch(Exception e) 
 				{
-					new ErrorFrame(e).error();
+					new ErrorFrame(e).notifyIssue();
 				}
 			}
 		}
@@ -303,7 +303,7 @@ public class Room extends JPanel
 				setMoved(false);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				new ErrorFrame(e).error();
+				new ErrorFrame(e).notifyIssue();
 			}
 			
 		}
@@ -521,7 +521,7 @@ public class Room extends JPanel
 			updateBoard();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			new ErrorFrame(e).error();
+			new ErrorFrame(e).notifyIssue();
 		}
 		
 	}
