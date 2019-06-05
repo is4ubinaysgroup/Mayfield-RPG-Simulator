@@ -228,6 +228,12 @@ public class MainMenu
 		
 	} // initGUI method
 	
+<<<<<<< HEAD
+=======
+	
+	
+
+>>>>>>> refs/remotes/origin/master
 
 
 	public static JPanel getPane() {return mainMenuPane; } //getPane method

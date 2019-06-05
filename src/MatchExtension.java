@@ -29,6 +29,9 @@ public class MatchExtension
 		run = true;
 		win = false;
 		
+		BattlePanel.RunBattlePanel();
+		GUIExtension1.switchPane (BattlePanel.getPanel());
+		BattlePanel.initGui();
 		
 		if (level == 0)
 		{
