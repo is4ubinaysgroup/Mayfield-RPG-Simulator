@@ -233,17 +233,7 @@ public class Backpack
 				GUIExtension1.switchPane(BattlePanel.getPanel());
 				// still need to check how ending the turn would work
 				
-				try {
-					BattlePanel.getRoom().getEnemy().runTurn(BattlePanel.getRoom());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-				BattlePanel.getRoom().setAttacked(false);
-				BattlePanel.getRoom().setMoved(false);
-				
-				BattlePanel.getRoom().cleanBoard();
-				BattlePanel.getRoom().updateBoard();
+				BattlePanel.getRoom().skipTurn();
 				
 			} // go back if a battle is happening
 
@@ -280,17 +270,7 @@ public class Backpack
 					GUIExtension1.switchPane(BattlePanel.getPanel());
 					// still need to check how ending the turn would work
 					
-					try {
-						BattlePanel.getRoom().getEnemy().runTurn(BattlePanel.getRoom());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-
-					BattlePanel.getRoom().setAttacked(false);
-					BattlePanel.getRoom().setMoved(false);
-					
-					BattlePanel.getRoom().cleanBoard();
-					BattlePanel.getRoom().updateBoard();
+					BattlePanel.getRoom().skipTurn();
 					
 				} // go back if a battle is happening
 			} // else
