@@ -329,6 +329,9 @@ public class Room extends JPanel
 			{
 				MainExecutable.getPlayer().moveTo(location, false);
 				setMoved(true);
+				
+				BattlePanel.getCombatMenu().disableBackpack();
+				setBackpackUsed(true);
 			}
 			catch(Exception e) 
 			{
@@ -365,8 +368,10 @@ public class Room extends JPanel
 				try 
 				{
 					MainExecutable.getPlayer().attack(this.enemy);
-
 					setAttacked(true);
+					
+					BattlePanel.getCombatMenu().disableBackpack();
+					setBackpackUsed(true);
 				}
 				catch(Exception e) 
 				{
@@ -631,10 +636,9 @@ public class Room extends JPanel
 		this.moved = moved;
 	}
 	
-	public void setBackpackUsed (boolean use)
-	{
-		this.backpackUsed = use;
-	}
+	
+	public void setBackpackUsed (boolean use) {this.backpackUsed = use;}
+	public boolean hasUsedBackpack() {return backpackUsed;}
 
 	
 	
@@ -645,6 +649,8 @@ public class Room extends JPanel
 			setAttacked(false);
 			setMoved(false);
 			setBackpackUsed(false);
+			BattlePanel.getCombatMenu().enableBackpack();
+			
 			cleanBoard();
 			updateBoard();
 		} catch (Exception e) {
@@ -653,7 +659,5 @@ public class Room extends JPanel
 		}
 		
 	} // skipTurn method
-
-	
 
 } // Room class

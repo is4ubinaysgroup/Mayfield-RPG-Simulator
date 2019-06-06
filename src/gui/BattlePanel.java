@@ -83,6 +83,8 @@ public class BattlePanel  {
 
 	public static Room getHall() {return hall;}
 	public static void setHall(Room hall) {BattlePanel.hall = hall;}
+	
+	public static CombatMenu getCombatMenu() {return menu;}
 
 	
 } // BattlePanel class
