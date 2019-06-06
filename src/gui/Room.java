@@ -46,6 +46,8 @@ public class Room extends JPanel
 	 **/
 	private boolean attacked = false;
 	private boolean moved = false;
+	private boolean backpackUsed = false;
+	
 	private Point popupLocation = new Point();
 	private NonPlayer enemy;
 	private boolean showingMovement =true;//if true this will show movement if false this will show range.
@@ -150,9 +152,11 @@ public class Room extends JPanel
 		{
 			new ErrorFrame(e).notifyIssue();
 		}
-	}
+	} // Room constructor
 	
-	public Room( int north, int east, int south, int west, NonPlayer enemy) 
+	
+	
+	public Room(int north, int east, int south, int west, NonPlayer enemy) 
 	{
 		this.north = north;
 		this.east = east;
@@ -218,7 +222,9 @@ public class Room extends JPanel
 		{
 			new ErrorFrame(e).notifyIssue();
 		}
-	}
+	} // Room constructor
+	
+	
 	
 	private void placeLabels() 
 	{ 
@@ -236,7 +242,8 @@ public class Room extends JPanel
 			}
 		}		
 
-	}
+	} // placeLabels method
+	
 	
 	
 	public NonPlayer getEnemy()
@@ -276,6 +283,8 @@ public class Room extends JPanel
 		
 	}
 	
+	
+	
 	private void draw(Human human, Color color, boolean player)  
 	{
 		/*if(!(human.getEquippedWeapon() != null)) 
@@ -309,6 +318,8 @@ public class Room extends JPanel
 		}
 	}
 	 
+	
+	
 	protected void btnFunction() {
 		Point location = this.popupLocation;
 		
@@ -436,6 +447,8 @@ public class Room extends JPanel
 		}
 	}
 	
+	
+	
 	private static Color mixColors(Color color1, Color color2)
 	{
 		float factor = /*Alpha factor ->*/130 / 255f;/* <-- 225 is completely invisible to the eye.*/
@@ -446,6 +459,8 @@ public class Room extends JPanel
 		return new Color(red, green, blue, alpha);
 	}
 
+	
+	
 	private static void addPopup(Room room, Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -616,6 +631,8 @@ public class Room extends JPanel
 		this.moved = moved;
 	}
 
+	
+	
 	public void skipTurn() {
 
 		try {
@@ -629,13 +646,8 @@ public class Room extends JPanel
 			new ErrorFrame(e).notifyIssue();
 		}
 		
-	}
+	} // skipTurn method
 
 	
-	
 
-}
-
-
-
-	
+} // Room class
