@@ -630,6 +630,11 @@ public class Room extends JPanel
 	public void setMoved(boolean moved) {
 		this.moved = moved;
 	}
+	
+	public void setBackpackUsed (boolean use)
+	{
+		this.backpackUsed = use;
+	}
 
 	
 	
@@ -639,6 +644,7 @@ public class Room extends JPanel
 			enemy.runTurn(this);
 			setAttacked(false);
 			setMoved(false);
+			setBackpackUsed(false);
 			cleanBoard();
 			updateBoard();
 		} catch (Exception e) {
