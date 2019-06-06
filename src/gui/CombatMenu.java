@@ -35,6 +35,8 @@ public class CombatMenu extends JPanel {
 	private static JProgressBar playerDefense= new JProgressBar();
 	private static boolean mode = true;
 	//private JprogressBar
+	
+	private JButton btnBackpack;
 
 
 	/**
@@ -126,7 +128,7 @@ public class CombatMenu extends JPanel {
 		
 		
 		// ------- btnBackpack -------
-		JButton btnBackpack = new JButton("BACKPACK");
+		btnBackpack = new JButton("BACKPACK");
 		btnBackpack.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		btnBackpack.setForeground(new Color(247, 221, 0));
 		btnBackpack.setBackground(new Color(14, 1, 141));
@@ -311,4 +313,17 @@ public class CombatMenu extends JPanel {
 	public void setDialog(JList<String> dialog) {
 		this.dialog = dialog;
 	}
+	
+	public void disableBackpack()
+	{
+		btnBackpack.setEnabled(false);
+	}
+	
+	
+	public void enableBackpack()
+	{
+		btnBackpack.setEnabled(true);
+	}
+	
+	
 } // CombatMenu class
