@@ -57,7 +57,8 @@ public class Room extends JPanel
 	 * Create the  frame.
 	 */
 	private ImageFrame board[][]; //labels
-	private JButton btn = new JButton();
+	
+	private JButton btn = new JButton(); // uses btnFunction
 	
 	private JPopupMenu popupMenu = new JPopupMenu();
 	
@@ -310,6 +311,7 @@ public class Room extends JPanel
 	 
 	protected void btnFunction() {
 		Point location = this.popupLocation;
+		
 		if(isShowingMovement() && hasMoved() == false) 
 		{
 			try 
@@ -328,7 +330,9 @@ public class Room extends JPanel
 			 * 
 			 * 
 			 */
-		}
+		} // button is in Move mode and user hasn't moved already
+		
+		
 		else if(isShowingMovement() && hasMoved() == true) 
 		{
 			try 
@@ -339,7 +343,9 @@ public class Room extends JPanel
 			{
 				new ErrorFrame(e).notifyIssue();
 			}//TODO
-		}
+		} // button is in Move mode; user already moved
+		
+		
 		else if(hasAttacked() == false)
 		{
 			if(this.enemy.inRangeOf(MainExecutable.getPlayer())) 
@@ -369,7 +375,9 @@ public class Room extends JPanel
 					new ErrorFrame(e).notifyIssue();
 				}
 			}
-		}
+		} // else if user hasn't attacked
+		
+		
 		else 
 		{
 		
@@ -382,9 +390,11 @@ public class Room extends JPanel
 				new ErrorFrame(e).notifyIssue();
 			}
 			
-		}
+		} // else has attacked and not in Move mode?
 
-	}
+	} // btnFunction method
+	
+	
 	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	{
