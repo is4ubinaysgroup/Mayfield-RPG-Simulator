@@ -76,6 +76,7 @@ public class EndScreen
 	{
 		if (win == true)
 		{
+			MainExecutable.getPlayer().setLevel(1);
 			MainExecutable.getPlayer().setCoins(MainExecutable.getPlayer().getCoins() + 10);
 			
 			lbl_message1.setText("You've passed your first test!");
