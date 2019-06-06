@@ -33,6 +33,8 @@ public class BattlePanel  {
 			e.printStackTrace();
 		}
 
+		if (null == getRoom()) {System.out.println ("null room");}
+		
 		room.setBounds(0, 0, 800, 800);
 		panel.add(room);
 		
@@ -50,19 +52,19 @@ public class BattlePanel  {
 	{
 		if(level == 0 && MatchExtension.run == true) 
 		{
-			
+			room = room0;
 		}
 		else if(level == 0)
 		{
-			room = room0;
+			
 		}
 		if(level == 1 && MatchExtension.run == true) 
 		{
-			
+			room = room1;
 		}
 		else if(level == 1)
 		{
-			room = room1;
+			
 		}
 	} // loadRoom method
 	
