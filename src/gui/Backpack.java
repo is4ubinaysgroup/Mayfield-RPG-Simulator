@@ -231,7 +231,6 @@ public class Backpack
 			{
 
 				GUIExtension1.switchPane(BattlePanel.getPanel());
-				// still need to check how ending the turn would work
 				
 				BattlePanel.getRoom().skipTurn();
 				
@@ -268,7 +267,6 @@ public class Backpack
 				{
 
 					GUIExtension1.switchPane(BattlePanel.getPanel());
-					// still need to check how ending the turn would work
 					
 					BattlePanel.getRoom().skipTurn();
 					
