@@ -150,7 +150,7 @@ public class Database {
 		imgClassroom =readImg("src/resources/room.jpg");
 		imgWalmart = readImg ("src/resources/walmart.jpg");
 		imgGymTeacher =readImg("src/resources/GymTeacher.png");
-		//imgBinay =readImg(binay);
+		imgBinay =readImg("src/resources/Binay.png");
 		imgHallMonitor =readImg("src/resources/HallMonitor.png");
 		imgPlayer = readImg("src/resources/playerSprite.png"); // this method is called before user can click continue or new game
 		imgGym = readImg("src/resources/Gym.png");
@@ -863,7 +863,6 @@ public class Database {
 		switch(enemyID) 
 		{
 		case Room.BINAY : //Binay
-			System.out.println("reached binay"); // testing
 			return Database.getImgBinay();
 		case Room.GYMTEACHER: //GymTeacher
 			return Database.getImgGymTeacher();
