@@ -421,6 +421,7 @@ public class Room extends JPanel
 				try 
 				{
 					MainExecutable.getPlayer().attack(this.enemy);
+					healthCheckEnemy();
 					setAttacked(true);
 					
 					BattlePanel.getCombatMenu().disableBackpack();
@@ -454,6 +455,7 @@ public class Room extends JPanel
 		
 			try {
 				enemy.runTurn(this);
+				healthCheckPlayer();
 				setAttacked(false);
 				setMoved(false);
 			} catch (Exception e) {
@@ -469,53 +471,31 @@ public class Room extends JPanel
 	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	{
-		
-		// this check would be more efficient if placed after every attack; however saves me from having to find the attack methods xD - Mina
-		if(this.enemy.getHealth() <= 0)
+		setVisible(false);
+		draw(this.enemy, Color.BLACK, false);
+		draw(MainExecutable.getPlayer(),Color.BLUE, true);
+
+		try {
+			board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getSprite(this.enemy.getID()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// need to make image correspond to any enemy
+
+		board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
+
+		if(isShowingMovement()) 
 		{
-			resetLevel();
-			MatchExtension.endResult(getEnemy(), true);
-					
-		} // if the player wins
-		
-		else if(MainExecutable.getPlayer().getHealth() <= 0) 
-		{ 
-						
-			resetLevel();
-			MatchExtension.endResult(getEnemy(), false);
-			
-		} // else the player loses
-		
-		
-		
-		//else {
+			this.btn.setText("Move here");
+		}
+		else 
+		{
+			this.btn.setText("Attack here");
+		}
 
-			setVisible(false);
-			draw(this.enemy, Color.BLACK, false);
-			draw(MainExecutable.getPlayer(),Color.BLUE, true);
-			
-			try {
-				board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getSprite(this.enemy.getID()));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			// need to make image correspond to any enemy
-			
-			board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
-			
-			if(isShowingMovement()) 
-			{
-				this.btn.setText("Move here");
-			}
-			else 
-			{
-				this.btn.setText("Attack here");
-			}
-			
-			CombatMenu.update(this.enemy); 
-			setVisible(true);
+		CombatMenu.update(this.enemy); 
+		setVisible(true);
 
-		//} // else no one died
 	} // updateBoard method
 	
 	
@@ -562,8 +542,11 @@ public class Room extends JPanel
 			setMoved(false);
 			BattlePanel.getCombatMenu().enableBackpack();
 			
+			healthCheckPlayer();
+
 			cleanBoard();
 			updateBoard();
+						
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			new ErrorFrame(e).notifyIssue();
@@ -581,7 +564,6 @@ public class Room extends JPanel
 		showingMovement = true;
 		//setShowingMovement(true);
 		
-		
 		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
 		this.enemy.setHealth(this.enemy.getMaxHealth());
 		this.enemy.setDefense(this.enemy.getMaxDefense());
@@ -589,34 +571,32 @@ public class Room extends JPanel
 		MainExecutable.getPlayer().setPosition(new Point(0,0)); // player's starting position
 		MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getMaxDefense()); // reset player's defense (i wasn't sure how recharging would work)
 
-		
 		cleanBoard();
-		
-		setVisible(false);
-		draw(this.enemy, Color.BLACK, false);
-		draw(MainExecutable.getPlayer(),Color.BLUE, true);
-		
-		try {
-			board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getSprite(this.enemy.getID()));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// need to make image correspond to any enemy
-		
-		board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
-		
-		if(isShowingMovement()) 
-		{
-			this.btn.setText("Move here");
-		}
-		else 
-		{
-			this.btn.setText("Attack here");
-		}
-		
-		CombatMenu.update(this.enemy); 
-		setVisible(true);
-		
+		updateBoard();
+	
 	} // resetLevel method
+
+	
+	
+	public void healthCheckEnemy()
+	{
+		if(this.enemy.getHealth() <= 0)
+		{
+			resetLevel();
+			MatchExtension.endResult(getEnemy(), true);	
+		} // if the player wins
+	} // healthCheckEnemy method
+	
+	
+	
+	public void healthCheckPlayer()
+	{
+		if(MainExecutable.getPlayer().getHealth() <= 0) 
+		{ 
+			resetLevel();
+			MatchExtension.endResult(getEnemy(), false);
+		} // else the player loses
+	}// healthCheckPlayer method
+	
 	
 } // Room class
