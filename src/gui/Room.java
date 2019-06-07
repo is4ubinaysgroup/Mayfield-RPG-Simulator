@@ -582,6 +582,12 @@ public class Room extends JPanel
 		this.enemy.setHealth(this.enemy.getMaxHealth());
 		this.enemy.setDefense(this.enemy.getMaxDefense());
 		
+		MainExecutable.getPlayer().setPosition(new Point(0,0)); // player's starting position
+		MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getMaxDefense()); // reset player's defense (i wasn't sure how recharging would work)
+
+		
+		cleanBoard();
+		
 		setVisible(false);
 		draw(this.enemy, Color.BLACK, false);
 		draw(MainExecutable.getPlayer(),Color.BLUE, true);

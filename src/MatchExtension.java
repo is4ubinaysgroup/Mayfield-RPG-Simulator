@@ -29,9 +29,8 @@ public class MatchExtension
 		matchLevel = level;
 		run = true;
 		
-		MainExecutable.getPlayer().setPosition(new Point(0,0)); // player's starting position
-		MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getMaxDefense()); // reset player's defense (i wasn't sure how recharging would work)
-
+		//MainExecutable.getPlayer().setPosition(new Point(0,0)); // player's starting position
+		//MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getMaxDefense()); // reset player's defense (i wasn't sure how recharging would work)
 
 		BattlePanel.RunBattlePanel(); // create panel and add room and combat menu
 		BattlePanel.test(level);
