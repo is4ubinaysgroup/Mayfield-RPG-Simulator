@@ -81,8 +81,8 @@ public class Map
 		btn_Level2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				playSound(Database.getSelectTone1());	
-				MatchExtension.runMatch(2);
+				//playSound(Database.getSelectTone1());	
+				//MatchExtension.runMatch(2);
 			}
 		});
 
@@ -97,8 +97,8 @@ public class Map
 		btn_Level3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				playSound(Database.getSelectTone1());	
-				MatchExtension.runMatch(3);
+				//playSound(Database.getSelectTone1());	
+				//MatchExtension.runMatch(3);
 			}
 		});
 
@@ -114,8 +114,8 @@ public class Map
 		btn_Level4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				playSound(Database.getSelectTone1());	
-				MatchExtension.runMatch(4);
+				//playSound(Database.getSelectTone1());	
+				//MatchExtension.runMatch(4);
 			}
 		});
 
@@ -131,8 +131,8 @@ public class Map
 		btn_Level5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				playSound(Database.getSelectTone1());	
-				MatchExtension.runMatch(5);
+				//playSound(Database.getSelectTone1());	
+				//MatchExtension.runMatch(5);
 			}
 		});
 
@@ -147,8 +147,8 @@ public class Map
 		btn_Level6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				playSound(Database.getSelectTone1());	
-				MatchExtension.runMatch(6);
+				//playSound(Database.getSelectTone1());	
+				//MatchExtension.runMatch(6);
 			}
 		});
 
@@ -163,8 +163,8 @@ public class Map
 		btn_Level7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				playSound(Database.getSelectTone1());	
-				MatchExtension.runMatch(7);
+				//playSound(Database.getSelectTone1());	
+				//MatchExtension.runMatch(7);
 			}
 		});
 

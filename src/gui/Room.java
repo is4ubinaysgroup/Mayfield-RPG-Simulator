@@ -59,7 +59,6 @@ public class Room extends JPanel
 	private int south = 0;
 	private int west = 0;
 	private int east = 0;
-	private int enemyID;
 	/**
 	 * Create the  frame.
 	 */
@@ -86,14 +85,12 @@ public class Room extends JPanel
 	
 	// ------- constructors -------
 	
-	public Room( int north, int east, int south, int west, int enemyID)
+	public Room(int north, int east, int south, int west, int enemyID)
 	{
 		this.north = north;
 		this.east = east;
 		this.south = south;
-		this.west = west;
-		this.enemyID = enemyID;
-		
+		this.west = west;		
 		
 		
 		try 
@@ -493,7 +490,11 @@ public class Room extends JPanel
 			draw(this.enemy, Color.BLACK, false);
 			draw(MainExecutable.getPlayer(),Color.BLUE, true);
 			
-			board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getImgGymTeacher());
+			try {
+				board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getSprite(this.enemy.getID()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			// need to make image correspond to any enemy
 			
 			board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );

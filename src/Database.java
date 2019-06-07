@@ -23,6 +23,7 @@ import src.character.NonPlayer;
 import src.character.Player;
 import src.gui.BattlePanel;
 import src.gui.MainExecutable;
+import src.gui.Room;
 import src.items.Item;
 import src.items.Product;
 import src.items.Weapon;
@@ -851,9 +852,26 @@ public class Database {
 	
 	
 	
-	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos, getImgHallMonitor());
-	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),5,20, gymPos, getImgBinay());
-	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),0,9, gymPos, getImgGymTeacher());
+	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos, Room.HALLMONITOR);
+	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),5,20, gymPos, Room.BINAY);
+	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),0,9, gymPos, Room.GYMTEACHER);
+	
+	
+	public static BufferedImage getSprite (int enemyID) throws Exception
+	{
+		switch(enemyID) 
+		{
+		case Room.BINAY : //Binay
+			return Database.getImgBinay();
+		case Room.GYMTEACHER: //GymTeacher
+			return Database.getImgGymTeacher();
+		case Room.HALLMONITOR://HallMonitor
+			return Database.getImgHallMonitor();
+		default:
+			throw new Exception("No enemy");
+		}
+		
+	} // getSprite method
 
 
 	

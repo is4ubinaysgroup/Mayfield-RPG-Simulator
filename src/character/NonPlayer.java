@@ -68,11 +68,11 @@ UML
 	
 	private Boolean isBoss;
 	private Room room;
-	private BufferedImage img;
+	private int ID;
 	
 	// imagePath is inherited from Human but not used
 	
-	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos, BufferedImage img) 
+	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos, int ID) 
 	{
 		this.name = name;
 		this.setIsBoss(isBoss);
@@ -82,7 +82,7 @@ UML
 		this.defense = maxDefense;
 		this.maxHealth = maxHealth;
 		this.health = maxHealth;
-		this.img = img;
+		this.ID = ID;
 	}
 	
 	
@@ -94,8 +94,8 @@ UML
 	public Boolean getIsBoss() {return isBoss;} 
 	public void setIsBoss(Boolean isBoss) {this.isBoss = isBoss;}
 	
-	public BufferedImage getImg() {return img;} // getImg method
-	public void setImg (BufferedImage img) {this.img = img;}
+	public int getID() {return ID;} // getImg method
+	public void setID (int ID) {this.ID = ID;}
 
 	
 	
