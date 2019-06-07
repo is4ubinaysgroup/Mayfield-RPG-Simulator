@@ -471,20 +471,24 @@ public class Room extends JPanel
 		// this check would be more efficient if placed after every attack; however saves me from having to find the attack methods xD - Mina
 		if(this.enemy.getHealth() == 0)
 		{
+			setAttacked(false);
+			setMoved(false);
+			showingMovement = true;
 			MatchExtension.endResult(getEnemy(), true);
-			
-			// possibly make the player start with no weapon and win pencil from the tutorial? if they lose the tutorial they have to keep trying?
-		
+					
 		} // if the player wins
 		
 		else if(MainExecutable.getPlayer().getHealth() == 0) 
 		{ 
+			setAttacked(false);
+			setMoved(false);
+			showingMovement = true;
 			MatchExtension.endResult(getEnemy(), false);
 		} // else the player loses
 		
 		
 		
-		else {
+		//else {
 
 			setVisible(false);
 			draw(this.enemy, Color.BLACK, false);
@@ -511,7 +515,7 @@ public class Room extends JPanel
 			CombatMenu.update(this.enemy); 
 			setVisible(true);
 
-		} // else no one died
+		//} // else no one died
 	} // updateBoard method
 	
 	
