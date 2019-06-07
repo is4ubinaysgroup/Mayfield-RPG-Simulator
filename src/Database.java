@@ -152,7 +152,7 @@ public class Database {
 		imgGymTeacher =readImg("src/resources/GymTeacher.png");
 		imgBinay =readImg("src/resources/Binay.png");
 		imgHallMonitor =readImg("src/resources/HallMonitor.png");
-		imgPlayer = readImg("src/resources/playerSprite.png"); // this method is called before user can click continue or new game
+		imgPlayer = readImg("src/resources/playerSprite.png");
 		imgGym = readImg("src/resources/Gym.png");
 		imgHall = readImg("src/resources/Hall.png");
 	} // LoadImages method
