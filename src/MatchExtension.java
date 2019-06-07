@@ -33,7 +33,8 @@ public class MatchExtension
 		MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getMaxDefense()); // reset player's defense (i wasn't sure how recharging would work)
 
 
-		BattlePanel.RunBattlePanel(level); // create panel and add room and combat menu
+		BattlePanel.RunBattlePanel(); // create panel and add room and combat menu
+		BattlePanel.test(level);
 		GUIExtension1.switchPane (BattlePanel.getPanel());
 
 	} // runMatch method

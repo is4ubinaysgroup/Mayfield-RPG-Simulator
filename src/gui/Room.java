@@ -467,14 +467,14 @@ public class Room extends JPanel
 	{
 		
 		// this check would be more efficient if placed after every attack; however saves me from having to find the attack methods xD - Mina
-		if(this.enemy.getHealth() == 0)
+		if(this.enemy.getHealth() <= 0)
 		{
 			resetLevel();
 			MatchExtension.endResult(getEnemy(), true);
 					
 		} // if the player wins
 		
-		else if(MainExecutable.getPlayer().getHealth() == 0) 
+		else if(MainExecutable.getPlayer().getHealth() <= 0) 
 		{ 
 						
 			resetLevel();
@@ -573,11 +573,39 @@ public class Room extends JPanel
 	{
 		setAttacked(false);
 		setMoved(false);
-		setShowingMovement(true);
+		BattlePanel.getCombatMenu().enableBackpack();
+		showingMovement = true;
+		//setShowingMovement(true);
+		
 		
 		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
 		this.enemy.setHealth(this.enemy.getMaxHealth());
 		this.enemy.setDefense(this.enemy.getMaxDefense());
+		
+		setVisible(false);
+		draw(this.enemy, Color.BLACK, false);
+		draw(MainExecutable.getPlayer(),Color.BLUE, true);
+		
+		try {
+			board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getSprite(this.enemy.getID()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// need to make image correspond to any enemy
+		
+		board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
+		
+		if(isShowingMovement()) 
+		{
+			this.btn.setText("Move here");
+		}
+		else 
+		{
+			this.btn.setText("Attack here");
+		}
+		
+		CombatMenu.update(this.enemy); 
+		setVisible(true);
 		
 	} // resetLevel method
 	

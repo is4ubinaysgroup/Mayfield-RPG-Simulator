@@ -13,38 +13,44 @@ public class BattlePanel  {
 	private static Room room1 = new Room(3,3,3,0,Room.BINAY);
 	private static Room hall = new Room(3,0,3,0,Room.HALLMONITOR);
 	
+	private static JPanel battleParentPane;
 	private static Room room;//current updated room.
 	private static CombatMenu menu;
-	private static JPanel panel;
 	
 	
-	public static void RunBattlePanel(int level) 
+	
+	public static void RunBattlePanel() 
 	{
-		panel = new JPanel();
-		panel.setBounds(100, 100, 1000, 800);
-		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		panel.setLayout(null);
+		battleParentPane = new JPanel();
+		battleParentPane.setBounds(100, 100, 1000, 800);
+		battleParentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		battleParentPane.setLayout(null);
 
-		// load and add the appropriate room
-		try {
-
-			loadRoom(level);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		if (null == getRoom()) {System.out.println ("null room");}
 		
-		room.setBounds(0, 0, 800, 800);
-		panel.add(room);
-		
-		// add a combat menu
-		menu  = new CombatMenu( );
-		panel.add(menu);
-		
-		menu.setVisible(true); // show the combat menu
 		
 	} // RunBattlePanel method
+	
+	public static void test (int level) {
+		
+		// load and add the appropriate room
+				try {
+
+					loadRoom(level);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				if (null == getRoom()) {System.out.println ("null room");}
+				
+				room.setBounds(0, 0, 800, 800);
+				battleParentPane.add(room);
+				
+				// add a combat menu
+				menu = new CombatMenu( );
+				battleParentPane.add(menu);
+				
+				menu.setVisible(true); // show the combat menu
+	}
 
 
 	
@@ -74,8 +80,8 @@ public class BattlePanel  {
 	
 	public static Room getRoom() {return room;}
 
-	public static JPanel getPanel() {return panel;}
-	public static void setPanel(JPanel panel) {BattlePanel.panel = panel;}
+	public static JPanel getPanel() {return battleParentPane;}
+	public static void setPanel(JPanel panel) {BattlePanel.battleParentPane = panel;}
 
 	
 	public static Room getRoom1() {return room1;}
