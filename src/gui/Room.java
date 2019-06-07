@@ -474,6 +474,13 @@ public class Room extends JPanel
 			setAttacked(false);
 			setMoved(false);
 			showingMovement = true;
+			
+			this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
+			MainExecutable.getPlayer().setPosition(new Point(0,0));
+			
+			this.enemy.setHealth(this.enemy.getMaxHealth());
+			this.enemy.setDefense(this.enemy.getMaxDefense());
+			
 			MatchExtension.endResult(getEnemy(), true);
 					
 		} // if the player wins
@@ -483,6 +490,13 @@ public class Room extends JPanel
 			setAttacked(false);
 			setMoved(false);
 			showingMovement = true;
+			
+			this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
+			MainExecutable.getPlayer().setPosition(new Point(0,0));
+			
+			this.enemy.setHealth(this.enemy.getMaxHealth());
+			this.enemy.setDefense(this.enemy.getMaxDefense());
+			
 			MatchExtension.endResult(getEnemy(), false);
 		} // else the player loses
 		

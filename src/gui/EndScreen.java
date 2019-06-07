@@ -92,6 +92,7 @@ public class EndScreen
 		} // if won tutorial
 		else
 		{
+			MainExecutable.getPlayer().setHealth(20);
 			btn_Map.setText("Back to Start");
 			
 			lbl_message1.setText("You've been beaten by the gym teacher...");
