@@ -7,11 +7,13 @@ package src;
 import java.awt.Point;
 
 import src.character.NonPlayer;
+import src.gui.Backpack;
 import src.gui.BattlePanel;
 import src.gui.EndScreen;
 import src.gui.GUIExtension1;
 import src.gui.MainExecutable;
 import src.gui.Map;
+import src.gui.Shop;
 
 public class MatchExtension
 {
@@ -124,6 +126,10 @@ public class MatchExtension
 		
 		
 		// not sure yet if more GUI stuff will be needed to transition out of battle
+		
+		Backpack.update();
+		Shop.updateCoinsLabels();
+		
 		GUIExtension1.switchPane(EndScreen.getPane()); // go to the battle over screen
 		
 	} // endResult method
