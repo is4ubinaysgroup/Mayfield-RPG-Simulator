@@ -68,8 +68,11 @@ UML
 	
 	private Boolean isBoss;
 	private Room room;
+	private BufferedImage img;
 	
-	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos) 
+	// imagePath is inherited from Human but not used
+	
+	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos, BufferedImage img) 
 	{
 		this.name = name;
 		this.setIsBoss(isBoss);
@@ -79,15 +82,21 @@ UML
 		this.defense = maxDefense;
 		this.maxHealth = maxHealth;
 		this.health = maxHealth;
+		this.img = img;
 	}
 	
-	public Boolean getIsBoss() {
-		return isBoss;
-	} 
+	
 
-	public void setIsBoss(Boolean isBoss) {
-		this.isBoss = isBoss;
-	}
+	// gets and sets
+	public Room getRoom() {return this.room;}
+	public void setRoom(Room room) {this.room = room;}
+		
+	public Boolean getIsBoss() {return isBoss;} 
+	public void setIsBoss(Boolean isBoss) {this.isBoss = isBoss;}
+	
+	public BufferedImage getImg() {return img;} // getImg method
+	public void setImg (BufferedImage img) {this.img = img;}
+
 	
 	
 	//Movement related Functions
@@ -460,7 +469,6 @@ UML
 
 
 	
-
 	private boolean nearCorner() {
 		if( (getX() < 3 && getY() <3 ) || (getX() > 14 && getY() >14 ) ) 
 		{
@@ -469,19 +477,6 @@ UML
 		return false;
 	}
 
-	/**
-	 * @return the getRoom()
-	 */
-	public Room getRoom() {
-		return this.room;
-	}
-
-	/**
-	 * @param getRoom() the getRoom() to set
-	 */
-	public void setRoom(Room room) {
-		this.room = room;
-	}
 		
 
-}
+} // NonPlayer class

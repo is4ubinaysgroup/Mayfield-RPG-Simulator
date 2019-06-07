@@ -8,6 +8,8 @@ added EndScreen
 
 package src.gui;
 
+import java.awt.image.BufferedImage;
+
 import src.Database;
 import src.character.Player;
 
@@ -39,6 +41,10 @@ public class MainExecutable
 		Backpack.initGUI();
 		Shop.initGUI();
 		EndScreen.initGUI();
+		
+		//BufferedImage test = Database.gymTeacher.getImg();
+		//if (null == test) {System.out.println("null image");}
+		//else {System.out.println("success");}
 		
 
 		GUIExtension1.showFirstPane(MainMenu.getPane());

@@ -831,13 +831,6 @@ public class Database {
 	
 	// ------------------------------------------- npc Stuff -------------------------------------------
 
-	static Point gymPos = new Point(14, 14);
-	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos);
-	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),5,20, gymPos);
-	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),0,9,  gymPos);
-
-
-
 	// ------- imgBinay -------
 	public static BufferedImage imgBinay;
 	public static BufferedImage getImgBinay() {return imgBinay;}
@@ -849,10 +842,21 @@ public class Database {
 	public static BufferedImage getImgHallMonitor() {return imgHallMonitor;}
 	public static void setImgHallMonitor(BufferedImage imgHallMonitor) {Database.imgHallMonitor = imgHallMonitor;}
 
+	
 	// ------- imgGymTeacher -------
 	public static BufferedImage imgGymTeacher;
 	public static BufferedImage getImgGymTeacher() {return imgGymTeacher;}
 	public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
+	static Point gymPos = new Point(14, 14);
+	
+	
+	
+	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos, getImgHallMonitor());
+	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),5,20, gymPos, getImgBinay());
+	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),0,9, gymPos, getImgGymTeacher());
+
+
+	
 	public static BattlePanel battlePanel;
 
 	

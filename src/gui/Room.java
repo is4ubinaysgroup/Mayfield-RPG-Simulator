@@ -40,6 +40,7 @@ Task: facelift to code.
 
 public class Room extends JPanel 
 {
+	
 	private static final long serialVersionUID = 3276708249872258005L; //Serial Version. 
 	public static final int BINAY = 0;
 	public static final int GYMTEACHER = 1;
@@ -50,11 +51,10 @@ public class Room extends JPanel
 	 **/
 	private boolean attacked = false;
 	private boolean moved = false;
-	private boolean backpackUsed = false;
 	
 	private Point popupLocation = new Point();
 	private NonPlayer enemy;
-	private boolean showingMovement =true;//if true this will show movement if false this will show range.
+	private boolean showingMovement = true;//if true this will show movement if false this will show range.
 	private int north = 0;
 	private int south = 0;
 	private int west = 0;
@@ -83,6 +83,9 @@ public class Room extends JPanel
 	 * @param enemyID
 	 * @throws Exception
 	 */
+	
+	// ------- constructors -------
+	
 	public Room( int north, int east, int south, int west, int enemyID)
 	{
 		this.north = north;
@@ -232,6 +235,58 @@ public class Room extends JPanel
 	
 	
 	
+	// ------- gets and sets -------
+	public NonPlayer getEnemy() {return this.enemy;} // getEnemy method
+	
+	public boolean hasAttacked() {return attacked;}
+	public void setAttacked(boolean attacked) {this.attacked = attacked;}
+
+	public boolean hasMoved() {return moved;}
+	public void setMoved(boolean moved) {this.moved = moved;}
+	
+	public Point getPopupLocation() {return popupLocation;}
+	public void setPopupLocation(Point popupLocation) {this.popupLocation = popupLocation;}
+
+	public int getNorth() {return north;}
+	public void setNorth(int north) {this.north = north;}
+	public int getSouth() {return south;}
+	public void setSouth(int south) {this.south = south;}
+	public int getWest() {return west;}
+	public void setWest(int west) {this.west = west;}
+	public int getEast() {return east;}
+	public void setEast(int east) {this.east = east;}
+
+	public JPanel[][] getBoard() {return board;}
+	public void setBoard(ImageFrame board[][]) {this.board =  board;}
+	
+	public int getBoardWidth() 
+	{
+		return (19-(getEast()+getWest()));
+	}
+	
+	public int getBoardHeight() 
+	{
+		return (19-(getSouth()+getNorth()));
+	}
+
+	public JButton getBtn() {return btn;}
+	public void setBtn(JButton btn) {this.btn = btn;}
+
+	public JPopupMenu getPopupMenu() {return popupMenu;}
+	public void setPopupMenu(JPopupMenu popupMenu) {this.popupMenu = popupMenu;}
+
+	public boolean isShowingMovement() {return showingMovement;}
+
+	public void setShowingMovement(boolean showingMovement) {
+		this.showingMovement = showingMovement;
+		this.setVisible(false);
+		cleanBoard();
+		updateBoard();
+		this.setVisible(true);
+	}
+
+	
+	
 	private void placeLabels() 
 	{ 
 		this.board = new ImageFrame[20 - (getEast()+getWest())][ 20 - (getSouth()+getNorth())] ;
@@ -252,11 +307,6 @@ public class Room extends JPanel
 	
 	
 	
-	public NonPlayer getEnemy()
-	{
-		return this.enemy;
-	}
-	
 	private static NonPlayer getEnemy(int enemyID) throws Exception
 	{
 		switch(enemyID) 
@@ -270,12 +320,10 @@ public class Room extends JPanel
 		default:
 			throw new Exception("No enemy");
 		}
-	}
+	} // getEnemy method; perhaps better placed in Database?
 	
 	
 
-	
-	
 	protected void cleanBoard() 
 	{
 			for(int xPos = 0 ; xPos != 20 - (east+west); xPos++) 
@@ -287,7 +335,7 @@ public class Room extends JPanel
 			}
 		}
 		
-	}
+	} // cleanBoard method
 	
 	
 	
@@ -338,6 +386,9 @@ public class Room extends JPanel
 				
 				BattlePanel.getCombatMenu().disableBackpack();
 				Database.playSound(Database.getMoveSound());
+				
+				// end turn if attacked or can't attack and already moved
+				if (hasAttacked() == true || this.enemy.inRangeOf(MainExecutable.getPlayer()) == false)  {skipTurn();}
 			}
 			catch(Exception e) 
 			{
@@ -346,10 +397,7 @@ public class Room extends JPanel
 
 			cleanBoard();
 			updateBoard();
-			/*
-			 * 
-			 * 
-			 */
+
 		} // button is in Move mode and user hasn't moved already
 		
 		
@@ -363,7 +411,7 @@ public class Room extends JPanel
 			{
 				new ErrorFrame(e).notifyIssue();
 			}//TODO
-		} // button is in Move mode; user already moved
+		} // button is in Move mode; user already moved - would be better to optimize for disabling move once it's used in a turn
 		
 		
 		else if(hasAttacked() == false)
@@ -377,8 +425,9 @@ public class Room extends JPanel
 					setAttacked(true);
 					
 					BattlePanel.getCombatMenu().disableBackpack();
-					
 					Database.playSound(Database.getGunshot());
+					
+					if (hasMoved() == true) {skipTurn();} // end turn if moved and attacked already
 				}
 				catch(Exception e) 
 				{
@@ -474,7 +523,7 @@ public class Room extends JPanel
 		int blue = (int) (color1.getBlue() * (1 - factor) + color2.getBlue() * factor);
 		int alpha = (int) (color1.getAlpha() * (1 - factor) + color2.getAlpha() * factor);
 		return new Color(red, green, blue, alpha);
-	}
+	} // mixColors method
 
 	
 	
@@ -499,157 +548,7 @@ public class Room extends JPanel
 	}
 	
 	
-	
-	
-	
-	
-	/**
-	 * @return the popupLocation
-	 */
-	public Point getPopupLocation() {
-		return popupLocation;
-	}
-	/**
-	 * @param popupLocation the popupLocation to set
-	 */
-	public void setPopupLocation(Point popupLocation) {
-		this.popupLocation = popupLocation;
-	}
-	/**
-	 * @return the north
-	 */
-	public int getNorth() {
-		return north;
-	}
-	/**
-	 * @param north the north to set
-	 */
-	public void setNorth(int north) {
-		this.north = north;
-	}
-	/**
-	 * @return the south
-	 */
-	public int getSouth() {
-		return south;
-	}
-	/**
-	 * @param south the south to set
-	 */
-	public void setSouth(int south) {
-		this.south = south;
-	}
-	/**
-	 * @return the west
-	 */
-	public int getWest() {
-		return west;
-	}
-	/**
-	 * @param west the west to set
-	 */
-	public void setWest(int west) {
-		this.west = west;
-	}
-	/**
-	 * @return the east
-	 */
-	public int getEast() {
-		return east;
-	}
-	/**
-	 * @param east the east to set
-	 */
-	public void setEast(int east) {
-		this.east = east;
-	}
-	/**
-	 * @return the board
-	 */
-	public JPanel[][] getBoard() {
-		return board;
-	}
-	/**
-	 * @param board the board to set
-	 */
-	public void setBoard(ImageFrame board[][]) {
-		this.board =  board;
-	}
-	public int getBoardWidth() 
-	{
-		return (19-(getEast()+getWest()));
-	}
-	public int getBoardHeight() 
-	{
-		return (19-(getSouth()+getNorth()));
-	}
-	/**
-	 * @return the btn
-	 */
-	public JButton getBtn() {
-		return btn;
-	}
-	/**
-	 * @param btn the btn to set
-	 */
-	public void setBtn(JButton btn) {
-		this.btn = btn;
-	}
-	/**
-	 * @return the popupMenu
-	 */
-	public JPopupMenu getPopupMenu() {
-		return popupMenu;
-	}
-	/**
-	 * @param popupMenu the popupMenu to set
-	 */  
-	public void setPopupMenu(JPopupMenu popupMenu) {
-		this.popupMenu = popupMenu;
-	}
 
-	public boolean isShowingMovement() {
-		return showingMovement;
-	}
-
-	public void setShowingMovement(boolean showingMovement) {
-		this.showingMovement = showingMovement;
-		this.setVisible(false);
-		cleanBoard();
-		updateBoard();
-		this.setVisible(true);
-	}
-
-	/**
-	 * @return the attacked
-	 */
-	public boolean hasAttacked() {
-		return attacked;
-	}
-
-	/**
-	 * @param attacked the attacked to set
-	 */
-	public void setAttacked(boolean attacked) {
-		this.attacked = attacked;
-	}
-
-	/**
-	 * @return the moved
-	 */
-	public boolean hasMoved() {
-		return moved;
-	}
-
-	/**
-	 * @param moved the moved to set
-	 */
-	public void setMoved(boolean moved) {
-		this.moved = moved;
-	}
-	
-	
-	
 	public void skipTurn() {
 
 		try {
