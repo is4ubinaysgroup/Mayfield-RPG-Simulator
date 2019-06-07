@@ -848,6 +848,7 @@ public class Database {
 	public static BufferedImage imgGymTeacher;
 	public static BufferedImage getImgGymTeacher() {return imgGymTeacher;}
 	public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
+	
 	static Point gymPos = new Point(14, 14);
 	
 	
@@ -862,6 +863,7 @@ public class Database {
 		switch(enemyID) 
 		{
 		case Room.BINAY : //Binay
+			System.out.println("reached binay"); // testing
 			return Database.getImgBinay();
 		case Room.GYMTEACHER: //GymTeacher
 			return Database.getImgGymTeacher();

@@ -120,7 +120,7 @@ public class Room extends JPanel
 			public void paint(Graphics g) 
 			{
 				
-					g.drawImage(Database.getBackground(), 0, 0, 800, 800, null);//TODO
+					g.drawImage(Database.getBackground(), 0, 0, 800, 800, null); // gets background based on player level; would need to adjust for hall sequence
 			}
 		};
 		background.setBounds(0, 0, 800, 800);

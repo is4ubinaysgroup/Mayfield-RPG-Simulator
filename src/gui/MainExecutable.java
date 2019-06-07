@@ -8,7 +8,10 @@ added EndScreen
 
 package src.gui;
 
+import java.awt.image.BufferedImage;
+
 import src.Database;
+import src.MatchExtension;
 import src.character.Player;
 
 public class MainExecutable
@@ -42,8 +45,24 @@ public class MainExecutable
 		Backpack.initGUI();
 		Shop.initGUI();
 		EndScreen.initGUI();
+		
+		
 
 		GUIExtension1.showFirstPane(MainMenu.getPane()); // shows the main menu at the start of the program
+		
+		// for testing level 1
+		/*
+		
+		BufferedImage test = Database.getImgBinay();
+		if (null == test) {System.out.println("null image");}
+		
+		Database.loadSingle();
+		MainExecutable.getPlayer().setLevel(1);
+		Map.updateMap(1);
+		Backpack.update();
+		Shop.updateCoinsLabels();
+		MatchExtension.runMatch(1);
+		*/
 		
 	} // Main method
 
