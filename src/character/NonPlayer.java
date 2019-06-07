@@ -4,6 +4,7 @@
 package src.character;
 
 import java.awt.Point;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -481,9 +482,6 @@ UML
 	public void setRoom(Room room) {
 		this.room = room;
 	}
-
-	
-	
+		
 
 }
- 

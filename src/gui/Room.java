@@ -59,6 +59,7 @@ public class Room extends JPanel
 	private int south = 0;
 	private int west = 0;
 	private int east = 0;
+	private int enemyID;
 	/**
 	 * Create the  frame.
 	 */
@@ -88,6 +89,7 @@ public class Room extends JPanel
 		this.east = east;
 		this.south = south;
 		this.west = west;
+		this.enemyID = enemyID;
 		
 		
 		
