@@ -4,6 +4,8 @@
 
 package src;
 
+import java.awt.Point;
+
 import src.character.NonPlayer;
 import src.gui.BattlePanel;
 import src.gui.EndScreen;
@@ -26,9 +28,10 @@ public class MatchExtension
 	{
 		matchLevel = level;
 		run = true;
+		
+		MainExecutable.getPlayer().setPosition(new Point(0,0)); // player's starting position
+		MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getMaxDefense()); // reset player's defense (i wasn't sure how recharging would work)
 
-		//turn = true;
-		//win = false;
 
 		BattlePanel.RunBattlePanel(level); // create panel and add room and combat menu
 		GUIExtension1.switchPane (BattlePanel.getPanel());

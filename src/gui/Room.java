@@ -101,9 +101,7 @@ public class Room extends JPanel
 			new ErrorFrame(e).error();
 		}
 		
-		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
-		MainExecutable.getPlayer().setPosition(new Point(0,0));
-		
+		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));		
 		/**
 		 * JPanel
 		 */
@@ -471,33 +469,17 @@ public class Room extends JPanel
 		// this check would be more efficient if placed after every attack; however saves me from having to find the attack methods xD - Mina
 		if(this.enemy.getHealth() == 0)
 		{
-			setAttacked(false);
-			setMoved(false);
-			showingMovement = true;
-			
-			this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
-			MainExecutable.getPlayer().setPosition(new Point(0,0));
-			
-			this.enemy.setHealth(this.enemy.getMaxHealth());
-			this.enemy.setDefense(this.enemy.getMaxDefense());
-			
+			resetLevel();
 			MatchExtension.endResult(getEnemy(), true);
 					
 		} // if the player wins
 		
 		else if(MainExecutable.getPlayer().getHealth() == 0) 
 		{ 
-			setAttacked(false);
-			setMoved(false);
-			showingMovement = true;
-			
-			this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
-			MainExecutable.getPlayer().setPosition(new Point(0,0));
-			
-			this.enemy.setHealth(this.enemy.getMaxHealth());
-			this.enemy.setDefense(this.enemy.getMaxDefense());
-			
+						
+			resetLevel();
 			MatchExtension.endResult(getEnemy(), false);
+			
 		} // else the player loses
 		
 		
@@ -586,4 +568,17 @@ public class Room extends JPanel
 	} // skipTurn method
 	
 
+	
+	public void resetLevel()
+	{
+		setAttacked(false);
+		setMoved(false);
+		setShowingMovement(true);
+		
+		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
+		this.enemy.setHealth(this.enemy.getMaxHealth());
+		this.enemy.setDefense(this.enemy.getMaxDefense());
+		
+	} // resetLevel method
+	
 } // Room class
