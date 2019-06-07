@@ -11,9 +11,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -331,7 +335,6 @@ public class Room extends JPanel
 				setMoved(true);
 				
 				BattlePanel.getCombatMenu().disableBackpack();
-				setBackpackUsed(true);
 			}
 			catch(Exception e) 
 			{
@@ -371,7 +374,8 @@ public class Room extends JPanel
 					setAttacked(true);
 					
 					BattlePanel.getCombatMenu().disableBackpack();
-					setBackpackUsed(true);
+					
+					playSound(Database.getGunshot());
 				}
 				catch(Exception e) 
 				{
@@ -637,10 +641,6 @@ public class Room extends JPanel
 	}
 	
 	
-	public void setBackpackUsed (boolean use) {this.backpackUsed = use;}
-	public boolean hasUsedBackpack() {return backpackUsed;}
-
-	
 	
 	public void skipTurn() {
 
@@ -648,7 +648,6 @@ public class Room extends JPanel
 			enemy.runTurn(this);
 			setAttacked(false);
 			setMoved(false);
-			setBackpackUsed(false);
 			BattlePanel.getCombatMenu().enableBackpack();
 			
 			cleanBoard();
@@ -659,5 +658,18 @@ public class Room extends JPanel
 		}
 		
 	} // skipTurn method
+	
+	
+	
+	public static void playSound (File file)
+	{
+		try {
+			Database.playSound(file);
+			
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		} // try-catch
+	} // playSound method
+	
 
 } // Room class

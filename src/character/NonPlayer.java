@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
+import src.Database;
 import src.gui.MainExecutable;
 import src.gui.Room;
 import src.items.Weapon;
@@ -438,6 +439,7 @@ UML
 		if(MainExecutable.getPlayer().inRangeOf(this)) {
 			
 		attack(MainExecutable.getPlayer());
+		Database.playSound (Database.getHit());
 		}
 		
 		setDefense( getDefense() + (int) Math.round(getMaxDefense()*0.01) );//recovers 1% of health.

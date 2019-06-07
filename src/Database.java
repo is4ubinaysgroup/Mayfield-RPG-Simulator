@@ -257,6 +257,15 @@ public class Database {
 	public final static File FOOTSTEPS = new File ("src/resources/footSteps.wav");
 	public static File getFootsteps () {return FOOTSTEPS;}
 	
+	public final static File RETRO_GUNSHOT = new File ("src/resources/retroGunshot.wav");
+	public static File getGunshot () {return RETRO_GUNSHOT;}
+	
+	public final static File HIT = new File ("src/resources/hit.wav");
+	public static File getHit () {return HIT;}
+	
+	public final static File MUSICAL_NEGATIVE = new File ("src/resources/retro_musical_negative.wav");
+	public static File getMusicalNegative () {return MUSICAL_NEGATIVE;}
+	
 
 
 	public static void playSound (File file) throws UnsupportedAudioFileException, LineUnavailableException, IOException

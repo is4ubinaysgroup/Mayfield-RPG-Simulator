@@ -7,7 +7,14 @@ package src.gui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+
+import src.Database;
 
 
 public class EndScreen
@@ -30,13 +37,13 @@ public class EndScreen
 		
 		// ------- lbl_message1 -------
 		lbl_message1 = new JLabel("message1 placeholder");
-		lbl_message1.setBounds(262, 213, 165, 20);
+		lbl_message1.setBounds(262, 213, 800, 20);
 		endPane.add(lbl_message1);
 		
 		
 		// ------- lbl_message2 -------
 		lbl_message2 = new JLabel("message2 placeholder");
-		lbl_message2.setBounds(262, 299, 165, 20);
+		lbl_message2.setBounds(262, 299, 800, 20);
 		endPane.add(lbl_message2);
 
 		
@@ -89,6 +96,7 @@ public class EndScreen
 			
 			lbl_message1.setText("You've been beaten by the gym teacher...");
 			lbl_message2.setText("TRY AGAIN!!!");
+			playSound(Database.getMusicalNegative());
 			
 		} // else lost tutorial
 	} // updateForTutorial method
@@ -130,6 +138,7 @@ public class EndScreen
 				message2 = ("YOU LEVELED DOWN!!!");
 			} //else player had 0 coins
 			
+			playSound(Database.getMusicalNegative());
 		} // else the player has lost
 		
 		
@@ -137,6 +146,18 @@ public class EndScreen
 		lbl_message2.setText(message2);
 		
 	} // update method
+	
+	
+	
+	public static void playSound (File file)
+	{
+		try {
+			Database.playSound(file);
+			
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		} // try-catch
+	} // playSound method
 	
 	
 } // EndScreen class
