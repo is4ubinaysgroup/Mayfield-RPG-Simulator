@@ -335,6 +335,7 @@ public class Room extends JPanel
 				setMoved(true);
 				
 				BattlePanel.getCombatMenu().disableBackpack();
+				Database.playSound(Database.getMoveSound());
 			}
 			catch(Exception e) 
 			{
@@ -375,7 +376,7 @@ public class Room extends JPanel
 					
 					BattlePanel.getCombatMenu().disableBackpack();
 					
-					playSound(Database.getGunshot());
+					Database.playSound(Database.getGunshot());
 				}
 				catch(Exception e) 
 				{
@@ -436,25 +437,30 @@ public class Room extends JPanel
 		
 		
 		else {
-		
-		setVisible(false);
-		draw(this.enemy, Color.BLACK, false);
-		draw(MainExecutable.getPlayer(),Color.BLUE, true);
-		board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getImgGymTeacher());
-		board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
-		if(isShowingMovement()) 
-		{
-			this.btn.setText("Move here");
-		}
-		else 
-		{
-			this.btn.setText("Attack here");
-		}
-		CombatMenu.update(this.enemy); 
-		setVisible(true);
 
-		}
-	}
+			setVisible(false);
+			draw(this.enemy, Color.BLACK, false);
+			draw(MainExecutable.getPlayer(),Color.BLUE, true);
+			
+			board[this.enemy.getX()][this.enemy.getY()].setImage(Database.getImgGymTeacher());
+			// need to make image correspond to any enemy
+			
+			board[MainExecutable.getPlayer().getX()][MainExecutable.getPlayer().getY()].setImage(Database.getImgPlayer() );
+			
+			if(isShowingMovement()) 
+			{
+				this.btn.setText("Move here");
+			}
+			else 
+			{
+				this.btn.setText("Attack here");
+			}
+			
+			CombatMenu.update(this.enemy); 
+			setVisible(true);
+
+		} // else no one died
+	} // updateBoard method
 	
 	
 	
@@ -658,18 +664,6 @@ public class Room extends JPanel
 		}
 		
 	} // skipTurn method
-	
-	
-	
-	public static void playSound (File file)
-	{
-		try {
-			Database.playSound(file);
-			
-		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-			e.printStackTrace();
-		} // try-catch
-	} // playSound method
 	
 
 } // Room class

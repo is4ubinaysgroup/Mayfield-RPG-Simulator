@@ -376,8 +376,8 @@ UML
 		return buffer;
 	}
 	
-		public void runTurn(Room room) throws Exception //TODO
-		{
+	public void runTurn(Room room) throws Exception //TODO
+	{
 		setRoom(room);
 		int r = MainExecutable.getPlayer().getEquippedWeapon().getRange();
 
@@ -386,12 +386,14 @@ UML
 		{
 			System.out.println("Low Health");
 			moveIn(MainExecutable.getPlayer());
-			
+			Database.playSound(Database.getMoveSound());
+
 		}
 		else if( ( r < Human.MOVEMENT)  && inRangeOf(MainExecutable.getPlayer()) && nearCorner() ) // if cornered
 		{
 			System.out.println("cornered");
 			moveIn(MainExecutable.getPlayer());
+			Database.playSound(Database.getMoveSound());
 		}
 		else if( MainExecutable.getPlayer().inRangeOf(this) && ( MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.MELEETYPE || MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.ALLTYPE ) )
 		{// 3. If the player is in melee attack range:
@@ -400,8 +402,9 @@ UML
 			if(MainExecutable.getPlayer().hasLowHealth()) //1. If the player has low health:
 			{
 				moveIn(MainExecutable.getPlayer());
+				Database.playSound(Database.getMoveSound());
 			}
-			
+
 		}
 		//Continues to the next true statement
 		else if(MainExecutable.getPlayer().inRangeOf(this) && ( MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.RANGEDTYPE || MainExecutable.getPlayer().getEquippedWeapon().getType() == Weapon.ALLTYPE ))//If the player is in non-melee attack range:
@@ -410,6 +413,7 @@ UML
 			int random =  (int) Math.round( Math.random() * 2) + 1; // will return either 1 or 2
 			if(random == 1) {
 				moveOut(MainExecutable.getPlayer());
+				Database.playSound(Database.getMoveSound());
 			}
 		}
 		else if(!(MainExecutable.getPlayer().inRangeOf(this))) 
@@ -424,29 +428,34 @@ UML
 			{
 				moveOut(MainExecutable.getPlayer());//moveIn(player, true, Weapon.RANGEDTYPE);
 			}
+			
+			Database.playSound(Database.getMoveSound());
 		}
 		else if(inRangeOf(MainExecutable.getPlayer())) 
 		{
 			System.out.println("in player range");
 			moveOut(MainExecutable.getPlayer());
-			
+			Database.playSound(Database.getMoveSound());
+
 		}
 		else 
 		{
 			moveIn(MainExecutable.getPlayer());
+			Database.playSound(Database.getMoveSound());
 		}
-		
+
 		if(MainExecutable.getPlayer().inRangeOf(this)) {
-			
-		attack(MainExecutable.getPlayer());
-		Database.playSound (Database.getHit());
+
+			attack(MainExecutable.getPlayer());
+			Database.playSound (Database.getHit());
 		}
-		
+
 		setDefense( getDefense() + (int) Math.round(getMaxDefense()*0.01) );//recovers 1% of health.
 		MainExecutable.getPlayer().setDefense( (int) (MainExecutable.getPlayer().getDefense() + MainExecutable.getPlayer().getMaxDefense()*0.01 ));//recovers 1% of health.
 
 		System.out.println("Finish");
-	}				
+	
+	} // runTurn method		
 
 
 	

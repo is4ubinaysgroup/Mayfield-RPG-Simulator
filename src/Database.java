@@ -263,6 +263,9 @@ public class Database {
 	public final static File HIT = new File ("src/resources/hit.wav");
 	public static File getHit () {return HIT;}
 	
+	public final static File MOVE_SOUND = new File ("src/resources/moveSound.wav");
+	public static File getMoveSound () {return MOVE_SOUND;}
+	
 	public final static File MUSICAL_NEGATIVE = new File ("src/resources/retro_musical_negative.wav");
 	public static File getMusicalNegative () {return MUSICAL_NEGATIVE;}
 	
