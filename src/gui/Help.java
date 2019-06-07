@@ -36,6 +36,8 @@ public class Help
 	static protected JLabel line6;
 	static protected JLabel line7;
 	static protected JLabel line8;
+	static protected JLabel line9;
+	static protected JLabel line10;
 
 	
 	public static void initGUI()
@@ -76,14 +78,14 @@ public class Help
 		helpPane.add(line1);
 		
 		// -------- line2 ---------------
-		line2 = new JLabel ("students and teachers. Use the map to head to your first class, or walk across to the plaza to see");
+		line2 = new JLabel ("students and teachers. Beat the gym teacher first; then use the map to head to your first class, or");
 		line2.setForeground(new Color(247, 221, 0));
 		line2.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
 		line2.setBounds (100, 170, 800, 20);
 		helpPane.add(line2);
 		
 		// -------- line3 ---------------
-		line3 = new JLabel ("what items you can buy with coins.");
+		line3 = new JLabel ("walk across to the plaza to see what items you can buy with coins.");
 		line3.setForeground(new Color(247, 221, 0));
 		line3.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
 		line3.setBounds (100, 200, 800, 20);
@@ -97,32 +99,46 @@ public class Help
 		helpPane.add(line4);
 		
 		// -------- line5 ---------------
-		line5 = new JLabel ("attack, use an item, or switch your weapon. If you fail a class you will lose coins. If you're broke");
+		line5 = new JLabel ("attack, use an item, or switch your weapon.");
 		line5.setForeground(new Color(247, 221, 0));
 		line5.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
 		line5.setBounds (100, 290, 800, 20);
 		helpPane.add(line5);
 		
 		// -------- line6 ---------------
-		line6 = new JLabel ("you will be locked out.");
+		line6 = new JLabel ("To move or attack, left-click on the top right button to shift to move or attack mode, then");
 		line6.setForeground(new Color(247, 221, 0));
 		line6.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
-		line6.setBounds (100, 320, 800, 20);
+		line6.setBounds (100, 350, 800, 20);
 		helpPane.add(line6);
 		
 		// -------- line7 ---------------
-		line7 = new JLabel ("Out of battle, you can view your stats, switch your weapon, and use items from your backpack.");
+		line7 = new JLabel ("right-click on a tile within your movement or attack range.");
 		line7.setForeground(new Color(247, 221, 0));
 		line7.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
 		line7.setBounds (100, 380, 800, 20);
 		helpPane.add(line7);
 		
 		// -------- line8 ---------------
-		line8 = new JLabel ("Good luck. And don't die.");
+		line8 = new JLabel ("If you fail a class you will lose coins. If you're broke you will be locked out.");
 		line8.setForeground(new Color(247, 221, 0));
 		line8.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
 		line8.setBounds (100, 440, 800, 20);
 		helpPane.add(line8);
+		
+		// -------- line9 ---------------
+		line9 = new JLabel ("Out of battle, you can view your stats, switch your weapon, and use items from your backpack.");
+		line9.setForeground(new Color(247, 221, 0));
+		line9.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
+		line9.setBounds (100, 500, 800, 20);
+		helpPane.add(line9);
+		
+		// -------- line9 ---------------
+		line10 = new JLabel ("Good luck. And don't die.");
+		line10.setForeground(new Color(247, 221, 0));
+		line10.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
+		line10.setBounds (100, 530, 800, 20);
+		helpPane.add(line10);
 		
 
 		
