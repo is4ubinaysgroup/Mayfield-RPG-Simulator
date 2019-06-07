@@ -48,8 +48,8 @@ public class EndScreen
 
 		
 		// ------- btn_Map -------
-		btn_Map = new JButton("Back to Map");
-		btn_Map.setBounds(446, 427, 134, 29);
+		btn_Map = new JButton("Save and Go Back to Map");
+		btn_Map.setBounds(446, 427, 200, 29);
 
 		btn_Map.addActionListener(new ActionListener() 
 		{
@@ -58,12 +58,13 @@ public class EndScreen
 
 				if (MainExecutable.getPlayer().getLevel() > 0)
 				{
+					Database.writeSingle();
 					GUIExtension1.switchPane(Map.getPane());
 				}
 				else
 				{
 					GUIExtension1.switchPane(MainMenu.getPane()); // go back to mainmenu if lost tutorial
-					btn_Map.setText("Back to Map");
+					btn_Map.setText("Save and Go Back to Map");
 				}
 			}
 		});
