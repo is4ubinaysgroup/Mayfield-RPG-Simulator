@@ -19,38 +19,33 @@ public class BattlePanel  {
 	
 	
 	
-	public static void RunBattlePanel() 
+	public static void RunBattlePanel(int level) 
 	{
 		battleParentPane = new JPanel();
 		battleParentPane.setBounds(100, 100, 1000, 800);
 		battleParentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		battleParentPane.setLayout(null);
 
+		// load and add the appropriate room
+		try {
+
+			loadRoom(level);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (null == getRoom()) {System.out.println ("null room");}
 		
+		room.setBounds(0, 0, 800, 800);
+		battleParentPane.add(room);
+		
+		// add a combat menu
+		menu = new CombatMenu( );
+		battleParentPane.add(menu);
+		
+		menu.setVisible(true); // show the combat menu
 		
 	} // RunBattlePanel method
-	
-	public static void test (int level) {
-		
-		// load and add the appropriate room
-				try {
-
-					loadRoom(level);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-				if (null == getRoom()) {System.out.println ("null room");}
-				
-				room.setBounds(0, 0, 800, 800);
-				battleParentPane.add(room);
-				
-				// add a combat menu
-				menu = new CombatMenu( );
-				battleParentPane.add(menu);
-				
-				menu.setVisible(true); // show the combat menu
-	}
 
 
 	

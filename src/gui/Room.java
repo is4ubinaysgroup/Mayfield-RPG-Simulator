@@ -360,7 +360,11 @@ public class Room extends JPanel
 				}
 				else 
 				{
+					
+					if (MainExecutable.getPlayer().getHealth() > 0 && this.enemy.getHealth() > 0) {
 					board[xPos][yPos].setColor( mixColors(color, board[xPos][yPos].getColor() ));
+					}
+					
 					board[xPos][yPos].removeImage();
 				}
 			}
