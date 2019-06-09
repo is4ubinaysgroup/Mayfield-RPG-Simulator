@@ -1,11 +1,11 @@
-20
+4
 0
 0
 20
-Pencil-1-1-0.20-0-0
+Pencil-1-1-0.2-0-0
 src/resources/playerSprite.png
-10
-0
+20
+1
 0
 0
 10

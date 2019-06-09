@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -374,32 +376,8 @@ public class Room extends JPanel
 	
 	
 	protected void btnFunction() {
-		Point location = this.popupLocation;
 		
-		if(isShowingMovement() && hasMoved() == false) 
-		{
-			try 
-			{
-				MainExecutable.getPlayer().moveTo(location, false);
-				setMoved(true);
-				
-				BattlePanel.getCombatMenu().disableBackpack();
-				Database.playSound(Database.getMoveSound());
-				
-				// end turn if attacked or can't attack and already moved
-				if (hasAttacked() == true || this.enemy.inRangeOf(MainExecutable.getPlayer()) == false)  {skipTurn();}
-			}
-			catch(Exception e) 
-			{
-				new ErrorFrame(e).notifyIssue();
-			}
-
-			cleanBoard();
-			updateBoard();
-
-		} // button is in Move mode and user hasn't moved already
-		
-		
+		if(isShowingMovement() && hasMoved() == false) {move();} // moves if the player hasn't moved and the button is in move mode.
 		else if(isShowingMovement() && hasMoved() == true) 
 		{
 			try 
@@ -409,32 +387,13 @@ public class Room extends JPanel
 			catch(Exception e) 
 			{
 				new ErrorFrame(e).notifyIssue();
-			}//TODO
+			}//TODO Disable move mode once user moved
 		} // button is in Move mode; user already moved - would be better to optimize for disabling move once it's used in a turn
-		
-		
-		else if(hasAttacked() == false)
+		else if(hasAttacked() == false)// it would be nearly impossible for the player to get move mode on and get here.
 		{
 			if(this.enemy.inRangeOf(MainExecutable.getPlayer())) 
 			{
-
-				try 
-				{
-					MainExecutable.getPlayer().attack(this.enemy);
-					healthCheckEnemy();
-					setAttacked(true);
-					
-					BattlePanel.getCombatMenu().disableBackpack();
-					Database.playSound(Database.getGunshot());
-					
-					if (hasMoved() == true) {skipTurn();} // end turn if moved and attacked already
-				}
-				catch(Exception e) 
-				{
-					new ErrorFrame(e).error();
-				}
-				cleanBoard();
-				updateBoard();	//TODO
+				attack();
 			}
 			else 
 			{
@@ -444,31 +403,70 @@ public class Room extends JPanel
 				}
 				catch(Exception e) 
 				{
-					new ErrorFrame(e).notifyIssue();
+					new ErrorFrame(e).notifyIssue();//tells the player they're not in range by sending a notification.
 				}
 			}
 		} // else if user hasn't attacked
-		
-		
-		else 
+		else //else means the player has moved and the player has attacked
 		{
-		
-			try {
-				enemy.runTurn(this);
-				healthCheckPlayer();
-				setAttacked(false);
-				setMoved(false);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				new ErrorFrame(e).notifyIssue();
-			}
-			
+				new ErrorFrame(new Exception("You cannot do sanything so end your turn.")).notifyIssue();	
 		} // else has attacked and not in Move mode?
-
+		
+		cleanBoard();
+		updateBoard();	
+		
 	} // btnFunction method
 	
+	public void attack()
+	{
+		try 
+		{
+			MainExecutable.getPlayer().attack(this.enemy);
+			healthCheckEnemy();
+			setAttacked(true);
+			
+			BattlePanel.getCombatMenu().disableBackpack();
+			Database.playSound(Database.getGunshot());
+			
+			if (hasMoved() == true) {skipTurn();} // end turn if moved and attacked already
+		}
+		catch(Exception e) 
+		{
+			new ErrorFrame(e).error();
+		}	
+	}
 	
+	public void move() 
+	{
+		try 
+		{
+			MainExecutable.getPlayer().moveTo(this.popupLocation, false);
+			setMoved(true);
+			BattlePanel.getCombatMenu().disableBackpack();
+			Database.playSound(Database.getMoveSound());
+			
+			// end turn if attacked or can't attack and already moved
+			if (hasAttacked() == true || this.enemy.inRangeOf(MainExecutable.getPlayer()) == false)  {skipTurn();}
+		}
+		catch(Exception e) 
+		{
+			new ErrorFrame(e).notifyIssue();
+		}
+	}
 	
+	public void faceAnother()
+	{
+		//this equation will give the direction in degrees: f= 45(By-Ay)/(Bx-Ax)
+		
+		
+		double rotationRequired = Math.toRadians ((45*(enemy.getY() - MainExecutable.getPlayer().getY() )*(enemy.getX()- MainExecutable.getPlayer().getX())));
+		double locationX = image.getWidth() / 2;
+		double locationY = image.getHeight() / 2;
+		AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+		op.filter(image, null);
+		// Drawing the rotated image at the required drawing locations
+	}
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	{
 		setVisible(false);
@@ -509,7 +507,7 @@ public class Room extends JPanel
 		int alpha = (int) (color1.getAlpha() * (1 - factor) + color2.getAlpha() * factor);
 		return new Color(red, green, blue, alpha);
 	} // mixColors method
-
+ 
 	
 	
 	private static void addPopup(Room room, Component component, final JPopupMenu popup) {
