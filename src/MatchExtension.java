@@ -89,12 +89,12 @@ public class MatchExtension
 			
 			if (coins == 0)
 			{
-				if (level == matchLevel && level > 0)
+				if (level == matchLevel && level > 1)
 				{
 					MainExecutable.getPlayer().setLevel(level-1);
 					Map.updateMap(MainExecutable.getPlayer().getLevel()); // update the map
 					
-				} // decrease the player's level if the player isn't playing a level they already beat
+				} // decrease the player's level if the player isn't playing a level they already beat; excluding level 1
 				
 				EndScreen.update(false, 0, true, true); 
 
