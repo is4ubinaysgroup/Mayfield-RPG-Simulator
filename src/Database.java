@@ -854,7 +854,7 @@ public class Database {
 	
 	
 	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos, Room.HALLMONITOR);
-	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),5,20, gymPos, Room.BINAY);
+	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),0,10, gymPos, Room.BINAY);
 	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),0,9, gymPos, Room.GYMTEACHER);
 	
 	

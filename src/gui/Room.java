@@ -454,6 +454,8 @@ public class Room extends JPanel
 		}
 	}
 	
+	
+	/*
 	public void faceAnother()
 	{
 		//this equation will give the direction in degrees: f= 45(By-Ay)/(Bx-Ax)
@@ -466,7 +468,10 @@ public class Room extends JPanel
 		AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 		op.filter(image, null);
 		// Drawing the rotated image at the required drawing locations
-	}
+	}*/
+
+	
+	
 	public void updateBoard()  // sets the panel to update to the ranges of both players and players
 	{
 		setVisible(false);
