@@ -568,7 +568,8 @@ public class Room extends JPanel
 		
 		MainExecutable.getPlayer().setPosition(new Point(0,0)); // player's starting position
 		MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getMaxDefense()); // reset player's defense (i wasn't sure how recharging would work)
-
+		MainExecutable.getPlayer().setHealth(MainExecutable.getPlayer().getMaxHealth());
+		
 		cleanBoard();
 		updateBoard();
 	
