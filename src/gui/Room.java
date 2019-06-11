@@ -34,8 +34,13 @@ public class Room extends JPanel
 	private static final long serialVersionUID = 3276708249872258005L; //Serial Version. 
 	public static final int BINAY = 0;
 	public static final int GYMTEACHER = 1;
-	public static final int HALLMONITOR = 2;
-	
+	public static final int HALLMONITOR = -1;
+	public static final int CARSON = 2;
+	public static final int KOLBY = 3;
+	public static final int MATTHEW = 4;
+	public static final int MINA = 5;
+	public static final int ZAC = 6;
+	public static final int MRJONE = 7;
 	/**
 	 * Create the Variables
 	 **/
@@ -294,14 +299,38 @@ public class Room extends JPanel
 	
 	private static NonPlayer getEnemy(int enemyID) throws Exception
 	{
+		/*
+		 	public static final int BINAY = 0;
+	public static final int GYMTEACHER = 1;
+	public static final int HALLMONITOR = -1;
+	public static final int CARSON = 2;
+	public static final int KOLBY = 3;
+	public static final int MATTHEW = 4;
+	public static final int MINA = 5;
+	public static final int ZAC = 6;
+	public static final int MRJONE = 7;
+		  
+		  */
 		switch(enemyID) 
 		{
+		case -1://HallMonitor
+			return Database.hallMonitor;
 		case 0 : //Binay
 			return Database.binay;
 		case 1: //GymTeacher
 			return Database.gymTeacher;
-		case 2://HallMonitor
-			return Database.hallMonitor;
+		case 2:
+			return Database.carson;
+		case 3:
+			return Database.kolby;
+		case 4:
+			return Database.matthew;
+		case 5:
+			return Database.mina;
+		case 6:
+			return Database.zac;
+		case 7:
+			return Database.mrJone;
 		default:
 			throw new Exception("No enemy");
 		}

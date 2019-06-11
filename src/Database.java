@@ -375,10 +375,17 @@ public class Database {
 
 	public static int stats[][]= {//this array stores all the information for the weapon's beside critical chance and weapon names
 			//  [damage]  [range]
-			{4, 3},//sets the "hat" weapon damage
+			{5, 3},//sets the "hat" weapon damage
 			{1, 1},//sets the "pencil" weapon damage
-			{2, 1},//sets the "ruler" weapon damage
-			{2, 3}//sets the "rubberBand" weapon damage
+			{2, 2},//sets the "ruler" weapon damage
+			{2, 4},//sets the "rubber band" weapon damage
+			{10, 3},//sets the "dabpower" weapon damage
+			{15, 3},//sets the "drum" weapon damage
+			{20, 4},//sets the "punch" weapon damage
+			{25, 4},//sets the "pen" weapon damage
+			{30, 4},//sets the "jacketrs" weapon damage
+			{35, 5},//sets the "test" weapon damage
+			
 	};
 
 	public static double criticalChance[] = {.20,.05,.15,.10};//sets the array and the values in the array for critical chances
@@ -387,6 +394,12 @@ public class Database {
 	private static Weapon pencil = new Weapon("Pencil", stats[1][1],stats[1][1],criticalChance[0],Weapon.MELEETYPE, 0 );
 	private static Weapon ruler  = new Weapon("Ruler", 10, "measuring tool", "src/resources/ruler.png", stats[2][0],stats[2][1],criticalChance[0],Weapon.ALLTYPE, 1 );
 	private static Weapon rubberband = new Weapon("Rubber Band", 5, "stretchy", "src/resources/rubberband.png", stats[3][0],stats[3][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+	private static Weapon dabPower = new Weapon("Dab Power", 5, "Powerfull", "src/resources/rubberband.png", stats[4][0],stats[4][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+	private static Weapon drumSticks = new Weapon("Drum Sticks", 5, "Musicall", "src/resources/rubberband.png", stats[5][0],stats[5][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+	private static Weapon onePunch = new Weapon("One Punch", 5, "Animie", "src/resources/rubberband.png", stats[6][0],stats[6][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+	private static Weapon pen = new Weapon("pen", 5, "penfull", "src/resources/rubberband.png", stats[7][0],stats[7][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+	private static Weapon jackets = new Weapon("Jackets", 5, "Do not mistake for trashcan", "src/resources/rubberband.png", stats[8][0],stats[8][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
+	private static Weapon tests = new Weapon("Tests", 5, "HORROR", "src/resources/rubberband.png", stats[9][0],stats[9][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
 
 
 	// gets and sets
@@ -402,7 +415,37 @@ public class Database {
 	public static Weapon getRubberband() {return rubberband;}
 	public static void setRubberband(Weapon rubberband) {Database.rubberband = rubberband;}
 
+	private static Weapon getTests() {return tests;	}
 
+
+	private static Weapon getJackets() {
+		// TODO Auto-generated method stub
+		return jackets;
+	}
+
+
+	private static Weapon getPen() {
+		// TODO Auto-generated method stub
+		return pen;
+	}
+
+
+	private static Weapon getOnePunch() {
+		// TODO Auto-generated method stub
+		return onePunch;
+	}
+
+
+	private static Weapon getDrumSticks() {
+		// TODO Auto-generated method stub
+		return drumSticks;
+	}
+
+
+	private static Weapon getDabPower() {
+		// TODO Auto-generated method stub
+		return dabPower;
+	}
 
 	public static Weapon getWeapon(String name)
 	{
@@ -849,12 +892,21 @@ public class Database {
 	public static BufferedImage getImgGymTeacher() {return imgGymTeacher;}
 	public static void setImgGymTeacher(BufferedImage imgGymTeacher) {Database.imgGymTeacher = imgGymTeacher;}
 	
-	static Point gymPos = new Point(14, 14);
+	static Point gymPos = new Point(12, 12);
 	
 	
 	
 	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos, Room.HALLMONITOR);
-	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),0,10, gymPos, Room.BINAY);
+	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),0,20, gymPos, Room.BINAY);
+	public static NonPlayer carson = new NonPlayer("Binay", true, getDabPower(),5,40, gymPos, Room.BINAY);
+	public static NonPlayer kolby = new NonPlayer("Binay", true, getDrumSticks(),10,60, gymPos, Room.BINAY);
+	public static NonPlayer matthew = new NonPlayer("Binay", true, getOnePunch(),15,80, gymPos, Room.BINAY);
+	public static NonPlayer mina = new NonPlayer("Binay", true, getPen(),20,100, gymPos, Room.BINAY);
+	public static NonPlayer zac = new NonPlayer("Binay", true, getJackets(),25,120, gymPos, Room.BINAY);
+	public static NonPlayer mrJone = new NonPlayer("Binay", true, getTests(),30,140, gymPos, Room.BINAY);
+
+	
+	
 	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),0,9, gymPos, Room.GYMTEACHER);
 	
 	
@@ -875,7 +927,26 @@ public class Database {
 	} // getSprite method
 
 
-	
+
+
+
+
+
+
+	public static File[] getFiles() {
+		return files;
+	}
+
+
+	public static void setFiles(File[] files) {
+		Database.files = files;
+	}
+
+
+
+
+
+
 	public static BattlePanel battlePanel;
 
 	

@@ -8,7 +8,14 @@ public class BattlePanel  {
 
 	// rooms for levels
 	private static Room room0 = new Room(3,0,3,0,Room.GYMTEACHER);
-	private static Room room1 = new Room(3,3,3,0,Room.BINAY);
+	private static Room room1 = new Room(3,0,3,3,Room.BINAY);
+	private static Room room2 = new Room(3,0,3,0,Room.CARSON);
+	private static Room room3 = new Room(3,0,3,0,Room.KOLBY);
+	private static Room room4 = new Room(3,0,3,0,Room.MATTHEW);
+	private static Room room5 = new Room(3,0,3,0,Room.MINA);
+	private static Room room6 = new Room(3,0,3,0,Room.ZAC);
+	private static Room room7 = new Room(3,0,3,0,Room.MRJONE);
+
 	private static Room hall = new Room(3,0,3,0,Room.HALLMONITOR);
 	
 	private static JPanel battleParentPane;
@@ -65,6 +72,55 @@ public class BattlePanel  {
 		{
 			
 		}
+		if(level == 2 && MatchExtension.run == true) 
+		{
+			room = room2;
+		}
+		else if(level == 2)
+		{
+			
+		}
+		if(level == 3 && MatchExtension.run == true) 
+		{
+			room = room3;
+		}
+		else if(level == 3)
+		{
+			
+		}
+		if(level == 4 && MatchExtension.run == true) 
+		{
+			room = room4;
+		}
+		else if(level == 4)
+		{
+			
+		}
+		if(level == 5 && MatchExtension.run == true) 
+		{
+			room = room5;
+		}
+		else if(level == 5)
+		{
+			
+		}
+		if(level == 6 && MatchExtension.run == true) 
+		{
+			room = room6;
+		}
+		else if(level == 6)
+		{
+			
+		}
+		if(level == 7 && MatchExtension.run == true) 
+		{
+			room = room7;
+		}
+		else if(level == 7)
+		{
+			
+		}
+			
 	} // loadRoom method
 	
 	
