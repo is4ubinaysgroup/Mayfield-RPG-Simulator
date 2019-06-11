@@ -7,6 +7,8 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 import src.Database;
+import src.gui.BattlePanel;
+import src.gui.CombatMenu;
 import src.gui.MainExecutable;
 import src.gui.Room;
 import src.items.Weapon;
@@ -122,7 +124,6 @@ UML
 		{
 			output.y = human.getY() + 1;
 		}
-		
 		moveTo(output,true);
 	}
 	
@@ -473,6 +474,12 @@ UML
 			return true;
 		}
 		return false;
+	}
+
+
+
+	public String getName() {
+		return this.name;
 	}
 
 		

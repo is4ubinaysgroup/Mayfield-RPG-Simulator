@@ -898,16 +898,16 @@ public class Database {
 	
 	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos, Room.HALLMONITOR);
 	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),0,20, gymPos, Room.BINAY);
-	public static NonPlayer carson = new NonPlayer("Binay", true, getDabPower(),5,40, gymPos, Room.BINAY);
-	public static NonPlayer kolby = new NonPlayer("Binay", true, getDrumSticks(),10,60, gymPos, Room.BINAY);
-	public static NonPlayer matthew = new NonPlayer("Binay", true, getOnePunch(),15,80, gymPos, Room.BINAY);
-	public static NonPlayer mina = new NonPlayer("Binay", true, getPen(),20,100, gymPos, Room.BINAY);
-	public static NonPlayer zac = new NonPlayer("Binay", true, getJackets(),25,120, gymPos, Room.BINAY);
-	public static NonPlayer mrJone = new NonPlayer("Binay", true, getTests(),30,140, gymPos, Room.BINAY);
+	public static NonPlayer carson = new NonPlayer("Carson", true, getDabPower(),5,40, gymPos, Room.BINAY);
+	public static NonPlayer kolby = new NonPlayer("Kolby", true, getDrumSticks(),10,60, gymPos, Room.BINAY);
+	public static NonPlayer matthew = new NonPlayer("Matthew", true, getOnePunch(),15,80, gymPos, Room.BINAY);
+	public static NonPlayer mina = new NonPlayer("Mina", true, getPen(),20,100, gymPos, Room.BINAY);
+	public static NonPlayer zac = new NonPlayer("Zac", true, getJackets(),25,120, gymPos, Room.BINAY);
+	public static NonPlayer mrJone = new NonPlayer("Mr Jone", true, getTests(),30,140, gymPos, Room.BINAY);
 
 	
 	
-	public static NonPlayer gymTeacher = new NonPlayer("<gymteachersname>", false, getRubberband(),0,9, gymPos, Room.GYMTEACHER);
+	public static NonPlayer gymTeacher = new NonPlayer("Gym Teacher", false, getRubberband(),0,9, gymPos, Room.GYMTEACHER);
 	
 	
 	public static BufferedImage getSprite (int enemyID) throws Exception

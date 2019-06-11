@@ -16,7 +16,8 @@ public class MainExecutable
 	// ------- player -------
 	private static Player player;
 	public static Player getPlayer() {return player;}
-	public static void setPlayer(Player player) {MainExecutable.player = player;}
+	public static void setPlayer(Player player) {
+		MainExecutable.player = player;		}
 
 	
 	public static void main(String[] args)

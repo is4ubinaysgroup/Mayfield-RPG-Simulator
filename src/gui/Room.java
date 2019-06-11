@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.ListModel;
 import javax.swing.border.EmptyBorder;
 import src.Database;
 import src.MatchExtension;
@@ -441,8 +442,7 @@ public class Room extends JPanel
 			MainExecutable.getPlayer().attack(this.enemy);
 			healthCheckEnemy();
 			setAttacked(true);
-			
-			BattlePanel.getCombatMenu().disableBackpack();
+			BattlePanel.getCombatMenu();
 			Database.playSound(Database.getGunshot());
 			
 			if (hasMoved() == true) {skipTurn();} // end turn if moved and attacked already
@@ -459,6 +459,7 @@ public class Room extends JPanel
 		{
 			MainExecutable.getPlayer().moveTo(this.popupLocation, false);
 			setMoved(true);
+			BattlePanel.getCombatMenu();
 			BattlePanel.getCombatMenu().disableBackpack();
 			Database.playSound(Database.getMoveSound());
 			
@@ -557,6 +558,7 @@ public class Room extends JPanel
 	public void skipTurn() {
 
 		try {
+			BattlePanel.getCombatMenu().dialog.clear();
 			enemy.runTurn(this);
 			setAttacked(false);
 			setMoved(false);
@@ -583,7 +585,7 @@ public class Room extends JPanel
 		BattlePanel.getCombatMenu().enableBackpack();
 		showingMovement = true;
 		//setShowingMovement(true);
-		
+		BattlePanel.getCombatMenu().dialog.clear();
 		this.enemy.setPosition(new Point(19-(east+west),19-(south+north)));
 		this.enemy.setHealth(this.enemy.getMaxHealth());
 		this.enemy.setDefense(this.enemy.getMaxDefense());

@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 import src.character.Human;
@@ -19,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
 import javax.swing.JList;
 //import Human.java;
 
@@ -28,7 +31,7 @@ public class CombatMenu extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 8116636656495531817L;
-	private JList<String> dialog;
+	public static DefaultListModel<String> dialog;
 	private static JProgressBar enemyHealth= new JProgressBar();
 	private static JProgressBar enemyDefense= new JProgressBar();
 	private static JProgressBar playerHealth= new JProgressBar();
@@ -172,15 +175,16 @@ public class CombatMenu extends JPanel {
 		enemyDefense.setBounds(90, 572, 100, 16);
 		add(enemyDefense);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		
+		dialog = new DefaultListModel <String>();
+		
+		JList<String> jlist = new JList<String>(dialog);
+		JScrollPane scrollPane = new JScrollPane(jlist);
 		scrollPane.setBounds(10, 599, 180, 190);
 		add(scrollPane);
-		
-		dialog = new JList<String>();
-		scrollPane.setViewportView(dialog);
-		
+
 		JLabel list = new JLabel("DIALOG");
-		scrollPane.setColumnHeaderView(dialog);
+		scrollPane.setColumnHeaderView(jlist);
 		list.setHorizontalAlignment(SwingConstants.CENTER);
 		list.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		
@@ -301,7 +305,7 @@ public class CombatMenu extends JPanel {
 	/**
 	 * @return the dialog
 	 */
-	public JList<String> getDialog() {
+	public DefaultListModel<String> getDialog() {
 		return dialog;
 	}
 
@@ -309,8 +313,8 @@ public class CombatMenu extends JPanel {
 	/**
 	 * @param dialog the dialog to set
 	 */
-	public void setDialog(JList<String> dialog) {
-		this.dialog = dialog;
+	public void setDialog(DefaultListModel<String> dialog) {
+		CombatMenu.dialog = dialog;
 	}
 	
 	public void disableBackpack()
@@ -323,6 +327,6 @@ public class CombatMenu extends JPanel {
 	{
 		btnBackpack.setEnabled(true);
 	}
-	
+
 	
 } // CombatMenu class

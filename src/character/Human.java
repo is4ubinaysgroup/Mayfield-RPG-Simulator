@@ -6,6 +6,9 @@ import java.awt.Point;
 human class sets the requirements and data for the rest of the classes
 */
 
+import src.gui.BattlePanel;
+import src.gui.CombatMenu;
+
 /*
 05-13 Mina
 added imagePath field
@@ -45,7 +48,7 @@ public class Human
 {
 
 	public static int MOVEMENT = 3;
-	protected String name;
+	protected String name = "Player";
 	protected int health;
 	protected int defense;
 	protected int maxDefense;
@@ -81,6 +84,7 @@ public class Human
 		{
 			throw new Exception("Cannot move to "+point.x + "," +point.y+".");
 		}
+		BattlePanel.getCombatMenu().dialog.addElement(this.name +" moved to ( " + this.getX() +","+this.getY() +" )");
 	}
 	
 	public void moveTo(Point point, boolean moveAnyWays) throws Exception 
@@ -121,6 +125,8 @@ public class Human
 		{
 			throw new Exception("Cannot move to "+point.x + "," +point.y+".");
 		}
+		BattlePanel.getCombatMenu().dialog.addElement(this.name +" moved to ( " + this.getX() +","+this.getY() +" )");
+
 	}
 	
 	public boolean hasLowHealth() 
@@ -147,6 +153,7 @@ public class Human
 		if (Math.random() <= this.equippedWeapon.getCriticalChance()) 
 		{
 			initialDamage= initialDamage*2;
+			BattlePanel.getCombatMenu().dialog.addElement(" -CRITICAL HIT- ");
 		}
 		
 		int damageToHealth = human.getDefense() - initialDamage;
@@ -156,6 +163,7 @@ public class Human
 			if(human.getHealth() <= 0) 
 			{
 				human.setHealth(0);
+				BattlePanel.getCombatMenu().dialog.addElement(human.name + "has no defense left!!!");
 			}
 			else 
 			{
@@ -166,7 +174,8 @@ public class Human
 		{
 			human.setDefense(damageToHealth);
 		}
-		
+		BattlePanel.getCombatMenu().dialog.addElement(this.name + " attacked " + human.name);
+
 	}
 	
 	public void recoverShield() //sets to Max Defense
