@@ -4,10 +4,8 @@
 package src.character;
 
 import java.awt.Point;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
-
 import src.Database;
 import src.gui.MainExecutable;
 import src.gui.Room;

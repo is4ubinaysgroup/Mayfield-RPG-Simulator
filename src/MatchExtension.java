@@ -3,9 +3,6 @@
 
 
 package src;
-
-import java.awt.Point;
-
 import src.character.NonPlayer;
 import src.gui.Backpack;
 import src.gui.BattlePanel;

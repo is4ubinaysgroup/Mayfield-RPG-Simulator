@@ -1,11 +1,5 @@
 package src.character;
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Random;
-
-import src.gui.Room;
-
 /*
 @Author: Carson Fujita
 @Contributor:
@@ -46,7 +40,6 @@ Carson: added and coded moveTo(Point), moveTo(Human), and recoverShield()
  * may 21st added getCorner, inCorner to Human. programmed moveAway.
  */
 import src.items.Weapon;
-import sun.security.util.Length;
 
 public class Human
 {
