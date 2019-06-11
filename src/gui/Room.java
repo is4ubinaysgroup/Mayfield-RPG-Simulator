@@ -583,6 +583,7 @@ public class Room extends JPanel
 	
 	public void healthCheckPlayer()
 	{
+		MainExecutable.getPlayer().setDefense(MainExecutable.getPlayer().getDefense()+1);
 		if(MainExecutable.getPlayer().getHealth() <= 0) 
 		{ 
 			resetLevel();

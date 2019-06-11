@@ -124,7 +124,7 @@ public class MainMenu
 
 		
 		// ------- btn_Continue -------
-		btn_Continue = new JButton ("Continue");
+		btn_Continue = new JButton ("Load Game");
 		btn_Continue.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 17));
 		btn_Continue.setForeground(new Color(247, 221, 0));
 		btn_Continue.setBackground(new Color(14, 1, 141));
