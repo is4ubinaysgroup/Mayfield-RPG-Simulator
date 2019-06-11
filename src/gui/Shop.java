@@ -77,7 +77,7 @@ public class Shop
 	static final String TAB1LIST [] = {"Capacity Upgrade", "Soda", "Orange Juice"};
 	static final String TAB2LIST [] = {"Timbits", "McChicken", "Foot Long Sub!"};
 	static final String TAB3LIST [] = {"Tylenol", "Coffee", "Cappuccino", "Espresso"};
-	static final String TAB4LIST [] = {"Ruler", "Rubber Band"};
+	static final String TAB4LIST [] = {"Ruler", "Rubber Band","Logo"};
 
 	static protected JTabbedPane shopTabbedPane;
 	

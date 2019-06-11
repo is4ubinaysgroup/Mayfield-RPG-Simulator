@@ -145,6 +145,7 @@ public class Database {
 		imgRuler =readImg(ruler); 
 		imgTimbits =readImg(timbits);
 		imgTylenol =readImg(tylenol);
+		imgLogo = readImg("src/resources/MayfieldSecondarySchool.png");
 		MainMenuBackground =readImg("src/resources/Background.jpeg");
 		MapBackground =readImg("src/resources/background2.png");
 		imgClassroom =readImg("src/resources/room.jpg");
@@ -305,7 +306,7 @@ public class Database {
 
 	public static BufferedImage imgRubberband;
 	public static BufferedImage imgRuler;
-
+	public static BufferedImage imgLogo;
 
 
 	public static BufferedImage getProductImage (String name)
@@ -319,7 +320,7 @@ public class Database {
 		else if (name.equals("Coffee")) {return Database.getImgCoffee();}
 		else if (name.equals("Cappuccino")) {return Database.getImgCappuccino();}
 		else if (name.equals("Espresso")) {return Database.getImgEspresso();}
-
+		else if (name.equals("Logo")) {return Database.getImgLogo();}
 		else if (name.equals("Rubber Band")) {return Database.getImgRubberband();}
 		else if (name.equals("Ruler")) {return Database.getImgRuler();}
 
@@ -332,6 +333,10 @@ public class Database {
 	public static BufferedImage getImgRubberband() {return imgRubberband;}
 	public static void setImgRubberband(BufferedImage imgRubberband) {Database.imgRubberband = imgRubberband;}
 
+	public static BufferedImage getImgLogo() {return imgLogo;}
+	public static void setImgLogo(BufferedImage imgLogo) {Database.imgLogo = imgLogo;}
+
+	
 	public static BufferedImage getImgRuler() {return imgRuler;}
 	public static void setImgRuler(BufferedImage imgRuler) {Database.imgRuler = imgRuler;}
 
@@ -385,6 +390,7 @@ public class Database {
 			{25, 4},//sets the "pen" weapon damage
 			{30, 4},//sets the "jacketrs" weapon damage
 			{35, 5},//sets the "test" weapon damage
+			{1000,7},
 			
 	};
 
@@ -400,7 +406,7 @@ public class Database {
 	private static Weapon pen = new Weapon("pen", 5, "penfull", "src/resources/rubberband.png", stats[7][0],stats[7][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
 	private static Weapon jackets = new Weapon("Jackets", 5, "Do not mistake for trashcan", "src/resources/rubberband.png", stats[8][0],stats[8][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
 	private static Weapon tests = new Weapon("Tests", 5, "HORROR", "src/resources/rubberband.png", stats[9][0],stats[9][1],criticalChance[0],Weapon.RANGEDTYPE, 2);
-
+	private static Weapon logo = new Weapon("Logo", 1, "The gods weapon", "src/resources/MayfieldSecondarySchool.png", stats[10][0],stats[10][1],criticalChance[0],Weapon.ALLTYPE, 1);
 
 	// gets and sets
 	public static Weapon getHat() {return hat;}
@@ -415,6 +421,9 @@ public class Database {
 	public static Weapon getRubberband() {return rubberband;}
 	public static void setRubberband(Weapon rubberband) {Database.rubberband = rubberband;}
 
+	public static Weapon getLogo() {return logo;}
+	public static void setLogo(Weapon logo) {Database.logo = logo;}
+	
 	private static Weapon getTests() {return tests;	}
 
 
@@ -452,6 +461,7 @@ public class Database {
 		if (name.equals("Pencil")) {return Database.getPencil();}
 		else if (name.equals("Hat")) {return Database.getHat();}
 		else if (name.equals("Ruler")) {return Database.getRuler();}
+		else if (name.equals("Logo")) {return Database.getLogo();}
 		else {return Database.getRubberband();} // "Rubber Band"
 
 	} //getWeapon method
