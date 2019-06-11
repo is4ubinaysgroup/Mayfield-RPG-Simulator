@@ -2,14 +2,10 @@
  * 
  */
 package src.gui;
-
-import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Instant;
-
-import javax.swing.Icon;
 import javax.swing.JOptionPane;
 /**
  * @author 571370

@@ -4,12 +4,9 @@ not sure if any additional imports are needed because in my IDE put everying in 
  */
 
 package src.gui;
-
-import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;

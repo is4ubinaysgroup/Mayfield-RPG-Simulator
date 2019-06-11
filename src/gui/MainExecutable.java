@@ -7,11 +7,7 @@ added EndScreen
 
 
 package src.gui;
-
-import java.awt.image.BufferedImage;
-
 import src.Database;
-import src.MatchExtension;
 import src.character.Player;
 
 public class MainExecutable

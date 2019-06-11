@@ -15,9 +15,6 @@ in a blank room/"overworld" where the user clicks on their character sprite */
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import java.awt.image.BufferedImage;
-
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
@@ -47,6 +44,11 @@ public class Navigation
 		// ------- local background -------
 		JPanel background = new JPanel() 
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 8668472623396553721L;
+
 			public void paint(Graphics g) 
 			{
 				g.drawImage(Database.getMainMenuBackground(), 0, 0, 1314, 878, null);

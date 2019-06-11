@@ -52,15 +52,12 @@ moved leave and buy buttons slightly higher
 
 // Mina 05-23 shifted GUI components to accomodate frame size
 
-import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
-
 import src.Database;
 import src.MatchExtension;
 import src.items.Product;

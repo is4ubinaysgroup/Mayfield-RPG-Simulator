@@ -40,6 +40,11 @@ public class Map
 	{
 		JPanel background = new JPanel() 
 		{
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -6739149059635301989L;
+
 			public void paint(Graphics g) 
 			{
 				g.drawImage(Database.MapBackground, -150, 0, 1220, 800, null);

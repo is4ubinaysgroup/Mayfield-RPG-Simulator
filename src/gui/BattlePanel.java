@@ -1,8 +1,6 @@
 package src.gui;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import src.Database;
 import src.MatchExtension;
 
 

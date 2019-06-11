@@ -101,7 +101,7 @@ public class CombatMenu extends JPanel {
 		
 		
 		// ------- btnAttack -------
-		JButton btnMode = new JButton("ATTACK");
+		final JButton btnMode = new JButton("ATTACK");
 		btnMode.setBounds(33, 271, 122, 46);
 		btnMode.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 12));
 		btnMode.setForeground(new Color(247, 221, 0));
@@ -140,7 +140,6 @@ public class CombatMenu extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				BattlePanel.getRoom().skipTurn();
 			}});
 		btnEndTurn.setForeground(new Color(247, 221, 0));
