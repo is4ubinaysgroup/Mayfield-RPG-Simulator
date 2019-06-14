@@ -1,7 +1,13 @@
 package src.gui;
+import java.awt.Point;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import src.Database;
 import src.MatchExtension;
+import src.character.NonPlayer;
+import src.items.Weapon;
 
 
 public class BattlePanel  {
@@ -21,8 +27,8 @@ public class BattlePanel  {
 	private static JPanel battleParentPane;
 	private static Room room;//current updated room.
 	private static CombatMenu menu;
-	
-	
+	public static boolean HallSequence = false;
+	public static int hallBattles = 0;
 	
 	public static void RunBattlePanel(int level) 
 	{
@@ -33,7 +39,6 @@ public class BattlePanel  {
 
 		// load and add the appropriate room
 		try {
-
 			loadRoom(level);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,69 +61,86 @@ public class BattlePanel  {
 	
 	public static void loadRoom(int level) 
 	{
-		if(level == 0 && MatchExtension.run == true) 
+		if(hallBattles == 4) 
 		{
-			room = room0;
+			BattlePanel.HallSequence = false;
+			hallBattles = 0;
 		}
-		else if(level == 0)
+		if(HallSequence == true && hallBattles <= 3) 
 		{
-			
+			//TODO
+			int Health = 10*level;
+			Weapon weapon = Database.getRuler();
+			weapon.setDamage(level);
+			Database.setHallMonitor(new NonPlayer("<name>", false, weapon ,0, Health,  new Point(12,12) , Room.HALLMONITOR));
+			hall = new Room(3,0,3,0,Room.HALLMONITOR);
+			room = hall;
 		}
-		if(level == 1 && MatchExtension.run == true) 
-		{
-			room = room1;
-		}
-		else if(level == 1)
-		{
-			
-		}
-		if(level == 2 && MatchExtension.run == true) 
-		{
-			room = room2;
-		}
-		else if(level == 2)
-		{
-			
-		}
-		if(level == 3 && MatchExtension.run == true) 
-		{
-			room = room3;
-		}
-		else if(level == 3)
-		{
-			
-		}
-		if(level == 4 && MatchExtension.run == true) 
-		{
-			room = room4;
-		}
-		else if(level == 4)
-		{
-			
-		}
-		if(level == 5 && MatchExtension.run == true) 
-		{
-			room = room5;
-		}
-		else if(level == 5)
-		{
-			
-		}
-		if(level == 6 && MatchExtension.run == true) 
-		{
-			room = room6;
-		}
-		else if(level == 6)
-		{
-			
-		}
-		if(level == 7 && MatchExtension.run == true) 
-		{
-			room = room7;
-		}
-		else if(level == 7)
-		{
-			
+		else {
+			if(level == 0 && MatchExtension.run == true) 
+			{
+				room = room0;
+			}
+			else if(level == 0)
+			{
+
+			}
+			if(level == 1 && MatchExtension.run == true) 
+			{
+				room = room1;
+			}
+			else if(level == 1)
+			{
+
+			}
+			if(level == 2 && MatchExtension.run == true) 
+			{
+				room = room2;
+			}
+			else if(level == 2)
+			{
+
+			}
+			if(level == 3 && MatchExtension.run == true) 
+			{
+				room = room3;
+			}
+			else if(level == 3)
+			{
+
+			}
+			if(level == 4 && MatchExtension.run == true) 
+			{
+				room = room4;
+			}
+			else if(level == 4)
+			{
+
+			}
+			if(level == 5 && MatchExtension.run == true) 
+			{
+				room = room5;
+			}
+			else if(level == 5)
+			{
+
+			}
+			if(level == 6 && MatchExtension.run == true) 
+			{
+				room = room6;
+			}
+			else if(level == 6)
+			{
+
+			}
+			if(level == 7 && MatchExtension.run == true) 
+			{
+				room = room7;
+			}
+			else if(level == 7)
+			{
+
+			}
 		}
 			
 	} // loadRoom method

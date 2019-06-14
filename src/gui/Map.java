@@ -69,7 +69,7 @@ public class Map
 
 		btn_Level1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				BattlePanel.HallSequence = true;
 				playSound(Database.getSelectTone1());	
 				MatchExtension.runMatch(1);
 			}
@@ -87,6 +87,7 @@ public class Map
 			public void actionPerformed(ActionEvent e) {
 				
 				playSound(Database.getSelectTone1());	
+				BattlePanel.HallSequence = true;
 				MatchExtension.runMatch(2);
 			}
 		});
@@ -103,6 +104,7 @@ public class Map
 			public void actionPerformed(ActionEvent e) {
 				
 				playSound(Database.getSelectTone1());	
+				BattlePanel.HallSequence = true;
 				MatchExtension.runMatch(3);
 			}
 		});
@@ -120,6 +122,7 @@ public class Map
 			public void actionPerformed(ActionEvent e) {
 				
 				playSound(Database.getSelectTone1());	
+				BattlePanel.HallSequence = true;
 				MatchExtension.runMatch(4);
 			}
 		});
@@ -136,7 +139,8 @@ public class Map
 		btn_Level5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				playSound(Database.getSelectTone1());	
+				playSound(Database.getSelectTone1());
+				BattlePanel.HallSequence = true;
 				MatchExtension.runMatch(5);
 			}
 		});
@@ -153,6 +157,7 @@ public class Map
 			public void actionPerformed(ActionEvent e) {
 
 				playSound(Database.getSelectTone1());	
+				BattlePanel.HallSequence = true;
 				MatchExtension.runMatch(6);
 			}
 		});
@@ -169,6 +174,7 @@ public class Map
 			public void actionPerformed(ActionEvent e) {
 				
 				playSound(Database.getSelectTone1());	
+				BattlePanel.HallSequence = true;
 				MatchExtension.runMatch(7);
 			}
 		});

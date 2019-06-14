@@ -906,7 +906,7 @@ public class Database {
 	
 	
 	
-	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,15, gymPos, Room.HALLMONITOR);
+	public static NonPlayer hallMonitor = new NonPlayer("<name>", false, getRuler(),3,2, gymPos, Room.HALLMONITOR);
 	public static NonPlayer binay = new NonPlayer("Binay", true, getHat(),0,20, gymPos, Room.BINAY);
 	public static NonPlayer carson = new NonPlayer("Carson", true, getDabPower(),5,40, gymPos, Room.BINAY);
 	public static NonPlayer kolby = new NonPlayer("Kolby", true, getDrumSticks(),10,60, gymPos, Room.BINAY);
@@ -919,6 +919,10 @@ public class Database {
 	
 	public static NonPlayer gymTeacher = new NonPlayer("Gym Teacher", false, getRubberband(),0,9, gymPos, Room.GYMTEACHER);
 	
+	public static void setHallMonitor(NonPlayer hallMonitor) 
+	{
+		Database.hallMonitor = hallMonitor;
+	}
 	
 	public static BufferedImage getSprite (int enemyID) throws Exception
 	{

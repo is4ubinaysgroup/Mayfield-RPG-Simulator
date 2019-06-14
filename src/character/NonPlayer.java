@@ -66,13 +66,13 @@ UML
 
 	 */
 	
-	private Boolean isBoss;
+	private boolean isBoss;
 	private Room room;
 	private int ID;
 	
 	// imagePath is inherited from Human but not used
 	
-	public NonPlayer(String name,Boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos, int ID) 
+	public NonPlayer(String name,boolean isBoss, Weapon weapon, int maxDefense, int maxHealth, Point pos, int ID) 
 	{
 		this.name = name;
 		this.setIsBoss(isBoss);

@@ -44,87 +44,109 @@ public class MatchExtension
 		int level = MainExecutable.getPlayer().getLevel();
 		int coins = MainExecutable.getPlayer().getCoins();
 		
-		
-		if (win == true)
+		if(BattlePanel.HallSequence == true) //Hallsequence
 		{
-			
-			if (level == 0){EndScreen.updateForTutorial(true);}
-			else {
-			
-			int winningAmount = level * 50;
-			MainExecutable.getPlayer().setCoins(winningAmount); // the player wins coins
-	
-			if (level == matchLevel)
+			BattlePanel.hallBattles++;
+			if(win == true)
 			{
-				MainExecutable.getPlayer().setLevel(level+1);
-				Map.updateMap(MainExecutable.getPlayer().getLevel()); // update the map
-				
-			} // increase the player's level if the player isn't playing a level they already beat
-			
-			
-			if (MainExecutable.getPlayer().alreadyOwnsWeapon(boss.getEquippedWeapon()) == false)
-			{
-				MainExecutable.getPlayer().addWeapon(boss.getEquippedWeapon()); 
-			} // the player wins the boss's weapon if they're beating the boss for the first time
-			
-			EndScreen.update(true, winningAmount, false, false); // update the battle over screen
-			
-			} // else level is not tutorial
-		} // if the player was won the battle
-		
-		
-		
-		else
-		{
-			if (level == 0){EndScreen.updateForTutorial(false);}
-			else {
-			
-			// alreadyOwnsWeapon boolean would be arbitrary
-			
-			if (coins == 0)
-			{
-				if (level == matchLevel && level > 1)
-				{
-					MainExecutable.getPlayer().setLevel(level-1);
-					Map.updateMap(MainExecutable.getPlayer().getLevel()); // update the map
-					
-				} // decrease the player's level if the player isn't playing a level they already beat; excluding level 1
-				
-				EndScreen.update(false, 0, true, true); 
+				int winningAmount = level * 50;
+				MainExecutable.getPlayer().setCoins(MainExecutable.getPlayer().getCoins() + winningAmount); // the player wins
+				runMatch(level);
 
-			} // if player has 0 coins when losing
-			
-			else if (coins < 10)
+			}//win
+			else //loss 
 			{
-				coins = coins-5;
-				MainExecutable.getPlayer().setCoins(coins); // player loses 5 coins
-				
-				EndScreen.update(false, 5, true, false);
-				
-			} // else if the player has less than 10 coins
-			
+				if(!(MainExecutable.getPlayer().getLevel() <= 1)) 
+				{//we don't want to set their level down past where the map allows.
+					MainExecutable.getPlayer().setLevel(level-1);
+					EndScreen.update(false, 0, true, false);
+				}
+			}//else didn't win
+		}
+		else 
+		{ 
+			if (win == true)
+			{
+
+				if (level == 0){EndScreen.updateForTutorial(true);}
+				else {
+
+					int winningAmount = level * 50;
+					MainExecutable.getPlayer().setCoins(winningAmount); // the player wins coins
+
+					if (level == matchLevel)
+					{
+						MainExecutable.getPlayer().setLevel(level+1);
+						Map.updateMap(MainExecutable.getPlayer().getLevel()); // update the map
+
+					} // increase the player's level if the player isn't playing a level they already beat
+
+
+					if (MainExecutable.getPlayer().alreadyOwnsWeapon(boss.getEquippedWeapon()) == false)
+					{
+						MainExecutable.getPlayer().addWeapon(boss.getEquippedWeapon()); 
+					} // the player wins the boss's weapon if they're beating the boss for the first time
+
+					EndScreen.update(true, winningAmount, false, false); // update the battle over screen
+
+				} // else level is not tutorial
+			} // if the player was won the battle
+
+
+
 			else
 			{
-				
-				double percentage = ((15 + (Math.random() * (20 - 15)))/100); // get a random percentage b/w 15-20%
-				int losingAmount = (int)(coins*percentage); // get the losing amount of coins
-				
-				coins = coins - losingAmount;
-				MainExecutable.getPlayer().setCoins(coins); // player loses 15-20% of their coins
-				
-				EndScreen.update(false, losingAmount, true, false);
-				
-			} // else the player has 10 or more coins
-			} // else level is not tutorial
-		} // else lose
+				if (level == 0){EndScreen.updateForTutorial(false);}
+				else {
+
+					// alreadyOwnsWeapon boolean would be arbitrary
+
+					if (coins == 0)
+					{
+						if (level == matchLevel && level > 1)
+						{
+							MainExecutable.getPlayer().setLevel(level-1);
+							Map.updateMap(MainExecutable.getPlayer().getLevel()); // update the map
+
+						} // decrease the player's level if the player isn't playing a level they already beat; excluding level 1
+
+						EndScreen.update(false, 0, true, true); 
+
+					} // if player has 0 coins when losing
+
+					else if (coins < 10)
+					{
+						coins = coins-5;
+						MainExecutable.getPlayer().setCoins(coins); // player loses 5 coins
+
+						EndScreen.update(false, 5, true, false);
+
+					} // else if the player has less than 10 coins
+
+					else
+					{
+
+						double percentage = ((15 + (Math.random() * (20 - 15)))/100); // get a random percentage b/w 15-20%
+						int losingAmount = (int)(coins*percentage); // get the losing amount of coins
+
+						coins = coins - losingAmount;
+						MainExecutable.getPlayer().setCoins(coins); // player loses 15-20% of their coins
+
+						EndScreen.update(false, losingAmount, true, false);
+
+					} // else the player has 10 or more coins
+				} // else level is not tutorial
+			} // else lose
+
+
+			// not sure yet if more GUI stuff will be needed to transition out of battle
+
+			Backpack.update();
+			Shop.updateCoinsLabels();
+
+			GUIExtension1.switchPane(EndScreen.getPane()); // go to the battle over screen
+		}
 		
-		
-		// not sure yet if more GUI stuff will be needed to transition out of battle
-		
-		Backpack.update();
-		Shop.updateCoinsLabels();
-		
-		GUIExtension1.switchPane(EndScreen.getPane()); // go to the battle over screen
 		
 	} // endResult method
 
