@@ -4,10 +4,11 @@ import java.awt.Point;
 @Author: Carson Fujita
 @Contributor:
 human class sets the requirements and data for the rest of the classes
+ * Carson September 13th 2019: removed unused libraries
+
 */
 
 import src.gui.BattlePanel;
-import src.gui.CombatMenu;
 
 /*
 05-13 Mina

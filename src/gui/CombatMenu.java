@@ -4,6 +4,7 @@ package src.gui;
  * added button color and font
  * Carson 2019-06-02
  * I added all sorts of functionality including progressbars, and updating functions.
+ * Carson September 13th 2019: removed unused libraries
  */
 
 import javax.swing.JPanel;
@@ -21,7 +22,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
-import javax.swing.ListModel;
 import javax.swing.JList;
 //import Human.java;
 

@@ -11,7 +11,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.ListModel;
 import javax.swing.border.EmptyBorder;
 import src.Database;
 import src.MatchExtension;
@@ -27,6 +26,9 @@ huge face lift and overhaul.
 Editor: Carson
 Date: May 19th-26th
 Task: facelift to code.
+
+ * Carson September 13th 2019: removed unused libraries
+
  */
 
 public class Room extends JPanel 

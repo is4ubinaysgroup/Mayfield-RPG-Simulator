@@ -7,8 +7,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 import src.Database;
-import src.gui.BattlePanel;
-import src.gui.CombatMenu;
 import src.gui.MainExecutable;
 import src.gui.Room;
 import src.items.Weapon;
@@ -20,6 +18,9 @@ import src.items.Weapon;
  * May 14th 2019.
  * created isBoss with setters and getters
  * created runTurn()
+ * 
+ *  * Carson September 13th 2019: removed unused libraries
+
  */
 /*
 may 16th 2019
